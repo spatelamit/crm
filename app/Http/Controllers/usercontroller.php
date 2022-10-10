@@ -8,8 +8,8 @@ class usercontroller extends Controller
 {
     public function User_dashboard(){
 
-        dd("pankaj");
-        return view('user_dashboard');
+        // dd("pankaj");
+        return view('index');
 
     }
 }
