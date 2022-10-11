@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login',[dashboardcontroller::class, 'login']);
+Route::get('/',[dashboardcontroller::class, 'login']);
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	// Auth::routes();
