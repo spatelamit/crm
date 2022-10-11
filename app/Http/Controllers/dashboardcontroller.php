@@ -62,12 +62,20 @@ class dashboardcontroller extends Controller
     public function mailer(){
 
         // dd("pankaj");
-        return view('mailer');
+        return view('roles_setting.email_setting');
 
     }
 
     public function crm_setting(){
-        return view('crm_setting');
+        return view('roles_setting.crm_setting');
+    }
+
+    public function roles_setting(){
+        return view('roles_setting.roles_setting');
+    }
+
+    public function sms_setting(){
+        return view('roles_setting.sms_setting');
     }
 
 }

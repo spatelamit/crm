@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<h1>
-login
-
-</h1>
-=======
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +11,7 @@ login
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<!-- END META SECTION -->
 	<!-- CSS INCLUDE -->
-    
+
     <style>
 .app {
   float: left;
@@ -243,7 +236,7 @@ border-radius: 7px !important;
 .Permission_box_li .active {
 color: #3a86f6 !important;
 background: #ebf3fe !important;
-border-left: 3px solid #3a86f6 !important;	
+border-left: 3px solid #3a86f6 !important;
 }
 
 .as_btn{
@@ -252,7 +245,7 @@ padding: 3px 10px;
   background:none;
 border-radius: 4px;
 font-size: 11px;
-color:#6825d4 !important;	
+color:#6825d4 !important;
 
 }
 
@@ -274,13 +267,13 @@ color:#6825d4 !important;
     left: 0;
 	z-index:9999;
     background-color: rgba(0,0,0,.5);
-  } 
+  }
 
 
   .loading img{
     margin-top: -40px;
     margin-left: -40px;
-    
+
     position: absolute;
     top: 50%;
     left: 50%;}
@@ -8338,7 +8331,7 @@ text-transform: capitalize;}
 }
 
     </style>
-	
+
 </head>
 <body>
 
@@ -8367,15 +8360,15 @@ text-transform: capitalize;}
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-6 col-xs-6">
-							
+
 										<label>
 											<input type="checkbox" name="app-checkbox-1" value="0"> Remember me</label>
-							
+
 								</div>
 								<div class="col-md-12 col-xs-12">
 									<button onclick="_paq.push(['FormAnalytics::trackFormSubmit', document.getElementById('loginform')])"  type="submit" name="submit" class="btn btn-success btn-block">Sign In</button>
 									<p data-track-content="" data-content-name="LognForm" data-content-piece="forget_password" data-content-target="forget_password"  style="text-align: center;"><a href="#">Forget Password</a></p>
-								</div> 
+								</div>
 							</div>
 						</div>
 					</form>
@@ -8387,7 +8380,7 @@ text-transform: capitalize;}
 					<button class="btn btn-facebook btn-block" disabled>Connect With Facebook</button>
 					<button class="btn btn-twitter btn-block" disabled>Connect With Gmail</button>
 				</div> -->
-				
+
 			</div>
 		</div>
 		<!-- END APP CONTAINER -->
@@ -8419,4 +8412,4 @@ text-transform: capitalize;}
 
 
 
->>>>>>> bab68698afda34e0f319242a9fbb28ef608783c6
+
