@@ -30,7 +30,7 @@ Route::get('/login',[UserController::class, 'login']);
 // Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::get('/logout',[UserController::class, 'logout']);
 
-Route::group(['middleware' => 'prevent-back-history'],function(){
+Route::group(['middleware' => 'UserAuthentication'],function(){
 
 	// Auth::routes();
     Route::post('/login_action',[UserController::class, 'login_action']);
@@ -56,6 +56,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 
-	
+
 	Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
-	
+
