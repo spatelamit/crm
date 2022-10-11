@@ -162,7 +162,7 @@
                                         <ul class="vertical-submenu">
 
 
-<li><a href="{{url('roles_setting')}}">Roles Setting</a></li>
+<li><a href="{{url('roles')}}">Roles Setting</a></li>
 <li><a href="{{url('')}}">Users Account Setting</a></li>
 <li><a href="{{url('sms_setting')}}">SMS Setting</a></li>
 <li><a href="{{url('email_setting')}}">Email Setting</a></li>
