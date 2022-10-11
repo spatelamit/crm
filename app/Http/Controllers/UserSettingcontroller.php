@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Usersetting;
 
-class UserSettingcontroller extends Controller
+
 
 class UserSettingController extends Controller
 {
