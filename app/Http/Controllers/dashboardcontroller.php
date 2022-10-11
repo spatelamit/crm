@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 
-class dashboardcontroller extends Controller
+class DashboardController extends Controller
 {
     public function login(){
         if(session()->has('IsLoggedIn')){
