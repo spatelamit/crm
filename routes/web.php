@@ -19,8 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-   Route::get('/User_dashboard',[usercontroller::class, 'User_dashboard']);
-   Route::get('/deals',[dashboardcontroller::class, 'deals']);
-   Route::get('/mailer',[dashboardcontroller::class, 'mailer']);
-   Route::get('/crm_setting',[dashboardcontroller::class, 'crm_setting']);
+Route::group(['middleware' => 'prevent-back-history'],function(){
+
+	Auth::routes();
+
+	Route::get('/User_dashboard',[usercontroller::class, 'User_dashboard']);
+    Route::get('/deals',[dashboardcontroller::class, 'deals']);
+    Route::get('/mailer',[dashboardcontroller::class, 'mailer']);
+    Route::get('/crm_setting',[dashboardcontroller::class, 'crm_setting']);
+
+});
+
+
    Route::get('/login',[dashboardcontroller::class, 'login']);
