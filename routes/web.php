@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\dashboardcontroller;
+use App\Http\Controllers\UserSettingcontroller;
 use App\Http\Controllers\usercontroller;
+use App\Http\Controllers\UserSettingcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',[dashboardcontroller::class, 'login']);
-Route::get('/',[dashboardcontroller::class, 'login']);
+Route::get('/login',[dashboardController::class, 'login']);
+Route::get('/',[dashboardController::class, 'login']);
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	// Auth::routes();
@@ -28,19 +29,18 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 });
 
-Route::get('/user_dashboard',[usercontroller::class, 'user_dashboard']);
-Route::get('/deals',[dashboardcontroller::class, 'deals']);
-Route::get('/mailer',[dashboardcontroller::class, 'mailer']);
-Route::get('/crm_setting',[dashboardcontroller::class, 'crm_setting']);
+	Route::get('/user_dashboard',[userController::class, 'user_dashboard']);
+	
 
 
 
-
-
-   Route::get('/theme_settings',[dashboardcontroller::class, 'theme_settings']);
-   Route::get('/sms_setting',[dashboardcontroller::class, 'sms_setting']);
-	Route::get('/roles_setting',[dashboardcontroller::class, 'roles_setting']);
-	Route::get('/pipelines_stages',[dashboardcontroller::class, 'pipelines_stages']);
-	Route::get('/modules',[dashboardcontroller::class, 'modules']);
-	Route::get('/forms',[dashboardcontroller::class, 'forms']);
-	Route::get('/email_setting',[dashboardcontroller::class, 'email_setting']);
+	Route::get('/deals',[UserSettingcontroller::class, 'deals']);
+	Route::get('/mailer',[UserSettingcontroller::class, 'mailer']);
+	Route::get('/crm_settings',[UserSettingcontroller::class, 'crm_settings']);
+   Route::get('/theme_settings',[UserSettingcontroller::class, 'theme_settings']);
+   Route::get('/sms_settings',[UserSettingcontroller::class, 'sms_settings']);
+	Route::get('/roles_setting',[UserSettingcontroller::class, 'roles_settings']);
+	Route::get('/pipelines_stages',[UserSettingcontroller::class, 'pipelines_stages']);
+	Route::get('/modules',[UserSettingcontroller::class, 'modules']);
+	Route::get('/forms',[UserSettingcontroller::class, 'forms']);
+	Route::get('/email_settings',[UserSettingcontroller::class, 'email_settings']);
