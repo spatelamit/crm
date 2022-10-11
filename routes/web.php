@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\UserSettingController;
-use App\Http\Controllers\usercontroller;
-use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login',[dashboardController::class, 'login']);
-Route::get('/',[dashboardController::class, 'login']);
+Route::get('/login',[DashboardController::class, 'login']);
+Route::get('/',[DashboardController::class, 'login']);
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	// Auth::routes();
@@ -29,7 +30,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 });
 
-	Route::get('/user_dashboard',[userController::class, 'user_dashboard']);
+	Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 	
 
 
