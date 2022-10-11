@@ -24,9 +24,11 @@ class UserController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
+
         if($req == true){
         $data = DB::table('users')->where('username', $request->username)->where('password', $request->password)->first();
         }
+
         if($data){
             $user_id = $data->id;
             Session::put('IsLoggedIn', true);
@@ -37,13 +39,12 @@ class UserController extends Controller
             //     Session::put('IsAdmin', 'Y');
             // }
 
-            return view('index');
+            // return view('index');
 
-            // return redirect('/user_dashboard')->with("Success", "Successfully Login!");
+            return redirect('/user_dashboard')->with("success", "Successfully Login!");
         }
-        if(!Session::has('IsLoggedIn')){
-
-            return redirect("/")->with('Login details are not valid');
+        else{
+            return redirect("/")->with("error", 'Login details are not valid');
         }
 
     }
