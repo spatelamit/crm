@@ -26,9 +26,10 @@ class UserSetting extends Model
      public function GetRolesTree(){
      	$data=DB::table('users_roles')
 	    	->select('id','role_name','reporting_to')
-	   	
+	   	->where('company_id','1')
 			->orderby("id",'desc')
-	    	->get();
+	    	->get()
+            ->toArray();
 			if($data){ return $data; }else{ return false; }
 	    }
 }

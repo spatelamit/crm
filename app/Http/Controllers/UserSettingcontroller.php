@@ -33,7 +33,7 @@ class UserSettingController extends Controller
      public function rolestree(){
      				$Usersetting=new Usersetting();
 			    	$roles=$Usersetting->GetRolesTree();
-			    	
+
 			    	foreach ($roles as $key => &$value) {
 			    		$output[$value->id]=&$value;
 
@@ -48,14 +48,9 @@ class UserSettingController extends Controller
 			    			unset($roles[$key]);
 			    		}
 			    	}
-			    	// echo "<pre>";
-			    	// print_r($roles);
-			    	// $roles=array_filter($roles);
-			    	// print_r($roles);
-			    	// $roles=array_values($roles);
+			    	$roles=array_filter($roles);
+    	$roles=array_values($roles);
 			    	
-			    	// print_r($roles);
-			    
 			    	echo json_encode($roles);
     }
 }
