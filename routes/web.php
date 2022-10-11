@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboardcontroller;
 use App\Http\Controllers\usercontroller;
+use App\Http\Controllers\UserSettingcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,8 +39,15 @@ Route::get('/crm_setting',[dashboardcontroller::class, 'crm_setting']);
 
    Route::get('/theme_settings',[dashboardcontroller::class, 'theme_settings']);
    Route::get('/sms_setting',[dashboardcontroller::class, 'sms_setting']);
-	Route::get('/roles_setting',[dashboardcontroller::class, 'roles_setting']);
+	
 	Route::get('/pipelines_stages',[dashboardcontroller::class, 'pipelines_stages']);
 	Route::get('/modules',[dashboardcontroller::class, 'modules']);
 	Route::get('/forms',[dashboardcontroller::class, 'forms']);
 	Route::get('/email_setting',[dashboardcontroller::class, 'email_setting']);
+
+	// User Setting//
+Route::get('/roles',[UserSettingcontroller::class, 'roles_view']);
+Route::get('/add-role',[UserSettingcontroller::class, 'add_role']);
+
+	// end user setting//
+
