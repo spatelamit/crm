@@ -32,3 +32,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
    Route::get('/login',[dashboardcontroller::class, 'login']);
+
+
+
+   Route::get('/roles_setting/theme_settings',[dashboardcontroller::class, 'theme_settings']);
+   Route::get('/roles_setting/sms_setting',[dashboardcontroller::class, 'sms_setting']);
+	Route::get('/roles_setting/roles_setting',[dashboardcontroller::class, 'roles_setting']);
+	Route::get('/roles_setting/pipelines_stages',[dashboardcontroller::class, 'pipelines_stages']);
+	Route::get('/roles_setting/modules',[dashboardcontroller::class, 'modules']);
+	Route::get('/roles_setting/forms',[dashboardcontroller::class, 'forms']);
+	Route::get('/roles_setting/email_setting',[dashboardcontroller::class, 'email_setting']);
