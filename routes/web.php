@@ -31,6 +31,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 	Route::get('/roles',[UserSettingController::class, 'roles_view']);
 	Route::get('/add-role',[UserSettingController::class, 'add_role']);
+	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);
 	// end user setting//
 
 	Route::get('/deals',[UserSettingController::class, 'deals']);

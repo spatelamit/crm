@@ -25,8 +25,6 @@ class UserSettingController extends Controller
     		public function add_role ()
 
     		{
-    			
-    			
 
     			return view('roles_setting/add-role');
     		
@@ -35,24 +33,27 @@ class UserSettingController extends Controller
      public function rolestree(){
      				$Usersetting=new Usersetting();
 			    	$roles=$Usersetting->GetRolesTree();
-
+			    	
 			    	foreach ($roles as $key => &$value) {
-			    		$output[$value['id']]=&$value;
+			    		$output[$value->id]=&$value;
 
 			    	}
 			    	foreach ($roles as $key => &$value) {
-			    		if($value['reporting_to'] && isset($output[$value['reporting_to']])){
-			    			$output[$value['reporting_to']]['nodes'][]=$value;
+			    		if($value->reporting_to && isset($output[$value->reporting_to])){
+			    			$output[$value->reporting_to]->nodes[]=$value;
 			    		}
 			    	}
 			    	foreach ($roles as $key => &$value) {
-			    		if($value['reporting_to'] && isset($output[$value['reporting_to']])){
+			    		if($value->reporting_to && isset($output[$value->reporting_to])){
 			    			unset($roles[$key]);
 			    		}
 			    	}
-			    	$roles=array_filter($roles);
-			    	$roles=array_values($roles);
 			    	// echo "<pre>";
+			    	// print_r($roles);
+			    	// $roles=array_filter($roles);
+			    	// print_r($roles);
+			    	// $roles=array_values($roles);
+			    	
 			    	// print_r($roles);
 			    
 			    	echo json_encode($roles);
