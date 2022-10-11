@@ -52,3 +52,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/pipelines_stages',[UserSettingController::class, 'pipelines_stages']);
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
+
+	
+	Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
+	
