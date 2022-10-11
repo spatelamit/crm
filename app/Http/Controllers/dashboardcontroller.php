@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class dashboardcontroller extends Controller
 {
+    public function login(){
+        return view('login');
+    }
     public function deals(){
 
         // dd("pankaj");
