@@ -8350,13 +8350,14 @@ text-transform: capitalize;}
 						<!-- end Web tracking -->
 				</div>
 				<div data-matomo-form data-matomo-name="myformname" class="app-login-box-container" id="loginform" >
-					<form id="login_form"  method="post" >
+					<form id="login_form"  method="post" action="{{ url('login_action')}}" >
+						@csrf
 						<div class="form-group">
 
-							<input  type="text" class="form-control" name="email" placeholder="Email Address" required>
+							<input  type="text" class="form-control" name="email" placeholder="Email Address or username" required>
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="pwd" placeholder="Password" required>
+							<input type="password" class="form-control" name="password" placeholder="Password" required>
 						</div>
 						<div class="form-group">
 							<div class="row">
@@ -8367,7 +8368,8 @@ text-transform: capitalize;}
 							
 								</div>
 								<div class="col-md-12 col-xs-12">
-									<button onclick="_paq.push(['FormAnalytics::trackFormSubmit', document.getElementById('loginform')])"  type="submit" name="submit" class="btn btn-success btn-block">Sign In</button>
+									<button type="submit" name="submit" class="btn btn-success btn-block">Sign In</button>
+
 									<p data-track-content="" data-content-name="LognForm" data-content-piece="forget_password" data-content-target="forget_password"  style="text-align: center;"><a href="#">Forget Password</a></p>
 								</div> 
 							</div>
