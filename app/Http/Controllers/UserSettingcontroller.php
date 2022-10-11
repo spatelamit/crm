@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
 use App\Models\Usersetting;
 
 class UserSettingcontroller extends Controller
+=======
+class UserSettingController extends Controller
+>>>>>>> 8a5bdaf9e291af844b440e77a5ef409d2fc1763e
 {
     
     		public function roles_view ()

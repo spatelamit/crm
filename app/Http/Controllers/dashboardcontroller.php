@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class dashboardcontroller extends Controller
+class DashboardController extends Controller
 {
+    public function login(){
+        return view('login');
+    }
     public function deals(){
 
         // dd("pankaj");

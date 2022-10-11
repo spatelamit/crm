@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class usercontroller extends Controller
+class UserController extends Controller
 {
-    public function User_dashboard(){
+    public function user_dashboard(){
 
         // dd("pankaj");
         return view('index');
