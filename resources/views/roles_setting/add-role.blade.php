@@ -272,7 +272,7 @@ if(ele) {
     dataType: "json",       
    success: function(data)  
    {
- console.log(data[id]);
+ 
    
   var tree1 = new ej.navigations.TreeView({
     fields: { dataSource: data, id: 'id', text: 'role_name', child: 'nodes' },

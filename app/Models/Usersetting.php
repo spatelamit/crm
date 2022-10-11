@@ -28,7 +28,8 @@ class UserSetting extends Model
 	    	->select('id','role_name','reporting_to')
 	   	->where('company_id','1')
 			->orderby("id",'desc')
-	    	->get();
+	    	->get()
+            ->toArray();
 			if($data){ return $data; }else{ return false; }
 	    }
 }
