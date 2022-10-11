@@ -8349,11 +8349,11 @@ text-transform: capitalize;}
 						<!-- end Web tracking -->
 				</div>
 				<div data-matomo-form data-matomo-name="myformname" class="app-login-box-container" id="loginform" >
-					<form id="login_form"  method="post" action="{{ url('login_action')}}" >
+					<form  method="POST" action="{{ url('/login_action')}}" id="login_form">
 						@csrf
 						<div class="form-group">
 
-							<input  type="text" class="form-control" name="email" placeholder="Email Address or username" required>
+							<input  type="text" class="form-control" name="username" placeholder="Email Address or username" required>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password" placeholder="Password" required>
