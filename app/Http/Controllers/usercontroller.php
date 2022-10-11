@@ -54,12 +54,17 @@ class UserController extends Controller
 
     }
 
-    public function logout() {
+
+       public function logout() {
         \Auth::logout(); // logout user
         Session::flush();
         // Redirect::back();
         return redirect(\URL::previous());
         // return redirect('/');
     }
+
+
+
+
 
 }
