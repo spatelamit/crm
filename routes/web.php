@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\UserSettingcontroller;
+use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\usercontroller;
-use App\Http\Controllers\UserSettingcontroller;
+use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,13 +34,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
 
-	Route::get('/deals',[UserSettingcontroller::class, 'deals']);
-	Route::get('/mailer',[UserSettingcontroller::class, 'mailer']);
-	Route::get('/crm_settings',[UserSettingcontroller::class, 'crm_settings']);
-   Route::get('/theme_settings',[UserSettingcontroller::class, 'theme_settings']);
-   Route::get('/sms_settings',[UserSettingcontroller::class, 'sms_settings']);
-	Route::get('/roles_setting',[UserSettingcontroller::class, 'roles_settings']);
-	Route::get('/pipelines_stages',[UserSettingcontroller::class, 'pipelines_stages']);
-	Route::get('/modules',[UserSettingcontroller::class, 'modules']);
-	Route::get('/forms',[UserSettingcontroller::class, 'forms']);
-	Route::get('/email_settings',[UserSettingcontroller::class, 'email_settings']);
+	Route::get('/deals',[UserSettingController::class, 'deals']);
+	Route::get('/mailer',[UserSettingController::class, 'mailer']);
+	Route::get('/crm_settings',[UserSettingController::class, 'crm_settings']);
+   Route::get('/theme_settings',[UserSettingController::class, 'theme_settings']);
+   Route::get('/sms_settings',[UserSettingController::class, 'sms_settings']);
+	Route::get('/roles_setting',[UserSettingController::class, 'roles_settings']);
+	Route::get('/pipelines_stages',[UserSettingController::class, 'pipelines_stages']);
+	Route::get('/modules',[UserSettingController::class, 'modules']);
+	Route::get('/forms',[UserSettingController::class, 'forms']);
+	Route::get('/email_settings',[UserSettingController::class, 'email_settings']);
