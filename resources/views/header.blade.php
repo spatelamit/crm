@@ -12,7 +12,7 @@
     <title> Bulksmsservice provider -CRM | Customer Relationship management </title>
     <!-- Fevicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <!-- Start css -->    
+    <!-- Start css -->
     <!-- Apex css -->
     <link href="assets/plugins/apexcharts/apexcharts.css" rel="stylesheet">
     <!-- jvectormap css -->
@@ -20,25 +20,25 @@
     <!-- Slick css -->
     <link href="assets/plugins/slick/slick.css" rel="stylesheet">
     <link href="assets/plugins/slick/slick-theme.css" rel="stylesheet">
-    
+
       <link href="assets/plugins/dragula/dragula.min.css" rel="stylesheet">
     <!-- Switchery css -->
 
     <!-- Switchery css -->
     <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet">
-    
+
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-    
-    
-    
+
+
+
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    
-    
-    
+
+
+
     <!-- End css -->
 </head>
-<body class="vertical-layout">    
+<body class="vertical-layout">
     <!-- Start Infobar Setting Sidebar -->
     <div id="infobar-settings-sidebar" class="infobar-settings-sidebar">
         <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
@@ -89,7 +89,7 @@
                             <img src="assets/images/users/boy.svg" class="img-fluid" alt="user">
                             <h5>John</h5>
                             <p>CEO</p>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="col-6">
                         <div class="account-box">
@@ -103,7 +103,7 @@
                             <img src="assets/images/users/men.svg" class="img-fluid" alt="user">
                             <h5>Mark</h5>
                             <p>MD</p>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="col-6">
                         <div class="account-box">
@@ -117,19 +117,19 @@
         </div>
     </div>
     <div class="infobar-settings-sidebar-overlay"></div>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
     <!-- End Infobar Setting Sidebar -->
     <!-- Start Containerbar -->
     <div id="containerbar">
         <!-- Start Leftbar -->
         <div class="leftbar">
             <!-- Start Sidebar -->
-            <div class="sidebar">               
+            <div class="sidebar">
                 <!-- Start Navigationbar -->
                 <div class="navigationbar">
                     <div class="vertical-menu-icon">
@@ -138,10 +138,10 @@
                                 <a href="index.html" class="logo logo-small"><img src="assets/images/small_logo.svg" class="img-fluid" alt="logo"></a>
                             </div>
                             <a class="nav-link active" id="v-pills-crm-tab" data-toggle="pill" href="#v-pills-crm" role="tab" aria-controls="v-pills-crm" aria-selected="true"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="CRM" data-toggle="tooltip" data-placement="top" title="CRM"></a>
-                                                    
+
                             <a class="nav-link" id="v-pills-hospital-tab" data-toggle="pill" href="#v-pills-hospital" role="tab" aria-controls="v-pills-hospital" aria-selected="false"><img src="assets/images/svg-icon/hospital.svg" class="img-fluid" alt="Hospital" data-toggle="tooltip" data-placement="top" title="Hospital"></a>
-                            
-                            
+
+
                         </div>
                     </div>
                     <div class="vertical-menu-detail">
@@ -151,47 +151,47 @@
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-crm" role="tabpanel" aria-labelledby="v-pills-crm-tab">
                                 <ul class="vertical-menu">
-                                    <li><h5 class="menu-title">CRM</h5></li> 
+                                    <li><h5 class="menu-title">CRM</h5></li>
                                     <li><a href="{{url('User_dashboard')}}"><img src="assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard">Dashboard</a></li>
-                                   
+
                                     <li><a href="{{url('deals')}}"><img src="assets/images/svg-icon/charts.svg" class="img-fluid" alt="leads"> Deals</a></li>
                                     <li>
                                         <a href="{{url('crm_setting')}}">
       <img src="assets/images/svg-icon/backend.svg" class="img-fluid" alt="backend"><span>  CRM Setting </span><i class="feather icon-chevron-right"></i>
                                         </a>
                                         <ul class="vertical-submenu">
-                                        
-                                        
-<li><a href="#">Roles Setting</a></li>
-<li><a href="#">Users Account Setting</a></li>
-<li><a href="#">SMS Setting</a></li>
-<li><a href="#">Email Setting</a></li>
-<li><a href="#">Forms</a></li>
-<li><a href="#">Pipelines & Stages</a></li>
-<li><a href="#">Data Admin</a></li>
-<li><a href="#">Theme Settings</a></li>
-<li><a href="#">Modules </a></li>
-  
+
+
+<li><a href="{{url('roles_setting')}}">Roles Setting</a></li>
+<li><a href="{{url('')}}">Users Account Setting</a></li>
+<li><a href="{{url('sms_setting')}}">SMS Setting</a></li>
+<li><a href="{{url('email_setting')}}">Email Setting</a></li>
+<li><a href="{{url('forms')}}">Forms</a></li>
+<li><a href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
+<li><a href="{{url('')}}">Data Admin</a></li>
+<li><a href="{{url('theme_settings')}}">Theme Settings</a></li>
+<li><a href="{{url('modules')}}">Modules </a></li>
+
                                         </ul>
                                     </li>
-                                    
-                                    
+
+
                                      <li><a href="#"><img src="assets/images/svg-icon/reports.svg" class="img-fluid" alt="projects"> Universal Filter</a></li>
-                                    
-                                    
+
+
                                 </ul>
                             </div>
-                                                        
+
                             <div class="tab-pane fade" id="v-pills-hospital" role="tabpanel" aria-labelledby="v-pills-hospital-tab">
                                 <ul class="vertical-menu">
                                     <li><h5 class="menu-title">Hospital</h5></li>
-                                    
+
                                 </ul>
                             </div>
-                            
-                            
+
+
                         </div>
-                        
+
                     </div>
                 </div>
                 <!-- End Navigationbar -->
@@ -199,22 +199,22 @@
             <!-- End Sidebar -->
         </div>
         <!-- End Leftbar -->
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- Start Rightbar -->
         <div class="rightbar">
             <!-- Start Topbar Mobile -->
@@ -241,7 +241,7 @@
                                             <img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close">
                                          </a>
                                      </div>
-                                </li>                                
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -270,7 +270,7 @@
                                                 <div class="input-group-append">
                                                     <button class="btn" type="submit" id="button-addonSearch"><img src="assets/images/svg-icon/search.svg" class="img-fluid" alt="search"></button>
                                                 </div>
-                                                <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addonSearch">                                              
+                                                <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addonSearch">
                                             </div>
                                         </form>
                                     </div>
@@ -290,7 +290,7 @@
                                                 <a class="dropdown-item" href="#"><i class="flag flag-icon-ru flag-icon-squared"></i>Russian</a>
                                             </div>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                 </li>
                                 <li class="list-inline-item">
                                     <div class="settingbar">
@@ -307,23 +307,23 @@
                                             <span class="live-icon">2</span></a>
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notoficationlink">
                                                 <div class="notification-dropdown-title">
-                                                    <h4>Notifications</h4>                            
+                                                    <h4>Notifications</h4>
                                                 </div>
-                                                <ul class="list-unstyled">  
+                                                <ul class="list-unstyled">
                                                     <li class="media dropdown-item">
                                                         <span class="action-icon badge badge-success-inverse">N</span>
                                                         <div class="media-body">
                                                             <h5 class="action-title">New trends for you</h5>
-                                                            <p><span class="timing">10 min ago</span></p>                            
+                                                            <p><span class="timing">10 min ago</span></p>
                                                         </div>
-                                                    </li>                                                  
+                                                    </li>
                                                     <li class="media dropdown-item">
                                                         <span class="action-icon badge badge-primary-inverse"><i class="feather icon-gift"></i></span>
                                                         <div class="media-body">
                                                             <h5 class="action-title">John birthday today</h5>
-                                                            <p><span class="timing">Today, 12:00 AM</span></p>                            
+                                                            <p><span class="timing">Today, 12:00 AM</span></p>
                                                         </div>
-                                                    </li>                                                    
+                                                    </li>
                                                     <li class="media dropdown-item">
                                                         <span class="action-icon badge badge-warning-inverse">T</span>
                                                         <div class="media-body">
@@ -335,9 +335,9 @@
                                                         <span class="action-icon badge badge-danger-inverse"><i class="feather icon-thumbs-up"></i></span>
                                                         <div class="media-body">
                                                             <h5 class="action-title">Admin has 1 new like</h5>
-                                                            <p><span class="timing">5 Feb 2020, 03:31 PM</span></p>                            
+                                                            <p><span class="timing">5 Feb 2020, 03:31 PM</span></p>
                                                         </div>
-                                                    </li>                                                    
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -360,7 +360,7 @@
                                                         </li>
                                                         <li class="media dropdown-item">
                                                             <a href="#" class="profile-icon"><img src="assets/images/svg-icon/email.svg" class="img-fluid" alt="email">Email</a>
-                                                        </li>                                                        
+                                                        </li>
                                                         <li class="media dropdown-item">
                                                             <a href="#" class="profile-icon"><img src="assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
                                                         </li>
@@ -368,13 +368,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <!-- End col -->
-                </div> 
+                </div>
                 <!-- End row -->
             </div>
             <!-- End Topbar -->
