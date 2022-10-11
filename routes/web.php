@@ -45,4 +45,3 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 	
-
