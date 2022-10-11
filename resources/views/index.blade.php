@@ -15,21 +15,21 @@
                     <div class="col-md-4 col-lg-4">
                         <div class="widgetbar">
                             <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-                        </div>                        
+                        </div>
                     </div>
-                </div>          
+                </div>
             </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <div class="contentbar">                
+
+
+
+
+
+
+
+
+
+
+            <div class="contentbar">
                 <!-- Start row -->
                 <div class="row">
                     <!-- Start col -->
@@ -90,7 +90,7 @@
                             <!-- Start col -->
                             <div class="col-lg-12 col-xl-6">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-9">
                                                 <h5 class="card-title mb-0">New Leads</h5>
@@ -115,7 +115,7 @@
                             <!-- Start col -->
                             <div class="col-lg-12 col-xl-6">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-9">
                                                 <h5 class="card-title mb-0">Ticket Status</h5>
@@ -163,13 +163,13 @@
                             </div>
                             <!-- End col -->
                         </div>
-                        <!-- End row -->                        
+                        <!-- End row -->
                     </div>
                     <!-- End col -->
                     <!-- Start col -->
                     <div class="col-lg-12 col-xl-3">
                         <div class="card m-b-30">
-                            <div class="card-header">                                
+                            <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <h5 class="card-title mb-0">Top Performer</h5>
@@ -184,7 +184,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="user-slider">
                                 <div class="user-slider-item">
                                     <div class="card-body text-center">
@@ -257,9 +257,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                               
-                            </div>                            
-                        </div>      
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- End col -->
                 </div>
@@ -269,7 +269,7 @@
                     <!-- Start col -->
                     <div class="col-lg-12 col-xl-6">
                         <div class="card m-b-30">
-                            <div class="card-header">                                
+                            <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <h5 class="card-title mb-0">Upcoming Tasks</h5>
@@ -287,7 +287,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-borderless">                                        
+                                    <table class="table table-borderless">
                                         <tbody>
                                             <tr>
                                                 <td>
@@ -351,7 +351,7 @@
                                                     <a href="#" class="text-primary mr-2"><i class="feather icon-edit-2"></i></a>
                                                     <a href="#" class="text-danger"><i class="feather icon-trash"></i></a>
                                                 </td>
-                                            </tr>                      
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -362,7 +362,7 @@
                     <!-- Start col -->
                     <div class="col-lg-12 col-xl-6">
                         <div class="card m-b-30">
-                            <div class="card-header">                                
+                            <div class="card-header">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <h5 class="card-title mb-0">Earning By Countries</h5>
@@ -395,7 +395,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-7">
-                                        <div id="world-map" class="vector-world-map"></div> 
+                                        <div id="world-map" class="vector-world-map"></div>
                                     </div>
                                 </div>
                             </div>
@@ -406,6 +406,6 @@
                 <!-- End row -->
 
             </div>
-            
-            
+
+
             @include('footer')
