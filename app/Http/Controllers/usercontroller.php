@@ -48,18 +48,23 @@ class UserController extends Controller
         }
 
     }
+    public function user_dashboard(){
 
-    public function logout() {
+        return view('user_dashboard');
+
+    }
+
+
+       public function logout() {
         \Auth::logout(); // logout user
         Session::flush();
         // Redirect::back();
         return redirect(\URL::previous());
         // return redirect('/');
     }
-    public function user_dashboard(){
 
-        // dd("pankaj");
-        return view('index');
 
-    }
+
+
+
 }
