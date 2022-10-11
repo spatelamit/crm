@@ -2,10 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+// use Database\Seeders\users;
 use Illuminate\Http\Request;
+use Validator;
+use Session;
 
 class UserController extends Controller
 {
+    public function login(){
+        // if(session()->has('IsLoggedIn')){
+        //     return redirect('/user_dashboard');
+        // }
+        return view('login');
+    }
+
+    public function login_action(Request $request)
+    {
+        // dd($request);
+        $req = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if($req == true){
+        $data = DB::table('users')->where('username', $request->username)->where('password', $request->password)->first();
+        }
+
+        if($data){
+            $user_id = $data->id;
+            Session::put('IsLoggedIn', true);
+            Session::put('id', $user_id);
+            Session::put('full_name', $data->full_name);
+            Session::put('username', $data->username);
+            // if($data->IsAdmin == 'Y'){
+            //     Session::put('IsAdmin', 'Y');
+            // }
+
+            // return view('index');
+
+            return redirect('/user_dashboard')->with("success", "Successfully Login!");
+        }
+        else{
+            return redirect("/")->with("error", 'Login details are not valid');
+        }
+
+    }
+
+    public function logout() {
+        \Auth::logout(); // logout user
+        Session::flush();
+        // Redirect::back();
+        return redirect(\URL::previous());
+        // return redirect('/');
+    }
     public function user_dashboard(){
 
         // dd("pankaj");
