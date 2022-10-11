@@ -27,15 +27,18 @@ Route::get('/', function () {
 
 
 Route::get('/login',[UserController::class, 'login']);
-Route::post('/login_action',[UserController::class, 'login_action']);
-Route::get('/logout',[UserController::class, 'logout']);
+// Route::post('/login_action',[UserController::class, 'login_action']);
+// Route::get('/logout',[UserController::class, 'logout']);
 
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
 	// Auth::routes();
+    Route::post('/login_action',[UserController::class, 'login_action']);
+    Route::get('/logout',[UserController::class, 'logout']);
+    Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 });
 
-	// Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
+
 	Route::get('/roles',[UserSettingController::class, 'roles_view']);
 	Route::get('/add-role',[UserSettingController::class, 'add_role']);
 	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);

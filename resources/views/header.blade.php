@@ -367,7 +367,7 @@
                                                             <a href="#" class="profile-icon"><img src="assets/images/svg-icon/email.svg" class="img-fluid" alt="email">Email</a>
                                                         </li>
                                                         <li class="media dropdown-item">
-                                                            <a href="#" class="profile-icon"><img src="assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
+                                                            <a href="{{url('logout')}}" class="profile-icon"><img src="assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
                                                         </li>
                                                     </ul>
                                                 </div>
