@@ -1,8 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\dashboardcontroller;
-use App\Http\Controllers\usercontroller;
+
 use App\Http\Controllers\UserSettingcontroller;
 
 
