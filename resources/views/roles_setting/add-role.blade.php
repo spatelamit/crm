@@ -1,4 +1,12 @@
  @include('header')
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+
+    <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet">
+      <link href="//cdn.syncfusion.com/ej2/ej2-inputs/styles/material.css" rel="stylesheet">
+    <link href="//cdn.syncfusion.com/ej2/ej2-navigations/styles/material.css" rel="stylesheet">
+    
+    
+<script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
 <div class="row" style="
   margin-top: 82px;">
  <div class="col-md-12 ">
@@ -264,15 +272,17 @@ if(ele) {
     dataType: "json",       
    success: function(data)  
    {
- 
-   console.log(roles);
+ console.log(data[id]);
+   
   var tree1 = new ej.navigations.TreeView({
     fields: { dataSource: data, id: 'id', text: 'role_name', child: 'nodes' },
     loadOnDemand: false,
 
     
 });
+
 tree1.appendTo('#tree');
+// console.log(tree1);
 $('.e-list-item').click(function () {
              var item = document.getElementsByClassName('e-active');
                

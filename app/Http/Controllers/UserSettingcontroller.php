@@ -48,13 +48,7 @@ class UserSettingController extends Controller
 			    			unset($roles[$key]);
 			    		}
 			    	}
-			    	// echo "<pre>";
-			    	// print_r($roles);
-			    	// $roles=array_filter($roles);
-			    	// print_r($roles);
-			    	// $roles=array_values($roles);
 			    	
-			    	// print_r($roles);
 			    
 			    	echo json_encode($roles);
     }
