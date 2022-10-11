@@ -259,13 +259,13 @@ if(ele) {
  $.ajax({ 
 
 
-   url: "User/rolestree",
-   method:"post",
+   url: "{{url ('rolestree') }}",
+   method:"GET",
     dataType: "json",       
    success: function(data)  
    {
  
-  //  console.log(roles);
+   console.log(roles);
   var tree1 = new ej.navigations.TreeView({
     fields: { dataSource: data, id: 'id', text: 'role_name', child: 'nodes' },
     loadOnDemand: false,
