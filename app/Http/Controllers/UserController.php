@@ -10,7 +10,7 @@ use Session;
 
 class UserController extends Controller
 {
-    
+
     public function __construct() {
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
@@ -73,6 +73,9 @@ class UserController extends Controller
         return redirect(\URL::previous());
         // return redirect('/');
     }
+
+
+    
 
 
 

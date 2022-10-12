@@ -27,7 +27,7 @@ Route::post('/login_action',[UserController::class, 'login_action']);
 Route::group(['middleware' => 'UserAuthentication'], function(){
 
 	// Auth::routes();
-    
+
     Route::get('/logout',[UserController::class, 'logout']);
     Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 
@@ -52,6 +52,3 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 
 
-	
-
-});
