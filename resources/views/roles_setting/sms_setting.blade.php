@@ -1,5 +1,9 @@
 @include('header')
 <div class="content-wrapper">
+
+
+
+
   <div class="row">
     <div class="col-sm-8 mb-4 mb-xl-0">
       <h4 class="font-weight-bold text-dark"> SMS Setting </h4>
@@ -11,6 +15,9 @@
       </div>
     </div>
   </div>
+  
+  
+  
   <div class="contentbar"> 
     <!-- Start row -->
     <div class="row"> 

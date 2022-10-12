@@ -5,7 +5,162 @@
  
    
 <style>
-  
+ .m-b-20 {
+  margin-bottom: 20px;
+}
+
+.btn-primary-rgba {
+  background-color: rgba(80, 111, 228, 0.1);
+  border: none;
+  color: #506fe4;
+}
+
+.btn-primary-rgba:hover {
+  background-color: #506fe4;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-primary-rgba:focus {
+  background-color: #506fe4;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #a8b8f2;
+}
+
+.btn-secondary-rgba {
+  background-color: rgba(150, 163, 182, 0.1);
+  border: none;
+  color: #96a3b6;
+}
+
+.btn-secondary-rgba:hover {
+  background-color: #96a3b6;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-secondary-rgba:focus {
+  background-color: #96a3b6;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #a5b0c0;
+}
+
+.btn-success-rgba {
+  background-color: rgba(67, 209, 135, 0.1);
+  border: none;
+  color: #43d187;
+}
+
+.btn-success-rgba:hover {
+  background-color: #43d187;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-success-rgba:focus {
+  background-color: #43d187;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #95e5bb;
+}
+
+.btn-danger-rgba {
+  background-color: rgba(249, 97, 109, 0.1);
+  border: none;
+  color: #f9616d;
+}
+
+.btn-danger-rgba:hover {
+  background-color: #f9616d;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-danger-rgba:focus {
+  background-color: #f9616d;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #fdc3c8;
+}
+
+.btn-warning-rgba {
+  background-color: rgba(247, 187, 77, 0.1);
+  border: none;
+  color: #f7bb4d;
+}
+
+.btn-warning-rgba:hover {
+  background-color: #f7bb4d;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-warning-rgba:focus {
+  background-color: #f7bb4d;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #fbe0af;
+}
+
+.btn-info-rgba {
+  background-color: rgba(61, 155, 251, 0.1);
+  border: none;
+  color: #3d9bfb;
+}
+
+.btn-info-rgba:hover {
+  background-color: #3d9bfb;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-info-rgba:focus {
+  background-color: #3d9bfb;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #a1cffd;
+}
+
+.btn-light-rgba {
+  background-color: rgba(242, 243, 247, 0.1);
+  border: none;
+  color: #8A98AC;
+}
+
+.btn-light-rgba:hover {
+  background-color: #f2f3f7;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-light-rgba:focus {
+  background-color: #f2f3f7;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #fbfcfd;
+}
+
+.btn-dark-rgba {
+  background-color: rgba(20, 29, 70, 0.1);
+  border: none;
+  color: #141d46;
+}
+
+.btn-dark-rgba:hover {
+  background-color: #141d46;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-dark-rgba:focus {
+  background-color: #141d46;
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 0 0.2rem #2b3e95;
+}
+ 
 .bg-primary-rgba {
   background-color: rgba(80, 111, 228, 0.1) !important;
 }
@@ -109,6 +264,24 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
                                                             <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
                                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
