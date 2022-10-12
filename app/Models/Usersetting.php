@@ -32,4 +32,17 @@ class UserSetting extends Model
             ->toArray();
 			if($data){ return $data; }else{ return false; }
 	    }
+
+        public function GetFeatures(){
+            $features=DB::table('module_features_list')
+            ->select('id','features_name','module_id')
+            ->orderby('id','ASC')
+            ->get()
+            ->toArray();
+            if($features){
+                return $features;
+            }else{
+                return false;
+            }
+        }
 }
