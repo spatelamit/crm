@@ -35,18 +35,66 @@ Add Account Setting </button>
                 </tr>
               </thead>
               <tbody>
+                @foreach($data['users'] as $val)
                 <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>CEO</td>
-                  <td>demo@example.com</td>
-                  <td></td>
+                  <td>{{$loop->iteration}}</td>
+                  <td>{{$val->full_name}}</td>
+                  <td>{{$val->email}}</td>
+                  <td>{{$val->contact}}</td>
+                  <td>{{$val->role_name}}</td>
                   <td><div class="btn-group btn-group-sm" style="float: none;">
-                        <button type="button" class="btn btn-info" style="float: none; margin: 5px;"><span class="fa fa-pencil"></span></button>
+                        <button type="button" class="btn btn-info" style="float: none; margin: 5px;"><a  data-toggle="modal" data-target="#edituser{{$val->id}}"><span class="fa fa-pencil"></span></a></button>
                         <button type="button" class="btn btn-danger" style="float: none; margin: 5px;"><span class="fa fa-trash"></span></button>
                       <button type="button" class=" btn btn-sm  btn-warning" style="float: none; margin: 5px;"><span class="fa fa-envelope"></span></button>
                     </div></td>
                 </tr>
+                                     <div class="modal fade come-from-modal right" id="edituser{{$val->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                      <div class="modal-dialog  slideInRight  animated" role="document">
+                                        <div class="modal-content">
+                                            <form method="post" action="{{url('edit-user')}}" autocomplete="nope">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle-1"> Add New Team Member </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="form-group mb-10">
+                                              <label for="stage_name">Full Name: </label>
+                                              <input type="text" class="form-control bg_input" placeholder="Enter your name" id="add_full_name" name="full_name" value="{{$val->full_name}}" required="">
+                                            </div>
+                                            <div class="form-group mb-10">
+                                              <label for="username"> Username: </label>
+                                              <input type="text" class="form-control bg_input" minlength="5" placeholder="Enter your username" id="username" name="username" value="{{$val->username}}" required="" title="minimum 5 characters needed">
+                                            </div>
+                                            <div class="form-group mb-10">
+                                              <label for="stage_color"> Email: </label>
+                                              <input type="email" class="form-control bg_input" value="{{$val->email}}" placeholder="Enter your email" name="email" id="add_email" required="">
+                                            </div>
+                                            <div class="form-group mb-10">
+                                              <label for="stage_name"> Contact: </label>
+                                              <input type="text" maxlength="10" pattern="[6-9]{1}[0-9]{9}" title="Phone number with 6-9 and remaing 9 digit with 0-9" class="form-control" value="{{$val->contact}}" placeholder="Enter your contact" name="contact" id="add_contact" required="">
+                                            </div>
+                                           <!--  <div class="form-group mb-10">
+                                              <label for="stage_name"> Password: </label>
+                                              <input type="text" class="form-control bg_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter your Password" name="password" required="">
+                                            </div> -->
+                                            <div class="form-group mb-10">
+                                              <label for="stage_name"> Role: </label>
+                                              <select class="form-control bg_input" name="user_type" required="">
+                                                <option value="56">Swapnil</option>
+                                               
+                                              </select>
+                                            </div>
+                                           
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Ok</button>
+                                          </div>
+                                        </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -59,61 +107,5 @@ Add Account Setting </button>
     <!-- End col --> 
   </div>
 </div>
-<div class="modal fade come-from-modal right" id="exampleModalLong-1" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog  slideInRight  animated" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle-1"> Add New Team Member </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group mb-10">
-          <label for="stage_name">Full Name: </label>
-          <input type="text" class="form-control bg_input" placeholder="Enter your name" id="add_full_name" name="full_name" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label for="username"> Username: </label>
-          <input type="text" class="form-control bg_input" minlength="5" placeholder="Enter your username" id="username" name="username" required="" title="minimum 5 characters needed">
-        </div>
-        <div class="form-group mb-10">
-          <label for="stage_color"> Email: </label>
-          <input type="email" class="form-control bg_input" placeholder="Enter your email" name="email" id="add_email" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label for="stage_name"> Contact: </label>
-          <input type="text" maxlength="10" pattern="[6-9]{1}[0-9]{9}" title="Phone number with 6-9 and remaing 9 digit with 0-9" class="form-control" placeholder="Enter your contact" name="contact" id="add_contact" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label for="stage_name"> Password: </label>
-          <input type="text" class="form-control bg_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter your Password" name="password" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label for="stage_name"> Role: </label>
-          <select class="form-control bg_input" name="user_type" required="">
-            <option value="56">Swapnil</option>
-            <option value="49">dem</option>
-            <option value="46">HR Executive</option>
-            <option value="6">Team member</option>
-            <option value="5">Human Resource Manager</option>
-            <option value="4">Team Lead</option>
-            <option value="3">Manager</option>
-            <option value="2">Administrator</option>
-          </select>
-        </div>
-        <div class="form-group mb-10">
-          <label>Email Address:</label>
-          <input type="email" name="emailid" class="form-control bg_input" placeholder="Enter your Email Address" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label>Email Auth Key:</label>
-          <input type="text" placeholder="Enter your Email Authkey" name="authKey" class="form-control bg_input " required="">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Ok</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 @include('footer')
