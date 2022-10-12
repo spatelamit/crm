@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Regal Admin</title>
+
   <!-- base:css -->
   <link rel="stylesheet" href="{{url('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/feather/feather.css')}}">
@@ -21,9 +22,7 @@
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('/assets/images/favicon.png')}}" />
-</head>
-<body>
-  <div class="container-scroller">
+lass="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -182,10 +181,6 @@
               <span class="menu-title"> Universal Filter</span>
             </a>
           </li>
-
-
-
-
         </ul>
       </nav>
       <!-- partial -->
