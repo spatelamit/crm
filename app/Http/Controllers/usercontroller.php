@@ -34,7 +34,7 @@ class UserController extends Controller
         ]);
 
         if($req == true){
-        $data = DB::table('users')->where('username', $request->username)->where('password', $request->password)->first();
+        $data = DB::table('users')->where('username', $request->username)->orWhere('email',$request->username)->where('password', $request->password)->first();
 
         }
 

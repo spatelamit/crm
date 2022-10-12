@@ -10,8 +10,16 @@ use App\Models\Usersetting;
 
 
 class UserSettingController extends Controller
-{
 
+{
+<<<<<<< HEAD
+
+=======
+	public function __construct() {
+        $Usersetting=new Usersetting();
+    }
+    
+>>>>>>> 1109bafd8cecde85c9ca0785d851cc9b7fa466c4
     		public function roles_view ()
 
     		{
@@ -23,11 +31,18 @@ class UserSettingController extends Controller
 
     		}
     		public function add_role ()
-
     		{
+<<<<<<< HEAD
 
     			return view('roles_setting/add-role');
 
+=======
+    			$Usersetting=new Usersetting();
+    			$data['allfeatures']=$Usersetting->GetFeatures();
+    			
+    			return view('roles_setting/add-role',compact('data'));
+    		
+>>>>>>> 1109bafd8cecde85c9ca0785d851cc9b7fa466c4
     		}
 
      public function rolestree(){
