@@ -1,7 +1,88 @@
 @include('header')
+   <script src="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/js/jquery.min.js"></script>
+ <link href="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/plugins/dragula/dragula.min.css" rel="stylesheet">
+ <script src="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/plugins/dragula/dragula.min.js"></script>
+ 
+   
+<style>
+  
+.bg-primary-rgba {
+  background-color: rgba(80, 111, 228, 0.1) !important;
+}
 
+.bg-secondary-rgba {
+  background-color: rgba(150, 163, 182, 0.1) !important;
+}
 
+.bg-success-rgba {
+  background-color: rgba(67, 209, 135, 0.1) !important;
+}
 
+.bg-danger-rgba {
+  background-color: rgba(249, 97, 109, 0.1) !important;
+}
+
+.bg-warning-rgba {
+  background-color: rgba(247, 187, 77, 0.1) !important;
+}
+
+.bg-info-rgba {
+  background-color: rgba(61, 155, 251, 0.1) !important;
+}
+
+.bg-light-rgba {
+  background-color: rgba(242, 243, 247, 0.1) !important;
+}
+
+.bg-dark-rgba {
+  background-color: rgba(20, 29, 70, 0.1) !important;
+}
+
+.kanban-menu {
+  text-align: right;
+}
+
+.kanban-users {
+  text-align: right;
+}
+
+.avatar-group {
+  display: inline-flex;
+}
+.avatar-group .avatar {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  margin-left: -0.8rem;
+  transition: transform 0.2s;
+}
+.avatar-group .avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+}
+.avatar-group .avatar:hover {
+  -webkit-mask-image: none;
+  mask-image: none;
+  z-index: 1;
+  transform: scale(1.1);
+}
+
+ 
+  
+  </style>
+  
+  
+  
+  
+  
+  
+  
+  
 <div class="content-wrapper">
 
 
@@ -451,5 +532,7 @@
 
 
 </div>
+
+   <script src="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/js/custom/custom-crm-lead.js"></script>
 
  @include('footer')
