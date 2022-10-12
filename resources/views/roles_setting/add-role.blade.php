@@ -15,8 +15,9 @@
               <div class="panel panel-default" id="box1-delete">
               <div class="panel-body input_my">
               
-              <form action="<?php// echo base_url('save-roles'); ?>" method="post" enctype="multipart/form-data">
-      <div class="row">
+           <form action="<?php// echo base_url('save-roles'); ?>" method="post" enctype="multipart/form-data">
+            @csrf
+              <div class="row">
      
          
             <div class=" col-md-6 mt-4">
@@ -88,15 +89,14 @@
                                    <label class="hierarchy-label inPut_2"> All</label>
 
                              
-                                      <?php // foreach ($AllFeatures as $value) {
-                                      //if($value['module_id'] == '1'){/?>
-                                            <div class="hierarchy-node col-md-2 leaf ">
-                                                <input class="hierarchy-checkbox" name="permissions[]"  value="<?php //echo   $value['id'] ?>" type="checkbox">
-                                                <label class="hierarchy-label"><?php //echo $value['features_name'] ;?></label>
-                                             </div>
-                                
-                                        <?php
-                                      //} } ?>
+                                      <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
+                                         </div>
                                       
                              </div>
                             
@@ -112,22 +112,24 @@
                                          <label class="hierarchy-label inPut_2">All</label> 
 
                            
-                              <?php // foreach ($AllFeatures as $value) {
-                                    //  if($value['module_id'] == '2'){?>
+                             
                                         <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  value="<?php// echo   $value['id'] ?>" type="checkbox">
-                                            <label class="hierarchy-label"><?php// echo $value['features_name'] ;?></label>
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
                                          </div>
                                       
-                                              <?php
-                                         //   } } ?>
+                                         
                            
                             </div>
                         </div>
                         <div id="AddAccounts" class="tab-pane fade hierarchy-node leaf">
                           <div class="hierarchy-node row">
                           
-                           <h2>Add Accounts</h2>
+                           <h2>User Accounts</h2>
                            <hr />
                           
                                        <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
@@ -135,15 +137,15 @@
 
                           
                          
-                          <?php //foreach ($AllFeatures as $value) {
-                                         //   if($value['module_id'] == '3'){?>
-                                      <div class="hierarchy-node col-md-2 leaf ">
-                                            <input  class="hierarchy-checkbox" name="permissions[]"  value="<?php// echo   $value['id'] ?>" type="checkbox">
-                                            <label class="hierarchy-label"><?php// echo $value['features_name'] ;?></label>
+                        
+                                        <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
                                          </div>
-                                      
-                                              <?php
-                                          //  } } ?>
                             
                            </div>
                         </div>
@@ -157,16 +159,14 @@
                                            <label class="hierarchy-label inPut_2" >All</label> 
                            
                             
-                             <?php // foreach ($AllFeatures as $value) {
-                                          //    if( $value['module_id'] == '4'){?>
-                                             
-                                           <div class="hierarchy-node col-md-2 leaf ">
-                                              <input class="hierarchy-checkbox" name="permissions[]"  value="<?php //echo   $value['id'] ?>" type="checkbox">
-                                              <label class="hierarchy-label"><?php //echo $value['features_name'] ;?></label>
-                                           </div>
-                                        
-                                           <?php
-                                            //  } } ?>
+                             <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
+                                         </div>
                                      
                              </div>
                           </div>
@@ -179,16 +179,14 @@
                                                      <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
                                                        <label class="hierarchy-label inPut_2" >All</label> 
                                       
-                                                 <?php // foreach ($AllFeatures as $value) {
-                                                        //  if( $value['module_id'] == '6'){?>
-                                                         
-                                                       <div class="hierarchy-node col-md-2 leaf ">
-                                                          <input class="hierarchy-checkbox" name="permissions[]"  value="<?php// echo   $value['id'] ?>" type="checkbox">
-                                                          <label class="hierarchy-label"><?php// echo $value['features_name'] ;?></label>
-                                                       </div>
-                                                    
-                                                       <?php
-                                                          //} } ?>
+                                                <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
+                                         </div>
                                         </div>
                              </div>
                              <div id="Universal" class="tab-pane fade">
@@ -200,16 +198,14 @@
                                                      <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
                                                        <label class="hierarchy-label inPut_2" >All</label> 
                                       
-                                                 <?php// foreach ($AllFeatures as $value) {
-                                                        //  if( $value['module_id'] == '7'){?>
-                                                         
-                                                       <div class="hierarchy-node col-md-2 leaf ">
-                                                          <input class="hierarchy-checkbox" name="permissions[]"  value="<?php// echo   $value['id'] ?>" type="checkbox">
-                                                          <label class="hierarchy-label"><?php// echo $value['features_name'] ;?></label>
-                                                       </div>
-                                                    
-                                                       <?php
-                                                        //  } } ?>
+                                               <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
+                                         </div>
                                         </div>
                              </div>
 
