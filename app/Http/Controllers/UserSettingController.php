@@ -10,24 +10,40 @@ use App\Models\Usersetting;
 
 
 class UserSettingController extends Controller
+
 {
+
+
+	public function __construct() {
+        $this->Usersetting=new Usersetting();
+    }
     
+
+
+
     		public function roles_view ()
 
     		{
     			$Usersetting=new Usersetting();
     			$data['role_list']=$Usersetting->GetRoleslist();
-    			
+
 
     			return view('roles_setting/roles_view',compact('data'));
-    		
+
     		}
     		public function add_role ()
-
     		{
 
+
     			return view('roles_setting/add-role');
-    		
+
+
+    			$Usersetting=new Usersetting();
+    			$data['allfeatures']=$Usersetting->GetFeatures();
+
+    			return view('roles_setting/add-role',compact('data'));
+
+
     		}
 
      public function rolestree(){
@@ -50,13 +66,44 @@ class UserSettingController extends Controller
 			    	}
 			    	$roles=array_filter($roles);
     				$roles=array_values($roles);
-			    	
+
 			    	echo json_encode($roles);
     }
 
     public function save_role(Request $Request){
-    	echo "<pre>";
-    	print_r($Request->all());
+    	$result=$this->Usersetting->SaveRole($Request);
+    	if($result){
+    		return redirect('roles');
+    	}else{
+    		return redirect('roles');
+    	}
 
+
+    }
+    public function edit_role($id){
+    	$data['role_data']=$this->Usersetting->GetRoleById($id);
+    	// echo "<pre>";
+    	// print_r($data);
+    	return view('roles_setting.role_edit',compact('data'));
+    }
+
+
+    public function user_account_setting()
+    {
+        return view('roles_setting.users_account_setting');
+    }
+
+    public function sms_settings()
+    {
+        return view('roles_setting.sms_setting');
+    }
+
+    public function email_settings()
+    {
+        return view('roles_setting.email_setting');
+    }
+    public function pipelines_stages()
+    {
+        return view('roles_setting.pipelines_stages');
     }
 }

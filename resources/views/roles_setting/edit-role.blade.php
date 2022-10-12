@@ -9,6 +9,21 @@
 <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
 
 
+$FeaturesPerm = $FeaturesPermByRole->features_permission;
+   $FeaturesPerm = explode(",", $FeaturesPerm);
+
+   //print_r($FeaturesPerm );
+   //print_r($AllFeatures);
+
+   $naya_array = array();
+   foreach ($AllFeatures as $key => $value) {
+      if(in_array($value['id'], $FeaturesPerm))
+         $naya_array[] = array('id' => $value['id'],'module_id'=>$value['module_id'],'features_name'=>$value['features_name'], 'status'=>1 );
+      else{
+         $naya_array[] = array('id' => $value['id'],'module_id'=>$value['module_id'],'features_name'=>$value['features_name'], 'status'=>0 );
+      }
+   }
+
 <div class="contentbar">
 
     <div class="row">
