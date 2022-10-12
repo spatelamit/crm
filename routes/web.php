@@ -38,10 +38,11 @@ Route::group(['middleware' => 'UserAuthentication'],function(){
     Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 });
 
-
+	//setting//
 	Route::get('/roles',[UserSettingController::class, 'roles_view']);
 	Route::get('/add-role',[UserSettingController::class, 'add_role']);
 	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);
+	Route::post('/save-role',[UserSettingController::class, 'save_role']);
 	// end user setting//
 
 	Route::get('/deals',[UserSettingController::class, 'deals']);

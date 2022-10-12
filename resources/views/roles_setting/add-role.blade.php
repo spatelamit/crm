@@ -7,8 +7,11 @@
     
     
 <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
-<div class="row" style="
-  margin-top: 82px;">
+
+
+<div class="contentbar">
+
+<div class="row">
  <div class="col-md-12 ">
  
  				 <h3 class="panel-title text-uppercase text-bold text-rg heading-line-below heading-line-below-short ">   Create Role </h3>	
@@ -63,8 +66,8 @@
                   
                       <div class="col-md-2">
                       <div class="Permission_box_li">
-                          <ul class="">
-                                    <li class="active"><a data-toggle="tab" href="#Leads">Leads</a></li>
+                          <ul class="nav nav-tabs">
+                                    <li class="active" ><a data-toggle="tab" href="#Leads">Leads</a></li>
                                     <li><a data-toggle="tab" href="#crmSettings">CRM Settings</a></li>
                                     <li><a data-toggle="tab" href="#AddAccounts">Users</a></li>
                                     <li><a data-toggle="tab" href="#Settings">Roles Settings</a></li>
@@ -75,7 +78,7 @@
                       </div>
               <input type="hidden" id="add_permission" name="features_permission">
                <div class="col-md-10">
-                  <div class="tab-content Permission_box_tab">
+                  <div class="tab-content ">
 
                       <div id="Leads" class="tab-pane fade in active">
 						
@@ -101,7 +104,7 @@
                              </div>
                             
                        </div>
-                        <div id="crmSettings" class="tab-pane fade hierarchy-node leaf" >
+                        <div id="crmSettings" class="tab-pane fade " >
                         
                          <h2> CRM Settings </h2>
                          <hr />
@@ -126,7 +129,7 @@
                            
                             </div>
                         </div>
-                        <div id="AddAccounts" class="tab-pane fade hierarchy-node leaf">
+                        <div id="AddAccounts" class="tab-pane fade">
                           <div class="hierarchy-node row">
                           
                            <h2>User Accounts</h2>
@@ -238,6 +241,8 @@
               </div>
             </div>
             </div>
+</div>
+
 </div>
             @include('footer')
 
