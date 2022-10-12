@@ -8343,8 +8343,10 @@ text-transform: capitalize;}
 			<div class="app-login-box">
 				<div class="app-login-box-user"><img src="https://srtscrm.theofficearea.in/assets/assets/images/background/no-image.png"></div>
 				<div class="app-login-box-title">
+
 					<div class="title"> CRM login </div>
 					
+
 					<!-- Web tracking -->
 					<input type="hidden" class="form-control" name="url_path" id="url_path" >
 					<input type="hidden" class="form-control" name="ip_adreess" id="ip_adreess" >
@@ -8392,28 +8394,3 @@ text-transform: capitalize;}
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

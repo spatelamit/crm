@@ -4,7 +4,7 @@
 
 
 
-
+<div class="contentbar">
 
   <div class="col-md-10">
     <div class="title mta-15">
@@ -58,7 +58,7 @@
   </div>
 
 
-
+</div>
 
 
 

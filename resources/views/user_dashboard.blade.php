@@ -1,11 +1,5 @@
 @include('header')
 
-
-
-
-
-
-
       <!-- partial -->
      <div class="content-wrapper">
           <div class="row">
