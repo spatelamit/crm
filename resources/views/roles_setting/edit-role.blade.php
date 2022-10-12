@@ -35,19 +35,20 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
               <div class="panel panel-default" id="box1-delete">
               <div class="panel-body input_my">
               
-           <form action="{{url('save-role')}}" method="post" enctype="multipart/form-data">
+           <form action="{{url('update-role')}}" method="post" enctype="multipart/form-data">
             @csrf
               <div class="row">
      
                    
                       <div class=" col-md-6 mt-4">
                          <label for="usr">Role Name <font style="color:red;">*</font></label>
+                         <input type="hidden" name="role_id" value="{{$data['role_data'][0]->id}}">
                          <input type="text" class="form-control fieldname" name="role_name"   placeholder="Name" value="{{$data['role_data'][0]->role_name}}" required="">
                        
                       </div>
                          <div class=" col-md-6 mt-4 input_my"  id="container" >
                                     <label for="stage_name"> Reporting To: </label>
-                                      <input type="hidden" name="reporting_to" id="reporting_to" value="$data['role_data'][0]->reporting_to">
+                                      <input type="hidden" name="reporting_to" id="reporting_to" value="{{$data['role_data'][0]->reporting_to}}">
                                     
                                         <div id="treeparent">
                                                   <div id="tree"></div>
@@ -111,11 +112,12 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
 
                                                           
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '1')
+                                                              @if($value['module_id'] == '1')
                                                                     <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
+
                                                         
                                                                 @endif
                                                                 @endforeach
@@ -135,10 +137,10 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
 
                                                    
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '2')
-                                                                    <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                              @if($value['module_id'] == '2')
+                                                                     <div class="hierarchy-node col-md-2 leaf ">
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
                                                         
                                                                 @endif
@@ -159,10 +161,10 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
                                                  
                                                  
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '3')
+                                                              @if($value['module_id'] == '3')
                                                                     <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
                                                         
                                                                 @endif
@@ -181,10 +183,10 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
                                                    
                                                       
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '4')
-                                                                    <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                              @if($value['module_id'] == '4')
+                                                                     <div class="hierarchy-node col-md-2 leaf ">
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
                                                         
                                                                 @endif
@@ -202,10 +204,10 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
                                                                                <label class="hierarchy-label inPut_2" >All</label> 
                                                               
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '6')
-                                                                    <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                              @if($value['module_id'] == '6')
+                                                                     <div class="hierarchy-node col-md-2 leaf ">
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
                                                         
                                                                 @endif
@@ -223,10 +225,10 @@ $FeaturesPerm = $data['role_data'][0]->features_permission;
                                                               
                                                                           
                                                                @foreach ($naya_array as $value)
-                                                              @if($value->module_id == '7')
+                                                              @if($value['module_id'] == '7')
                                                                     <div class="hierarchy-node col-md-2 leaf ">
-                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value->id}}" type="checkbox">
-                                                                        <label class="hierarchy-label">{{$value->features_name}}</label>
+                                                                        <input class="hierarchy-checkbox" name="permissions[]"  value="{{$value['id']}}" type="checkbox"  <?php if($value['status']=='1') {?> checked="unchecked"<?php } ?>>
+                                                                        <label class="hierarchy-label">{{$value['features_name']}}</label>
                                                                      </div>
                                                         
                                                                 @endif

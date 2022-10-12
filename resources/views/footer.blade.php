@@ -31,6 +31,7 @@
   <!-- Custom js for this page-->
   <script src="{{url('assets/js/dashboard.js')}}"></script>
   <!-- End custom js for this page-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Usersetting;
-
+use DB;
 
 
 class UserSettingController extends Controller
@@ -35,7 +35,7 @@ class UserSettingController extends Controller
     		{
 
 
-    			return view('roles_setting/add-role');
+    			
 
 
     			$Usersetting=new Usersetting();
@@ -87,7 +87,27 @@ class UserSettingController extends Controller
     	// print_r($data);
     	return view('roles_setting/edit-role',compact('data'));
     }
+     public function update_role(Request $Request){
+    	$result=$this->Usersetting->UpdateRole($Request);
+    	if($result){
+    		return redirect('roles');
+    	}else{
+    		return redirect('roles');
+    	}
 
+
+    }public function delete_role($id){
+    	$data=array(
+    		'status'=>'0',
+    	);
+
+    	$result=DB::table('users_roles')->where('id',$id)->update($data);
+    	if($result){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
 
     public function user_account_setting()
     {

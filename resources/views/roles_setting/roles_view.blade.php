@@ -63,18 +63,45 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  @include('footer')
+ <script type="text/javascript">
+        function deletedata(id) {
+        // alert(id);
+            
+          swal({
+              title: "Are you sure to delete ?",
+              text: "You will not be able to recover this imaginary file !!",
+              type: "warning",
+              showCancelButton: !0,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, delete it !!",
+             
+               buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+
+            if (willDelete) {
+              $.ajax({
+                type:"GET",
+                  url: "{{url('/delete-role') }}/" + id,
+                  
+                  success : function () {
+
+                    swal("Deleted !!", "Hey, your Role has been deleted !!", "success")
+
+                    $("#"+id).remove();
+                  },
+              });
+
+
+             }
+             else
+              {
+                 swal("Deleted !!", "some error occured in delete data!!", "error")
+              }
+             
+          });
+
+      }
+
+      </script> 

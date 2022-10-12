@@ -16,6 +16,7 @@ class UserSetting extends Model
     				->select('childs.id','childs.role_name','childs.reporting_to','childs.role_des','parents.role_name as parentsName')
     				->join('users_roles as parents','childs.reporting_to','=','parents.id')
                     ->where('childs.company_id',session()->get('company_id'))
+                    ->where('childs.status','1')
     				->get();
     	if($role_list){
     		return $role_list;
@@ -76,5 +77,23 @@ class UserSetting extends Model
                      return false;
                      }
 
+        }
+        public function UpdateRole($req){
+            // echo "<pre>";
+            // print_r($req->all());
+            $data_arr=array(
+                'role_name'=>$req->role_name,
+                'reporting_to'=>$req->reporting_to,
+                
+                'role_des'=>$req->role_des,
+                'features_permission'=>$req->features_permission,
+            );
+            
+            $result=DB::table('users_roles')->where('id',$req->role_id)->update($data_arr);
+            if ($result) {
+                return true;
+            }else{
+                return false;
+            }
         }
 }
