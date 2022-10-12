@@ -6,7 +6,8 @@
             <h4 class="page-title">CRM</h4>
             <div class="breadcrumb-list">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page">Username {!! Session::get('username') !!}
+</li>
                 </ol>
             </div>
         </div>

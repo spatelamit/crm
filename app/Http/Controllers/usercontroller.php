@@ -10,10 +10,18 @@ use Session;
 
 class UserController extends Controller
 {
+    
+    public function __construct() {
+        $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
+    }
+
+
     public function login(){
-        // if(session()->has('IsLoggedIn')){
-        //     return redirect('/user_dashboard');
-        // }
+        echo session()->has('IsLoggedIn');
+
+        if(session()->has('IsLoggedIn')==true){
+            return redirect('/user_dashboard');
+        }
         return view('login');
     }
 
@@ -27,6 +35,7 @@ class UserController extends Controller
 
         if($req == true){
         $data = DB::table('users')->where('username', $request->username)->where('password', $request->password)->first();
+
         }
 
         if($data){
@@ -49,13 +58,11 @@ class UserController extends Controller
 
     }
     public function user_dashboard(){
-
         return view('user_dashboard');
-
     }
 
 
-       public function logout() {
+   public function logout() {
         \Auth::logout(); // logout user
         Session::flush();
         // Redirect::back();
