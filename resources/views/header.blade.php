@@ -54,7 +54,7 @@
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
               <i class="icon-air-play mx-0"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+            <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -92,7 +92,7 @@
                   </p>
                 </div>
               </a>
-            </div>
+            </div> -->
           </li>
           <li class="nav-item dropdown d-flex mr-4 ">
             <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">

@@ -35,7 +35,7 @@ class UserSettingController extends Controller
     		{
 
 
-    			return view('roles_setting/add-role');
+    			
 
 
     			$Usersetting=new Usersetting();
