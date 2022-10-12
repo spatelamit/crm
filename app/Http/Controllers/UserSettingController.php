@@ -109,8 +109,10 @@ class UserSettingController extends Controller
     	}
     }
 
-    public function user_account_setting()
-    {
+    public function user_account_setting()  {
+
+    	$data['users']=$this->Usersetting->GetUsers();
+
         return view('roles_setting.users_account_setting');
     }
 
