@@ -6,7 +6,7 @@
 
 
 
-            <!-- partial -->
+      <!-- partial -->
      <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
