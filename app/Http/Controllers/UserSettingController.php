@@ -13,10 +13,13 @@ class UserSettingController extends Controller
 
 {
 
+
 	public function __construct() {
         $this->Usersetting=new Usersetting();
     }
     
+
+
 
     		public function roles_view ()
 
@@ -37,9 +40,9 @@ class UserSettingController extends Controller
 
     			$Usersetting=new Usersetting();
     			$data['allfeatures']=$Usersetting->GetFeatures();
-    			
+
     			return view('roles_setting/add-role',compact('data'));
-    		
+
 
     		}
 
