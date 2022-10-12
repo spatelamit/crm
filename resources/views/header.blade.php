@@ -103,11 +103,11 @@
               <a class="dropdown-item preview-item">
                   <i class="icon-head"></i> Profile
               </a>
-<<<<<<< HEAD
+
               <a class="dropdown-item preview-item" href="{{url('logout')}}">
-=======
+
               <a class="dropdown-item preview-item" href="{{url('/logout')}}">
->>>>>>> a164a93595c10cdd021ca7509a3a96c193bdfc15
+
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
