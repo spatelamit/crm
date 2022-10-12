@@ -49,8 +49,14 @@ class UserSettingController extends Controller
 			    		}
 			    	}
 			    	$roles=array_filter($roles);
-    	$roles=array_values($roles);
+    				$roles=array_values($roles);
 			    	
 			    	echo json_encode($roles);
+    }
+
+    public function save_role(Request $Request){
+    	echo "<pre>";
+    	print_r($Request->all());
+
     }
 }

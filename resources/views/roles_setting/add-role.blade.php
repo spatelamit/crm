@@ -18,7 +18,7 @@
               <div class="panel panel-default" id="box1-delete">
               <div class="panel-body input_my">
               
-           <form action="<?php// echo base_url('save-roles'); ?>" method="post" enctype="multipart/form-data">
+           <form action="{{url('save-role')}}" method="post" enctype="multipart/form-data">
             @csrf
               <div class="row">
      
@@ -76,7 +76,7 @@
                                 </ul>
             		    	</div>
                       </div>
-              <input type="hidden" id="add_permission" name="features_permission">
+            
                <div class="col-md-10">
                   <div class="tab-content ">
 
@@ -88,130 +88,23 @@
                   			
                           <div class="hierarchy-node row ">
                     
-                                  <input class="hierarchy-checkbox inPut_1" id="selectAll" type="checkbox"> 
-                                   <label class="hierarchy-label inPut_2"> All</label>
-
-                             
+                                 
+                             <input type="hidden" name="title" value="leads">
                                       <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
+                                          <input class="hierarchy-checkbox" name="lead_view" value="0" checked="unchecked"  type="checkbox">
                                             <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                             <input class="hierarchy-checkbox" name="lead_edit" value="0"  checked="unchecked" type="checkbox">
                                             <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
+                                             <input class="hierarchy-checkbox" name="lead_delete" value="0"  checked="unchecked" type="checkbox">
                                             <label class="hierarchy-label">Delete</label>
                                          </div>
                                       
                              </div>
                             
                        </div>
-                        <div id="crmSettings" class="tab-pane fade " >
-                        
-                         <h2> CRM Settings </h2>
-                         <hr />
-                         
-                            <div class="hierarchy-node row">
-                          
-                                        <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
-                                         <label class="hierarchy-label inPut_2">All</label> 
-
-                           
-                             
-                                        <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
-                                            <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Delete</label>
-                                         </div>
-                                      
-                                         
-                           
-                            </div>
-                        </div>
-                        <div id="AddAccounts" class="tab-pane fade">
-                          <div class="hierarchy-node row">
-                          
-                           <h2>User Accounts</h2>
-                           <hr />
-                          
-                                       <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
-                                         <label class="hierarchy-label inPut_2">All</label> 
-
-                          
-                         
-                        
-                                        <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
-                                            <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Delete</label>
-                                         </div>
-                            
-                           </div>
-                        </div>
-                          <div id="Settings" class="tab-pane fade">
-                              <div class="hierarchy-node row">
-                              
-                              <h2> Settings </h2>
-                              <hr />
-                            
-                                     <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
-                                           <label class="hierarchy-label inPut_2" >All</label> 
+                       
                            
                             
-                             <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
-                                            <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Delete</label>
-                                         </div>
-                                     
-                             </div>
-                          </div>
-                            <div id="Mailer" class="tab-pane fade">
-                                         <div class="hierarchy-node row">
-                                         
-                                           <h2> Mailer </h2>
-                                           <hr />
-                                        
-                                                     <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
-                                                       <label class="hierarchy-label inPut_2" >All</label> 
-                                      
-                                                <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
-                                            <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Delete</label>
-                                         </div>
-                                        </div>
-                             </div>
-                             <div id="Universal" class="tab-pane fade">
-                                         <div class="hierarchy-node row">
-                                         
-                                           <h2> Universal </h2>
-                                           <hr />
-                                        
-                                                     <input id="selectAll" class="hierarchy-checkbox inPut_1"  type="checkbox">
-                                                       <label class="hierarchy-label inPut_2" >All</label> 
-                                      
-                                               <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="permissions[]"  type="checkbox">
-                                            <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="permissions[]"   type="checkbox">
-                                            <label class="hierarchy-label">Delete</label>
-                                         </div>
-                                        </div>
-                             </div>
-
                              
                 </div>
             </div>
@@ -310,25 +203,8 @@ $('.e-list-item').click(function () {
    }
 </script>
 <script >
-   $(document).ready( function () {
-     $("#add_roles").click(function() {
-     var permissionNodeList = document.getElementsByName("permissions[]");
-     
-      
-     var permission = [];
-   
-     for (var i = 0; i < permissionNodeList.length; i++) {
-    
-       if (permissionNodeList[i].checked) {
-         permission.push(permissionNodeList[i].value);
-         
-       }
-     $('#add_permission').val(permission); 
-
-   }
-  
-  
-   });
-     
-   });
+  $('.hierarchy-checkbox').on('change', function(){
+   this.value = this.checked ? 1 : 0;
+   alert(this.value);
+}).change();
 </script>
