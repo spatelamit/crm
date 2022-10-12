@@ -11,23 +11,23 @@ use App\Models\Usersetting;
 
 class UserSettingController extends Controller
 {
-    
+
     		public function roles_view ()
 
     		{
     			$Usersetting=new Usersetting();
     			$data['role_list']=$Usersetting->GetRoleslist();
-    			
+
 
     			return view('roles_setting/roles_view',compact('data'));
-    		
+
     		}
     		public function add_role ()
 
     		{
 
     			return view('roles_setting/add-role');
-    		
+
     		}
 
      public function rolestree(){
@@ -50,7 +50,7 @@ class UserSettingController extends Controller
 			    	}
 			    	$roles=array_filter($roles);
     				$roles=array_values($roles);
-			    	
+
 			    	echo json_encode($roles);
     }
 
@@ -58,5 +58,21 @@ class UserSettingController extends Controller
     	echo "<pre>";
     	print_r($Request->all());
 
+    }
+
+
+    public function user_account_setting()
+    {
+        return view('roles_setting.users_account_setting');
+    }
+
+    public function sms_settings()
+    {
+        return view('roles_setting.sms_setting');
+    }
+
+    public function email_settings()
+    {
+        return view('roles_setting.email_setting');
     }
 }

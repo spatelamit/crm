@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags --> 
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Regal Admin</title>
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/vendors/base/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
-  
+
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/vendors/jquery-bar-rating/fontawesome-stars-o.css">
   <link rel="stylesheet" href="assets/vendors/jquery-bar-rating/fontawesome-stars.css">
@@ -100,10 +100,10 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">               
+              <a class="dropdown-item preview-item">
                   <i class="icon-head"></i> Profile
               </a>
-              <a class="dropdown-item preview-item">
+              <a class="dropdown-item preview-item" href="{{url('logout')}}">
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
@@ -149,12 +149,12 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-               
+
 
 <li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('')}}">Users Account Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('sms_setting')}}">SMS Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('email_setting')}}">Email Setting</a></li>
+<li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
+<li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li>
@@ -162,7 +162,7 @@
 <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li>
 
 
-               
+
               </ul>
             </div>
           </li>
@@ -178,14 +178,13 @@
               <span class="menu-title"> Universal Filter</span>
             </a>
           </li>
-          
-          
-          
-          
+
+
+
+
         </ul>
       </nav>
       <!-- partial -->
-        
+
       <div class="main-panel">
-      
-      
+
