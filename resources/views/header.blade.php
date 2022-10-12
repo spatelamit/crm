@@ -60,241 +60,24 @@
                 <div class="preview-thumbnail">
                     <img src="assets_2/images/faces/face4.jpg" alt="image" class="profile-pic">
                 </div>
-<<<<<<< HEAD
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-normal">David Grey
                   </h6>
                   <p class="font-weight-light small-text text-muted mb-0">
                     The meeting is cancelled
                   </p>
-=======
-            </div>
-        </div>
-    </div>
-    <div class="infobar-settings-sidebar-overlay"></div>
-
-
-
-
-
-
-    <!-- End Infobar Setting Sidebar -->
-    <!-- Start Containerbar -->
-    <div id="containerbar">
-        <!-- Start Leftbar -->
-        <div class="leftbar">
-            <!-- Start Sidebar -->
-            <div class="sidebar">
-                <!-- Start Navigationbar -->
-                <div class="navigationbar">
-                    <div class="vertical-menu-icon">
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <div class="logobar">
-                                <a href="index.html" class="logo logo-small"><img src="assets/images/small_logo.svg" class="img-fluid" alt="logo"></a>
-                            </div>
-                            <a class="nav-link active" id="v-pills-crm-tab" data-toggle="pill" href="#v-pills-crm" role="tab" aria-controls="v-pills-crm" aria-selected="true"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="CRM" data-toggle="tooltip" data-placement="top" title="CRM"></a>
-
-                            <a class="nav-link" id="v-pills-hospital-tab" data-toggle="pill" href="#v-pills-hospital" role="tab" aria-controls="v-pills-hospital" aria-selected="false"><img src="assets/images/svg-icon/hospital.svg" class="img-fluid" alt="Hospital" data-toggle="tooltip" data-placement="top" title="Hospital"></a>
-
-
-                        </div>
-                    </div>
-                    <div class="vertical-menu-detail">
-                        <div class="logobar">
-                            <a href="index.html" class="logo logo-large"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
-                        </div>
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-crm" role="tabpanel" aria-labelledby="v-pills-crm-tab">
-                                <ul class="vertical-menu">
-                                    <li><h5 class="menu-title">CRM</h5></li>
-                                    <li><a href="{{url('User_dashboard')}}"><img src="assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard">Dashboard</a></li>
-
-                                    <li><a href="{{url('deals')}}"><img src="assets/images/svg-icon/charts.svg" class="img-fluid" alt="leads"> Deals</a></li>
-                                    <li>
-                                        <a href="{{url('crm_setting')}}">
-      <img src="assets/images/svg-icon/backend.svg" class="img-fluid" alt="backend"><span>  CRM Setting </span><i class="feather icon-chevron-right"></i>
-                                        </a>
-                                        <ul class="vertical-submenu">
-
-
-
-
-<li><a href="{{url('roles')}}">Roles Setting</a></li>
-<li><a href="{{url('')}}">Users Account Setting</a></li>
-
-<li><a href="{{url('sms_setting')}}">SMS Setting</a></li>
-<li><a href="{{url('email_setting')}}">Email Setting</a></li>
-<li><a href="{{url('forms')}}">Forms</a></li>
-<li><a href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
-<li><a href="{{url('')}}">Data Admin</a></li>
-<li><a href="{{url('theme_settings')}}">Theme Settings</a></li>
-<li><a href="{{url('modules')}}">Modules </a></li>
-
-                                        </ul>
-                                    </li>
-
-
-                                     <li><a href="#"><img src="assets/images/svg-icon/reports.svg" class="img-fluid" alt="projects"> Universal Filter</a></li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-hospital" role="tabpanel" aria-labelledby="v-pills-hospital-tab">
-                                <ul class="vertical-menu">
-                                    <li><h5 class="menu-title">Hospital</h5></li>
-
-                                </ul>
-                            </div>
-
-
-                        </div>
-
-                    </div>
->>>>>>> 8307fe87b02fe52de1a6ca1960db82487d124c32
                 </div>
               </a>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                     <img src="assets_2/images/faces/face2.jpg" alt="image" class="profile-pic">
                 </div>
-<<<<<<< HEAD
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
                   </h6>
                   <p class="font-weight-light small-text text-muted mb-0">
                     New product launch
                   </p>
-=======
-            </div>
-            <!-- Start Topbar -->
-            <div class="topbar">
-                <!-- Start row -->
-                <div class="row align-items-center">
-                    <!-- Start col -->
-                    <div class="col-md-12 align-self-center">
-                        <div class="togglebar">
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item">
-                                    <div class="menubar">
-                                        <a class="menu-hamburger" href="javascript:void();">
-                                           <img src="assets/images/svg-icon/menu.svg" class="img-fluid menu-hamburger-collapse" alt="menu">
-                                           <img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close">
-                                         </a>
-                                     </div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <div class="searchbar">
-                                        <form>
-                                            <div class="input-group">
-                                                <div class="input-group-append">
-                                                    <button class="btn" type="submit" id="button-addonSearch"><img src="assets/images/svg-icon/search.svg" class="img-fluid" alt="search"></button>
-                                                </div>
-                                                <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addonSearch">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="infobar">
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item">
-                                    <div class="languagebar">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle" href="#" role="button" id="languagelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="live-icon">EN</span><span class="feather icon-chevron-down live-icon"></span></a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languagelink">
-                                                <a class="dropdown-item" href="#"><i class="flag flag-icon-us flag-icon-squared"></i>English</a>
-                                                <a class="dropdown-item" href="#"><i class="flag flag-icon-de flag-icon-squared"></i>German</a>
-                                                <a class="dropdown-item" href="#"><i class="flag flag-icon-bl flag-icon-squared"></i>France</a>
-                                                <a class="dropdown-item" href="#"><i class="flag flag-icon-ru flag-icon-squared"></i>Russian</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <div class="settingbar">
-                                        <a href="javascript:void(0)" id="infobar-settings-open" class="infobar-icon">
-                                            <img src="assets/images/svg-icon/settings.svg" class="img-fluid" alt="settings">
-                                            <span class="live-icon">3</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <div class="notifybar">
-                                        <div class="dropdown">
-                                            <a class="dropdown-toggle infobar-icon" href="#" role="button" id="notoficationlink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/svg-icon/notifications.svg" class="img-fluid" alt="notifications">
-                                            <span class="live-icon">2</span></a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notoficationlink">
-                                                <div class="notification-dropdown-title">
-                                                    <h4>Notifications</h4>
-                                                </div>
-                                                <ul class="list-unstyled">
-                                                    <li class="media dropdown-item">
-                                                        <span class="action-icon badge badge-success-inverse">N</span>
-                                                        <div class="media-body">
-                                                            <h5 class="action-title">New trends for you</h5>
-                                                            <p><span class="timing">10 min ago</span></p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media dropdown-item">
-                                                        <span class="action-icon badge badge-primary-inverse"><i class="feather icon-gift"></i></span>
-                                                        <div class="media-body">
-                                                            <h5 class="action-title">John birthday today</h5>
-                                                            <p><span class="timing">Today, 12:00 AM</span></p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media dropdown-item">
-                                                        <span class="action-icon badge badge-warning-inverse">T</span>
-                                                        <div class="media-body">
-                                                            <h5 class="action-title">This is start of your story</h5>
-                                                            <p><span class="timing">Yesterday, 01:25 PM</span></p>
-                                                        </div>
-                                                    </li>
-                                                    <li class="media dropdown-item">
-                                                        <span class="action-icon badge badge-danger-inverse"><i class="feather icon-thumbs-up"></i></span>
-                                                        <div class="media-body">
-                                                            <h5 class="action-title">Admin has 1 new like</h5>
-                                                            <p><span class="timing">5 Feb 2020, 03:31 PM</span></p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-inline-item">
-                                    <div class="profilebar">
-                                        <div class="dropdown">
-                                          <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="live-icon">John Doe</span><span class="feather icon-chevron-down live-icon"></span></a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
-                                                <div class="dropdown-item">
-                                                    <div class="profilename">
-                                                      <h5>John Doe</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="userbox">
-                                                    <ul class="list-unstyled mb-0">
-                                                        <li class="media dropdown-item">
-                                                            <a href="#" class="profile-icon"><img src="assets/images/svg-icon/crm.svg" class="img-fluid" alt="user">My Profile</a>
-                                                        </li>
-                                                        <li class="media dropdown-item">
-                                                            <a href="#" class="profile-icon"><img src="assets/images/svg-icon/email.svg" class="img-fluid" alt="email">Email</a>
-                                                        </li>
-                                                        <li class="media dropdown-item">
-                                                            <a href="{{url('logout')}}" class="profile-icon"><img src="assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- End col -->
->>>>>>> 8307fe87b02fe52de1a6ca1960db82487d124c32
                 </div>
               </a>
               <a class="dropdown-item preview-item">
