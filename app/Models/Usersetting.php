@@ -26,7 +26,7 @@ class UserSetting extends Model
      public function GetRolesTree(){
      	$data=DB::table('users_roles')
 	    	->select('id','role_name','reporting_to')
-	   	->where('company_id','1')
+	   	->where('company_id',session()->get('company_id'))
 			->orderby("id",'desc')
 	    	->get()
             ->toArray();
@@ -43,6 +43,23 @@ class UserSetting extends Model
                 return $features;
             }else{
                 return false;
+            }
+        }
+
+        public function SaveRole($req){
+            
+            $data_arr=array(
+                'role_name'=>$req->role_name,
+                'reporting_to'=>$req->reporting_to,
+                'company_id'=>session()->get('company_id'),
+                'role_des'=>$req->role_des,
+                'features_permission'=>$req->features_permission,
+            );
+            $result=DB::table('users_roles')->insert($data_arr);
+            if ($result) {
+                return true;
+            }else{
+                return falsel;
             }
         }
 }

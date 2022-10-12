@@ -13,6 +13,15 @@ class UserSettingController extends Controller
 
 {
 
+<<<<<<< HEAD:app/Http/Controllers/UserSettingcontroller.php
+=======
+=======
+	public function __construct() {
+        $this->Usersetting=new Usersetting();
+    }
+    
+>>>>>>> 1109bafd8cecde85c9ca0785d851cc9b7fa466c4
+>>>>>>> 97e910b7c32e002ad452779004616f1e913a114b:app/Http/Controllers/UserSettingController.php
     		public function roles_view ()
 
     		{
@@ -63,8 +72,13 @@ class UserSettingController extends Controller
     }
 
     public function save_role(Request $Request){
-    	echo "<pre>";
-    	print_r($Request->all());
+    	$result=$this->Usersetting->SaveRole($Request);
+    	if($result){
+    		return redirect('roles');
+    	}else{
+    		return redirect('roles');
+    	}
+
 
     }
 
