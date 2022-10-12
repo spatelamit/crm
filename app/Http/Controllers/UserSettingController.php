@@ -80,6 +80,12 @@ class UserSettingController extends Controller
 
 
     }
+    public function edit_role($id){
+    	$data['role_data']=$this->Usersetting->GetRoleById($id);
+    	// echo "<pre>";
+    	// print_r($data);
+    	return view('roles_setting.role_edit',compact('data'));
+    }
 
 
     public function user_account_setting()
@@ -95,5 +101,9 @@ class UserSettingController extends Controller
     public function email_settings()
     {
         return view('roles_setting.email_setting');
+    }
+    public function pipelines_stages()
+    {
+        return view('roles_setting.pipelines_stages');
     }
 }

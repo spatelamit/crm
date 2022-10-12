@@ -42,9 +42,9 @@
                  <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-ellipsis-v"></span></button>
                   <ul class="dropdown-menu dropdown-left" >
                  
-                  <!--   <li style="width: 62 px"><a  href="<?php //echo base_url('edit-role/'.$value->id); ?>"><span class=" icon-pencil text-info"></span> Edit</a> </li>
+                    <li style="width: 62 px"><a  href="{{url('edit-role',$value->id)}}"><span class=" icon-pencil text-info"></span> Edit</a> </li>
                    
-                    <li style="width: 62 px"><a  onclick="deletedata(<?php //echo $value->id;?>)"> <span class="icon-trash    text-info"></span> Delete  </a> </li> -->
+                    <li style="width: 62 px"><a  onclick="deletedata('{{$value->id}}')"> <span class="icon-trash    text-info"></span> Delete  </a> </li>
                
                   </ul>
                 </div></td>

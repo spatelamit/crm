@@ -15,6 +15,7 @@ class UserSetting extends Model
     	$role_list=DB::table('users_roles as childs')
     				->select('childs.id','childs.role_name','childs.reporting_to','childs.role_des','parents.role_name as parentsName')
     				->join('users_roles as parents','childs.reporting_to','=','parents.id')
+                    ->where('childs.company_id',session()->get('company_id'))
     				->get();
     	if($role_list){
     		return $role_list;
@@ -61,5 +62,19 @@ class UserSetting extends Model
             }else{
                 return falsel;
             }
+        }
+        public function GetRoleById($id){
+            $role_list=DB::table('users_roles as childs')
+                    ->select('childs.id','childs.role_name','childs.reporting_to','childs.role_des','parents.role_name as parentsName')
+                    ->join('users_roles as parents','childs.reporting_to','=','parents.id')
+                    ->where('childs.company_id',session()->get('company_id'))
+                      ->where('childs.id',$id)
+                    ->get();
+                if($role_list){
+                     return $role_list;
+                 }else{
+                     return false;
+                     }
+
         }
 }
