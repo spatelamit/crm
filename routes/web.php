@@ -37,6 +37,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/add-role',[UserSettingController::class, 'add_role']);
 	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);
 	Route::post('/save-role',[UserSettingController::class, 'save_role']);
+	Route::get('/edit-role/{id}',[UserSettingController::class, 'edit_role']);
 	// end user setting//
 
 	Route::get('/deals',[UserSettingController::class, 'deals']);
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/pipelines_stages',[UserSettingController::class, 'pipelines_stages']);
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
+	Route::get('/user_account_setting',[UserSettingController::class, 'user_account_setting']);
 
 
 });
