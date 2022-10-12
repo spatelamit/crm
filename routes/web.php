@@ -37,6 +37,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/add-role',[UserSettingController::class, 'add_role']);
 	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);
 	Route::post('/save-role',[UserSettingController::class, 'save_role']);
+	Route::get('/edit-role/{id}',[UserSettingController::class, 'edit_role']);
 	// end user setting//
 
 	Route::get('/deals',[UserSettingController::class, 'deals']);
