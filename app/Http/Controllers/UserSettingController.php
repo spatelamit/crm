@@ -109,9 +109,13 @@ class UserSettingController extends Controller
     	}
     }
 
-    public function user_account_setting()
-    {
-        return view('roles_setting.users_account_setting');
+    public function user_account_setting()  {
+
+    	$data['users']=$this->Usersetting->GetUsers();
+// echo "<pre>";
+// print_r($data);
+
+        return view('roles_setting.users_account_setting',compact('data'));
     }
 
     public function sms_settings()

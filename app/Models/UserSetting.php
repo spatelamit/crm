@@ -9,6 +9,7 @@ use DB;
 class UserSetting extends Model
 {
     use HasFactory;
+    //roles start//
 
     public function GetRoleslist(){
 
@@ -96,4 +97,23 @@ class UserSetting extends Model
                 return false;
             }
         }
+        // roles end//
+
+        public function GetUsers(){
+
+            $result=DB::table('users')
+                    ->select('users.*','users_roles.role_name')
+                    ->where('users.company_id',session()->get('company_id'))
+                    ->where('users.status','1')
+                    ->where('users.parent_id',session()->get('id'))
+                    ->join('users_roles','users_roles.id','=','users.role_id')
+                    ->get();
+            if($result){
+                return $result;
+            }else{
+                return false;
+            }
+
+        }
+
 }
