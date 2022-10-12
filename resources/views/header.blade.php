@@ -156,7 +156,7 @@
 
 
 <li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('')}}">Users Account Setting</a></li>
+<li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users Account Setting</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
 <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li>
