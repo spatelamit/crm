@@ -136,7 +136,7 @@
         </div>-->
         <ul class="nav main-menu menu-fixed">
           <li class="nav-item">
-            <a class="nav-link" href="{{url('User_dashboard')}}">
+            <a class="nav-link" href="{{url('user_dashboard')}}">
               <i class="icon-pie-graph  menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
