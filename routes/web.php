@@ -52,3 +52,4 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 
 
+});

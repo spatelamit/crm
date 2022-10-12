@@ -44,6 +44,10 @@ class UserController extends Controller
             Session::put('id', $user_id);
             Session::put('full_name', $data->full_name);
             Session::put('username', $data->username);
+            Session::put('company_id', $data->company_id);
+            Session::put('parent_id', $data->parent_id);
+             Session::put('email_id', $data->email);
+          
             // if($data->IsAdmin == 'Y'){
             //     Session::put('IsAdmin', 'Y');
             // }
@@ -63,7 +67,7 @@ class UserController extends Controller
 
 
    public function logout() {
-        \Auth::logout(); // logout user
+        // Auth::logout(); // logout user
         Session::flush();
         // Redirect::back();
         return redirect(\URL::previous());
