@@ -1,42 +1,35 @@
- <!-- Start Footerbar -->
-            <div class="footerbar">
-                <footer class="footer">
-                    <p class="mb-0">© 2020 Soyuz - All Rights Reserved.</p>
-                </footer>
-            </div>
-            <!-- End Footerbar -->
-        </div>
-        <!-- End Rightbar -->
+ <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a> from Bootstrapdash.com</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
     </div>
-    <!-- End Containerbar -->
-    <!-- Start js -->
-    <script src="{{url('assets/js/jquery.min.js')}}"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/modernizr.min.js"></script>
-    <script src="assets/js/detect.js"></script>
-    <script src="assets/js/jquery.slimscroll.js"></script>
-    <script src="assets/js/vertical-menu.js"></script>
-    <!-- Switchery js -->
-    <script src="assets/plugins/switchery/switchery.min.js"></script>
-    <!-- Apex js -->
-    <script src="assets/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/plugins/apexcharts/irregular-data-series.js"></script>
-    <!-- Vector Maps js -->
-    <script src="assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- Slick js -->
-    <script src="assets/plugins/slick/slick.min.js"></script>
-    <!-- Custom Dashboard js -->
-    <script src="assets/js/custom/custom-dashboard.js"></script>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
 
-        <script src="assets/plugins/dragula/dragula.min.js"></script>
-    <!-- Custom CRM Lead js -->
-    <script src="assets/js/custom/custom-crm-lead.js"></script>
-    <!-- Core js -->
-    <script src="assets/js/core.js"></script>
-    <!-- End js -->
+  <!-- base:js -->
+  <script src="assets/vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="assets/js/off-canvas.js"></script>
+  <script src="assets/js/hoverable-collapse.js"></script>
+  <script src="assets/js/template.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <script src="assets/vendors/chart.js/Chart.min.js"></script>
+  <script src="assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="assets/js/dashboard.js"></script>
+  <!-- End custom js for this page-->
 </body>
-
 
 </html>
