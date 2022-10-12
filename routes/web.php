@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/edit-role/{id}',[UserSettingController::class, 'edit_role']);
 	// end user setting//
 
-	Route::get('/deals',[UserSettingController::class, 'deals']);
+
 
 	Route::get('/crm_settings',[UserSettingController::class, 'crm_settings']);
 	Route::get('/theme_settings',[UserSettingController::class, 'theme_settings']);
@@ -52,6 +52,13 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 	Route::get('/user_account_setting',[UserSettingController::class, 'user_account_setting']);
+
+
+
+
+
+    //customer
+    Route::get('/deals',[CustomerController::class, 'deals']);
 
 
 });
