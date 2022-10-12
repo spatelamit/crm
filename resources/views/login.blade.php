@@ -8341,7 +8341,8 @@ text-transform: capitalize;}
 			<div class="app-login-box">
 				<div class="app-login-box-user"><img src="https://srtscrm.theofficearea.in/assets/assets/images/background/no-image.png"></div>
 				<div class="app-login-box-title">
-					<div class="title"> SRTS CRM </div>
+					<div class="title"> SRTS CRM  {!! Session::get('username') !!}
+ </div>
 					<div class="subtitle">Sign in to your account</div>
 					<!-- Web tracking -->
 					<input type="hidden" class="form-control" name="url_path" id="url_path" >
@@ -8390,28 +8391,3 @@ text-transform: capitalize;}
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

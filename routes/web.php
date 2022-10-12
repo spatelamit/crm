@@ -18,22 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-
-
-
-
-
 Route::get('/login',[UserController::class, 'login']);
+Route::get('/',[UserController::class, 'login']);
+Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::get('/logout',[UserController::class, 'logout']);
 
-Route::group(['middleware' => 'UserAuthentication'],function(){
+Route::group(['middleware' => 'UserAuthentication'], function(){
 
 	// Auth::routes();
-    Route::post('/login_action',[UserController::class, 'login_action']);
+    
     Route::get('/logout',[UserController::class, 'logout']);
     Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
 
