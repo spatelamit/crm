@@ -1,28 +1,5 @@
 @include('header')
 
-<<<<<<< HEAD
-<div class="breadcrumbbar">
-    <div class="row align-items-center">
-        <div class="col-md-8 col-lg-8">
-            <h4 class="page-title">CRM</h4>
-            <div class="breadcrumb-list">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Username {!! Session::get('username') !!}
-</li>
-                </ol>
-            </div>
-        </div>
-        
-    </div>          
-</div>
-=======
->>>>>>> 3c6c9641f70977490f0aed78c6424abe1fc966fb
-
-
-
-
-
-
       <!-- partial -->
      <div class="content-wrapper">
           <div class="row">
