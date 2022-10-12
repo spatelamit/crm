@@ -13,7 +13,7 @@ class UserSettingController extends Controller
 
 {
 	public function __construct() {
-        $Usersetting=new Usersetting();
+        $this->Usersetting=new Usersetting();
     }
     
     		public function roles_view ()
@@ -60,8 +60,13 @@ class UserSettingController extends Controller
     }
 
     public function save_role(Request $Request){
-    	echo "<pre>";
-    	print_r($Request->all());
+    	$result=$this->Usersetting->SaveRole($Request);
+    	if($result){
+    		return redirect('roles');
+    	}else{
+    		return redirect('roles');
+    	}
+
 
     }
 }
