@@ -10,7 +10,7 @@ use Session;
 
 class UserController extends Controller
 {
-    
+
     public function __construct() {
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
@@ -34,7 +34,7 @@ class UserController extends Controller
         ]);
 
         if($req == true){
-        $data = DB::table('users')->where('username', $request->username)->where('password', $request->password)->first();
+        $data = DB::table('users')->where('username', $request->username)->orWhere('email',$request->username)->where('password', $request->password)->first();
 
         }
 
@@ -69,6 +69,9 @@ class UserController extends Controller
         return redirect(\URL::previous());
         // return redirect('/');
     }
+
+
+    
 
 
 
