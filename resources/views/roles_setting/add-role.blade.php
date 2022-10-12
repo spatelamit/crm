@@ -91,17 +91,40 @@
                                  
                              <input type="hidden" name="title" value="leads">
                                       <div class="hierarchy-node col-md-2 leaf ">
-                                          <input class="hierarchy-checkbox" name="lead_view" value="0" checked="unchecked"  type="checkbox">
+                                          <input class="hierarchy-checkbox" name="lead_view" value="0" unchecked  type="checkbox">
                                             <label class="hierarchy-label">View</label>
-                                             <input class="hierarchy-checkbox" name="lead_edit" value="0"  checked="unchecked" type="checkbox">
+                                             <input class="hierarchy-checkbox" name="lead_edit" value="0" unchecked  type="checkbox">
                                             <label class="hierarchy-label">Edit</label>
-                                             <input class="hierarchy-checkbox" name="lead_delete" value="0"  checked="unchecked" type="checkbox">
+                                             <input class="hierarchy-checkbox" name="lead_delete" value="0" unchecked  type="checkbox">
                                             <label class="hierarchy-label">Delete</label>
                                          </div>
                                       
                              </div>
                             
                        </div>
+                        <div id="crmSettings" class="tab-pane fade in active">
+            
+                        <h2> crmSettings </h2>
+                        <hr />
+                        
+                        
+                          <div class="hierarchy-node row ">
+                    
+                                 
+                             <input type="hidden" name="title1" value="crmSettings">
+                                      <div class="hierarchy-node col-md-2 leaf ">
+                                          <input class="hierarchy-checkbox" name="crmSettings_view" value="0" unchecked  type="checkbox">
+                                            <label class="hierarchy-label">View</label>
+                                             <input class="hierarchy-checkbox" name="crmSettings_edit" value="0" unchecked  type="checkbox">
+                                            <label class="hierarchy-label">Edit</label>
+                                             <input class="hierarchy-checkbox" name="crmSettings_delete" value="0" unchecked  type="checkbox">
+                                            <label class="hierarchy-label">Delete</label>
+                                         </div>
+                                      
+                             </div>
+                            
+                       </div>
+                       
                        
                            
                             

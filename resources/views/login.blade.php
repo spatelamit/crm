@@ -51,7 +51,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
   zoom: 1;
-  box-shadow: 0 4px 20px 5px rgba(0,0,0,.05);
+
 }
 .app .app-login-box::after, .app .app-login-box::before {
   content: "";
@@ -168,8 +168,10 @@
 }
 
 .btn.btn-success {
-  background: #3a86f6;
+background-image: linear-gradient( to right top, #008f7a, #219c87, #35aa94, #45b8a1, #55c6ae );
   color: #FFF;
+border: none;
+margin-top:10px;
 }
 .btn {
   padding: 5px 20px;
@@ -8341,9 +8343,10 @@ text-transform: capitalize;}
 			<div class="app-login-box">
 				<div class="app-login-box-user"><img src="https://srtscrm.theofficearea.in/assets/assets/images/background/no-image.png"></div>
 				<div class="app-login-box-title">
-					<div class="title"> SRTS CRM  {!! Session::get('username') !!}
- </div>
-					<div class="subtitle">Sign in to your account</div>
+
+					<div class="title"> CRM login </div>
+					
+
 					<!-- Web tracking -->
 					<input type="hidden" class="form-control" name="url_path" id="url_path" >
 					<input type="hidden" class="form-control" name="ip_adreess" id="ip_adreess" >
@@ -8370,7 +8373,7 @@ text-transform: capitalize;}
 								<div class="col-md-12 col-xs-12">
 									<button type="submit" name="submit" class="btn btn-success btn-block">Sign In</button>
 
-									<p data-track-content="" data-content-name="LognForm" data-content-piece="forget_password" data-content-target="forget_password"  style="text-align: center;"><a href="#">Forget Password</a></p>
+									<p data-track-content="" data-content-name="LognForm" data-content-piece="forget_password" data-content-target="forget_password"  style="text-align: center; margin-top:10px;"><a href="#" style="color:#000;">Forget Password</a></p>
 								</div>
 							</div>
 						</div>

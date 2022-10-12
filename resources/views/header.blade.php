@@ -103,7 +103,11 @@
               <a class="dropdown-item preview-item">
                   <i class="icon-head"></i> Profile
               </a>
+<<<<<<< HEAD
               <a class="dropdown-item preview-item" href="{{url('logout')}}">
+=======
+              <a class="dropdown-item preview-item" href="{{url('/logout')}}">
+>>>>>>> a164a93595c10cdd021ca7509a3a96c193bdfc15
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
@@ -136,7 +140,7 @@
         </div>-->
         <ul class="nav main-menu menu-fixed">
           <li class="nav-item">
-            <a class="nav-link" href="{{url('User_dashboard')}}">
+            <a class="nav-link" href="{{url('user_dashboard')}}">
               <i class="icon-pie-graph  menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
