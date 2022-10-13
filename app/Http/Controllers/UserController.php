@@ -46,7 +46,8 @@ class UserController extends Controller
             Session::put('username', $data->username);
             Session::put('company_id', $data->company_id);
             Session::put('parent_id', $data->parent_id);
-             Session::put('email_id', $data->email);
+            Session::put('email_id', $data->email);
+            Session::put('role_id', $data->role_id);
           
             // if($data->IsAdmin == 'Y'){
             //     Session::put('IsAdmin', 'Y');

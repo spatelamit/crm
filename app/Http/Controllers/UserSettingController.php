@@ -111,12 +111,24 @@ class UserSettingController extends Controller
 
     public function user_account_setting()  {
 
+    	$data['roles']=$this->Usersetting->GetRolesTree();
+
     	$data['users']=$this->Usersetting->GetUsers();
+    	$data['recursiveroles']=$this->Usersetting->getRecursiveChildren(session()->get('role_id'),$data['roles']);
 // echo "<pre>";
-// print_r($data);
+// print_r($data['recursiveroles']);
+// die();
 
         return view('roles_setting.users_account_setting',compact('data'));
     }
+    public function update_user(Request	$req){
+    	dd($req->all());
+
+    }
+
+
+
+
 
     public function sms_settings()
     {

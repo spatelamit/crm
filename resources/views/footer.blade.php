@@ -12,7 +12,8 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
-
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <!-- base:js -->
   <script src="{{url('assets/vendors/base/vendor.bundle.base.js')}}"></script>
   <!-- endinject -->
@@ -23,6 +24,7 @@
   <script src="{{url('assets/js/hoverable-collapse.js')}}"></script>
   <script src="{{url('assets/js/template.js')}}"></script>
    <script src="{{url('assets/js/hierarchical-checkboxes.js')}}"></script>
+ 
   <!-- endinject -->
   <!-- plugin js for this page -->
   <script src="{{url('assets/vendors/chart.js/Chart.min.js')}}"></script>

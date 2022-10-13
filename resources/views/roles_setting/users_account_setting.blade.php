@@ -51,7 +51,9 @@ Add Account Setting </button>
                                      <div class="modal fade come-from-modal right" id="edituser{{$val->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                       <div class="modal-dialog  slideInRight  animated" role="document">
                                         <div class="modal-content">
-                                            <form method="post" action="{{url('edit-user')}}" autocomplete="nope">
+                                            <form method="post" action="{{url('update-user')}}" autocomplete="nope">
+                                              @csrf
+                                              <input type="hidden" name="user_id" value="{{$val->id}}">
                                           <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle-1"> Add New Team Member </h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
@@ -78,17 +80,32 @@ Add Account Setting </button>
                                               <input type="text" class="form-control bg_input" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter your Password" name="password" required="">
                                             </div> -->
                                             <div class="form-group mb-10">
+                                              <label for="stage_name"> Date Of Birth: </label>
+                                              <input type="text" data-date-format="YYYY MMMM DD"  class="form-control" value="{{$val->dob}}" placeholder="Enter your date of birth" name="dob" id="add_dob">
+                                            </div>
+                                            <div class="form-group mb-10">
                                               <label for="stage_name"> Role: </label>
                                               <select class="form-control bg_input" name="user_type" required="">
-                                                <option value="56">Swapnil</option>
                                                
+                                               <option value="">Select Role</option>
+                                                   @foreach ($data['roles'] as $value) { 
+                                                             @if($value->id != session()->get('role_id'))
+
+                                                                 @if(in_array($value->id,$data['recursiveroles'])){?>
+
+                        
+                                                              <option value="{{$value->id}}" 
+                                                  @if ($value->id == $val->role_id)   selected="selected" @endif >  {{ $value->role_name}} </option>
+                                                  @endif
+                                                  @endif
+                                                  @endforeach
                                               </select>
                                             </div>
                                            
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Ok</button>
+                                            <button type="submit" class="btn btn-primary">Ok</button>
                                           </div>
                                         </form>
                                         </div>
@@ -109,3 +126,4 @@ Add Account Setting </button>
 </div>
 
 @include('footer')
+  

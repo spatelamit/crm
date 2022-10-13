@@ -63,7 +63,7 @@
           <div class="form-group">
             <label for="stage_name"> Reporting To: </label>
             <input class="form-control" type="hidden" name="reporting_to" id="reporting_to">
-            <div id="treeparent" class="form-control">
+            <div id="treeparent" >
               <div id="tree"></div>
               </div>
             </div>

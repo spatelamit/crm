@@ -115,5 +115,25 @@ class UserSetting extends Model
             }
 
         }
+         function getRecursiveChildren($roles_id,$roles):array
+            {       
+              
+                        $chiled = [];
+                        foreach ($roles as $role) {
+                            if ($role->reporting_to == $roles_id) {
+                                $chiled[] = $role->id;
+                                array_push($chiled,...$this->getRecursiveChildren($role->id,$roles));
+
+                            }
+                            // else{
+                            //     $chiled[]=$roles_id;
+                            // }
+
+                        }
+                         // print_r($chiled);
+                         //        die();
+                        return $chiled;
+            }
+
 
 }
