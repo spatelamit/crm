@@ -156,7 +156,7 @@
 @include('footer')
 <script type="text/javascript">
         function deletesms(id) {
-        alert(id);
+       
             
           swal({
               title: "Are you sure to delete ?",
