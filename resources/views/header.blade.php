@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Regal Admin</title>
+  <title> {{ Config::get('app.title') }} </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +28,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{url('')}}">Bulk24CRM</a>
+        <a class="navbar-brand brand-logo" href="{{url('')}}">{{ Config::get('app.title') }}</a>
         <a class="navbar-brand brand-logo-mini" href="{{url('')}}">B</a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
