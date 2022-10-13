@@ -217,4 +217,24 @@ class UserSetting extends Model
                 }
             }
 
+            public function AddSmsDetails($req){
+
+                $data=array(
+                    'template'=>$req->template,
+                    'sender_id'=>$req->sender_id,
+                    'pe_id'=>$req->pe_id,
+                    'template_id'=>$req->template_id,
+                    'user_id'=>session()->get('id'),
+                    'authKey'=>$req->authKey,
+
+                );
+             
+                $result=DB::table('user_massage_dlt_details')->insert($data);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
 }

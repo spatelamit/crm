@@ -45,6 +45,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::post('/add-user',[UserSettingController::class, 'add_user']);
 	Route::get('/delete-user/{id}',[UserSettingController::class, 'delete_user']);
 	Route::post('/update-sms-details',[UserSettingController::class, 'update_sms_details']);
+	Route::post('/add-sms-details',[UserSettingController::class, 'add_sms_details']);
+	Route::get('/delete-sms-details/{id}',[UserSettingController::class, 'delete_sms_details']);
 	
 
 	// end user setting//
