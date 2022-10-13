@@ -2,33 +2,21 @@
 <html lang="en">
 
 <head>
+  <title>Regal Admin</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Regal Admin</title>
-
-
-
-
   <!-- base:css -->
   <link rel="stylesheet" href="{{url('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/feather/feather.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/base/vendor.bundle.base.css')}}">
   <!-- endinject -->
   <!-- plugin css for this page -->
-
   <link rel="stylesheet" href="{{url('/assets/vendors/font-awesome/css/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars.css')}}">
   <!-- End plugin css for this page -->
-<<<<<<< HEAD
-   <!-- CSS -->
-
-=======
-  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-         rel = "stylesheet">
- 
->>>>>>> 0bea8fb52bf47fcc864aaae082e13691de8b7d29
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
   <!-- inject:css -->
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
@@ -166,20 +154,15 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-
-
-<li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users Account Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>
-<li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li>
-
-
-
+                <li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users Account Setting</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li>
               </ul>
             </div>
           </li>
@@ -198,6 +181,4 @@
         </ul>
       </nav>
       <!-- partial -->
-
       <div class="main-panel">
-
