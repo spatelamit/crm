@@ -167,7 +167,42 @@ class UserSettingController extends Controller
     public function sms_settings()
     {
     	$data['sms_data']=$this->Usersetting->GetSmsData();
-        return view('roles_setting.sms_setting');
+        return view('roles_setting.sms_setting',compact('data'));
+    }
+
+    public function update_sms_details(Request $req){
+		 $result=$this->Usersetting->UpdateSmsDetails($req);  
+		 if($result){
+    		return redirect('sms_settings')->with("success", "Successfully Updated SMS DLT details!")	;
+
+    	}else{
+    		return redirect('sms_settings')->with("error", 'Details not updated');
+
+    	}	
+
+    }
+    public function add_sms_details(Request $req){
+    	$result=$this->Usersetting->AddSmsDetails($req); 
+    	if($result){
+    		return redirect('sms_settings')->with("success", "Successfully Added SMS DLT details!")	;
+
+    	}else{
+    		return redirect('sms_settings')->with("error", 'SMS DLT Details Not Added');
+
+    	}	 
+
+    }
+    public function delete_sms_details($id){
+
+    	$result=DB::table('user_massage_dlt_details')->where('id',$id)->delete();
+
+    	if($result){
+    		return redirect('sms_settings')->with("success", "Successfully Deleted SMS DLT details!")	;
+    	}else{
+    		return redirect('sms_settings')->with("error", 'SMS DLT Details Not delete!');
+    	}
+
+
     }
 
     public function email_settings()
