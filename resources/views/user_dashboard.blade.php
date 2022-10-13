@@ -1,5 +1,9 @@
 @include('header')
-
+    {{-- @if( Session::has( 'success' ))
+    {{ Session::get( 'success' ) }}
+    @elseif( Session::has( 'warning' ))
+    {{ Session::get( 'warning' ) }} <!-- here to 'withWarning()' -->
+    @endif --}}
       <!-- partial -->
      <div class="content-wrapper">
           <div class="row">
