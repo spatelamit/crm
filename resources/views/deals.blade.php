@@ -256,7 +256,7 @@
                                 <div id="kanban-board-one">
                                     <div class="card bg-primary-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center mb-1">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
                                                         <h5 class="mb-0">Leong Nan</h5>
@@ -297,6 +297,7 @@
                                                 <div class="col-7">
                                                     <div class="kanban-comment">
                                                         <span class="font-14">Web Development</span>
+                                                        <span class="font-8">13-10-2022</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-5">
@@ -305,6 +306,12 @@
                                                             <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                
+                                                <div class="col-12">
+                                                <div class="feed_back_management">
+                                                
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -319,14 +326,27 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton2">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="kanban-menu">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
+                                                        
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -370,14 +390,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton3">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -407,14 +435,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton4">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -444,14 +480,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton5">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -481,14 +525,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton6">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -532,14 +584,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton7">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -569,14 +629,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton8">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -606,14 +674,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton9">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -657,14 +733,22 @@
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-secondary p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton10">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
+                                                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
                                                     </div>
                                                 </div>
                                             </div>
