@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Usersetting;
-
+use DB;
 
 
 class UserSettingController extends Controller
@@ -35,7 +35,7 @@ class UserSettingController extends Controller
     		{
 
 
-    			return view('roles_setting/add-role');
+    			
 
 
     			$Usersetting=new Usersetting();
@@ -82,20 +82,92 @@ class UserSettingController extends Controller
     }
     public function edit_role($id){
     	$data['role_data']=$this->Usersetting->GetRoleById($id);
+    	$data['allfeatures']=$this->Usersetting->GetFeatures();
     	// echo "<pre>";
     	// print_r($data);
-    	return view('roles_setting.role_edit',compact('data'));
+    	return view('roles_setting/edit-role',compact('data'));
+    }
+     public function update_role(Request $Request){
+    	$result=$this->Usersetting->UpdateRole($Request);
+    	if($result){
+    		return redirect('roles');
+    	}else{
+    		return redirect('roles');
+    	}
+
+
+    }public function delete_role($id){
+    	$data=array(
+    		'status'=>'0',
+    	);
+
+    	$result=DB::table('users_roles')->where('id',$id)->update($data);
+    	if($result){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+
+    public function user_account_setting()  {
+
+    	$data['roles']=$this->Usersetting->GetRolesTree();
+
+    	$data['users']=$this->Usersetting->GetUsers();
+    	$data['recursiveroles']=$this->Usersetting->getRecursiveChildren(session()->get('role_id'),$data['roles']);
+// echo "<pre>";
+// print_r($data['recursiveroles']);
+// die();
+
+        return view('roles_setting.users_account_setting',compact('data'));
+    }
+
+    public function add_user(Request $req){
+    	$result=$this->Usersetting->AddUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+
+    }
+    public function update_user(Request	$req){
+    	$result=$this->Usersetting->UpdateUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+    }
+    public function delete_user($id){
+    	$data=array(
+    		'status'=>'0',
+    	);
+
+    	$result=DB::table('users')->where('id',$id)->update($data);
+    	if($result){
+    		return true;
+    	}else{
+    		return false;
+    	}
+
+
     }
 
 
-    public function user_account_setting()
-    {
-        return view('roles_setting.users_account_setting');
-    }
+
+
 
     public function sms_settings()
     {
-        return view('roles_setting.sms_setting');
+    	$data['sms_data']=$this->Usersetting->GetSmsData();
+        return view('roles_setting.sms_setting',compact('data'));
     }
 
     public function email_settings()
