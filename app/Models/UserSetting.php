@@ -187,4 +187,8 @@ class UserSetting extends Model
 
             }
 
+            public function GetSmsData(){
+                
+            }
+
 }
