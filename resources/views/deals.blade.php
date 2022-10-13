@@ -307,6 +307,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-12">
+                                                <div class="feed_back_management">
+                                                
+                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
