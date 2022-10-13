@@ -140,27 +140,18 @@
           </div>
         </div>-->
         <ul class="nav main-menu menu-fixed">
-        
-         <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="{{url('home')}}">
               <i class="fa fa-home  menu-icon"></i>
               <span class="menu-title">Home</span>
             </a>
           </li>
-        
-        
           <li class="nav-item">
             <a class="nav-link" href="{{url('user_dashboard')}}">
               <i class="icon-pie-graph  menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          
-          
-         
-          
-          
-          
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-cog menu-icon"></i>
