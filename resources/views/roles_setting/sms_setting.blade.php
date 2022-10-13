@@ -53,7 +53,7 @@
                     <td>{{$sms_data->creation_date}}</td>
                     <td><div class="btn-group btn-group-sm" style="float: none;">
             <button type="button" class="btn btn-info" style="float: none; margin: 5px;" data-toggle="modal" data-target="#editsms{{$sms_data->id}}"><span class="fa fa-pencil"></span></button>
-                        <button type="button" class="btn btn-danger" style="float: none; margin: 5px;"><span class="fa fa-trash"></span></button>
+                        <button type="button" onclick="deletesms('{{$sms_data->id}}')" class="btn btn-danger" style="float: none; margin: 5px;"><span class="fa fa-trash"></span></button>
                       </div></td>
                   </tr>
                         <div class="modal fade come-from-modal right" id="editsms{{$sms_data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -119,8 +119,8 @@
         <h5 class="modal-title" id="exampleModalLongTitle-1"> Add SMS template</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
       </div>
-      <form method="post" action="#" autocomplete="nope">
-                                              @csrf
+      <form method="post" action="{{url('add-sms-details')}}" autocomplete="nope">
+              @csrf
       <div class="modal-body">
         <div class="form-group mb-10">
           <label>Authentication Key:</label>
@@ -154,3 +154,44 @@
 <!-- end add sms template -->
 
 @include('footer')
+<script type="text/javascript">
+        function deletesms(id) {
+        alert(id);
+            
+          swal({
+              title: "Are you sure to delete ?",
+              text: "You will not be able to recover this  !!",
+              type: "warning",
+              showCancelButton: !0,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, delete it !!",
+             
+               buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+
+            if (willDelete) {
+              $.ajax({
+                type:"GET",
+                  url: "{{url('/delete-sms-details') }}/" + id,
+                  
+                  success : function () {
+
+                    swal("Deleted !!", " SMS details has been deleted !!", "success")
+
+                    $("#"+id).remove();
+                  },
+              });
+
+
+             }
+             else
+              {
+                 swal("Deleted !!", "some error occured in delete SMS details!!", "error")
+              }
+             
+          });
+
+      }
+
+      </script> 
