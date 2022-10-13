@@ -14,7 +14,9 @@ class UserController extends Controller
     public function __construct() {
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
-
+    public function home(){
+        return view('homepage');
+    }
 
     public function login(){
         echo session()->has('IsLoggedIn');

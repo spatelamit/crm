@@ -56,15 +56,16 @@
                         <button type="button" class="btn btn-danger" style="float: none; margin: 5px;"><span class="fa fa-trash"></span></button>
                       </div></td>
                   </tr>
-                                  <div class="modal fade come-from-modal right" id="editsms{{$sms_data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade come-from-modal right" id="editsms{{$sms_data->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                           <div class="modal-dialog  slideInRight  animated" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle-1"> Add SMS template</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle-1"> Edit SMS template</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                               </div>
-                               <form method="post" action="{{url('edit-sms-details')}}" autocomplete="nope">
+                           <form method="post" action="{{url('update-sms-details')}}" autocomplete="nope">
                                @csrf
+                               <input type="hidden" name="sms_id" value="{{$sms_data->id}}">
                               <div class="modal-body">
                               <!--   <div class="form-group mb-10">
                                   <label>Authentication Key:</label>
@@ -91,6 +92,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Update</button>
                               </div>
+                            </form>
                             </div>
                           </div>
                         </div>
