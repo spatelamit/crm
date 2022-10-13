@@ -30,6 +30,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
     Route::get('/logout',[UserController::class, 'logout']);
     Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
+    Route::get('/home',[UserController::class, 'home']);
 
 
 	//setting//
@@ -40,6 +41,12 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/edit-role/{id}',[UserSettingController::class, 'edit_role']);
 	Route::post('/update-role',[UserSettingController::class, 'update_role']);
 	Route::get('/delete-role/{id}',[UserSettingController::class, 'delete_role']);
+	Route::post('/update-user',[UserSettingController::class, 'update_user']);
+	Route::post('/add-user',[UserSettingController::class, 'add_user']);
+	Route::get('/delete-user/{id}',[UserSettingController::class, 'delete_user']);
+	Route::post('/update-sms-details',[UserSettingController::class, 'update_sms_details']);
+	
+
 	// end user setting//
 
 

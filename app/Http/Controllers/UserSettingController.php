@@ -111,16 +111,63 @@ class UserSettingController extends Controller
 
     public function user_account_setting()  {
 
+    	$data['roles']=$this->Usersetting->GetRolesTree();
+
     	$data['users']=$this->Usersetting->GetUsers();
+    	$data['recursiveroles']=$this->Usersetting->getRecursiveChildren(session()->get('role_id'),$data['roles']);
 // echo "<pre>";
-// print_r($data);
+// print_r($data['recursiveroles']);
+// die();
 
         return view('roles_setting.users_account_setting',compact('data'));
     }
 
+    public function add_user(Request $req){
+    	$result=$this->Usersetting->AddUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+
+    }
+    public function update_user(Request	$req){
+    	$result=$this->Usersetting->UpdateUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+    }
+    public function delete_user($id){
+    	$data=array(
+    		'status'=>'0',
+    	);
+
+    	$result=DB::table('users')->where('id',$id)->update($data);
+    	if($result){
+    		return true;
+    	}else{
+    		return false;
+    	}
+
+
+    }
+
+
+
+
+
     public function sms_settings()
     {
-        return view('roles_setting.sms_setting');
+    	$data['sms_data']=$this->Usersetting->GetSmsData();
+        return view('roles_setting.sms_setting',compact('data'));
     }
 
     public function email_settings()
