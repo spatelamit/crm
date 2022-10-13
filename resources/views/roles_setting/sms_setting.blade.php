@@ -42,13 +42,15 @@
                   </tr>
                 </thead>
                 <tbody>
+                  
+                  @foreach($data['sms_data'] as $sms_data)
                   <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>CEO</td>
-                    <td>demo@example.com</td>
-                    <td>9898989898</td>
-                    <td>9898989898</td>
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$sms_data->sender_id}}</td>
+                    <td>{{$sms_data->pe_id}}</td>
+                    <td>{{$sms_data->template_id}}</td>
+                    <td>{{$sms_data->sender_id}}</td>
+                    <td>{{$sms_data->sender_id}}</td>
                     <td><div class="btn-group btn-group-sm" style="float: none;">
                         <button type="button" class="btn btn-info" style="float: none; margin: 5px;"><span class="fa fa-pencil"></span></button>
                         <button type="button" class="btn btn-danger" style="float: none; margin: 5px;"><span class="fa fa-trash"></span></button>

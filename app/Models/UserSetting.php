@@ -188,7 +188,15 @@ class UserSetting extends Model
             }
 
             public function GetSmsData(){
-                
+                $result=DB::table('user_massage_dlt_details')
+                        ->where('user_id',session()->get('id'))
+                        ->get();
+                if($result){
+                    return $result;
+                }else{
+                    return false;
+                }
+
             }
 
 }

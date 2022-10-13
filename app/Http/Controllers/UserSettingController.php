@@ -167,7 +167,7 @@ class UserSettingController extends Controller
     public function sms_settings()
     {
     	$data['sms_data']=$this->Usersetting->GetSmsData();
-        return view('roles_setting.sms_setting');
+        return view('roles_setting.sms_setting',compact('data'));
     }
 
     public function email_settings()
