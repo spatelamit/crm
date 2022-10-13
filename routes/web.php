@@ -38,6 +38,11 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/rolestree',[UserSettingController::class, 'rolestree']);
 	Route::post('/save-role',[UserSettingController::class, 'save_role']);
 	Route::get('/edit-role/{id}',[UserSettingController::class, 'edit_role']);
+	Route::post('/update-role',[UserSettingController::class, 'update_role']);
+	Route::get('/delete-role/{id}',[UserSettingController::class, 'delete_role']);
+	Route::post('/update-user',[UserSettingController::class, 'update_user']);
+	
+
 	// end user setting//
 
 
