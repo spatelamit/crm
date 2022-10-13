@@ -170,6 +170,18 @@ class UserSettingController extends Controller
         return view('roles_setting.sms_setting',compact('data'));
     }
 
+    public function update_sms_details(Request $req){
+		 $result=$this->Usersetting->UpdateSmsDetails($req);  
+		 if($result){
+    		return redirect('sms_settings')->with("success", "Successfully Updated SMS DLT details!")	;
+
+    	}else{
+    		return redirect('sms_settings')->with("error", 'Details not updated');
+
+    	}	
+
+    }
+
     public function email_settings()
     {
         return view('roles_setting.email_setting');

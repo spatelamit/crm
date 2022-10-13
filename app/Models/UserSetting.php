@@ -199,4 +199,22 @@ class UserSetting extends Model
 
             }
 
+            public function UpdateSmsDetails($req){
+
+                $data=array(
+                    'template'=>$req->template,
+                    'sender_id'=>$req->sender_id,
+                    'pe_id'=>$req->pe_id,
+                    'template_id'=>$req->template_id,
+                    
+                );
+             
+                $result=DB::table('user_massage_dlt_details')->where('id',$req->sms_id)->update($data);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
 }
