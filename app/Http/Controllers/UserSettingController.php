@@ -121,8 +121,42 @@ class UserSettingController extends Controller
 
         return view('roles_setting.users_account_setting',compact('data'));
     }
+
+    public function add_user(Request $req){
+    	$result=$this->Usersetting->AddUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+
+    }
     public function update_user(Request	$req){
-    	dd($req->all());
+    	$result=$this->Usersetting->UpdateUser($req);
+    	if($result){
+    		return redirect('user_account_setting');
+
+    	}else{
+    		return redirect('user_account_setting');
+
+    	}
+
+    }
+    public function delete_user($id){
+    	$data=array(
+    		'status'=>'0',
+    	);
+
+    	$result=DB::table('users')->where('id',$id)->update($data);
+    	if($result){
+    		return true;
+    	}else{
+    		return false;
+    	}
+
 
     }
 
