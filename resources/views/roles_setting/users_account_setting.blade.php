@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-8 mb-4 mb-xl-0">
             <h4 class="font-weight-bold text-dark"> User Account Setting </h4>
-            <p class="font-weight-normal mb-2 text-muted"> Setting </p>
+           
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">

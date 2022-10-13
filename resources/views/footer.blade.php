@@ -15,12 +15,10 @@
  <!-- page-body-wrapper ends -->
  </div>
  <!-- container-scroller -->
- <<<<<<< HEAD <!-- JS -->
 
-     =======
      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-     >>>>>>> 0bea8fb52bf47fcc864aaae082e13691de8b7d29
+   
      <!-- base:js -->
      <script src="{{ url('assets/vendors/base/vendor.bundle.base.js') }}"></script>
 
