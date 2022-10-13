@@ -21,8 +21,14 @@
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars.css')}}">
   <!-- End plugin css for this page -->
+<<<<<<< HEAD
    <!-- CSS -->
 
+=======
+  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+ 
+>>>>>>> 0bea8fb52bf47fcc864aaae082e13691de8b7d29
   <!-- inject:css -->
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
