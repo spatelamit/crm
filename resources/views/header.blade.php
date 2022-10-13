@@ -6,6 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Regal Admin</title>
+
+
+
+
   <!-- base:css -->
   <link rel="stylesheet" href="{{url('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/feather/feather.css')}}">
@@ -17,16 +21,22 @@
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css')}}">
   <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars.css')}}">
   <!-- End plugin css for this page -->
+<<<<<<< HEAD
+   <!-- CSS -->
+
+=======
   <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
          rel = "stylesheet">
  
+>>>>>>> 0bea8fb52bf47fcc864aaae082e13691de8b7d29
   <!-- inject:css -->
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('/assets/images/favicon.png')}}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="container-scroller">
+<div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -185,10 +195,6 @@
               <span class="menu-title"> Universal Filter</span>
             </a>
           </li>
-
-
-
-
         </ul>
       </nav>
       <!-- partial -->
