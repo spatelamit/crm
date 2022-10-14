@@ -184,6 +184,18 @@
               <span class="menu-title"> Universal Filter</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('meetings')}}">
+              <i class="fa fa-filter menu-icon"></i>
+              <span class="menu-title"> Meetings</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('tasks')}}">
+              <i class="fa fa-filter menu-icon"></i>
+              <span class="menu-title"> Tasks</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->
