@@ -187,7 +187,7 @@
             if (willDelete) {
               $.ajax({
                 type:"GET",
-                  url: "{{url('/delete-sms-details') }}/" + id,
+                  url: "{{url('/delete-pipeline') }}/" + id,
                   
                   success : function () {
 
