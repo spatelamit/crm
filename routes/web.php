@@ -72,6 +72,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
     //customer
     Route::get('/deals',[CustomerController::class, 'deals']);
+    Route::get('/meetings',[CustomerController::class, 'meetings']);
+    Route::get('/tasks',[CustomerController::class, 'tasks']);
 
 
 });

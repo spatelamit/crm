@@ -61,10 +61,28 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 
+
 .Started_box ul li {
   display: inline-block;
   list-style:none;
 }
+.line_ashish a {
+  width: 100%;
+  padding: 8px 4px;
+  margin: 5px;
+  border-bottom: 1px solid #ccc;
+}
+.pop_deals {
+margin: 13px 0px 0px;
+}
+
+.pop_deals a {
+background-color: rgba(80, 111, 228, 0.1);
+border: none;
+color: #506fe4;
+padding: 7px 12px;
+}
+
 .Started_box_to {
   text-align: center;
 }

@@ -10,5 +10,15 @@ class CustomerController extends Controller
     {
         return view('deals');
     }
+
+    public function meetings()
+    {
+        return view('meetings');
     }
+
+    public function tasks()
+    {
+        return view('tasks');
+    }
+
 }

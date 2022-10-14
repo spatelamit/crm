@@ -8,152 +8,128 @@
  .m-b-20 {
   margin-bottom: 20px;
 }
-
 .btn-primary-rgba {
   background-color: rgba(80, 111, 228, 0.1);
   border: none;
   color: #506fe4;
 }
-
 .btn-primary-rgba:hover {
   background-color: #506fe4;
   border: none;
   color: #ffffff;
 }
-
 .btn-primary-rgba:focus {
   background-color: #506fe4;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #a8b8f2;
 }
-
 .btn-secondary-rgba {
   background-color: rgba(150, 163, 182, 0.1);
   border: none;
   color: #96a3b6;
 }
-
 .btn-secondary-rgba:hover {
   background-color: #96a3b6;
   border: none;
   color: #ffffff;
 }
-
 .btn-secondary-rgba:focus {
   background-color: #96a3b6;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #a5b0c0;
 }
-
 .btn-success-rgba {
   background-color: rgba(67, 209, 135, 0.1);
   border: none;
   color: #43d187;
 }
-
 .btn-success-rgba:hover {
   background-color: #43d187;
   border: none;
   color: #ffffff;
 }
-
 .btn-success-rgba:focus {
   background-color: #43d187;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #95e5bb;
 }
-
 .btn-danger-rgba {
   background-color: rgba(249, 97, 109, 0.1);
   border: none;
   color: #f9616d;
 }
-
 .btn-danger-rgba:hover {
   background-color: #f9616d;
   border: none;
   color: #ffffff;
 }
-
 .btn-danger-rgba:focus {
   background-color: #f9616d;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #fdc3c8;
 }
-
 .btn-warning-rgba {
   background-color: rgba(247, 187, 77, 0.1);
   border: none;
   color: #f7bb4d;
 }
-
 .btn-warning-rgba:hover {
   background-color: #f7bb4d;
   border: none;
   color: #ffffff;
 }
-
 .btn-warning-rgba:focus {
   background-color: #f7bb4d;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #fbe0af;
 }
-
 .btn-info-rgba {
   background-color: rgba(61, 155, 251, 0.1);
   border: none;
   color: #3d9bfb;
 }
-
 .btn-info-rgba:hover {
   background-color: #3d9bfb;
   border: none;
   color: #ffffff;
 }
-
 .btn-info-rgba:focus {
   background-color: #3d9bfb;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #a1cffd;
 }
-
 .btn-light-rgba {
   background-color: rgba(242, 243, 247, 0.1);
   border: none;
   color: #8A98AC;
 }
-
 .btn-light-rgba:hover {
   background-color: #f2f3f7;
   border: none;
   color: #ffffff;
 }
-
 .btn-light-rgba:focus {
   background-color: #f2f3f7;
   border: none;
   color: #ffffff;
   box-shadow: 0 0 0 0.2rem #fbfcfd;
 }
-
 .btn-dark-rgba {
   background-color: rgba(20, 29, 70, 0.1);
   border: none;
   color: #141d46;
 }
-
 .btn-dark-rgba:hover {
   background-color: #141d46;
   border: none;
   color: #ffffff;
 }
-
 .btn-dark-rgba:focus {
   background-color: #141d46;
   border: none;
@@ -164,43 +140,33 @@
 .bg-primary-rgba {
   background-color: rgba(80, 111, 228, 0.1) !important;
 }
-
 .bg-secondary-rgba {
   background-color: rgba(150, 163, 182, 0.1) !important;
 }
-
 .bg-success-rgba {
   background-color: rgba(67, 209, 135, 0.1) !important;
 }
-
 .bg-danger-rgba {
   background-color: rgba(249, 97, 109, 0.1) !important;
 }
-
 .bg-warning-rgba {
   background-color: rgba(247, 187, 77, 0.1) !important;
 }
-
 .bg-info-rgba {
   background-color: rgba(61, 155, 251, 0.1) !important;
 }
-
 .bg-light-rgba {
   background-color: rgba(242, 243, 247, 0.1) !important;
 }
-
 .bg-dark-rgba {
   background-color: rgba(20, 29, 70, 0.1) !important;
 }
-
 .kanban-menu {
   text-align: right;
 }
-
 .kanban-users {
   text-align: right;
 }
-
 .avatar-group {
   display: inline-flex;
 }
@@ -226,7 +192,6 @@
   z-index: 1;
   transform: scale(1.1);
 }
-
  
   
   </style>
@@ -297,6 +262,7 @@
                                                 <div class="col-7">
                                                     <div class="kanban-comment">
                                                         <span class="font-14">Web Development</span>
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-5">
@@ -306,6 +272,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-12">
+                                                <a class="" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ Edit</a>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -705,6 +678,54 @@
 
 
 </div>
+
+
+<div class="modal fade come-from-modal top" id="deal_date_update" aria-modal="true">
+  <div class="modal-dialog animated" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle-1"> Add SMS template</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+      </div>
+      <form method="post" action="http://127.0.0.1:8000/add-sms-details" autocomplete="nope">
+              <input type="hidden" name="_token" value="7dRsgn0ShHTVz55wjHLX1e4jRxcsNm5PtctLKYtk">      <div class="modal-body">
+        <div class="form-group mb-10">
+          <label>Authentication Key:</label>
+          <input type="text" name="authKey" class="form-control bg_input" placeholder="Enter your Authentication Key" required="">
+        </div>
+        <div class="form-group mb-10">
+          <label>Sender Id:</label>
+          <input type="text" placeholder="Enter your Sender Id (Its should be 6  characters)" pattern="[A-Za-z]{6}" title="6 haracters allowd, not a numerics " name="sender_id" class="form-control bg_input " required="">
+        </div>
+        <div class="form-group mb-10">
+          <label>PE ID:</label>
+          <input type="text" pattern="[0-9]{19}" title="PE ID  should be 19 digit" name="pe_id" class="form-control bg_input" placeholder="Enter your PE ID (Its should be 19 digit)" required="">
+        </div>
+        <div class="form-group mb-10">
+          <label>Template_ID:</label>
+          <input type="text" name="template_id" pattern="[0-9]{19}" title="template ID  should be 19 digit" class="form-control bg_input" placeholder="Enter Template ID " required="">
+        </div>
+        <div class="form-group mb-10">
+          <label>Content:</label>
+          <textarea name="template" class="form-control bg_input" placeholder="Enter your Content" required=""></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
    <script src="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/js/custom/custom-crm-lead.js"></script>
 
