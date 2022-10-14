@@ -265,4 +265,15 @@ class UserSettingController extends Controller
         }
     }
 
+    public function add_fields(){
+
+        return view('roles_setting/add-columns');
+    }
+    public function save_fields(Request $req){
+        dd($req->all());
+       $result=$this->Usersetting->SaveFields($req);
+        dd (str_replace(" ","_",strtolower($req->label)));
+
+    }
+
 }

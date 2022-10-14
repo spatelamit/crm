@@ -50,7 +50,10 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::post('/add-email-details',[UserSettingController::class, 'add_email_details']);
 	Route::post('/update-email-details',[UserSettingController::class, 'update_email_details']);
 	Route::get('/delete-email-details/{id}',[UserSettingController::class, 'delete_email_details']);
-	Route::post('/add-pipeline',[UserSettingController::class, 'add_pipeline']);
+	Route::get('/delete-email-details/{id}',[UserSettingController::class, 'delete_email_details']);
+
+	Route::get('/add-fields',[UserSettingController::class, 'add_fields']);
+	Route::post('/save-fields',[UserSettingController::class, 'save_fields']);
 	// end user setting//
 
 
