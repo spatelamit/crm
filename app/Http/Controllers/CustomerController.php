@@ -10,4 +10,5 @@ class CustomerController extends Controller
     {
         return view('deals');
     }
+    }
 }
