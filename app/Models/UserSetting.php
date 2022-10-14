@@ -284,15 +284,51 @@ public function UpdateEmailDetails($req){
 
 //pipelines//
     public function GetPipelines(){
+        
+        DB::statement("SET SQL_MODE=''");
         $result=DB::table('pipeline_group')
-            ->select('id','pipeline_name')
-            ->where('company_id',session()->get('company_id'))
+            ->select('pipeline_group.id','pipeline_group.pipeline_name','users_pipeline_stages.id as upid','users_pipeline_stages.stage_name','users_pipeline_stages.stage_colour','users_pipeline_stages.stage_slug','users_pipeline_stages.pipeline_group_id')
+            ->where('pipeline_group.company_id',session()->get('company_id'))
+            ->join('users_pipeline_stages','users_pipeline_stages.pipeline_group_id','=','pipeline_group.id')
+            ->groupBy('users_pipeline_stages.pipeline_group_id')
             ->get();
-        if($result){
-                 return $result;
-         }else{
-                return false;
+                if($result){
+                         return $result;
+                 }else{
+                        return false;
+                  }
     }
+    
+    public function SavePipeline($req){
+        // dd($req->all());
+        $pipeline_name=$req->pipeline_stage_name;
+        $stage_name=$req->stage_name;
+        $stage_colour=$req->stage_colour;
+
+        $pipeline_group=array(
+            'pipeline_name'=>$pipeline_name,
+            'company_id'=>session()->get('company_id'),
+        );
+        $pipeline_group_id=DB::table('pipeline_group')->insertGetId($pipeline_group);
+        for ($i=0; $i <count($req->stage_name) ; $i++) { 
+
+            $data[]=array(
+                'pipeline_group_id'=>$pipeline_group_id,
+                'user_id'=>session()->get('id'),
+                'stage_name'=>$stage_name[$i],
+                'stage_colour'=>$stage_colour[$i],
+                'stage_slug'=> str_replace(" ","_",strtolower($stage_name[$i])),
+            );
+        }
+        $result=DB::table('users_pipeline_stages')->insert($data);
+        if($result){
+              return $result;
+         }else{
+           return false;
+         }
+
+
+
     }
 }
  
