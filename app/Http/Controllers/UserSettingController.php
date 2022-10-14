@@ -246,9 +246,11 @@ class UserSettingController extends Controller
 
     }
 
-    public function pipelines_stages()
-    {
-        return view('roles_setting.pipelines_stages');
+   public function pipelines_stages(){
+
+        $data['pipelines_group']=$this->Usersetting->GetPipelines();
+     
+        return view('roles_setting.pipelines_stages',compact('data'));
     }
 
 }
