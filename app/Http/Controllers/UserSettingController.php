@@ -207,10 +207,48 @@ class UserSettingController extends Controller
 
     public function email_settings()
     {
-        return view('roles_setting.email_setting');
+    	$data['email_data']=$this->Usersetting->GetEmailData();
+        return view('roles_setting.email_setting',compact('data'));
     }
+
+     public function update_email_details(Request $req){
+		 $result=$this->Usersetting->UpdateEmailDetails($req);  
+		 if($result){
+    		return redirect('email_settings')->with("success", "Successfully Updated SMS DLT details!")	;
+
+    	}else{
+    		return redirect('email_settings')->with("error", 'Details not updated');
+
+    	}	
+
+    }
+     public function add_email_details(Request $req){
+    	$result=$this->Usersetting->AddEmailDetails($req); 
+    	if($result){
+    		return redirect('email_settings')->with("success", "Successfully Added Email details!")	;
+
+    	}else{
+    		return redirect('email_settings')->with("error", 'Email Details Not Added');
+
+    	}	 
+
+    }
+    public function delete_email_details($id){
+
+    	$result=DB::table('email_api_details')->where('id',$id)->delete();
+
+    	if($result){
+    		return redirect('email_settings')->with("success", "Successfully Deleted Email details!")	;
+    	}else{
+    		return redirect('email_settings')->with("error", 'Email Details Not delete!');
+    	}
+
+
+    }
+
     public function pipelines_stages()
     {
         return view('roles_setting.pipelines_stages');
     }
+
 }

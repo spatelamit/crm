@@ -237,4 +237,52 @@ class UserSetting extends Model
                 }
             }
 
+             public function GetEmailData(){
+                $result=DB::table('email_api_details')
+                        ->where('user_id',session()->get('id'))
+                        ->get();
+                if($result){
+                    return $result;
+                }else{
+                    return false;
+                }
+
+            }
+
+            public function AddEmailDetails($req){
+
+                $data=array(
+                    'email_id'=>$req->email_id,
+                    'api_key'=>$req->auth_Key, 
+                    'user_id'=>session()->get('id'),
+                    
+                );
+                // dd($data);
+             
+                $result=DB::table('email_api_details')->insert($data);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
+              public function UpdateEmailDetails($req){
+
+                $data=array(
+                   'email_id'=>$req->email_id,
+                    'api_key'=>$req->auth_Key, 
+                    
+                    
+                    
+                );
+                // dd($data);
+             
+                $result=DB::table('email_api_details')->where('id',$req->eid)->update($data);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
 }

@@ -47,8 +47,9 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::post('/update-sms-details',[UserSettingController::class, 'update_sms_details']);
 	Route::post('/add-sms-details',[UserSettingController::class, 'add_sms_details']);
 	Route::get('/delete-sms-details/{id}',[UserSettingController::class, 'delete_sms_details']);
-	
-
+	Route::post('/add-email-details',[UserSettingController::class, 'add_email_details']);
+	Route::post('/update-email-details',[UserSettingController::class, 'update_email_details']);
+	Route::get('/delete-email-details/{id}',[UserSettingController::class, 'delete_email_details']);
 	// end user setting//
 
 

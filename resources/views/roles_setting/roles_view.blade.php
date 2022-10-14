@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-8 mb-4 mb-xl-0">
             <h4 class="font-weight-bold text-dark"> Roles </h4>
-            <p class="font-weight-normal mb-2 text-muted"> Add Roles </p>
+           
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
@@ -15,25 +15,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     <div class="row">
