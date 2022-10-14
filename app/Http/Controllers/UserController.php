@@ -50,14 +50,14 @@ class UserController extends Controller
             Session::put('parent_id', $data->parent_id);
             Session::put('email_id', $data->email);
             Session::put('role_id', $data->role_id);
-          
+
             // if($data->IsAdmin == 'Y'){
             //     Session::put('IsAdmin', 'Y');
             // }
 
             // return view('index');
 
-            return redirect('/user_dashboard')->with("success", "Successfully Login!");
+            return redirect('/home')->with("success", "Successfully Login!");
         }
         else{
             return redirect("/")->with("error", 'Login details are not valid');
@@ -78,7 +78,7 @@ class UserController extends Controller
     }
 
 
-    
+
 
 
 
