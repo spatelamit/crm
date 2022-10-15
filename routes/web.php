@@ -31,6 +31,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/logout',[UserController::class, 'logout']);
     Route::get('/user_dashboard',[UserController::class, 'user_dashboard']);
     Route::get('/home',[UserController::class, 'home']);
+    Route::get('/user_profile',[UserController::class, 'user_profile']);
 
 
 	//setting//
@@ -77,6 +78,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/deals',[CustomerController::class, 'deals']);
     Route::get('/meetings',[CustomerController::class, 'meetings']);
     Route::get('/tasks',[CustomerController::class, 'tasks']);
+    Route::get('/teams',[CustomerController::class, 'teams']);
 
 
 });
