@@ -282,4 +282,8 @@ class UserSettingController extends Controller
 
     }
 
+    public function module_layout(){
+        
+    }
+
 }
