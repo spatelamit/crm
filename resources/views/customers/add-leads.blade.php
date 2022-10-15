@@ -1,5 +1,5 @@
 @include('header')
-<div class="contentbar">
+<div class="content-wrapper">
 
 	  <div class="row">
         <div class="col-sm-8 mb-4 mb-xl-0">
@@ -8,7 +8,7 @@
         </div>
        
     </div>
-
+    <a href="{{url('module-layout',$data['selected_fields'][0]->module_id)}}">Layout</a>
   <div class=" right" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog  slideInRight  animated" role="document">
     <div class="modal-content">
@@ -22,6 +22,7 @@
       	@foreach($data['selected_fields'] as $val)
         <div class="form-group mb-10">
           <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
+          <input type="hidden" name="column_id">
           <input type="{{$val->type}}"  name="{{$val->col_name}}" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required>
         </div>
         @endforeach

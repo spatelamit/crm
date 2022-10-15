@@ -22,12 +22,30 @@ class CustomerController extends Controller
     
         return view('customers.leads',compact('data'));
     }
+
       public function add_leads(){
       
        $module_id='8';
+
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-    
+    // dd($data['selected_fields'][0]->module_id);
         return view('customers.add-leads',compact('data'));
+    }
+
+    public function module_layout($module_id){
+        
+         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+         $data['all_fields']=$this->Customer->GetAllFields();
+         $data['mid']=$module_id;
+         // dd($data['selected_fields']);
+        return view('customers.module-layout',compact('data'));
+
+
+    }
+    public function add_mod_fields(Request $req){
+        dd($req->all());
+
+
     }
     public function deals()
     {
