@@ -21,7 +21,7 @@
                         <thead>
                           <tr>
                             <th>
-                               My Team 
+                              Tech Support
                             </th>
                             <th style="text-align:center;">
                                 Leads 
