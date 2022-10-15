@@ -249,8 +249,31 @@ class UserSettingController extends Controller
    public function pipelines_stages(){
 
         $data['pipelines_group']=$this->Usersetting->GetPipelines();
+
+        // dd($data);
      
         return view('roles_setting.pipelines_stages',compact('data'));
+    }
+    public function add_pipeline(Request $req){
+
+        $result=$this->Usersetting->SavePipeline($req);
+
+        if($result){
+            return redirect('pipelines_stages')->with("success", "Successfully Added Pipeline!")   ;
+        }else{
+            return redirect('pipelines_stages')->with("error", 'Pipeline Not Added!');
+        }
+    }
+
+    public function add_fields(){
+
+        return view('roles_setting/add-columns');
+    }
+    public function save_fields(Request $req){
+        dd($req->all());
+       $result=$this->Usersetting->SaveFields($req);
+        dd (str_replace(" ","_",strtolower($req->label)));
+
     }
 
 }

@@ -3,8 +3,32 @@
  <link href="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/plugins/dragula/dragula.min.css" rel="stylesheet">
  <script src="https://themesbox.in/admin-templates/soyuz/html/light-vertical/assets/plugins/dragula/dragula.min.js"></script>
  
+ 
+ 
    
 <style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  .m-b-20 {
   margin-bottom: 20px;
 }
@@ -218,28 +242,39 @@
                                 <h5 class="card-title mb-0">New Lead</h5>
                             </div>
                             <div class="card-body">
+                            
+                            
+                            
+                            
+                            
                                 <div id="kanban-board-one">
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                     <div class="card bg-primary-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Leong Nan</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
                                                     
                         <div class="btn-group-vertical" role="group" aria-label="Basic example">
                           <div class="btn-group">
                             <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
      <div class="dropdown-menu dropdown-menu-right">                        
     <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
-    <a class="dropdown-item"><span class="icon-briefcase"></span>Make a Deal </a>
     <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
-    <a class="dropdown-item"><span class="icon-trash text-info"></span> Delete</a>
     <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
-    <a class="dropdown-item"><span class="icon-clock text-danger" aria-hidden="true"></span> Edit Detail </a>
     <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
 	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
                             </div>                          
@@ -259,42 +294,88 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Web Development</span>
+                                                        <span class="font-14">Web Development</span><br />
                                                         <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$259</h5>
-                                                        </div>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="col-12">
-                                                <a class="" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
-                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
- Edit</a>
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
                                                 
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                                     <div class="card bg-primary-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">David Nephew</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton2">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -304,22 +385,54 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Digital Marketing</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$589</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
                                 <button type="button" class="btn btn-primary-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Leads</button>
                             </div>
                         </div>
@@ -335,17 +448,32 @@
                                 <div id="kanban-board-two">
                                     <div class="card bg-success-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Brad Lorem</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton3">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -355,108 +483,71 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">App Development</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$315</h5>
-                                                        </div>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-success-rgba m-b-20">
-                                        <div class="card-body">
-                                            <div class="row align-items-center mb-3">
-                                                <div class="col-8">
-                                                    <div class="kanban-tag">
-                                                        <h5 class="mb-0">Shivay Om</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4">
-                                                    <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton4">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <div class="col-7">
-                                                    <div class="kanban-comment">
-                                                        <span class="font-14">API Integration</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$25</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card bg-success-rgba m-b-20">
-                                        <div class="card-body">
-                                            <div class="row align-items-center mb-3">
-                                                <div class="col-8">
-                                                    <div class="kanban-tag">
-                                                        <h5 class="mb-0">Liva Longaria</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="col-4">
-                                                    <div class="kanban-menu">
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton5">
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
-                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <div class="col-7">
-                                                    <div class="kanban-comment">
-                                                        <span class="font-14">Web Development</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
                                                             <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card bg-success-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Enam Singh</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-success p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton6">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -466,18 +557,188 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Page Development</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$450</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-success-rgba m-b-20">
+                                        <div class="card-body">
+                                            <div class="row align-items-center ">
+                                                <div class="col-8">
+                                                    <div class="kanban-tag">
+                                                        <h5 class="mb-0"> ashish test </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-10">
+                                                    <div class="kanban-comment">
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-success-rgba m-b-20">
+                                        <div class="card-body">
+                                            <div class="row align-items-center ">
+                                                <div class="col-8">
+                                                    <div class="kanban-tag">
+                                                        <h5 class="mb-0"> ashish test </h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
+                                                                <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <div class="col-10">
+                                                    <div class="kanban-comment">
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -497,17 +758,32 @@
                                 <div id="kanban-board-three">
                                     <div class="card bg-warning-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Jency Raghav</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton7">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -517,34 +793,71 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Social Marketing</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$29</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card bg-warning-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Sri Narayan</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton8">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -554,34 +867,71 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Web Development</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$879</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card bg-warning-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Sandy Cox</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-warning p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton9">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -591,18 +941,40 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Brochure Design</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$298</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>                                    
@@ -622,17 +994,32 @@
                                 <div id="kanban-board-four">
                                     <div class="card bg-secondary-rgba m-b-20">
                                         <div class="card-body">
-                                            <div class="row align-items-center mb-3">
+                                            <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0">Ramesh Ram</h5>
+                                                        <h5 class="mb-0"> ashish test </h5>
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                    <div class="kanban-menu">
+                                                    <div class="kanban-menu p-btn-0">
+                                                    
+                        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></button>
+     <div class="dropdown-menu dropdown-menu-right">                        
+    <a class="dropdown-item"> <span class="icon-briefcase text-warning"></span>Add meeting </a>
+    <a class="dropdown-item"><span class="icon-pushpin text-danger"></span>Add task </a>
+    <a class="dropdown-item"><span class="icon-spell-check text-warning"></span> Notes </a> 
+    <a class="dropdown-item"><span class="icon-smartphone text-info"></span> Send Email </a>
+	<a class="dropdown-item"><span class="icon-layers text-danger"></span> Clone</a>
+                            </div>                          
+                          </div>
+        
+                        </div>
+                                                    
                                                         <div class="dropdown">
-                                                            <button class="btn btn-link text-secondary p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton10">
+                                                            <button class="btn btn-link p-0 m-0 border-0 l-h-20 font-16" type="button" id="KanbanBoardButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
+                                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="KanbanBoardButton1">
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-refresh-ccw mr-2"></i>Sync</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-edit-2 mr-2"></i>Edit</a>
                                                                 <a class="dropdown-item" href="#"><i class="feather icon-trash mr-2"></i>Delete</a>
@@ -642,18 +1029,40 @@
                                                 </div>
                                             </div>
                                             <div class="row align-items-center">
-                                                <div class="col-7">
+                                                <div class="col-10">
                                                     <div class="kanban-comment">
-                                                        <span class="font-14">Web Development</span>
+                                                        <span class="font-14">Web Development</span><br />
+                                                        <span class="font-10">10-12-2022</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-5">
-                                                    <div class="kanban-users">
-                                                        <div class="avatar-group">
-                                                            <h5 class="mb-0">$569</h5>
+                                                
+                                                
+                                                <div class="col-2">
+                                                    <div class="kanban-comment text-right">
+                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                 <div class="col-6 ">
+                                                 <div class="kanban-users text-left">
+                                                        <div class="avatar-group black_color">
+                                                            <h5 class="mb-0">$259</h5>
                                                         </div>
                                                     </div>
+                                                 </div>
+                                                 
+                                                
+                                                <div class="col-6">
+                                                
+                                                <div class="Updates_dox text-right">
+                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                               </div>
+                                               
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </div>                                   
@@ -681,40 +1090,230 @@
 
 
 <div class="modal fade come-from-modal top" id="deal_date_update" aria-modal="true">
-  <div class="modal-dialog animated" role="document">
+  <div class="modal-dialog modal-xl animated" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle-1"> Add SMS template</h5>
+      <div class="modal-header de_right">
+      
+      
+      
+        <h5 class="modal-title" id="exampleModalLongTitle-1"> Update Details </h5>
+        
+        <div class="de_right">
+        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+
+                          <div class="btn-group dropleft">
+   <button type="button" class="" data-toggle="dropdown"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+                            <div class="dropdown-menu">
+                             <a class="dropdown-item">Move</a>
+                              <a class="dropdown-item"> Clone </a>
+                              <a class="dropdown-item">Delete</a>
+                             
+                            </div>                          
+                          </div>
+
+                        </div>
+        </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
       </div>
-      <form method="post" action="http://127.0.0.1:8000/add-sms-details" autocomplete="nope">
-              <input type="hidden" name="_token" value="7dRsgn0ShHTVz55wjHLX1e4jRxcsNm5PtctLKYtk">      <div class="modal-body">
-        <div class="form-group mb-10">
-          <label>Authentication Key:</label>
-          <input type="text" name="authKey" class="form-control bg_input" placeholder="Enter your Authentication Key" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label>Sender Id:</label>
-          <input type="text" placeholder="Enter your Sender Id (Its should be 6  characters)" pattern="[A-Za-z]{6}" title="6 haracters allowd, not a numerics " name="sender_id" class="form-control bg_input " required="">
-        </div>
-        <div class="form-group mb-10">
-          <label>PE ID:</label>
-          <input type="text" pattern="[0-9]{19}" title="PE ID  should be 19 digit" name="pe_id" class="form-control bg_input" placeholder="Enter your PE ID (Its should be 19 digit)" required="">
-        </div>
-        <div class="form-group mb-10">
-          <label>Template_ID:</label>
-          <input type="text" name="template_id" pattern="[0-9]{19}" title="template ID  should be 19 digit" class="form-control bg_input" placeholder="Enter Template ID " required="">
-        </div>
-        <div class="form-group mb-10">
-          <label>Content:</label>
-          <textarea name="template" class="form-control bg_input" placeholder="Enter your Content" required=""></textarea>
-        </div>
+    
+     <div class="modal-body">
+    <div class="row">    
+     
+     <div class="col-md-8">
+    
+    <div class="dael_name_ashish">
+    <div class="form-group">
+                      <label for="exampleInputName1">Deal Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Deal Name">
+                    </div>
+                    
+     <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" placeholder="Description"></textarea>
+                    </div>
+                    
+                    
+      <div class="comment_box_ashish">              
+    <div class="row">
+    
+    <div class="col-md-12">
+    <h5> Comments </h5>
+    <hr />
+    </div>
+    
+    <div class="col-md-1">
+    <div class="comment_user_img">
+    <img src="assets/img/demoimg.png" /></div>
+    </div>
+
+    
+    <div class="col-md-11">
+     <div class="form-group">
+     <input type="text" class="form-control" id="exampleInputName1" placeholder="Add Comment">
+     <span> Pro tip: to comment </span>
+     </div>
+    </div>
+    
+    
+    <div class="col-md-12">
+    <ul class="list-ticked">
+   
+    <li >
+    <div class="row">
+    <div class="col-md-1">
+    <div class="comment_user_img">
+    <img src="assets/img/demoimg.png" /></div>
+    </div>
+    
+    
+    <div class="col-md-11">
+    <div class="list_comment">
+    <p> ashish panwar ...<a data-tooltip="Oct 14, 2022, 2:39 PM"> 1 hour ago </a></p>
+    <h6> data lead job description ........... data lead job description.......... data lead job description  </h6>
+    <a href="#">Edit</a> &nbsp; &nbsp;
+    <a href="#"> Delete  </a>
+    
+  
+    
+    
+    </div>
+    </div>
+    </div>
+    </li>
+    
+    
+    </ul>
+    </div>
+    
+    
+    </div>                
+     </div>         
+    </div>
+    
+    
+     </div>
+     
+     <div class="col-md-4">
+    <div>
+    <div class="form-group">
+    <label> Stages Status </label>
+    <select class="form-control" id="exampleSelectGender">
+                          <option>Backlog</option>
+                          <option>In review</option>
+                          <option>Done</option>
+                        </select>
+                       </div> 
+
+    </div>
+    
+    <div>
+    <div class="form-group">
+    <label> Stages Status </label>
+    <select class="form-control" id="exampleSelectGender">
+                          <option>Backlog</option>
+                          <option>In review</option>
+                          <option>Done</option>
+                        </select>
+                       </div> 
+
+    </div>
+    
+    
+       <div class="form-group dl_as">
+    
+    <label> Assignees </label>   
+       
+   <dl class="dropdown_as">
+
+  <dt>
+    <a href="#">
+      <span class="hida">Unassigned</span>
+      <p class="multiSel"></p>
+    </a>
+  </dt>
+
+  <dd>
+    <div class="mutliSelect">
+      <ul>
+        <li>
+          <input type="checkbox" value="Apple" />Apple
+        </li>
+        <li>
+          <input type="checkbox" value="Blackberry" />Blackberry
+        </li>
+        <li>
+          <input type="checkbox" value="HTC" />HTC
+        </li>
+        <li>
+          <input type="checkbox" value="Sony Ericson" />Sony Ericson
+        </li>
+        <li>
+          <input type="checkbox" value="Motorola" />Motorola
+        </li>
+        <li>
+          <input type="checkbox" value="Nokia" />Nokia
+        </li>
+      </ul>
+    </div>
+  </dd>
+
+</dl>
+
+</div>
+
+
+  <div class="form-group">
+  <div class="form-group">
+    <label> Repoter </label>
+    <select class="form-control" id="exampleSelectGender">
+                          <option>Neha</option>
+                          <option>Anitraj</option>
+                          <option>ashish</option>
+                        </select>
+                       </div>
+  </div>
+  
+  
+  <div class="form-group">
+  <div class="form-group">
+    <label> Priority </label>
+    <select class="form-control" id="exampleSelectGender">
+                          <option>Highest</option>
+                          <option>High</option>
+                          <option>Low</option>
+                           <option>Lowest</option>
+                        </select>
+                       </div>
+  </div>
+  
+  
+  <div class="form-group">
+  <hr />
+  <div class="dael_date_time_ashish">
+  
+  <p>Created: <span> Dec 3, 2021, 11:18 PM </span></p>
+  <p>Updated: <span> 4 minutes ago </span></p>
+  
+  </div>
+  </div>
+    
+    
+    
+     </div>   
+        
+        
+        
+     </div>   
       </div>
+      
+      
+      
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-info font-weight-bold">Update </button>
       </div>
-    </form>
+  
 
     </div>
   </div>
@@ -723,7 +1322,53 @@
 
 
 
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 
+<script>
+/*
+	Dropdown with Multiple checkbox select with jQuery - May 27, 2013
+	(c) 2013 @ElmahdiMahmoud
+	license: https://www.opensource.org/licenses/mit-license.php
+*/
+
+$(".dropdown_as dt a").on('click', function() {
+  $(".dropdown_as dd ul").slideToggle('fast');
+});
+
+$(".dropdown_as dd ul li a").on('click', function() {
+  $(".dropdown_as dd ul").hide();
+});
+
+function getSelectedValue(id) {
+  return $("#" + id).find("dt a span.value").html();
+}
+
+$(document).bind('click', function(e) {
+  var $clicked = $(e.target);
+  if (!$clicked.parents().hasClass("dropdown_as")) $(".dropdown_as dd ul").hide();
+});
+
+$('.mutliSelect input[type="checkbox"]').on('click', function() {
+
+  var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+    title = $(this).val() + ",";
+
+  if ($(this).is(':checked')) {
+    var html = '<span title="' + title + '">' + title + '</span>';
+    $('.multiSel').append(html);
+    $(".hida").hide();
+  } else {
+    $('span[title="' + title + '"]').remove();
+    var ret = $(".hida");
+    $('.dropdown_as dt a').append(ret);
+
+  }
+});
+</script>
 
 
 

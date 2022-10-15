@@ -60,7 +60,229 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+.Updates_dox {
+  text-align: center;
+  margin: 0px;
+}
 
+
+
+dropdown_as {
+  position: absolute;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.dropdown_as a {
+  color: #fff;
+}
+
+.dropdown_as dd,
+.dropdown_as dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown_as ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown_as dd {
+  position: relative;
+}
+
+.dropdown_as a,
+.dropdown_as a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.dropdown_as dt a {
+background-color: #4F6877;
+display: block;
+min-height: 40px;
+overflow: hidden;
+border: 0;
+width: 100%;
+padding: 10px 15px;
+line-height: 17px;
+height: 40px;
+}
+.dl_as dl {
+  margin: 0px;
+  padding: 0px;
+}
+.dropdown_as dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown_as dd ul {
+  background-color: #4F6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 280px;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown_as span.value {
+  display: none;
+}
+
+.dropdown_as dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown_as dd ul li a:hover {
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment_user_img img {
+  width: 40px;
+}
+.list-ticked li::before {
+  content: '\F12D';
+  color: #fc381d;
+  top: 35px;
+  position: relative;
+}
+.list_comment h6 {
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.list_comment span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.list_comment p {
+  margin: 0px;
+  text-transform: capitalize;
+}
+
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+
+.black_color h5 {
+  color: #000;
+  position: relative;
+  top: 9px;
+}
+.de_right h5 {
+  width: 95%;
+}
+
+.Updates_dox a {
+  border: 1px solid #000;
+  padding: 5px;
+  color: #000;
+}
+.Updates_dox {
+  text-align: center;
+margin: 5px 0px 0px;
+}
+.p-btn-0 .btn{
+	padding:0px;}
 
 .Started_box ul li {
   display: inline-block;
