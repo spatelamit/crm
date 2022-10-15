@@ -37,7 +37,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($data['users'] as $val)
-                                    <tr id="{{ $val->id }}">
+                                    <tr id="{{ $val->id }}" >
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $val->full_name }}</td>
                                         <td>{{ $val->email }}</td>
