@@ -332,7 +332,25 @@ public function UpdateEmailDetails($req){
     }
     public function SaveFields($req){
 
-      
+        for ($i=0; $i <count($req->label) ; $i++) { 
+            $data[]=array(
+            'label'=>$req->label[$i],
+            'type'=>$req->type[$i],
+            'col_name'=>(str_replace(" ","_",strtolower($req->label[$i]))),
+            'company_id'=>session()->get('company_id'),
+            );
+        }
+
+        $result=Db::table('module_columns')->insert($data);
+
+            if($result){
+              return true;
+             }else{
+               return false;
+             }
+
+
+
     }
 }
  
