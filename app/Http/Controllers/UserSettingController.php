@@ -270,9 +270,15 @@ class UserSettingController extends Controller
         return view('roles_setting/add-columns');
     }
     public function save_fields(Request $req){
-        dd($req->all());
+    //     echo "<pre>";
+    // print_r($req->all());
        $result=$this->Usersetting->SaveFields($req);
-        dd (str_replace(" ","_",strtolower($req->label)));
+        if($result){
+            return redirect()->back()->with("success", "Successfully Added Fields!")   ;
+        }else{
+            return redirect()->back()->with("error", 'Fields Not Added!');
+        }
+        
 
     }
 
