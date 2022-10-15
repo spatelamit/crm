@@ -107,8 +107,6 @@
 
               <a class="dropdown-item preview-item" href="{{url('logout')}}">
 
-              <a class="dropdown-item preview-item" href="{{url('/logout')}}">
-
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
@@ -174,7 +172,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('deals')}}">
-              <i class="icon-file menu-icon"></i>
+              <i class="fa fa-briefcase menu-icon"></i>
               <span class="menu-title">  Deals </span>
             </a>
           </li>
@@ -186,26 +184,26 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('meetings')}}">
-              <i class="fa fa-filter menu-icon"></i>
+              <i class="fa fa-handshake-o menu-icon"></i>
               <span class="menu-title"> Meetings</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('tasks')}}">
-              <i class="fa fa-filter menu-icon"></i>
+              <i class="fa fa-file-text-o menu-icon"></i>
               <span class="menu-title"> Tasks</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('teams')}}">
-              <i class="fa fa-filter menu-icon"></i>
+              <i class="fa fa-users menu-icon"></i>
               <span class="menu-title"> Teams</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('user_profile')}}">
-              <i class="fa fa-filter menu-icon"></i>
-              <span class="menu-title"> user_profile</span>
+              <i class="fa fa-user menu-icon"></i>
+              <span class="menu-title"> User Profile</span>
             </a>
           </li>
         </ul>
