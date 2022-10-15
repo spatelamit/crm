@@ -77,6 +77,11 @@ class UserController extends Controller
         // return redirect('/');
     }
 
+    public function user_profile() {
+        
+        return view('user_profile');
+    }
+
 
 
 

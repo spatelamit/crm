@@ -196,6 +196,18 @@
               <span class="menu-title"> Tasks</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('teams')}}">
+              <i class="fa fa-filter menu-icon"></i>
+              <span class="menu-title"> Teams</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('user_profile')}}">
+              <i class="fa fa-filter menu-icon"></i>
+              <span class="menu-title"> user_profile</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

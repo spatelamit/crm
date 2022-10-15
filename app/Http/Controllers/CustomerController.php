@@ -21,4 +21,9 @@ class CustomerController extends Controller
         return view('tasks');
     }
 
+    public function teams()
+    {
+        return view('teams');
+    }
+
 }
