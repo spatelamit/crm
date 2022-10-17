@@ -68,7 +68,7 @@ class Customer extends Model
     public function SaveLeads($req){
     	$module_id=$req->module_id;
     	$data_id=uniqid();
-    for ($i=0; $i <count($req->column_id) ; $i++) { 
+  		  for ($i=0; $i <count($req->column_id) ; $i++) { 
     		$data[]=array(
     		'module_id'=>$module_id,
     		'column_id'=>$req->column_id[$i],
@@ -77,14 +77,77 @@ class Customer extends Model
     		'data_id'=>$data_id,
     	);
     	
-    }
-    $result=DB::table('module_data')->insert($data);
+	    }
+	    $result=DB::table('module_data')->insert($data);
 
-    if($result){
-     		  return true;
-		   }else{
-		       return false;
-		   }
+	    if($result){
+	     		  return true;
+			   }else{
+			       return false;
+			   }
 
-    }
+	  }
+
+	  public function GetLeadsData(){
+	  	$user_id=session()->get('id');
+	  	$module_id='8';
+	  	$que="call getModulesData(".$user_id.",8,10)";
+	  	$leads_data=DB::select($que);
+	  	 if($leads_data){
+	     		  return $leads_data;
+			   }else{
+			       return false;
+			   }
+
+	  }
+	  public function GetEditData($id){
+
+	  	$getdata=DB::table('module_data')
+	  			->select('module_data.*','module_columns.col_name','module_columns.type')
+	  			->where('module_data.data_id',$id)
+	  			->join('module_columns','module_columns.column_id','=','module_data.column_id')
+	  			->get();
+	  	if($getdata){
+	     		  return $getdata;
+			   }else{
+			       return false;
+			   }
+	  }
+
+	  public function UpdateLead($req){
+
+	  	$data_id=$req->data_id;
+	  	// dd($req->all());
+	  	for ($i=0; $i <count($req->column_id) ; $i++) { 
+	  		$data=array(
+	  			'value'=>$req->value[$i],
+	  			
+	  		);
+
+	  		
+	  		$result[]=DB::table('module_data')
+	  				->where('data_id',$data_id)
+	  				->where('column_id',$req->column_id[$i])
+	  				->update($data);
+	  	}
+	  	// echo "<pre>";
+	  	// print_r($data);
+	  	// 	die();
+	  	if($result){
+	  		return true;
+		  }else{
+		  	return false;
+		  }
+	}
+
+	public function DeleteLead($id){
+
+		$result=DB::table('module_data')->where('data_id',$id)->update(['status'=>'0']);
+		if($result){
+	  		return true;
+		  }else{
+		  	return false;
+		  }
+
+	}
 }
