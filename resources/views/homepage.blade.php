@@ -24,7 +24,7 @@
 <div class="card border-none">
 <div class="card-body bg_colo_s1">
 <div class="Started_box_to ">
-<a href="#">
+<a href="{{url('add-role')}}">
 
 <div class="img_ashish"> <img src="assets/img/role.png" /> </div>
 
@@ -43,7 +43,7 @@
 <div class="card border-none">
 <div class="card-body bg_colo_s2">
 <div class="Started_box_to ">
-<a href="#">
+<a href="{{url('teams')}}">
 <div class="img_ashish"> <img src="assets/img/Invite-icon.png" /> </div>
 <h4> Invite Your <br />( Coworkers & team members )</h4>
 
