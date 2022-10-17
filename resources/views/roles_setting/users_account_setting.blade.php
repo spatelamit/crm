@@ -216,7 +216,7 @@
 
 
                                             <option value="{{ $value->id }}"
-                                                @if ($value->id == $val->role_id) selected="selected" @endif>
+                                               >
                                                 {{ $value->role_name }} </option>
                                         @endif
                                     @endif

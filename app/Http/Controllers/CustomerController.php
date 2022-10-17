@@ -18,9 +18,13 @@ class CustomerController extends Controller
 
     public function leads(){
         $module_id='8';
-        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-    
-        return view('customers.leads',compact('data'));
+         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+        $data['leads_datas']=$this->Customer->GetLeadsData();
+        foreach ($data['leads_datas'] as $key => $value) {
+        $data['leads_data'][]=(json_decode(json_encode( $value),true));
+        }
+       // dd( $data['selected_fields']);
+       return view('customers.leads',compact('data'));
     }
 
       public function add_leads(){
@@ -60,6 +64,36 @@ class CustomerController extends Controller
 
         }else{
             return redirect()->back()->with("error", 'Not updated');
+
+        }
+
+    }
+
+    public function edit_lead($id){
+          $data['edit_lead_data']=$this->Customer->GetEditData($id);
+          // dd( $data['edit_lead_data']);
+          return view('customers.edit-lead',compact('data'));
+
+
+
+    }
+    public function update_lead(Request $req){
+          $result=$this->Customer->UpdateLead($req);
+       if($result){
+            return redirect('leads')->with("success", "Successfully Updates Fileds!")   ;
+
+        }else{
+            return redirect('leads')->with("error", 'Not updated');
+
+        }
+    }
+    public function delete_lead($id){
+        $result=$this->Customer->DeleteLead($id);
+        if($result){
+            return redirect('leads')->with("success", "Successfully Delete Fileds!")   ;
+
+        }else{
+            return redirect('leads')->with("error", 'Not Delete');
 
         }
 
