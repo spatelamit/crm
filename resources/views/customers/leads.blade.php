@@ -115,7 +115,7 @@
                   success : function () {
 
                     swal("Deleted !!", "Lead has been deleted !!", "success")
-                     // alert(id);
+                     // alert(id);s
                     $("#"+id).remove();
                   },
               });
