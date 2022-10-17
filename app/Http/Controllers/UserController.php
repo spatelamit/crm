@@ -7,11 +7,12 @@ use DB;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
-
+use App\Models\User;
 class UserController extends Controller
 {
 
     public function __construct() {
+        $this->User=new User();
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
     public function home(){
@@ -56,7 +57,16 @@ class UserController extends Controller
             // }
 
             // return view('index');
+            $noti_data = array(
+				'type' => 'Login',
+	    		'message' => 'login'.session()->get('full_name').'',
+	    		'link' => '',
+	    		'icons' => '',
+	    		'sender_id' => '',
+	    		'reciever_id' => ''
+	    	);
 
+            $this->User->SendNotification($noti_data);
             return redirect('/home')->with("success", "Successfully Login!");
         }
         else{
@@ -78,8 +88,22 @@ class UserController extends Controller
     }
 
     public function user_profile() {
-        
+
         return view('user_profile');
+    }
+
+
+    public function notifications(Request $req)
+    {
+        $result=$this->Customer->SendNotification($req);
+
+        if($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
 
