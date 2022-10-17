@@ -104,7 +104,7 @@ $fieldl[]=$selected_field->column_id;
                                <li draggable="true">
                                    <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
                                      <input type="hidden"  name="module" value="{{$data['mid']}}">
-                                    <input type="hidden"   name="column_id[]" value=" {{$val['column_id'] }}" > 
+                                    <input type="hidden"   name="column_id[]" value=" {{$val->column_id }}" > 
                                       <input type="hidden"   name="type[]" value=" {{$val->type}} " >
                                      <input type="hidden"   name="col_name[]" value="{{ $val->col_name}} " > 
 

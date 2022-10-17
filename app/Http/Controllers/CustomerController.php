@@ -31,6 +31,17 @@ class CustomerController extends Controller
     // dd($data['selected_fields'][0]->module_id);
         return view('customers.add-leads',compact('data'));
     }
+    public function save_leads(Request $req){
+         $result=$this->Customer->SaveLeads($req);
+          if($result){
+            return redirect('leads')->with("success", "Successfully Added Leads!")   ;
+
+        }else{
+            return redirect('leads')->with("error", 'Not Add leads');
+
+        }
+        
+    }
 
     public function module_layout($module_id){
         
@@ -43,8 +54,14 @@ class CustomerController extends Controller
 
     }
     public function add_mod_fields(Request $req){
-        dd($req->all());
+        $result=$this->Customer->AddModFields($req);
+       if($result){
+            return redirect()->back()->with("success", "Successfully Updates Fileds!")   ;
 
+        }else{
+            return redirect()->back()->with("error", 'Not updated');
+
+        }
 
     }
     public function deals()

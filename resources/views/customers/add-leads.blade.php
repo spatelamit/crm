@@ -16,14 +16,15 @@
         <h5 class="modal-title" id="exampleModalLongTitle-1"> template</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
       </div>
-      <form method="post" action="{{url('add-leads')}}" autocomplete="nope">
+      <form method="post" action="{{url('save-leads')}}" autocomplete="nope">
               @csrf
       <div class="modal-body">
+      	<input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
       	@foreach($data['selected_fields'] as $val)
         <div class="form-group mb-10">
           <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
-          <input type="hidden" name="column_id">
-          <input type="{{$val->type}}"  name="{{$val->col_name}}" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required>
+          <input type="hidden" name="column_id[]" value="{{$val->column_id}}">
+          <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" >
         </div>
         @endforeach
        <!--  <div class="form-group mb-10">
