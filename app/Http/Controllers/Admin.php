@@ -10,4 +10,6 @@ use Illuminate\Routing\Admin as Admin;
 class Admin extends Admin
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    
 }
