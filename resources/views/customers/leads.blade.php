@@ -263,44 +263,32 @@
          // console.log(val2);
          // console.log(val3);
     });
-    
-//     var data_le={{count($data['leads_data'])}};
-//    for (var i = data_le; i >= 1; i++) {
-//         $(':checkbox[id="email'+i+'"]').click(function(){
-//             alert("he");
-//             if($(this).is(':checked')){
-//                 alert($('#email'+i).val());
-//             };
-        
-//     }) ;
-// };
+  
 
-// $(':checkbox[id="email"'+data_le+']').click(function(){
-//     var val2 = [];
-//         if($(this).is(':checked')){
-//             // $(".mobile_num").prop("checked", true);
-//             // $(".data_id").prop("checked", true);
-//             $(".email").prop("checked", true);
+$(':checkbox[class="email"]').click(function(){
+var val2 = [];
+        if($(this).is(':checked')){
+            $(".mobile_num").prop("checked", true);
+            $(".ids12").prop("checked", true);
+            $(".email").prop("checked", true);
             
-             
-         
-//           val2[i] = $('#email'+i).val();
-//           alert(val2);
+             $('.email').each(function(i){
+          val2[i] = $(this).val();
+          console.log(val2);
+        });
       
-      
-//         }else {
-//             // $(".mobile_num").prop("checked", false);
-//             // $(".data_id").prop("checked", false);
-//             // $(".email").prop("checked", false);
-//         }
+        }else {
+            $(".mobile_num").prop("checked", false);
+            $(".ids12").prop("checked", false);
+            $(".email").prop("checked", false);
+        }
         
         
        
-//         $("#selectedemails").val(val2);
-//         console.log(val2);
+        $(".email_ids").val(val2);
+        console.log(val2);
 
-//         });
-
+        });
        
         
         

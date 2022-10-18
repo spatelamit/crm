@@ -66,6 +66,7 @@ class Customer extends Model
 
    
     public function SaveLeads($req){
+    	
     	$module_id=$req->module_id;
     	$data_id=uniqid();
   		  for ($i=0; $i <count($req->column_id) ; $i++) { 
