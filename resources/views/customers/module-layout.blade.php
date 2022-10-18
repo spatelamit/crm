@@ -41,7 +41,7 @@ $fieldl[]=$selected_field->column_id;
           @csrf
           <label>Form</label>
           <input type="hidden"  name="module[]" value="{{$data['selected_fields'][0]->module_id}}">
-          <ul class="list-arrow choice">
+          <ul class="list-arrow choice" id="sortable">
             @foreach($data['selected_fields'] as $filelist )
             <li draggable="true">
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
@@ -137,4 +137,7 @@ $fieldl[]=$selected_field->column_id;
   $(function  () {
   $("form.choice").sortable();
 });
+  $( function() {
+    $( "#sortable" ).sortable();
+  } );
 </script> 

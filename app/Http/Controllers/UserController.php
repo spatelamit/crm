@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     public function __construct() {
-        $this->User=new User();
+        $this->User=new User(); 
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
     public function home(){
