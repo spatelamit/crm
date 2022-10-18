@@ -1,5 +1,6 @@
 @include('header')
 
+<?php ?>
 <div class="contentbar">
 
     <div class="row">
@@ -39,17 +40,22 @@
                                     
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
-                                    
+                   @if( $data['leads_data'] != null )
                                    @foreach ($data['leads_data'][0] as $key => $value)
                                        <th>{{$key}}</th>
 
                                    @endforeach 
-                                     <th>Actions </th>
+                                    <th>Actions </th>
+                      @else
+                   
+                     @endif
+                                    
                                
                                 </tr>
                             
                             </thead>
                             <tbody>
+                         @if( $data['leads_data']!=null)
                              @foreach( $data['leads_data'] as $key1=>$field)
                                  
                                         <tr>
@@ -91,6 +97,7 @@
                          
                                         <!-- edit -->
                                       @endforeach
+                                      @endif
                             </tbody>
                         </table>
                     </div>
