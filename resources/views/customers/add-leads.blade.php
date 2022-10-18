@@ -19,13 +19,33 @@
       <form method="post" action="{{url('save-leads')}}" autocomplete="nope">
               @csrf
       <div class="modal-body">
+          <div class="form-group mb-10">
+              <label>Upload Csv</label>
+              <input type="file" name="importleads" accept=".csv,application/vnd.ms-excel" value="">
+              
+        </div>
       	<input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
       	@foreach($data['selected_fields'] as $val)
+       
+        @if( $val->column_id == 1 )
         <div class="form-group mb-10">
-          <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
+           <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
           <input type="hidden" name="column_id[]" value="{{$val->column_id}}">
-          <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" >
+          <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required="" >
         </div>
+        @elseif( $val->column_id ==2 )
+          <div class="form-group mb-10">
+               <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
+                <input type="hidden" name="column_id[]" value="{{$val->column_id}}">
+                <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required="" >
+          </div>
+          @else
+           <div class="form-group mb-10">
+              <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
+                 <input type="hidden" name="column_id[]" value="{{$val->column_id}}">
+                  <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" >
+            </div>
+        @endif
         @endforeach
        <!--  <div class="form-group mb-10">
           <label>Sender Id:</label>

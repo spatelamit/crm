@@ -36,6 +36,8 @@ class CustomerController extends Controller
         return view('customers.add-leads',compact('data'));
     }
     public function save_leads(Request $req){
+        // dd($req->all());
+        
          $result=$this->Customer->SaveLeads($req);
           if($result){
             return redirect('leads')->with("success", "Successfully Added Leads!")   ;
