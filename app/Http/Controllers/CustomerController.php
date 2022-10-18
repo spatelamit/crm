@@ -29,7 +29,7 @@ class CustomerController extends Controller
             $data['leads_data']=null;
              
         }
-       // dd( $data['selected_fields']);
+       // dd( $data['leads_data']);
        return view('customers.leads',compact('data'));
     }
 

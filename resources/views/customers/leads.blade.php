@@ -22,6 +22,8 @@
         <a class="btn btn-info font-weight-bold" data-animation="slideInRight" data-toggle="modal"
             data-target="#sendemail"> <i class="fa fa-user-plus"></i>
             Email </a>
+           
+            <button class="btn btn-info font-weight-bold"  id="lead_id" onclick="createdeal(this.value)">Deal</button>
 
     </div>
 
@@ -51,14 +53,15 @@
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
                    @if( $data['leads_data'] != null )
-                                   @foreach ($data['leads_data'][0] as $key => $value)
+                         @foreach ($data['leads_data'][0] as $key => $value)
+
                                        <th>{{$key}}</th>
 
                                    @endforeach 
                                     <th>Actions </th>
-                      @else
+                         
                    
-                     @endif
+                 @endif
                                     
                                
 
@@ -81,7 +84,14 @@
                                             </td>
                                          
                                         @foreach ($field as $key => $value)
-                                            <td class="details-control">{{ $value }} </td>
+
+                                         @if( $key == 'data_id')
+                                         <td  class="details-control"> <a href="">{{        $data['leads_data'][$key1]['data_id'] }}</a> </td>
+
+                                        @else
+
+                                            <td  class="details-control"> {{ $value }}</td>
+                                       @endif
                                         @endforeach
 
                                         <td>
@@ -180,6 +190,35 @@
     </div>
 </div>
 <!--  -->
+<!--  -->
+<div class="modal fade come-from-modal right" id="leaddeal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">send Email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <form method="post" action="{{ url('add-sms-details') }}" autocomplete="nope">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group mb-10">
+                        <label>Authentication Key:</label>
+                        <input type="text" name="sms_numbers" class="form-control bg_input sms_numbers"
+                            placeholder="Enter your Authentication Key" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--  -->
 @include('footer')
 
 <script type="text/javascript">
@@ -237,7 +276,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $(':checkbox[id="selectAll"]').click(function() {
-            //
+         var val1 = [];
             var val2 = [];
             var val3 = [];
             if ($(this).is(':checked')) {
@@ -266,8 +305,9 @@
             }
 
             var val1 = [];
-            $('.name').each(function(i) {
+            $('.data_id').each(function(i) {
                 val1[i] = $(this).val();
+
             });
 
             // $("#selectedemails").val(val1);
@@ -286,17 +326,17 @@
         });
 
 
-        $(':checkbox[class="email"]').click(function() {
-            var val2 = [];
+        $(':checkbox[class="data_id"]').click(function() {
+            var data_id = [];
             if ($(this).is(':checked')) {
                 $(".mobile_num").prop("checked", true);
                 $(".ids12").prop("checked", true);
                 $(".email").prop("checked", true);
 
-                $('.email').each(function(i) {
-                    val2[i] = $(this).val();
-                    console.log(val2);
-                });
+               
+                    data_id= $(this).val();
+                   
+               $("#lead_id").val(data_id);
 
             } else {
                 $(".mobile_num").prop("checked", false);
@@ -306,12 +346,18 @@
 
 
 
-            $(".email_ids").val(val2);
-            console.log(val2);
+            // $(".email_ids").val(val2);
+            // console.log(val2);
 
         });
 
 
 
     });
+</script>
+<script type="text/javascript">
+    function createdeal(id){
+
+        alert(id);
+    }
 </script>
