@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use App\Models\Usersetting;
+use App\Models\UserSetting;
 use DB;
 
 
@@ -15,7 +15,7 @@ class UserSettingController extends Controller
 
 
 	public function __construct() {
-        $this->Usersetting=new Usersetting();
+        $this->Usersetting=new UserSetting();
     }
     
 
