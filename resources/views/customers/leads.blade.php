@@ -355,9 +355,3 @@
 
     });
 </script>
-<script type="text/javascript">
-    function createdeal(id){
-
-        alert(id);
-    }
-</script>

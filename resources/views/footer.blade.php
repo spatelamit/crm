@@ -40,7 +40,7 @@
      <!-- End plugin js for this page -->
      <!-- Custom js for this page-->
       <script src="{{ url('assets/js/dashboard.js') }}"></script>
-     
+      <script src="{{ url('assets/js/custome.js') }}"></script>
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
      <script src="{{ url('assets/vendors/base/vendor.bundle.base.js') }}"></script>
