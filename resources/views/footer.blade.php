@@ -16,11 +16,13 @@
  </div>
  <!-- container-scroller -->
 
-     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
    
+    
+     <!-- End custom js for this page-->
      <!-- base:js -->
-     <script src="{{ url('assets/vendors/base/vendor.bundle.base.js') }}"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ 
 
      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
      <!-- endinject -->
@@ -31,18 +33,20 @@
      <script src="{{ url('assets/js/hoverable-collapse.js') }}"></script>
      <script src="{{ url('assets/js/template.js') }}"></script>
      <script src="{{ url('assets/js/hierarchical-checkboxes.js') }}"></script>
-
      <!-- endinject -->
      <!-- plugin js for this page -->
      <script src="{{ url('assets/vendors/chart.js/Chart.min.js') }}"></script>
      <script src="{{ url('assets/vendors/jquery-bar-rating/jquery.barrating.min.js') }}"></script>
      <!-- End plugin js for this page -->
      <!-- Custom js for this page-->
-     <script src="{{ url('assets/js/dashboard.js') }}"></script>
-     <!-- End custom js for this page-->
+      <script src="{{ url('assets/js/dashboard.js') }}"></script>
+     
      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
+     <script src="{{ url('assets/vendors/base/vendor.bundle.base.js') }}"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
 
      <script>
          $(document).ready(function() {

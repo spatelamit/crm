@@ -21,8 +21,12 @@
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{{url('/assets/images/favicon.png')}}" />
+  <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="{{url('/assets/css/dataTables.css')}}">
+  <!-- <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 </head>
+
 <body>
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
