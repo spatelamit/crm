@@ -15,10 +15,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
+                      <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
                         @csrf
-
-                        <div class="row">
+                         <div class="row">
                             <div class="col-md-8">
 
                             </div>
@@ -31,7 +30,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Upload CSv</button>
+                            </div>
+                    </form>
+                    <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
+                        @csrf
 
+                       
 
                         <input type="hidden" name="module_id" value="{{ $data['selected_fields'][0]->module_id }}">
 
