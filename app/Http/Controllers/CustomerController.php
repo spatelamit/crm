@@ -9,7 +9,7 @@ use App\Models\Customer;
 use DB;
 
 class CustomerController extends Controller
-
+ 
 {   
     public function __construct() {
       

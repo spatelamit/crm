@@ -59,7 +59,7 @@ class UserSettingController extends Controller
 			    			$output[$value->reporting_to]->nodes[]=$value;
 			    		}
 			    	}
-			    	foreach ($roles as $key => &$value) {
+			    	foreach ($roles as $key => &$value) { 
 			    		if($value->reporting_to && isset($output[$value->reporting_to])){
 			    			unset($roles[$key]);
 			    		}
