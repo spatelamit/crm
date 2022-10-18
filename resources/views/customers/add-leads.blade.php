@@ -37,7 +37,8 @@
           <div class="form-group mb-10">
                <label>{{ str_replace("_"," ",strtoupper($val->col_name)) }}</label>
                 <input type="hidden" name="column_id[]" value="{{$val->column_id}}">
-                <input type="{{$val->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required="" >
+                <input type="text" pattern="[6-9]{1}[0-9]{9}" 
+       title="Phone number with 6-9 and remaing 9 digit with 0-9"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($val->col_name)) }}" required="" >
           </div>
           @else
            <div class="form-group mb-10">
