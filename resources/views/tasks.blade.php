@@ -1,5 +1,22 @@
 @include('header')
 <style>
+
+.slidingDiv {
+  position: absolute;
+  padding: 0px;
+  margin-top: 10px;
+  border: 2px solid #FF8C00;
+}
+.show_hide {
+    display:block;
+}
+
+
+
+
+
+
+
     .my_div_ashish {
         width: 350px;
         height: auto;
@@ -121,166 +138,159 @@
         display: block;
     }
 </style>
-
-
-<form>
-    <div class="card">
-        <div class="card-body">
-
-            <div id="box1-delete">
-
-                <form action="" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-
-
-                        <div class="col-md-6 ">
-                            <div class="form-group">
-                                <label for="usr">Task Owner <font style="color:red;">*</font></label>
-                                <input type="text" class="form-control fieldname" name="taskowner" value=""
-                                    placeholder="Name" required="">
-                            </div>
-                        </div>
-
-
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Subject: </label>
-                                <input class="form-control" name="subject" id="reporting_to">
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">DueDate: </label>
-                                <input type="date" name="duedate" value="yyyy/mm/dd">
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Contect: </label>
-                                <input class="form-control" name="contect" id="reporting_to">
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Account: </label>
-                                <input class="form-control" name="account" id="reporting_to">
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Status: </label>
-                                <select id="" name="status">
-                                    <option value="notstarted">NotStarted</option>
-                                    <option value="inprogress">In Progress</option>
-                                    <option value="complete">Complete</option>
-
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="">Priority: </label>
-                                <select id="" name="priority">
-                                    <option value="">select</option>
-                                    <option value="high">High</option>
-                                    <option value="lowest">Lowest</option>
-                                    <option value="normal">Normal</option>
-
-                                </select>
-
-                            </div>
-                        </div>
-                        {{-- <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Repeat: </label>
-                                <label class="switch">
-                                    <input id="reminder1" type="checkbox">
-                                    <span class="slider round"></span>
-                                    <div id="myDropdown" class="dropdown-content">
-                                        <a href="#home">Home</a>
-                                        <a href="#about">About</a>
-                                        <a href="#contact">Contact</a>
-                                    </div>
-                                </label>
-
-                            </div>
-                        </div> --}}
-                        <div class=" col-md-6" id="container">
-                            <div class="form-group">
-                                <label for="stage_name">Reminder: </label>
-                                <label class="switch">
-                                    <input id="reminder" type="checkbox">
-                                    <span class="slider round"></span>
-                                    <div id="myDropdown" class="dropdown-content ">
-                                        <div class="my_div_ashish">
-                                            <div class="form-group">
-                                                <input type="date" name="" value="yyyy/mm/dd" name="taskowner"
-                                                    value="" placeholder="Name" required="">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </label>
-
-                            </div>
-                        </div>
-                        <div class=" col-md-6">
-                            <div class="form-group">
-                                <label for="usr"> Description <font style="color:red;">*</font></label>
-                                <textarea name="description" placeholder="Description" class="form-control "></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=" col-md-4 mt-4">
-                        <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit
-                        </button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-sm-12 mb-4 mb-xl-0">
+      <h4 class="font-weight-bold text-dark">Add Tasks </h4>
     </div>
-</form>
-
-
-
-
-
-
-@include('footer')
-
-
-
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form action="" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="usr">Task Owner <font style="color:red;">*</font></label>
+                  <input type="text" class="form-control fieldname" name="taskowner" value=""
+                                    placeholder="Name" required="">
+                </div>
+              </div>
+              <div class=" col-md-4" id="container">
+                <div class="form-group">
+                  <label for="stage_name">Subject: </label>
+                  <input class="form-control" name="subject" id="reporting_to">
+                </div>
+              </div>
+              <div class=" col-md-4" id="container">
+                <div class="form-group">
+                  <label for="stage_name">Contect: </label>
+                  <input class="form-control" name="contect" id="reporting_to">
+                </div>
+              </div>
+              <div class=" col-md-6" id="container">
+                <div class="form-group">
+                  <label for="stage_name">Account: </label>
+                  <input class="form-control" name="account" id="reporting_to">
+                </div>
+              </div>
+              <div class=" col-md-6">
+                <div class="form-group">
+                  <label for="usr"> Description <font style="color:red;">*</font></label>
+                  <textarea name="description" placeholder="Description" class="form-control "></textarea>
+                </div>
+              </div>
+              <div class=" col-md-3" id="container">
+                <div class="form-group">
+                  <label for="stage_name">DueDate: </label>
+                  <input class="form-control" type="date" name="duedate" value="yyyy/mm/dd">
+                </div>
+              </div>
+              <div class=" col-md-3" id="container">
+                <div class="form-group">
+                  <label for="stage_name">Status: </label>
+                  <select class="form-control" id="" name="status">
+                    <option value="notstarted">NotStarted</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="complete">Complete</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-md-3" id="container">
+                <div class="form-group">
+                  <label for="">Priority: </label>
+                  <select class="form-control" id="" name="priority">
+                    <option value="">select</option>
+                    <option value="high">High</option>
+                    <option value="lowest">Lowest</option>
+                    <option value="normal">Normal</option>
+                  </select>
+                </div>
+              </div>
+              {{--
+              <div class=" col-md-3" id="container">
+                <div class="form-group">
+                  <label for="stage_name">Repeat: </label>
+                  <label class="switch">
+                  <input id="reminder1" type="checkbox">
+                  <span class="slider round"></span>
+                  <div id="myDropdown" class="dropdown-content"> <a href="#home">Home</a> <a href="#about">About</a> <a href="#contact">Contact</a> </div>
+                  </label>
+                </div>
+              </div>
+              --}}
+              <div class=" col-md-3" id="container">
+               
+              <a href="#" class="show_hide btn btn-info"> Reminder </a>
+              
+                <div class="slidingDiv" style="display: block;">
+                <div class="card">
+                <div class="card-body">
+                <div class="row">
+                
+                <div class="col-md-12">
+               <div class="form-group">
+               
+                <label for=""> Select Date & Time </label>
+                    <input class="form-control" type="date" value="yyyy/mm/dd/hh/mm" name="taskowner"
+                                                    placeholder="Name" required="">
+                  </div>
+                </div>
+                
+                <div class="col-md-12">
+                <div class="form-group">
+                  <label for="">Notify User </label>
+                  <select class="form-control" id="" name="priority">
+                    <option value="">Notify</option>
+                    <option value="high">Popup</option>
+                    <option value="lowest">Email</option>
+                    <option value="normal">Both</option>
+                  </select>
+                </div>
+                </div>
+                
+                
+                
+                </div>
+                
+                </div>
+                </div>
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+              </div>
+            </div>
+            <div class=" col-md-4 mt-4">
+              <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@include('footer') 
 <script>
-    $(document).ready(function() {
-        $('#reminder').on('change', function() {
-            if (this.checked) {
-                document.getElementById("myDropdown").classList.toggle("show");
-            }
-        })
+$(document).ready(function(){
 
 
+$(".slidingDiv").hide();
+	$(".show_hide").show();
+	
+	$('.show_hide').click(function(){
+	$(".slidingDiv").slideToggle();
+	});
 
-    })
+});
 
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
+</script> 

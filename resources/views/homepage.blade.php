@@ -60,7 +60,7 @@
 <div class="card border-none">
 <div class="card-body bg_colo_s3">
 <div class="Started_box_to ">
-<a href="#">
+<a href="{{url('add-leads')}}">
 <div class="img_ashish"> <img src="assets/img/Add_lead.png" /> </div>
 <h4> Add a lead <br />( Potential Candidate ) </h4>
 
