@@ -76,10 +76,11 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
     //customer
      Route::get('/leads',[CustomerController::class, 'leads']);
-    Route::get('/add-leads',[CustomerController::class, 'add_leads']);   
-    Route::get('/edit-lead/{id}',[CustomerController::class, 'edit_lead']);   
+    Route::get('/add-leads',[CustomerController::class, 'add_leads']);
+    Route::get('/edit-lead/{id}',[CustomerController::class, 'edit_lead']);
     Route::post('/update-lead',[CustomerController::class, 'update_lead']);
     Route::get('/delete-lead/{id}',[CustomerController::class, 'delete_lead']);
+    Route::get('/export_data',[CustomerController::class,'export_data']);
 
     Route::post('/save-leads',[CustomerController::class, 'save_leads']);
      Route::get('/module-layout/{id}',[CustomerController::class, 'module_layout']);
