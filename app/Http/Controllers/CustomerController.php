@@ -12,7 +12,7 @@ class CustomerController extends Controller
 
 {   
     public function __construct() {
-        $this->Usersetting=new Usersetting();
+      
         $this->Customer=new Customer();
     }
 
@@ -37,7 +37,7 @@ class CustomerController extends Controller
     }
     public function save_leads(Request $req){
         // dd($req->all());
-        
+
          $result=$this->Customer->SaveLeads($req);
           if($result){
             return redirect('leads')->with("success", "Successfully Added Leads!")   ;
