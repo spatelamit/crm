@@ -9,10 +9,10 @@ use App\Models\Customer;
 use DB;
 
 class CustomerController extends Controller
- 
-{   
+
+{
     public function __construct() {
-      
+
         $this->Customer=new Customer();
     }
 
@@ -27,14 +27,14 @@ class CustomerController extends Controller
             }
         }else{
             $data['leads_data']=null;
-             
+
         }
        // dd( $data['leads_data']);
        return view('customers.leads',compact('data'));
     }
 
       public function add_leads(){
-      
+
        $module_id='8';
 
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
@@ -52,11 +52,22 @@ class CustomerController extends Controller
             return redirect('leads')->with("error", 'Not Add leads');
 
         }
-        
+
+    }
+
+    public function export_data(Request $request){
+
+        $result = $this->Customer->csv_export_data($request);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     public function module_layout($module_id){
-        
+
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['all_fields']=$this->Customer->GetAllFields();
          $data['mid']=$module_id;
