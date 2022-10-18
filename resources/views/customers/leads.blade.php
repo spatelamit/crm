@@ -199,9 +199,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span> </button>
             </div>
-            <form method="post" action="{{ url('add-sms-details') }}" autocomplete="nope">
-                @csrf
-                <div class="modal-body">
+           
+                <div class="modal-body" id="dealsbyid">
                     <div class="form-group mb-10">
                         <label>Authentication Key:</label>
                         <input type="text" name="sms_numbers" class="form-control bg_input sms_numbers"
@@ -213,7 +212,7 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
-            </form>
+            
 
         </div>
     </div>

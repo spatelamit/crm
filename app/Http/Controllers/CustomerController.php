@@ -118,7 +118,7 @@ class CustomerController extends Controller
 
     }
     public function get_lead_by_id($id){
-          $data['edit_lead_data']=$this->Customer->GetEditData($id);
+          $data['lead_data']=$this->Customer->GetEditData($id);
          return view('customers.deal-by-lead',compact('data'));
 
     }

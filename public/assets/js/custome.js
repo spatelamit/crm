@@ -7,9 +7,10 @@ function createdeal(id){
                 type:"GET",
                   url: "get-lead-by-id/"+id,
                   
-                  success : function () {
-                    console.log(data)
-                    
+                  success : function (data) {
+                  	$('#leaddeal').modal('show');
+                   $("#dealsbyid").html(data);
+                  
 
                   
                   },
