@@ -83,7 +83,7 @@ class UserSettingController extends Controller
     public function edit_role($id){
     	$data['role_data']=$this->Usersetting->GetRoleById($id);
     	$data['allfeatures']=$this->Usersetting->GetFeatures();
-    	// echo "<pre>";
+    	// echo "<pre>"
     	// print_r($data);
     	return view('roles_setting/edit-role',compact('data'));
     }
