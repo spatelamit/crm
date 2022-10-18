@@ -158,7 +158,7 @@ class Customer extends Model
 
     public function csv_export_data()
     {
-        $data = json_decode(json_encode(DB::select('module_selected_column ')), True);
+        $data = json_decode(json_encode(DB::select('select * from module_selected_column')), True);
         function cleanData(&$str)
         {
             if ($str == 't') $str = 'TRUE';
