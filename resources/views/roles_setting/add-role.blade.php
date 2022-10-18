@@ -10,18 +10,26 @@
          margin: 0px;
          background-color: #e8eff4;
          position: relative;
-         bottom: 13px;
-         left: -22px;
      }
+	 
+#treeparent {
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+}
 
      .Permission_box_li {
-         background-color: #e8eff4;
+         background-color: #2E92B8;
      }
+	 
+	 .Permission_box_li a {
+  color: #fff;
+}
 
      .Permission_box_li li {
          width: 100%;
          padding: 10px;
-         border-bottom: 1px solid #ccc;
+         border-bottom: 1px solid #fff;
      }
  </style>
 
@@ -268,7 +276,7 @@
                                      </div>
                                  </div>
                              </div>
-                             <div class=" col-md-4 mt-4">
+                             <div class=" col-md-12 text-right mt-4">
                                  <button type="submit" class="btn btn-info font-weight-bold" id="add_roles"> Submit
                                  </button>
                              </div>

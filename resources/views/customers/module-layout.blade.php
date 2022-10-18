@@ -5,29 +5,6 @@
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <style>
 
-.padd_50 {
-  padding: 30px 10px;
-  background-color: #fff;
-  border: 1px #000 dotted;
-}
-
-.form_D_hedding {
-  padding: 10px 10px;
-  margin: 10px 0px;
-  border-bottom:1px solid #ccc;
-  
-}
-
-.form_D_hedding h6{
-  margin:0px;
-}
-.Selected_green i {
-  color: green;
-}
-.Selected_red i {
-  color: red;
-}
-
 </style>
 <?php
 foreach ($data['selected_fields'] as $key => $selected_field) {

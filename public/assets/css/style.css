@@ -65,6 +65,35 @@
   margin: 0px;
 }
 
+.padd_50 {
+  padding: 20px 10px;
+  background-color: #fff;
+  border: 1px #000 dotted;
+}
+
+.form_D_hedding {
+  padding: 10px 10px;
+  margin: 10px 0px;
+  border-bottom:1px solid #ccc;
+  
+}
+
+.form_D_hedding h6{
+  margin:0px;
+}
+.Selected_green i {
+  color: green;
+}
+.Selected_red i {
+  color: red;
+}
+
+.Selected_red li {
+  list-style: none;
+  margin-left: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 
 dropdown_as {
