@@ -40,20 +40,11 @@
                     <div class="table-responsive">
                         <table id="leads" class="display table ">
                             <thead>
-<<<<<<< HEAD
 
-                                <tr>
-                                    <div>
 
-                                        <th><input id="selectAll" type="checkbox" name="selectAll"></th>
-                                    </div>
+                                
 
-                                    @foreach ($data['leads_data'][0] as $key => $value)
-                                        <th>{{ $key }}</th>
-                                    @endforeach
-                                    <th>Actions </th>
 
-=======
                                  
                                 <tr><div>
                                     
@@ -70,15 +61,12 @@
                      @endif
                                     
                                
->>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
+
                                 </tr>
 
                             </thead>
                             <tbody>
-<<<<<<< HEAD
-                                @foreach ($data['leads_data'] as $key1 => $field)
-                                    <tr>
-=======
+
                          @if( $data['leads_data']!=null)
                              @foreach( $data['leads_data'] as $key1=>$field)
                                  
@@ -91,24 +79,7 @@
                                                 <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['leads_data'][$key1]['contact_number']}}" style="display: none;"> 
                                                  </div>
                                             </td>
-                                          @foreach ($field as $key => $value)
->>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
-
-                                        <td>
-                                            <div>
-                                                <input class="data_id" type="checkbox" name="data_id"
-                                                    value="
-                                                {{ $data['leads_data'][$key1]['data_id'] }}">
-                                                <input id="email{{ $loop->iteration }}" class="email" type="checkbox"
-                                                    name="email"
-                                                    value="{{ $data['leads_data'][$key1]['email_address'] }}"
-                                                    style="display: none;">
-                                                <input id="mobile_num{{ $loop->iteration }}" class="mobile_num"
-                                                    type="checkbox" name="mobile_num"
-                                                    value="{{ $data['leads_data'][$key1]['contact_number'] }}"
-                                                    style="display: none;">
-                                            </div>
-                                        </td>
+                                         
                                         @foreach ($field as $key => $value)
                                             <td class="details-control">{{ $value }} </td>
                                         @endforeach
@@ -132,22 +103,15 @@
 
 
 
-<<<<<<< HEAD
-                                        </td>
-                                    </tr>
-                                    <!-- edit -->
 
-                                    <!-- edit -->
-                                @endforeach
-=======
                                             </td>
                                         </tr>
                                         <!-- edit -->
                          
                                         <!-- edit -->
-                                      @endforeach
+                                       @endforeach
                                       @endif
->>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
+
                             </tbody>
                         </table>
                     </div>
