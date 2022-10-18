@@ -5,7 +5,7 @@ function createdeal(id){
 	
             $.ajax({
                 type:"GET",
-                  url: "add-deals-by-id/"+id,
+                  url: "get-lead-by-id/"+id,
                   
                   success : function () {
                     console.log(data)
