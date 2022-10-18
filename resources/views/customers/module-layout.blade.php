@@ -1,7 +1,7 @@
  @include('header')
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
          rel = "stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <style>
 
@@ -9,8 +9,8 @@
 <?php
 foreach ($data['selected_fields'] as $key => $selected_field) {
 $fieldl[]=$selected_field->column_id;
-  
- } 
+
+ }
  $selfield=$fieldl;
  $selfield1=implode(",",  $selfield);
  // print_r($selfield1);
@@ -23,18 +23,20 @@ $fieldl[]=$selected_field->column_id;
     </div>
   </div>
   <div class="row">
-  
-  
+
+
     <div class="col-md-12">
      <div class="form_D_hedding"> <h3> Create Dynamic Layout </h3> </div>
- 
+
     </div>
-    
-    
+
+
     <div class="col-md-4">
       <div class="Selected_green">
         <h4><i class="fa fa-check" aria-hidden="true"></i> Selected</h4>
-         <p class="font-weight-normal mb-2 text-muted">Note : Ashish panwar</p>
+         <p class="font-weight-normal mb-2 text-muted">Note : Which option do you want to fill, put them in selected and drag the information which you do not want to fill and drop it in unselected.
+
+         </p>
          <hr />
 
         <form  action="{{ url('add-mod-fields') }}" method="POST">
@@ -60,11 +62,11 @@ $fieldl[]=$selected_field->column_id;
     <div class="col-md-8">
       <div class="Selected_red">
         <h4><i class="fa fa-times" aria-hidden="true"></i> Unselected</h4>
-         <p class="font-weight-normal mb-2 text-muted">Note : Ashish panwar</p>
+         <p class="font-weight-normal mb-2 text-muted">Note : If you feel that your wrong field has been selected, then you can drag it to the selected option.</p>
          <hr />
         <ul class=" choice padd_50">
-          @foreach( $data['all_fields'] as $val) 
-          
+          @foreach( $data['all_fields'] as $val)
+
           @if(!in_array($val->column_id,explode(",", $selfield1)))
           <li draggable="true">
             <label> {{ str_replace("_"," ",strtoupper($val->col_name)) }} </label>
@@ -76,16 +78,16 @@ $fieldl[]=$selected_field->column_id;
           @endif
           @endforeach
         </ul>
-        <p> Note:-  </p>
+        {{-- <p> Note:-  </p> --}}
       </div>
     </div>
   </div>
-  
-  <!--  --> 
-  
+
+  <!--  -->
+
 </div>
-@include('footer') 
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script> 
+@include('footer')
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
   var input=document.getElementsByTagName('li');
   var choice = document.getElementsByClassName('choice');
@@ -93,7 +95,7 @@ $fieldl[]=$selected_field->column_id;
   for(var i of input){
     i.addEventListener('dragstart',dragStart);
     i.addEventListener('dragend',dragEnd);
-  } 
+  }
 
   function dragStart(){
     dragitem=this;
@@ -103,7 +105,7 @@ $fieldl[]=$selected_field->column_id;
   function dragEnd(){
     setTimeout(()=>this.style.display="block",0);
     dragitem=null;
-    
+
   }
 
   for (j of choice){
@@ -127,12 +129,12 @@ $fieldl[]=$selected_field->column_id;
 
   function dragEnter(e){
     e.preventDefault();
-    
+
   }
 
   function dragLeave(){
      this.style.border ="none";
-    
+
   }
   $(function  () {
   $("form.choice").sortable();
@@ -140,4 +142,4 @@ $fieldl[]=$selected_field->column_id;
   $( function() {
     $( "#sortable" ).sortable();
   } );
-</script> 
+</script>

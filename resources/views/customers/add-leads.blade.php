@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-sm-8 mb-4 mb-xl-0">
             <h4 class="font-weight-bold text-dark"> Add Leads </h4>
-            <p class="font-weight-normal mb-2 text-muted">Note : .......</p>
+            <p class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to have your own fields then click on create dynamic layouts..</p>
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right"> <a class="btn btn-info font-weight-bold mb-2"
