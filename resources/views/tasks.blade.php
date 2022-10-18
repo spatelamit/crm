@@ -143,7 +143,8 @@
               
               <div class=" col-md-4" id="container">
                 <label for="stage_name">Add Repeat </label>
-                <div class="Reminder_btn"> <a href="#" class="show_hide1 btn "> Repeat </a> </div>
+                <div class="Reminder_btn"> <a href="#" class="show_hide1 btn "> <i class="fa fa-refresh" aria-hidden="true"></i>
+ Repeat </a> </div>
                 <div class="slidingDiv1" style="display: block;">
                   <div class="card">
                     <div class="card-body">
