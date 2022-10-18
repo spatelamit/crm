@@ -169,13 +169,19 @@
                 <li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users Account Setting</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li>
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li> -->
               </ul>
             </div>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{{url('leads')}}">
+              <i class="fa fa-briefcase menu-icon"></i>
+              <span class="menu-title"> Leads </span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url('deals')}}">
@@ -183,12 +189,12 @@
               <span class="menu-title">  Deals </span>
             </a>
           </li>
-          <li class="nav-item">
+        <!--   <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="fa fa-filter menu-icon"></i>
               <span class="menu-title"> Universal Filter</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="{{url('meetings')}}">
               <i class="fa fa-handshake-o menu-icon"></i>

@@ -9,7 +9,7 @@ use DB;
 class UserSetting extends Model
 {
     use HasFactory;
-    //roles start//
+    //roles start
 
     public function GetRoleslist(){
 

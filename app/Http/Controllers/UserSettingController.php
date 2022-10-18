@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use App\Models\Usersetting;
+use App\Models\UserSetting;
 use DB;
 
 
@@ -15,7 +15,7 @@ class UserSettingController extends Controller
 
 
 	public function __construct() {
-        $this->Usersetting=new Usersetting();
+        $this->Usersetting=new UserSetting();
     }
     
 
@@ -59,7 +59,7 @@ class UserSettingController extends Controller
 			    			$output[$value->reporting_to]->nodes[]=$value;
 			    		}
 			    	}
-			    	foreach ($roles as $key => &$value) {
+			    	foreach ($roles as $key => &$value) { 
 			    		if($value->reporting_to && isset($output[$value->reporting_to])){
 			    			unset($roles[$key]);
 			    		}
@@ -83,7 +83,7 @@ class UserSettingController extends Controller
     public function edit_role($id){
     	$data['role_data']=$this->Usersetting->GetRoleById($id);
     	$data['allfeatures']=$this->Usersetting->GetFeatures();
-    	// echo "<pre>";
+    	// echo "<pre>"
     	// print_r($data);
     	return view('roles_setting/edit-role',compact('data'));
     }
