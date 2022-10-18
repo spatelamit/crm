@@ -92,7 +92,7 @@ class Customer extends Model
 	  public function GetLeadsData(){
 	  	$user_id=session()->get('id');
 	  	$module_id='8';
-	  	$que="call getModuleData(".$user_id.",8,10)";
+	  	$que="call getModuleData(".$user_id.",8)";
 	  	$leads_data=DB::select($que);
 	  	 if($leads_data){
 	     		  return $leads_data;
