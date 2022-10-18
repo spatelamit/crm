@@ -1,5 +1,6 @@
 @include('header')
 
+<?php ?>
 <div class="contentbar">
 
     <div class="row">
@@ -39,6 +40,7 @@
                     <div class="table-responsive">
                         <table id="leads" class="display table ">
                             <thead>
+<<<<<<< HEAD
 
                                 <tr>
                                     <div>
@@ -51,12 +53,46 @@
                                     @endforeach
                                     <th>Actions </th>
 
+=======
+                                 
+                                <tr><div>
+                                    
+                                    <th><input id="selectAll" type="checkbox" name="selectAll"></th>
+                                </div>
+                   @if( $data['leads_data'] != null )
+                                   @foreach ($data['leads_data'][0] as $key => $value)
+                                       <th>{{$key}}</th>
+
+                                   @endforeach 
+                                    <th>Actions </th>
+                      @else
+                   
+                     @endif
+                                    
+                               
+>>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
                                 </tr>
 
                             </thead>
                             <tbody>
+<<<<<<< HEAD
                                 @foreach ($data['leads_data'] as $key1 => $field)
                                     <tr>
+=======
+                         @if( $data['leads_data']!=null)
+                             @foreach( $data['leads_data'] as $key1=>$field)
+                                 
+                                        <tr>
+                                           
+                                            <td> <div>
+                                                <input class="data_id" type="checkbox" name="data_id" value="
+                                                {{$data['leads_data'][$key1]['data_id']}}">
+                                                <input id="email{{$loop->iteration}}" class="email" type="checkbox" name="email" value="{{$data['leads_data'][$key1]['email_address']}}" style="display: none;">
+                                                <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['leads_data'][$key1]['contact_number']}}" style="display: none;"> 
+                                                 </div>
+                                            </td>
+                                          @foreach ($field as $key => $value)
+>>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
 
                                         <td>
                                             <div>
@@ -96,12 +132,22 @@
 
 
 
+<<<<<<< HEAD
                                         </td>
                                     </tr>
                                     <!-- edit -->
 
                                     <!-- edit -->
                                 @endforeach
+=======
+                                            </td>
+                                        </tr>
+                                        <!-- edit -->
+                         
+                                        <!-- edit -->
+                                      @endforeach
+                                      @endif
+>>>>>>> 5af8c9dc8d8ea3b10d86ebce8a92fadd040e737b
                             </tbody>
                         </table>
                     </div>

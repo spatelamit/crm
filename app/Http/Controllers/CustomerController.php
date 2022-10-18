@@ -22,10 +22,12 @@ class CustomerController extends Controller
         $data['leads_datas']=$this->Customer->GetLeadsData();
         if( $data['leads_datas']){
         foreach ($data['leads_datas'] as $key => $value) {
-        $data['leads_data'][]=(json_decode(json_encode( $value),true));
+          $data['leads_data'][]=(json_decode(json_encode( $value),true));
+
             }
         }else{
-            $data['leads_data'][]=null;
+            $data['leads_data']=null;
+             
         }
        // dd( $data['selected_fields']);
        return view('customers.leads',compact('data'));
