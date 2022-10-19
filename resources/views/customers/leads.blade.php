@@ -162,19 +162,12 @@
          
          
          
-          <form method="post" id="universal_filterform">
+          <form action="javascript:void(0)" id="leads_filter">
           <input type="hidden" id='coun_filter' name="coun_filter" value="0">
          
-          
-          
-          
-          
+      
             <div class="block block-condensed">
-            
-            
-            
-            
-            
+         
               <div class="block-heading mb-0"><!-- HEADING -->
 
 
@@ -223,7 +216,7 @@
               </div>
               
               <div class="col-md-4">
-                <button class="btn btn-default pull-right" id="apply">Apply</button>
+                <button type="submit" class="btn btn-default pull-right" id="apply">Apply</button>
               </div>
               
               
