@@ -90,6 +90,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/teams',[CustomerController::class, 'teams']);
     Route::get('/deals',[CustomerController::class, 'deals']);
    Route::get('/get-lead-by-id/{id}',[CustomerController::class, 'get_lead_by_id']);
+    Route::get('/lead-profile/{id}',[CustomerController::class, 'lead_profile']);
 
 
 

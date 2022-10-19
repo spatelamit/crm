@@ -111,7 +111,7 @@
                                         @foreach ($field as $key => $value)
 
                                          @if( $key == 'data_id')
-                                         <td  class="details-control"> <a href="">{{        $data['leads_data'][$key1]['data_id'] }}</a> </td>
+                                         <td  class="details-control"> <a href="{{url('lead-profile',$data['leads_data'][$key1]['data_id'])}}">{{        $data['leads_data'][$key1]['data_id'] }}</a> </td>
 
                                         @else
 
