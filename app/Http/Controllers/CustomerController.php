@@ -9,10 +9,10 @@ use App\Models\Customer;
 use DB;
 
 class CustomerController extends Controller
- 
-{   
+
+{
     public function __construct() {
-      
+
         $this->Customer=new Customer();
     }
 
@@ -20,15 +20,21 @@ class CustomerController extends Controller
         $module_id='8';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
+        if( $data['leads_datas']){
         foreach ($data['leads_datas'] as $key => $value) {
-        $data['leads_data'][]=(json_decode(json_encode( $value),true));
+          $data['leads_data'][]=(json_decode(json_encode( $value),true));
+
+            }
+        }else{
+            $data['leads_data']=null;
+
         }
-       // dd( $data['selected_fields']);
+       // dd( $data['leads_data']);
        return view('customers.leads',compact('data'));
     }
 
       public function add_leads(){
-      
+
        $module_id='8';
 
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
@@ -46,11 +52,22 @@ class CustomerController extends Controller
             return redirect('leads')->with("error", 'Not Add leads');
 
         }
-        
+
+    }
+
+    public function export_data(Request $request){
+
+        $result = $this->Customer->csv_export_data($request);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     public function module_layout($module_id){
-        
+
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['all_fields']=$this->Customer->GetAllFields();
          $data['mid']=$module_id;
@@ -98,6 +115,11 @@ class CustomerController extends Controller
             return redirect('leads')->with("error", 'Not Delete');
 
         }
+
+    }
+    public function get_lead_by_id($id){
+          $data['lead_data']=$this->Customer->GetEditData($id);
+         return view('customers.deal-by-lead',compact('data'));
 
     }
     public function deals()

@@ -44,14 +44,14 @@ class Customer extends Model
     				->where('module_id',$moduleid)
     				->where('company_id',session()->get('company_id'))
     				->delete();
-    	for ($i=0; $i <count($req->column_id) ; $i++) { 
+    	for ($i=0; $i <count($req->column_id) ; $i++) {
     		$data[]=array(
     			'module_id'=>$moduleid,
     			'company_id'=>session()->get('company_id'),
     			'column_id'=>$req->column_id[$i],
     			'type'=>$req->type[$i],
     			'col_name'=>$req->col_name[$i],
-    			
+
     		);
 
     	}
@@ -64,12 +64,13 @@ class Customer extends Model
 		   }
     }
 
-   
+
     public function SaveLeads($req){
-    	
+
+
     	$module_id=$req->module_id;
     	$data_id=uniqid();
-  		  for ($i=0; $i <count($req->column_id) ; $i++) { 
+  		  for ($i=0; $i <count($req->column_id) ; $i++) {
     		$data[]=array(
     		'module_id'=>$module_id,
     		'column_id'=>$req->column_id[$i],
@@ -77,7 +78,7 @@ class Customer extends Model
     		'user_id'=>session()->get('id'),
     		'data_id'=>$data_id,
     	);
-    	
+
 	    }
 	    $result=DB::table('module_data')->insert($data);
 
@@ -119,13 +120,13 @@ class Customer extends Model
 
 	  	$data_id=$req->data_id;
 	  	// dd($req->all());
-	  	for ($i=0; $i <count($req->column_id) ; $i++) { 
+	  	for ($i=0; $i <count($req->column_id) ; $i++) {
 	  		$data=array(
 	  			'value'=>$req->value[$i],
-	  			
+
 	  		);
 
-	  		
+
 	  		$result[]=DB::table('module_data')
 	  				->where('data_id',$data_id)
 	  				->where('column_id',$req->column_id[$i])
@@ -151,4 +152,43 @@ class Customer extends Model
 		  }
 
 	}
+
+
+    //export
+
+    public function csv_export_data()
+    {
+        $data = json_decode(json_encode(DB::select('select * from module_selected_column')), True);
+        function cleanData(&$str)
+        {
+            if ($str == 't') $str = 'TRUE';
+            if ($str == 'f') $str = 'FALSE';
+            if (preg_match("/^0/", $str) || preg_match("/^\+?\d{8,}$/", $str) || preg_match("/^\d{4}.\d{1,2}.\d{1,2}/", $str) || preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$str)) {
+                $str = " $str";
+            }
+            if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+        }
+
+        // filename for download
+        $filename = "pankaj" . date('Ymd') . ".csv";
+
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header("Content-Type: text/csv");
+
+        $out = fopen("php://output", 'w');
+
+        $flag = false;
+        foreach ($data as $row) {
+            if (!$flag) {
+                // display field/column names as first row
+                fputcsv($out, array_keys($row), ',', '"');
+                $flag = true;
+            }
+            array_walk($row, __NAMESPACE__ . '\cleanData');
+            fputcsv($out, array_values($row), ',', '"');
+        }
+
+        fclose($out);
+    }
+
 }
