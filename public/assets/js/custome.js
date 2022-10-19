@@ -18,6 +18,7 @@ function createdeal(id){
     }
 
     $("#Filter_box").click(function(){
+      // alert("hello");
   
     var className = $('#bid_d').attr('class');
     //alert(className);
