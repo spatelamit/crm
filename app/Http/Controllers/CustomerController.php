@@ -125,8 +125,10 @@ class CustomerController extends Controller
 
     }
     public function lead_profile($id){
-          // $data['lead_data']=$this->Customer->GetEditData($id);
-         return view('customers.user_profile');
+          $data['lead_data']=$this->Customer->GetEditData($id);
+          $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
+          // print_r($data['sale_owner']);
+         return view('customers.lead_profile',compact('data'));
 
     }
     public function deals()

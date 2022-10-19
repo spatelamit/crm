@@ -50,6 +50,7 @@
                     <div class="col-lg-7 col-xl-9">
                         <div class="tab-content" id="v-pills-tabContent">
                             <!-- Dashboard Start -->
+                           
                             <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
                                 <div class="card m-b-30">
                                     <div class="card-header">                                
@@ -58,10 +59,14 @@
                                     <div class="card-body">
                                         <div class="profilebox py-4 text-center">
                                             <img width="150" src="https://fortmyersradon.com/wp-content/uploads/2019/12/dummy-user-img-1.png" class="img-fluid mb-3" alt="profile">
+                                             @foreach( $data['lead_data'] as $key => $val)
+                                            @if ($val->column_id == 3)
                                             <div class="profilename">
-                                                <h5>John Doe</h5>
+                                                <h5>{{ $val->value }}</h5>
                                                 <p class="text-muted my-3"><a href="my-account.html"><i class="feather fa fa-edit mr-2"></i>Edit Profile</a></p>
                                             </div>
+                                            @endif
+                                            @endforeach
                                             <div class="button-list">
                                                 <a href="#" class="btn btn-primary-rgba font-18"><i class="feather fa fa-facebook"></i></a>
                                                 <a href="#" class="btn btn-info-rgba font-18"><i class="feather fa fa-twitter"></i></a>
@@ -73,12 +78,20 @@
                                 <!-- Start row -->
                                 <div class="row">
                                     <!-- Start col -->
-                                    <div class="col-lg-12 col-xl-4">
+                                    <div class="col-lg-12 col-xl-12">
                                         <div class="card m-b-20">
                                             <div class="card-body">
                                                 <div class="ecom-dashboard-widget">
                                                     <div class="media">
-                                                        <i class="feather icon-package fa fa-facebook"></i>
+                                                      
+                                                        <div class="media-body">
+                                                            <h5>Sale Owner</h5>
+                                                            <p>{{$data['sale_owner']->full_name}}</p>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5>My Orders</h5>
+                                                            <p>Pending (1)</p>
+                                                        </div>
                                                         <div class="media-body">
                                                             <h5>My Orders</h5>
                                                             <p>Pending (1)</p>
@@ -90,42 +103,15 @@
                                     </div>
                                     <!-- End col -->
                                     <!-- Start col -->
-                                    <div class="col-lg-12 col-xl-4">
-                                        <div class="card m-b-20">
-                                            <div class="card-body">
-                                                <div class="ecom-dashboard-widget">
-                                                    <div class="media">
-                                                        <i class="feather icon-heart"></i>
-                                                        <div class="media-body">
-                                                            <h5>My Wishlist</h5>
-                                                            <p>Items (5)</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <!-- End col -->
                                     <!-- Start col -->
-                                    <div class="col-lg-12 col-xl-4">
-                                        <div class="card m-b-20">
-                                            <div class="card-body">
-                                                <div class="ecom-dashboard-widget">
-                                                    <div class="media">
-                                                        <i class="feather icon-credit-card"></i>
-                                                        <div class="media-body">
-                                                            <h5>My Wallet</h5>
-                                                            <p>Balance ($90)</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <!-- End col -->
                                 </div>  
                                 <!-- End row -->
                             </div>
+                            
                             <!-- Dashboard End -->
                             <!-- My Orders Start -->
                             <div class="tab-pane fade" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
