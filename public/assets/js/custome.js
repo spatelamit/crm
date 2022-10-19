@@ -38,3 +38,15 @@ function createdeal(id){
     }
     
   });
+
+    function del_div(id){
+
+    $('.prashant'+id).remove();
+    } ;
+
+
+    $( "#leads_filter" ).on( "submit", function(e) {
+
+       var formdata = $(this).serializeArray();
+   console.log(formdata);
+    });

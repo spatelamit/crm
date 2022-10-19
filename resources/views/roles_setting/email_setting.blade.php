@@ -20,9 +20,10 @@
  
 
 
-    <div class="row">
+    <div class="row mt-3">
         <!-- Start col -->
-        
+        <div class="col-md-12">
+        <div class="card">
         <div class="card-body">
           
           <div class="table-responsive">
@@ -83,6 +84,8 @@
               </tbody>
             </table>
           </div>
+        </div>
+        </div>
         </div>
       </div>
 

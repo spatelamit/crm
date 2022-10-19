@@ -16,12 +16,23 @@ $field1[]=$selected_field->column_id;
  // print_r($selfield1);
 ?>
 <div class="content-wrapper">
+
+
+
+
+
   <div class="row">
     <div class="col-sm-12 mb-4 mb-xl-0">
       <h4 class="font-weight-bold text-dark"> {{$data['selected_fields'][0]->modules_name}}</h4>
       <p class="font-weight-normal mb-2 text-muted">Note : Ashish panwar</p>
     </div>
   </div>
+  
+  
+  
+  
+  
+  
   <div class="row">
 
 
@@ -43,7 +54,7 @@ $field1[]=$selected_field->column_id;
           @csrf
           <label>Form</label>
           <input type="hidden"  name="module[]" value="{{$data['selected_fields'][0]->module_id}}">
-          <div>
+       
           <ul class="list-arrow choice padd_50" style="height: 550px;" id="sortable">
             @foreach($data['selected_fields'] as $filelist )
             <li draggable="true">
@@ -61,6 +72,12 @@ $field1[]=$selected_field->column_id;
         </form>
       </div>
     </div>
+    
+    
+    
+    
+    
+    
     <div class="col-md-8">
       <div class="Selected_red">
         <h4><i class="fa fa-times" aria-hidden="true"></i> Unselected</h4>
@@ -83,9 +100,17 @@ $field1[]=$selected_field->column_id;
         {{-- <p> Note:-  </p> --}}
       </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
   </div>
 
-  <!--  -->
+
 
 </div>
 @include('footer')
