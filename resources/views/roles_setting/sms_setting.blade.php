@@ -19,9 +19,9 @@
   
   
   
-  <div class="contentbar"> 
+
     <!-- Start row -->
-    <div class="row"> 
+    <div class="row mt-3"> 
       <!-- Start col -->
       <div class="col-lg-12">
         <div class="card m-b-30">
@@ -110,7 +110,7 @@
       <!-- End col --> 
 
     </div>
-</div>
+
 
 <!-- add sms tempate -->
 <div class="modal fade come-from-modal right" id="addsms" tabindex="-1" role="dialog" aria-hidden="true">

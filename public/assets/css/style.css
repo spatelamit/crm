@@ -61,8 +61,9 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 
-
-
+.Started_box_to a {
+  text-decoration: none;
+}
 .badge {
   font-weight: 400;
 }
@@ -12020,7 +12021,9 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
 
 .btn-primary {
   color: #fff;
-  background-color: #ec37fc;
+  background-image: linear-gradient( to right top, #008f7a, #219c87, #35aa94, #45b8a1, #55c6ae );
+  border:none !important;
+}
   border-color: #ec37fc;
 }
 
@@ -12133,6 +12136,8 @@ fieldset:disabled .ajax-upload-dragdrop a.ajax-file-upload,
   color: #fff;
 background-image: linear-gradient( to right top, #008f7a, #219c87, #35aa94, #45b8a1, #55c6ae );
   border-color: #47b4ac;
+  border:none !important;
+  
 }
 
 .btn-info:hover {
