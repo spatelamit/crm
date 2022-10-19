@@ -158,7 +158,23 @@ class Customer extends Model
 
     public function csv_export_data()
     {
-        $data = json_decode(json_encode(DB::select('select * from module_selected_column')), True);
+        $quary = DB::table('module_selected_column')
+        ->where('module_id', 8)
+        ->where( 'company_id', 0)
+        ->orWhere('company_id',session()->get('company_id'))
+        ->get();
+        // dd($quary);
+        $data = json_decode(json_encode($quary), True);
+        $i=0;
+        foreach($quary as $key => $val){
+            // $data_array[ $val->col_name]=$val->col_name;
+            $data_array[]=array(
+                'col_name'=>$val->col_name,
+            );
+            $i++;
+        }
+        $dat1=$data_array;
+// dd($dat1);
         function cleanData(&$str)
         {
             if ($str == 't') $str = 'TRUE';
@@ -178,7 +194,7 @@ class Customer extends Model
         $out = fopen("php://output", 'w');
 
         $flag = false;
-        foreach ($data as $row) {
+        foreach ($dat1 as $row) {
             if (!$flag) {
                 // display field/column names as first row
                 fputcsv($out, array_keys($row), ',', '"');
