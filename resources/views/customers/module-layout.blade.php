@@ -8,10 +8,10 @@
 </style>
 <?php
 foreach ($data['selected_fields'] as $key => $selected_field) {
-$fieldl[]=$selected_field->column_id;
+$field1[]=$selected_field->column_id;
 
  }
- $selfield=$fieldl;
+ $selfield=$field1;
  $selfield1=implode(",",  $selfield);
  // print_r($selfield1);
 ?>
@@ -43,7 +43,8 @@ $fieldl[]=$selected_field->column_id;
           @csrf
           <label>Form</label>
           <input type="hidden"  name="module[]" value="{{$data['selected_fields'][0]->module_id}}">
-          <ul class="list-arrow choice" id="sortable">
+          <div>
+          <ul class="list-arrow choice padd_50" style="height: 550px;" id="sortable">
             @foreach($data['selected_fields'] as $filelist )
             <li draggable="true">
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
@@ -55,6 +56,7 @@ $fieldl[]=$selected_field->column_id;
             </li>
             @endforeach
           </ul>
+          
           <button   type="submit" class="btn btn-info " >Submit</button>
         </form>
       </div>

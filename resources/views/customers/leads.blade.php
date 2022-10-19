@@ -22,6 +22,8 @@
         <a class="btn btn-info font-weight-bold" data-animation="slideInRight" data-toggle="modal"
             data-target="#sendemail"> <i class="fa fa-user-plus"></i>
             Email </a>
+            <!-- <a class="btn btn-info font-weight-bold" href="{{url('get-lead-by-id/'),}}"> <i class="fa fa-user-plus"></i>
+            Deal </a> -->
            
             <button class="btn btn-info font-weight-bold"  id="lead_id" onclick="createdeal(this.value)">Deal</button>
 
@@ -30,7 +32,7 @@
 
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 " id="bid_d">
 
 
             <div class="card m-b-30">
@@ -128,7 +130,8 @@
                 </div>
             </div>
         </div>
-
+         <div class="col-md-3 b-left fadeIn p-0 d-none" id="small_d">
+         </div>
     </div>
 
 </div>
@@ -190,34 +193,20 @@
     </div>
 </div>
 <!--  -->
-<!--  -->
+<!-- Deal modal -->
 <div class="modal fade come-from-modal right" id="leaddeal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  slideInRight  animated" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle-1">send Email</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
-                        aria-hidden="true">&times;</span> </button>
-            </div>
+        <div class="modal-content"  >
            
-                <div class="modal-body" id="dealsbyid">
-                    <div class="form-group mb-10">
-                        <label>Authentication Key:</label>
-                        <input type="text" name="sms_numbers" class="form-control bg_input sms_numbers"
-                            placeholder="Enter your Authentication Key" required>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
+           
+               
+               
             
 
         </div>
     </div>
 </div>
-<!--  -->
+<!--end deal modal  -->
 @include('footer')
 
 <script type="text/javascript">

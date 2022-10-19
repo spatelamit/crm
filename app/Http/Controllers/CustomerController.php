@@ -72,6 +72,8 @@ class CustomerController extends Controller
          $data['all_fields']=$this->Customer->GetAllFields();
          $data['mid']=$module_id;
          // dd($data['selected_fields']);
+         // print_r($data['selected_fields']);
+         // die();
         return view('customers.module-layout',compact('data'));
 
 
