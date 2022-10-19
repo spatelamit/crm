@@ -1,34 +1,56 @@
 @include('header')
 
 
-<div class="contentbar">
+<div class="content-wrapper">
 
-    <div class="row">
 
+<div class="row mb-3">
+        <div class="col-sm-8 mb-4 mb-xl-0">
+            <h4 class="font-weight-bold text-dark"> Leads </h4>
+           
+        </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
-                <a class="btn btn-info font-weight-bold" href="{{ url('add-leads') }}"> <i class="fa fa-user-plus"></i>
-                    Create Leads </a>
+  
+                 <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i class="fa fa-user-plus"></i>
+                    Create Leads </a> 
+                    
+                    
+                  
+                    
+                    <a class="btn btn-info font-weight-bold new_w mr-2" id="Filter_box" ><i class="fa fa-filter" aria-hidden="true"></i>
+ Filter </a>
+                    
+                    
+                   <div class="btn-group-vertical " role="group" aria-label="Basic example">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-info font-weight-bold dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comments-o" aria-hidden="true"></i>
+ Communications </button>
+                            <div class="dropdown-menu">
+
+                              
+                               <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
+            data-target="#sendsms"> <i class="fa fa-user-plus"></i>
+            SendSMS </a>
+            
+             <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
+            data-target="#sendemail"> <i class="fa fa-user-plus"></i>
+            Email </a>
+            
+            
+             <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Deal</a>                              
+                            </div>                          
+                          </div>
+                        </div>  
+                      
+                    
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown"
-        aria-expanded="false">Communications</button>
-    <div class="dropdown-menu" x-placement="top-start"
-        style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -99px, 0px);">
-        <a class="btn btn-info font-weight-bold" data-animation="slideInRight" data-toggle="modal"
-            data-target="#sendsms"> <i class="fa fa-user-plus"></i>
-            SendSMS </a>
-        <a class="btn btn-info font-weight-bold" data-animation="slideInRight" data-toggle="modal"
-            data-target="#sendemail"> <i class="fa fa-user-plus"></i>
-            Email </a>
-            <!-- <a class="btn btn-info font-weight-bold" href="{{url('get-lead-by-id/'),}}"> <i class="fa fa-user-plus"></i>
-            Deal </a> -->
-           
-            <button class="btn btn-info font-weight-bold"  id="lead_id" onclick="createdeal(this.value)">Deal</button>
 
-    </div>
-     <li> <a type="button" id="Filter_box" class="btn btn-default new_w  btn-icon-fixed btn-sm"><span class="icon-funnel"></span> Filter </a> </li>
+
+
+
 
 
 
