@@ -124,6 +124,11 @@ class CustomerController extends Controller
          return view('customers.deal-by-lead',compact('data'));
 
     }
+    public function lead_profile($id){
+          // $data['lead_data']=$this->Customer->GetEditData($id);
+         return view('customers.user_profile');
+
+    }
     public function deals()
     {
         return view('deals');
