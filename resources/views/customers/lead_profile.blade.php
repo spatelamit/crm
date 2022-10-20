@@ -90,30 +90,41 @@
                                                         </div>
                                                        
                                                     </div>
+                                         @foreach( $data['lead_data'] as $key => $col)
+                                            @if ($col->column_id == 1)
                                                      <div class="media">
                                                       
                                                         <div class="media-body">
-                                                            <h5>Email</h5>
-                                                            <p>{{$data['sale_owner']->full_name}}</p>
+                                                            <h5>{{ str_replace('_', ' ', ucwords($col->col_name)) }}</h5>
+                                                            <p>{{$col->value}}</p>
                                                         </div>
                                                        
                                                     </div>
-                                                    <div class="media">
-                                                      
-                                                        <div class="media-body">
-                                                            <h5>Email</h5>
-                                                            <p>{{$data['sale_owner']->full_name}}</p>
-                                                        </div>
-                                                       
+                                                @elseif ($col->column_id == 2)
+                                                 <div class="media">
+                                                  
+                                                    <div class="media-body">
+                                                        <h5>{{ str_replace('_', ' ', ucwords($col->col_name)) }}</h5>
+                                                        <p>{{$col->value}}</p>
                                                     </div>
-                                                     <div class="media">
-                                                      
-                                                        <div class="media-body">
-                                                            <h5>Email</h5>
-                                                            <p>{{$data['sale_owner']->full_name}}</p>
-                                                        </div>
-                                                       
+                                                   
+                                                </div>
+                                                 @elseif ($col->column_id == 27)
+                                                 <div class="media">
+                                                  
+                                                    <div class="media-body">
+                                                        <h5>{{ str_replace('_', ' ', ucwords($col->col_name)) }}</h5>
+                                                        <p>{{$col->value}}</p>
+                                                        <select>
+                                                            <option>ABC</option>
+                                                            <option>ABC</option>
+                                                            <option>ABC</option>
+                                                        </select>
                                                     </div>
+                                                   
+                                                </div>
+                                             @endif
+                                        @endforeach
                                                 </div>
                                             </div>
                                         </div>

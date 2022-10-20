@@ -91,8 +91,10 @@ class CustomerController extends Controller
     }
 
     public function edit_lead($id){
+      $module_id=8;
           $data['edit_lead_data']=$this->Customer->GetEditData($id);
-          // dd( $data['edit_lead_data']);
+           $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+          // dd( $data);
           return view('customers.edit-lead',compact('data'));
 
 
