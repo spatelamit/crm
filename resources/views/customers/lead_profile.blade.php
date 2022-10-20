@@ -85,17 +85,34 @@
                                                     <div class="media">
                                                       
                                                         <div class="media-body">
-                                                            <h5>Sale Owner</h5>
+                                                            <h5>Lead Owner</h5>
                                                             <p>{{$data['sale_owner']->full_name}}</p>
                                                         </div>
+                                                       
+                                                    </div>
+                                                     <div class="media">
+                                                      
                                                         <div class="media-body">
-                                                            <h5>My Orders</h5>
-                                                            <p>Pending (1)</p>
+                                                            <h5>Email</h5>
+                                                            <p>{{$data['sale_owner']->full_name}}</p>
                                                         </div>
+                                                       
+                                                    </div>
+                                                    <div class="media">
+                                                      
                                                         <div class="media-body">
-                                                            <h5>My Orders</h5>
-                                                            <p>Pending (1)</p>
+                                                            <h5>Email</h5>
+                                                            <p>{{$data['sale_owner']->full_name}}</p>
                                                         </div>
+                                                       
+                                                    </div>
+                                                     <div class="media">
+                                                      
+                                                        <div class="media-body">
+                                                            <h5>Email</h5>
+                                                            <p>{{$data['sale_owner']->full_name}}</p>
+                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
