@@ -186,7 +186,7 @@ class Customer extends Model
         }
 
         // filename for download
-        $filename = "pankaj" . date('Ymd') . ".csv";
+        $filename = "example" . date('Ymd') . ".csv";
 
         header("Content-Disposition: attachment; filename=\"$filename\"");
         header("Content-Type: text/csv");
