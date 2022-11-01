@@ -152,7 +152,36 @@ class Customer extends Model
 		  }
 
 	}
+// save task
+    public function SaveTask($req){
+        $req['sender_id']=session()->get('id');
+        
+       unset($req['_token']);
+       // dd($req->all());
+        $result=DB::table('tasks')->insert($req->all());
+        if($result){
+            return true;
+          }else{
+            return false;
+          }
 
+    }
+
+    // get task by data id
+     public function GetTasks($id){
+      
+        
+      $result=DB::table('tasks')
+            ->where('related_to',$id)
+            ->where('sender_id',session()->get('id'))
+            ->get();
+        if($result){
+            return $result;
+          }else{
+            return false;
+          }
+
+    } 
 
     //export
 
@@ -206,5 +235,7 @@ class Customer extends Model
 
         fclose($out);
     }
+
+
 
 }
