@@ -343,7 +343,7 @@ class Customer extends Model
          elseif ($req->companysearch=='contain') {
             // $query->where('column_id','15');
             
-                 $search=collect($leads_data)->where('company_name','LIKE', '%'.$req->comapny_Nsearch.'%');
+                 $search=collect($leads_data)->whereLike('company_name',$req->comapny_Nsearch);
                  dd($search);
 
              // $query->groupBy('data_id');
