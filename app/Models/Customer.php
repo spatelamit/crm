@@ -95,9 +95,9 @@ class Customer extends Model
 	  	$module_id='8';
 	  	$que="call getModulesData(".$user_id.",8,10)";
 	  	$leads_data=DB::select($que);
-        
 
-        dd($leads_data);
+
+        dd($leads_data  );
 	  	 if($leads_data){
 	     		  return $leads_data;
 			   }else{

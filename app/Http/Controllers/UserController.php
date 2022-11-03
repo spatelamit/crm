@@ -107,6 +107,16 @@ class UserController extends Controller
     }
 
 
+ public function export_data(Request $request){
+
+        $result = $this->Customer->csv_export_data($request);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 
 
