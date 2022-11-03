@@ -248,6 +248,9 @@ class Customer extends Model
                 ->where('module_data.module_id','8')
                 ->where('module_data.user_id',session()->get('id'));
                 // ->groupBy('data_id');
+                 $query->where('value',$req->comapny_Nsearch);
+             $que="call getModulesData(".session()->get('id').",8,10)";
+                 $leads_data=DB::select($que);
      if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
         if($req->activitiesopt==1){
             $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
@@ -322,7 +325,27 @@ class Customer extends Model
 
          if ($req->companysearch=='is') {
             // $query->where('column_id','15');
-             $query->where('value',$req->comapny_Nsearch);
+             
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch);
+                 dd($search);
+
+             // $query->groupBy('data_id');
+         }
+          elseif ($req->companysearch=='isnot') {
+            // $query->where('column_id','15');
+            
+                 
+                 $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch);
+                 dd($search);
+
+             // $query->groupBy('data_id');
+         }
+         elseif ($req->companysearch=='contain') {
+            // $query->where('column_id','15');
+            
+                 $search=collect($leads_data)->where('company_name','LIKE', '%'.$req->comapny_Nsearch.'%');
+                 dd($search);
+
              // $query->groupBy('data_id');
          }
     }
