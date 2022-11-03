@@ -130,9 +130,9 @@ class CustomerController extends Controller
           $data['lead_data']=$this->Customer->GetEditData($id);
           $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
           $data['tasks']=$this->Customer->GetTasks($id);
-          echo "<pre>";
-          print_r($data['tasks']);
-          die();
+          // echo "<pre>";
+          // print_r($data['tasks']);
+          // die();
          return view('customers.lead_profile',compact('data'));
 
     }
@@ -158,6 +158,14 @@ class CustomerController extends Controller
 
 
     }
+
+    //lead filter
+    public function leads_filter(Request $req){
+       $data['lead_data']=$this->Customer->LeadFilter($req);
+      // dd($req->all());
+    }
+
+    //
     public function deals()
     {
         return view('deals');

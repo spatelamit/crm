@@ -108,7 +108,7 @@
                                                         <p>{{$col->value}}</p>
                                                     </div>
                                                    
-                                                </div>
+                                                  </div>
                                                  @elseif ($col->column_id == 27)
                                                  <div class="media">
                                                   

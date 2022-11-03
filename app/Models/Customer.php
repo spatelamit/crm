@@ -95,6 +95,9 @@ class Customer extends Model
 	  	$module_id='8';
 	  	$que="call getModulesData(".$user_id.",8,10)";
 	  	$leads_data=DB::select($que);
+        
+
+        dd($leads_data);
 	  	 if($leads_data){
 	     		  return $leads_data;
 			   }else{
@@ -234,6 +237,106 @@ class Customer extends Model
         }
 
         fclose($out);
+    }
+
+
+    public function LeadFilter($req){
+          // DB::statement("SET SQL_MODE=''");
+        // DB::enableQueryLog();
+        $query=DB::table('module_data')
+                ->select('module_data.*')
+                ->where('module_data.module_id','8')
+                ->where('module_data.user_id',session()->get('id'));
+                // ->groupBy('data_id');
+     if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
+        if($req->activitiesopt==1){
+            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+            $query->where('tasks.status','2');
+
+        }
+        elseif($req->activitiesopt==2){
+
+            if($req->activitiesopt2==1){
+            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+             $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+             $query->where('tasks.due_date', '<', now());
+              $query->Orwhere('meetings.end_date', '<', now());
+            }
+
+            elseif($req->activitiesopt2==2){
+            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+         
+             $query->whereDate('tasks.due_date', '<', now());
+            }
+            elseif($req->activitiesopt2==3){
+                $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+            
+             $query->whereDate('meetings.end_date', '<', now());
+            }
+
+          }
+        elseif($req->activitiesopt==3){
+            if($req->activitesdue==1){
+                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->where('tasks.due_date', '=', date('Y-m-d'));
+                 $query->Orwhere('meetings.end_date', '=', date('Y-m-d'));
+
+            }
+             elseif($req->activitesdue==2){
+                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->where('tasks.due_date', '=', date("Y-m-d", strtotime("+1 day")));
+                 $query->Orwhere('meetings.end_date', '=', date("Y-m-d", strtotime("+1 day")));
+
+            }
+            elseif($req->activitesdue==3){
+                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->whereBetween('tasks.due_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
+                 $query->orwhereBetween('meetings.end_date',[ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
+
+            }
+
+         }
+         elseif($req->activitiesopt==4){
+            if($req->withoutactivites==1){
+                $query->Join('tasks','module_data.data_id','=','tasks.related_to','left outer');
+                 $query->Join('meetings','module_data.data_id','=','meetings.related_to','left outer');
+                 $query->where('tasks.related_to',null);
+                  $query->Orwhere('meetings.related_to',null);
+                $query->where('tasks.due_date', '!=', date('Y-m-d'));
+                 $query->Orwhere('meetings.end_date', '!=', date('Y-m-d'));
+
+            }if($req->withoutactivites==2){
+                $query->leftJoin('tasks','module_data.data_id','!=','tasks.related_to');
+                 $query->leftJoin('meetings','module_data.data_id','!=','meetings.related_to' );
+                 // $query->where('tasks.related_to',null);
+                 //  $query->Orwhere('meetings.related_to',null);
+               $query->whereNotBetween('tasks.due_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
+                $query->whereNotBetween('meetings.end_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
+                
+
+            }
+         }
+
+         if ($req->companysearch=='is') {
+            // $query->where('column_id','15');
+             $query->where('value',$req->comapny_Nsearch);
+             // $query->groupBy('data_id');
+         }
+    }
+        $result=$query->get();
+
+
+     
+
+// SET @sql = CONCAT('SELECT m.data_id, ', @sql,' \r\nFROM module_data m \r\nINNER JOIN modules v ON m.module_id = v.module_id\r\nINNER JOIN module_columns c on m.column_id = c.column_id where m.user_id = ',vuser_id,' and m.module_id = ',vmodule_id,' GROUP by m.data_id limit ', vlimit);
+
+
+        dd($result);
+        // dd(DB::getQueryLog($result));
+
     }
 
 

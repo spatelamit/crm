@@ -81,16 +81,16 @@
                                     
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
-                   @if( $data['leads_data'] != null )
-                         @foreach ($data['leads_data'][0] as $key => $value)
+                           @if( $data['leads_data'] != null )
+                                 @foreach ($data['leads_data'][0] as $key => $value)
 
-                                       <th>{{$key}}</th>
+                                               <th>{{$key}}</th>
 
-                                   @endforeach 
-                                    <th>Actions </th>
-                         
-                   
-                 @endif
+                                           @endforeach 
+                                            <th>Actions </th>
+                                 
+                           
+                         @endif
                                     
                                
 
@@ -189,6 +189,7 @@
          
          
           <form action="javascript:void(0)" id="leads_filter">
+            @csrf
           <input type="hidden" id='coun_filter' name="coun_filter" value="0">
          
       
