@@ -97,7 +97,7 @@ class Customer extends Model
 	  	$leads_data=DB::select($que);
 
 
-        dd($leads_data  );
+        // dd($leads_data  );
 	  	 if($leads_data){
 	     		  return $leads_data;
 			   }else{
@@ -330,8 +330,6 @@ class Customer extends Model
 
 
      
-
-// SET @sql = CONCAT('SELECT m.data_id, ', @sql,' \r\nFROM module_data m \r\nINNER JOIN modules v ON m.module_id = v.module_id\r\nINNER JOIN module_columns c on m.column_id = c.column_id where m.user_id = ',vuser_id,' and m.module_id = ',vmodule_id,' GROUP by m.data_id limit ', vlimit);
 
 
         dd($result);
