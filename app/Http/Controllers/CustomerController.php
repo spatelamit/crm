@@ -129,10 +129,43 @@ class CustomerController extends Controller
     public function lead_profile($id){
           $data['lead_data']=$this->Customer->GetEditData($id);
           $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
-          // print_r($data['sale_owner']);
+          $data['tasks']=$this->Customer->GetTasks($id);
+          // echo "<pre>";
+          // print_r($data['tasks']);
+          // die();
          return view('customers.lead_profile',compact('data'));
 
     }
+     public function convert_lead($id){
+          $data['lead_data']=$this->Customer->GetEditData($id);
+          $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
+            // echo "<pre>";
+            // print_r($data['lead_data']);
+            // die();
+         return view('customers.convert-lead',compact('data'));
+
+    }
+    public function save_convert_lead(Request $req){
+      // dd($req->data_id);
+      $result=DB::table('module_data')->where('data_id',$req->data_id)->update(['module_id'=>'10']);
+       if($result){
+            return redirect('leads')->with("success", "Successfully Convert Lead !")   ;
+
+        }else{
+            return redirect('leads')->with("error", ' Convert Lead failed');
+
+        }
+
+
+    }
+
+    //lead filter
+    public function leads_filter(Request $req){
+       $data['lead_data']=$this->Customer->LeadFilter($req);
+      // dd($req->all());
+    }
+
+    //
     public function deals()
     {
         return view('deals');
@@ -146,6 +179,16 @@ class CustomerController extends Controller
     public function tasks()
     {
         return view('tasks');
+    }
+    public function save_task(Request $req) {
+      $result= $this->Customer->SaveTask($req);
+      if($result){
+            return redirect('leads')->with("success", "Successfully Task created !")   ;
+
+        }else{
+            return redirect('leads')->with("error", ' Taske not created');
+
+        }
     }
 
     public function teams()

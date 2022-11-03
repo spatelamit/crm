@@ -79,6 +79,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/add-leads',[CustomerController::class, 'add_leads']);
     Route::get('/edit-lead/{id}',[CustomerController::class, 'edit_lead']);
     Route::post('/update-lead',[CustomerController::class, 'update_lead']);
+    Route::post('/leads-filter',[CustomerController::class, 'leads_filter']);
     Route::get('/delete-lead/{id}',[CustomerController::class, 'delete_lead']);
     Route::get('/export_data',[CustomerController::class,'export_data']);
 
@@ -87,11 +88,13 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
      Route::post('/add-mod-fields',[CustomerController::class, 'add_mod_fields']);
     Route::get('/meetings',[CustomerController::class, 'meetings']);
     Route::get('/tasks',[CustomerController::class, 'tasks']);
+    Route::post('/save-task',[CustomerController::class, 'save_task']);
     Route::get('/teams',[CustomerController::class, 'teams']);
     Route::get('/deals',[CustomerController::class, 'deals']);
    Route::get('/get-lead-by-id/{id}',[CustomerController::class, 'get_lead_by_id']);
     Route::get('/lead-profile/{id}',[CustomerController::class, 'lead_profile']);
-
+    Route::get('/convert-lead/{id}',[CustomerController::class, 'convert_lead']);
+	Route::post('/save-convert-lead',[CustomerController::class, 'save_convert_lead']);
 
 
 });

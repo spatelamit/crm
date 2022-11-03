@@ -8,7 +8,7 @@
 
 
 <div class="content-wrapper">
-           <a href>Convert</a>
+           <a href="{{url('convert-lead', $data['lead_data'][0]->data_id)}}">Convert</a>
                 <!-- Start row -->
                 <div class="row">
                     <!-- Start col -->
@@ -108,7 +108,7 @@
                                                         <p>{{$col->value}}</p>
                                                     </div>
                                                    
-                                                </div>
+                                                  </div>
                                                  @elseif ($col->column_id == 27)
                                                  <div class="media">
                                                   

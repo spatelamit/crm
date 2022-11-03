@@ -48,5 +48,19 @@ function createdeal(id){
     $( "#leads_filter" ).on( "submit", function(e) {
 
        var formdata = $(this).serializeArray();
-   console.log(formdata);
+       
+       $.ajax({
+        type: "POST",
+         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: 'leads-filter',
+
+        data: formdata,
+        success: function (response) {
+          // $(".defalut").hide();
+          // $('#GlobleLoader').hide();
+          // $("#dataListFilter").html(response);
+          console.log(response);
+        }
+      });
+   
     });
