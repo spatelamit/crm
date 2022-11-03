@@ -23,7 +23,7 @@ Route::get('/',[UserController::class, 'login']);
 Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::get('/logout',[UserController::class, 'logout']);
-
+ Route::get('/export_data',[UserController::class,'export_data']);
 Route::group(['middleware' => 'UserAuthentication'], function(){
 
 	// Auth::routes();

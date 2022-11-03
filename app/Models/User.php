@@ -50,4 +50,56 @@ class User extends Authenticatable
 			return false;
 		}
 	}
+     public function csv_export_data()
+    {
+        $quary = DB::table('module_selected_column')
+        ->where('module_id', 8)
+        ->where( 'company_id', 0)
+        ->orWhere('company_id',session()->get('company_id'))
+        ->get();
+        // dd($quary);
+        $data = json_decode(json_encode($quary), True);
+        $i=0;
+        foreach($quary as $key => $val){
+            // $data_array[ $val->col_name]=$val->col_name;
+            $data_array[]=array(
+                'col_name'=>$val->col_name,
+            );
+            $i++;
+        }
+        $dat1=$data_array;
+// dd($dat1);
+        function cleanData(&$str)
+        {
+            if ($str == 't') $str = 'TRUE';
+            if ($str == 'f') $str = 'FALSE';
+            if (preg_match("/^0/", $str) || preg_match("/^\+?\d{8,}$/", $str) || preg_match("/^\d{4}.\d{1,2}.\d{1,2}/", $str) || preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$str)) {
+                $str = " $str";
+            }
+            if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+        }
+
+        // filename for download
+        $filename = "pankaj" . date('Ymd') . ".csv";
+
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header("Content-Type: text/csv");
+
+        $out = fopen("php://output", 'w');
+
+        $flag = false;
+        foreach ($dat1 as $row) {
+            if (!$flag) {
+                // display field/column names as first row
+                fputcsv($out, array_keys($row), ',', '"');
+                $flag = true;
+            }
+            array_walk($row, __NAMESPACE__ . '\cleanData');
+            fputcsv($out, array_values($row), ',', '"');
+        }
+
+        fclose($out);
+    }
+
+
 }
