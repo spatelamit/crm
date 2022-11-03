@@ -81,7 +81,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::post('/update-lead',[CustomerController::class, 'update_lead']);
     Route::post('/leads-filter',[CustomerController::class, 'leads_filter']);
     Route::get('/delete-lead/{id}',[CustomerController::class, 'delete_lead']);
-    Route::get('/export_data',[CustomerController::class,'export_data']);
+    Route::get('/export_data1',[CustomerController::class,'export_data']);
 
     Route::post('/save-leads',[CustomerController::class, 'save_leads']);
      Route::get('/module-layout/{id}',[CustomerController::class, 'module_layout']);
