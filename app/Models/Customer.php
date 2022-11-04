@@ -243,6 +243,7 @@ class Customer extends Model
     public function LeadFilter($req){
           // DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
+
         $query=DB::table('module_data')
                 ->select('module_data.*','module_columns.col_name')
                 ->where('module_data.module_id','8')
@@ -252,10 +253,13 @@ class Customer extends Model
                 
              $que="call getModulesData(".session()->get('id').",8,10)";
                  $leads_data=DB::select($que);
+                 $search='';
      if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
         if($req->activitiesopt==1){
             $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+             $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
             $query->where('tasks.status','2');
+             $query->Orwhere('meetings.status','1');
 
         }
         elseif($req->activitiesopt==2){
@@ -365,22 +369,30 @@ class Customer extends Model
             
          }
     }
-        $result=$query->get();
-        // dd($result);
-        foreach ($result as $key => $value) {
-            $data['data_id']=$value->data_id;
-            $data[$value->col_name]=$value->value;
+        $result=$query->get()->toArray();
+         // dd($result);
+        $result1=collect($result)->groupBy('data_id');
+        // echo (count($result1));
+        
+        foreach ($result1 as $key => $value) {
+            // $data['data_id']=$value->data_id;
             // print_r($value);
+            foreach ($value as $key2 => $value2) {
+                $data['data_id']=$value2->data_id;
+                 $data[$value2->col_name]=$value2->value;
+               // print_r($value2);
+              
+            }
+           
+        
         }
-        // print_r($data);
-         foreach ($search as $key1 => $value1) {
-            $data1['data_id']=$value->data_id;
-            $data1[$value->col_name]=$value->value;
-            
-        }
-        // print_r(json_decode($data1));
-        // $data1=array_push($data,$search);
-dd($search);
+ 
+       
+    
+     // $data= $data;
+       // $data1= (json_decode(json_encode($data1),true));
+        // $array_data=(array_merge($data,$data1));
+print_r($result1);
 // $collection = array_merge($result);
     
 

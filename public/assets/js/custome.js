@@ -48,7 +48,7 @@ function createdeal(id){
     $( "#leads_filter" ).on( "submit", function(e) {
 
        var formdata = $(this).serializeArray();
-       
+       // alert("hello");
        $.ajax({
         type: "POST",
          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -56,6 +56,7 @@ function createdeal(id){
 
         data: formdata,
         success: function (response) {
+
           // $(".defalut").hide();
           // $('#GlobleLoader').hide();
           // $("#dataListFilter").html(response);
