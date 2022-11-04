@@ -186,7 +186,8 @@ class CustomerController extends Controller
             $data['accounts_data']=null;
 
         }
-        return view('accounts',compact('data'));
+        dd($data['accounts_data']);
+        return view('customers.accounts',compact('data'));
     }
 
     public function meetings()
