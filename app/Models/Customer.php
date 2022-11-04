@@ -243,18 +243,23 @@ class Customer extends Model
     public function LeadFilter($req){
           // DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
+
         $query=DB::table('module_data')
-                ->select('module_data.*')
+                ->select('module_data.*','module_columns.col_name')
                 ->where('module_data.module_id','8')
-                ->where('module_data.user_id',session()->get('id'));
-                // ->groupBy('data_id');
-                 $query->where('value',$req->comapny_Nsearch);
+                ->where('module_data.user_id',session()->get('id')) 
+                ->join('module_columns','module_data.column_id','=','module_columns.column_id');
+                // ->groupBy('module_data.data_id');
+                
              $que="call getModulesData(".session()->get('id').",8,10)";
                  $leads_data=DB::select($que);
+                 $search='';
      if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
         if($req->activitiesopt==1){
             $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+             $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
             $query->where('tasks.status','2');
+             $query->Orwhere('meetings.status','1');
 
         }
         elseif($req->activitiesopt==2){
@@ -324,39 +329,74 @@ class Customer extends Model
          }
 
          if ($req->companysearch=='is') {
-            // $query->where('column_id','15');
+            
              
-                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch);
-                 dd($search);
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch)->toArray();
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+           
          }
           elseif ($req->companysearch=='isnot') {
-            // $query->where('column_id','15');
-            
+           
                  
                  $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch);
-                 dd($search);
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+            
          }
          elseif ($req->companysearch=='contain') {
-            // $query->where('column_id','15');
+           
             
-                 $search=collect($leads_data)->whereLike('company_name',$req->comapny_Nsearch);
-                 dd($search);
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch.'%');
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+            
+         }
+         if ($req->Fnamesearch=='is') {
+           
+             
+                 $search=collect($leads_data)->where('full_name', $req->Fname_search);
+                 // dd($search);
+
+             
+         }
+          elseif ($req->Fnamesearch=='isnot') {
+           
+                 
+                 $search=collect($leads_data)->where('full_name','<>', $req->Fname_search);
+                 // dd($search);
+
+            
          }
     }
-        $result=$query->get();
+        $result=$query->get()->toArray();
+         // dd($result);
+        $result1=collect($result)->groupBy('data_id');
+        // echo (count($result1));
+        
+        foreach ($result1 as $key => $value) {
+            // $data['data_id']=$value->data_id;
+            // print_r($value);
+            foreach ($value as $key2 => $value2) {
+                $data['data_id']=$value2->data_id;
+                 $data[$value2->col_name]=$value2->value;
+               // print_r($value2);
+              
+            }
+           
+        
+        }
+ 
+       
+    
+     // $data= $data;
+       // $data1= (json_decode(json_encode($data1),true));
+        // $array_data=(array_merge($data,$data1));
+print_r($result1);
+// $collection = array_merge($result);
+    
 
-
-     
-
-
-        dd($result);
-        // dd(DB::getQueryLog($result));
+        // dd(collect($result)->groupBy('data_id'));
 
     }
 

@@ -20,6 +20,7 @@ class CustomerController extends Controller
         $module_id='8';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
+
         if( $data['leads_datas']){
         foreach ($data['leads_datas'] as $key => $value) {
           $data['leads_data'][]=(json_decode(json_encode( $value),true));
@@ -29,6 +30,7 @@ class CustomerController extends Controller
             $data['leads_data']=null;
 
         }
+         // dd($data['leads_data']);
        // dd( $data['leads_data']);
        return view('customers.leads',compact('data'));
     }
@@ -169,6 +171,22 @@ class CustomerController extends Controller
     public function deals()
     {
         return view('deals');
+    }
+    public function accounts(){
+         $module_id='10';
+         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+        $data['accounts_datas']=$this->Customer->GetLeadsData();
+
+        if( $data['accounts_datas']){
+        foreach ($data['accounts_datas'] as $key => $value) {
+          $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+            }
+        }else{
+            $data['accounts_data']=null;
+
+        }
+        return view('accounts',compact('data'));
     }
 
     public function meetings()
