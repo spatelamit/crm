@@ -172,6 +172,22 @@ class CustomerController extends Controller
     {
         return view('deals');
     }
+    public function accounts(){
+         $module_id='10';
+         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+        $data['accounts_datas']=$this->Customer->GetLeadsData();
+
+        if( $data['accounts_datas']){
+        foreach ($data['accounts_datas'] as $key => $value) {
+          $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+            }
+        }else{
+            $data['accounts_data']=null;
+
+        }
+        return view('accounts',compact('data'));
+    }
 
     public function meetings()
     {

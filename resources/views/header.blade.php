@@ -177,6 +177,12 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('accounts')}}">
+              <i class="fa fa-briefcase menu-icon"></i>
+              <span class="menu-title">  Accounts </span>
+            </a>
+          </li>
              <li class="nav-item">
             <a class="nav-link" href="{{url('leads')}}">
               <i class="fa fa-briefcase menu-icon"></i>
