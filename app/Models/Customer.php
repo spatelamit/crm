@@ -194,6 +194,18 @@ class Customer extends Model
                }
 
       }
+      //pipeline
+      public function GetPipeline(){
+        $result=DB::table('pipeline_group')
+        ->where('company_id',session()->get('company_id'))
+        ->get();
+        if($result){
+                  return $result;
+               }else{
+                   return false;
+               }
+
+      }
 // save task
     public function SaveTask($req){
         $req['sender_id']=session()->get('id');

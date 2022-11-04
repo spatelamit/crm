@@ -124,7 +124,11 @@ class CustomerController extends Controller
 
     }
     public function get_lead_by_id($id){
+        $module_id='9';
           $data['lead_data']=$this->Customer->GetEditData($id);
+           $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+           $data['pipeline']=$this->Customer->GetPipeline();
+           print_r($data['pipeline']);
          return view('customers.deal-by-lead',compact('data'));
 
     }

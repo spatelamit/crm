@@ -90,8 +90,24 @@
                                     @endif
                                 </div>
                             @endforeach
+                              @foreach ($data['selected_fields'] as $val1)
+                              <?php $col_array=array('1','15','3','2');?>
+                                  
+                                 @if(!in_array($val1->column_id,$col_array))
+                                  <div class="col-md-3">
+                                    
+                                 <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val1->col_name)) }}</label>
+                                            <input type="hidden" name="column_id[]" value="{{ $val1->column_id }}">
+                                            <input type="{{ $val1->type }}" name="value[]"
+                                                class="form-control bg_input"
+                                                placeholder="Enter your {{ str_replace('_', '', strtoupper($val1->col_name)) }}"
+                                                required="" value="">
+                                        </div>
 
-
+                                    </div>
+                                        @endif
+                                @endforeach
 
                             <div class="col-md-12 text-right">
                                 <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Save</button>

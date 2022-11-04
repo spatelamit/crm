@@ -42,7 +42,7 @@
             Task </a>
             
             
-           <!--   <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Task</a> -->                              
+             <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Deal</a>                              
                             </div>                          
                           </div>
                         </div>  
