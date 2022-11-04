@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     public function __construct() {
-        $this->User=new User(); 
+        $this->User=new User();
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
     public function home(){
@@ -107,7 +107,7 @@ class UserController extends Controller
     }
 
 
- public function export_data(Request $request){
+ public function export_data_pankaj(Request $request){
 
         $result = $this->User->csv_export_data($request);
         if($result){

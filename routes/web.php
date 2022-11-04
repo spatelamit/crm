@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\UserController;
@@ -23,7 +24,7 @@ Route::get('/',[UserController::class, 'login']);
 Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::post('/login_action',[UserController::class, 'login_action']);
 // Route::get('/logout',[UserController::class, 'logout']);
- Route::get('/export_data',[UserController::class,'export_data']);
+
 Route::group(['middleware' => 'UserAuthentication'], function(){
 
 	// Auth::routes();
@@ -87,7 +88,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
      Route::get('/module-layout/{id}',[CustomerController::class, 'module_layout']);
      Route::post('/add-mod-fields',[CustomerController::class, 'add_mod_fields']);
     Route::get('/meetings',[CustomerController::class, 'meetings']);
-    Route::get('/tasks',[CustomerController::class, 'tasks']);
+    Route::get('/tasks1',[CustomerController::class, 'tasks']);
     Route::post('/save-task',[CustomerController::class, 'save_task']);
     Route::get('/teams',[CustomerController::class, 'teams']);
     Route::get('/deals',[CustomerController::class, 'deals']);
@@ -95,6 +96,15 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/lead-profile/{id}',[CustomerController::class, 'lead_profile']);
     Route::get('/convert-lead/{id}',[CustomerController::class, 'convert_lead']);
 	Route::post('/save-convert-lead',[CustomerController::class, 'save_convert_lead']);
+    Route::get('/accounts',[CustomerController::class, 'accounts']);
 
 
+
+
+    Route::get('/export_data_pankaj',[UserController::class,'export_data_pankaj']);
+
+
+    //activity controller
+
+    Route::get('/tasks',[ActivityController::class, 'tasks']);
 });

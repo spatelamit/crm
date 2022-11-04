@@ -37,8 +37,8 @@
 
 
                     </form>
-                    <form method="GET" action="{{url('export_data')}}">
-                        <button type="submit">Export Data</button>
+                    <form method="GET" action="{{url('export_data_pankaj')}}">
+                        <button type="submit" class="btn-info">Export Data</button>
                     </form>
 
                     <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">

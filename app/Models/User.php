@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use DB;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,43 +42,43 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function __construct() {
+        $this->Customer=new Customer();
 
-    public function SendNotification($noti_data){
-		$result =DB::table('notifications')->insert($noti_data);
-		if ($result) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-     public function csv_export_data()
+    }
+    public function SendNotification($noti_data)
     {
-        $quary = DB::table('module_selected_column')
-        ->where('module_id', 8)
-        ->where( 'company_id', 0)
-        ->orWhere('company_id',session()->get('company_id'))
-        ->get();
+        $result = DB::table('notifications')->insert($noti_data);
+        if ($result) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function csv_export_data()
+    {
+        $quary =$this->Customer->GetLeadsData();
         // dd($quary);
-        $data = json_decode(json_encode($quary), True);
-        $i=0;
-        foreach($quary as $key => $val){
-            // $data_array[ $val->col_name]=$val->col_name;
-            $data_array[]=array(
-                'col_name'=>$val->col_name,
-            );
-            $i++;
-        }
-        $dat1=$data_array;
-// dd($dat1);
-        function cleanData(&$str)
-        {
-            if ($str == 't') $str = 'TRUE';
-            if ($str == 'f') $str = 'FALSE';
-            if (preg_match("/^0/", $str) || preg_match("/^\+?\d{8,}$/", $str) || preg_match("/^\d{4}.\d{1,2}.\d{1,2}/", $str) || preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$str)) {
-                $str = " $str";
-            }
-            if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
-        }
+        // $data = json_decode(json_encode($quary), True);
+        $i = 0;
+        foreach ($quary[0] as $key => $value) {
+            $data[]=(json_decode(json_encode( $key),true));
+
+              }
+            //   dd($data);
+        // $dat1 = $data_array;
+
+
+
+        // function cleanData(&$str)
+        // {
+        //     if ($str == 't') $str = 'TRUE';
+        //     if ($str == 'f') $str = 'FALSE';
+        //     if (preg_match("/^0/", $str) || preg_match("/^\+?\d{8,}$/", $str) || preg_match("/^\d{4}.\d{1,2}.\d{1,2}/", $str) || preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $str)) {
+        //         $str = " $str";
+        //     }
+        //     if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+        // }
 
         // filename for download
         $filename = "pankaj" . date('Ymd') . ".csv";
@@ -86,20 +87,32 @@ class User extends Authenticatable
         header("Content-Type: text/csv");
 
         $out = fopen("php://output", 'w');
+        // dd($dat1);
 
         $flag = false;
-        foreach ($dat1 as $row) {
-            if (!$flag) {
-                // display field/column names as first row
-                fputcsv($out, array_keys($row), ',', '"');
-                $flag = true;
-            }
-            array_walk($row, __NAMESPACE__ . '\cleanData');
-            fputcsv($out, array_values($row), ',', '"');
+        // foreach ($dat1 as $row) {
+        //     if (!$flag) {
+        //         // display field/column names as first row
+        //         fputcsv($out, array_keys($row), ',', '"');
+        //         $flag = true;
+        //     }
+        //     array_walk($row, __NAMESPACE__ . '\cleanData');
+        //     fputcsv($out, array_values($row), ',', '"');
+        // }
+
+        $pankaj ="";
+        fputcsv($out, $data);
+        foreach ($data as $row) {
+
+
+
+                // fputcsv($out, $row);
+                // fputcsv($out, array_values($p1), ',', '"');
+                // $pankaj .=  $p .",";
+
         }
+        // dd($pankaj);
 
         fclose($out);
     }
-
-
 }
