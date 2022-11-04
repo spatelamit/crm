@@ -175,7 +175,7 @@ class CustomerController extends Controller
     public function accounts(){
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-        $data['accounts_datas']=$this->Customer->GetLeadsData();
+        $data['accounts_datas']=$this->Customer->GetModuleData($module_id);
 
         if( $data['accounts_datas']){
         foreach ($data['accounts_datas'] as $key => $value) {
@@ -186,8 +186,29 @@ class CustomerController extends Controller
             $data['accounts_data']=null;
 
         }
-        dd($data['accounts_data']);
+        // dd($data['accounts_data']);
         return view('customers.accounts',compact('data'));
+    }
+    public function add_account(){
+
+       $module_id='10';
+
+        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+    // dd($data['selected_fields']);
+        return view('customers.add-account',compact('data'));
+    }
+    public function save_account(Request $req){
+        // dd($req->all());
+
+         $result=$this->Customer->SaveAccount($req);
+          if($result){
+            return redirect('accounts')->with("success", "Successfully Added Account!")   ;
+
+        }else{
+            return redirect('accounts')->with("error", 'Not Add Account');
+
+        }
+
     }
 
     public function meetings()
