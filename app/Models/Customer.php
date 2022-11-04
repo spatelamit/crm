@@ -244,11 +244,12 @@ class Customer extends Model
           // DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
         $query=DB::table('module_data')
-                ->select('module_data.*')
+                ->select('module_data.*','module_columns.col_name')
                 ->where('module_data.module_id','8')
-                ->where('module_data.user_id',session()->get('id'));
-                // ->groupBy('data_id');
-                 $query->where('value',$req->comapny_Nsearch);
+                ->where('module_data.user_id',session()->get('id')) 
+                ->join('module_columns','module_data.column_id','=','module_columns.column_id');
+                // ->groupBy('module_data.data_id');
+                
              $que="call getModulesData(".session()->get('id').",8,10)";
                  $leads_data=DB::select($que);
      if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
@@ -324,39 +325,66 @@ class Customer extends Model
          }
 
          if ($req->companysearch=='is') {
-            // $query->where('column_id','15');
+            
              
-                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch);
-                 dd($search);
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch)->toArray();
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+           
          }
           elseif ($req->companysearch=='isnot') {
-            // $query->where('column_id','15');
-            
+           
                  
                  $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch);
-                 dd($search);
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+            
          }
          elseif ($req->companysearch=='contain') {
-            // $query->where('column_id','15');
+           
             
-                 $search=collect($leads_data)->whereLike('company_name',$req->comapny_Nsearch);
-                 dd($search);
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch.'%');
+                 // dd($search);
 
-             // $query->groupBy('data_id');
+            
+         }
+         if ($req->Fnamesearch=='is') {
+           
+             
+                 $search=collect($leads_data)->where('full_name', $req->Fname_search);
+                 // dd($search);
+
+             
+         }
+          elseif ($req->Fnamesearch=='isnot') {
+           
+                 
+                 $search=collect($leads_data)->where('full_name','<>', $req->Fname_search);
+                 // dd($search);
+
+            
          }
     }
         $result=$query->get();
+        // dd($result);
+        foreach ($result as $key => $value) {
+            $data['data_id']=$value->data_id;
+            $data[$value->col_name]=$value->value;
+            // print_r($value);
+        }
+        // print_r($data);
+         foreach ($search as $key1 => $value1) {
+            $data1['data_id']=$value->data_id;
+            $data1[$value->col_name]=$value->value;
+            
+        }
+        // print_r(json_decode($data1));
+        // $data1=array_push($data,$search);
+dd($search);
+// $collection = array_merge($result);
+    
 
-
-     
-
-
-        dd($result);
-        // dd(DB::getQueryLog($result));
+        // dd(collect($result)->groupBy('data_id'));
 
     }
 
