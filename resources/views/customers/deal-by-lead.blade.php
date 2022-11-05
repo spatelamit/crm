@@ -90,8 +90,44 @@
                                     @endif
                                 </div>
                             @endforeach
-
-
+                              @foreach ($data['selected_fields'] as $val1)
+                              <?php $col_array=array('1','15','3','2');?>
+                                  
+                                 @if(!in_array($val1->column_id,$col_array))
+                                  <div class="col-md-3">
+                                    @if($val1->column_id == 20)
+                                     <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val1->col_name)) }}</label>
+                                          
+                                                <select class="form-control dealstage"  >
+                                                    @foreach($data['pipeline'] as $pipeline)
+                                                    <option value="{{$pipeline->id}}">{{$pipeline->pipeline_name  }}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                         <div class="form-group mb-10">
+                                         <label>Stages</label>
+                                          
+                                                <select class="form-control "  >
+                                                  
+                                                    
+                                                 
+                                                </select>
+                                        </div>
+                                   
+                                    @else
+                                        <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val1->col_name)) }}</label>
+                                            <input type="hidden" name="column_id[]" value="{{ $val1->column_id }}">
+                                            <input type="{{ $val1->type }}" name="value[]"
+                                                class="form-control bg_input"
+                                                placeholder="Enter your {{ str_replace('_', '', strtoupper($val1->col_name)) }}"
+                                                required="" value="">
+                                        </div>
+                                    @endif
+                                    </div>
+                                        @endif
+                                @endforeach
 
                             <div class="col-md-12 text-right">
                                 <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Save</button>
@@ -104,3 +140,21 @@
         </div>
     </div>
 </div>
+ <script>
+$(document).ready(function() {
+$('.dealstage').on('change', function() {
+var category_id = this.value;
+alert(category_id);
+$.ajax({
+url: "{{ url('/fetch-stages') }}/"+category_id+"",
+type: "GET",
+
+cache: false,
+success: function(response){
+  console.log(response);
+// $(".deal_stages1").html(response);
+}
+});
+});
+});
+</script>

@@ -124,10 +124,27 @@ class CustomerController extends Controller
 
     }
     public function get_lead_by_id($id){
+        $module_id='9';
           $data['lead_data']=$this->Customer->GetEditData($id);
+           $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+           $data['pipeline']=$this->Customer->GetPipeline();
+           // print_r($data['selected_fields']);
          return view('customers.deal-by-lead',compact('data'));
 
     }
+    
+     public function fetch_stages($id){
+      $pipeline_group_id=$req->category_id;
+       $data['PipelineGroup']=$this->Customer->PipelineStages($pipeline_group_id);
+       // print_r($data['PipelineGroup']);
+       // return  $data['PipelineGroup'];
+       foreach($data['PipelineGroup'] as $value){
+        echo "<option value=".$value['id']." >"  .$value['deal_stage_name']."</option>";
+       }
+
+    }
+
+
     public function lead_profile($id){
           $data['lead_data']=$this->Customer->GetEditData($id);
           $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
@@ -175,7 +192,7 @@ class CustomerController extends Controller
     public function accounts(){
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-        $data['accounts_datas']=$this->Customer->GetLeadsData();
+        $data['accounts_datas']=$this->Customer->GetModuleData($module_id);
 
         if( $data['accounts_datas']){
         foreach ($data['accounts_datas'] as $key => $value) {
@@ -186,8 +203,29 @@ class CustomerController extends Controller
             $data['accounts_data']=null;
 
         }
-        dd($data['accounts_data']);
+        // dd($data['accounts_data']);
         return view('customers.accounts',compact('data'));
+    }
+    public function add_account(){
+
+       $module_id='10';
+
+        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+    // dd($data['selected_fields']);
+        return view('customers.add-account',compact('data'));
+    }
+    public function save_account(Request $req){
+        // dd($req->all());
+
+         $result=$this->Customer->SaveAccount($req);
+          if($result){
+            return redirect('accounts')->with("success", "Successfully Added Account!")   ;
+
+        }else{
+            return redirect('accounts')->with("error", 'Not Add Account');
+
+        }
+
     }
 
     public function meetings()

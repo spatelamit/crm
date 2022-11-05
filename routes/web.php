@@ -97,8 +97,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/convert-lead/{id}',[CustomerController::class, 'convert_lead']);
 	Route::post('/save-convert-lead',[CustomerController::class, 'save_convert_lead']);
     Route::get('/accounts',[CustomerController::class, 'accounts']);
-
-
+ 	Route::get('/add-account',[CustomerController::class, 'add_account']);
+ 	 Route::post('/save-account',[CustomerController::class, 'save_account']);
 
 
     Route::get('/export_data_pankaj',[UserController::class,'export_data_pankaj']);

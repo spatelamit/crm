@@ -104,7 +104,21 @@ class Customer extends Model
 			       return false;
 			   }
 
-	  }
+	  } public function GetModuleData($module_id){
+        $user_id=session()->get('id');
+      
+        $que="call getModulesData(".$user_id.",".$module_id.",10)";
+        $data=DB::select($que);
+
+
+        // dd($leads_data  );
+         if($data){
+                  return $data;
+               }else{
+                   return false;
+               }
+
+      }
 	  public function GetEditData($id){
 
 	  	$getdata=DB::table('module_data')
@@ -155,6 +169,54 @@ class Customer extends Model
 		  }
 
 	}
+    //account
+    public function SaveAccount($req){
+
+
+        $module_id=$req->module_id;
+        $data_id=uniqid();
+          for ($i=0; $i <count($req->column_id) ; $i++) {
+            $data[]=array(
+            'module_id'=>$module_id,
+            'column_id'=>$req->column_id[$i],
+            'value'=>$req->value[$i],
+            'user_id'=>session()->get('id'),
+            'data_id'=>$data_id,
+        );
+
+        }
+        $result=DB::table('module_data')->insert($data);
+
+        if($result){
+                  return true;
+               }else{
+                   return false;
+               }
+
+      }
+      //pipeline
+      public function GetPipeline(){
+        $result=DB::table('pipeline_group')
+        ->where('company_id',session()->get('company_id'))
+        ->get();
+        if($result){
+                  return $result;
+               }else{
+                   return false;
+               }
+
+      }
+       public function PipelineStages($pipeline_group_id){
+        $result=DB::table('pipeline_group')
+        ->where('company_id',session()->get('company_id'))
+        ->get();
+        if($result){
+                  return $result;
+               }else{
+                   return false;
+               }
+
+      }
 // save task
     public function SaveTask($req){
         $req['sender_id']=session()->get('id');

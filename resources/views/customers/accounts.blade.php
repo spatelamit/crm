@@ -6,14 +6,14 @@
 
 <div class="row mb-3">
         <div class="col-sm-8 mb-4 mb-xl-0">
-            <h4 class="font-weight-bold text-dark"> Leads </h4>
+            <h4 class="font-weight-bold text-dark"> Accounts </h4>
            
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
   
-                 <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i class="fa fa-user-plus"></i>
-                    Create Leads </a> 
+                 <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-account') }}"> <i class="fa fa-user-plus"></i>
+                    Create Accounts </a> 
                     
                     
                   
@@ -42,7 +42,7 @@
             Task </a>
             
             
-           <!--   <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Task</a> -->                              
+             <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Deal</a>                              
                             </div>                          
                           </div>
                         </div>  
@@ -64,7 +64,7 @@
 
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Leads List </h5>
+                    <h5 class="card-title">Accounts List </h5>
                 </div>
 
                 <div class="card-body">
@@ -81,8 +81,8 @@
                                     
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
-                           @if( $data['leads_data'] != null )
-                                 @foreach ($data['leads_data'][0] as $key => $value)
+                           @if( $data['accounts_data'] != null )
+                                 @foreach ($data['accounts_data'][0] as $key => $value)
 
                                                <th>{{$key}}</th>
 
@@ -99,23 +99,23 @@
                             </thead>
                             <tbody>
 
-                         @if( $data['leads_data']!=null)
-                             @foreach( $data['leads_data'] as $key1=>$field)
+                         @if( $data['accounts_data']!=null)
+                             @foreach( $data['accounts_data'] as $key1=>$field)
                                  
                                         <tr>
                                            
                                             <td> <div>
                                                 <input class="data_id" type="checkbox" name="data_id" value="
-                                                {{$data['leads_data'][$key1]['data_id']}}">
-                                                <input id="email{{$loop->iteration}}" class="email" type="checkbox" name="email" value="{{$data['leads_data'][$key1]['email_address']}}" style="display: none;">
-                                                <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['leads_data'][$key1]['contact_number']}}" style="display: none;"> 
+                                                {{$data['accounts_data'][$key1]['data_id']}}">
+                                                <input id="email{{$loop->iteration}}" class="email" type="checkbox" name="email" value="{{$data['accounts_data'][$key1]['email_address']}}" style="display: none;">
+                                                <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['accounts_data'][$key1]['contact_number']}}" style="display: none;"> 
                                                  </div>
                                             </td>
                                          
                                         @foreach ($field as $key => $value)
 
                                          @if( $key == 'data_id')
-                                         <td  class="details-control"> <a href="{{url('lead-profile',$data['leads_data'][$key1]['data_id'])}}">{{        $data['leads_data'][$key1]['data_id'] }}</a> </td>
+                                         <td  class="details-control"> <a href="{{url('lead-profile',$data['accounts_data'][$key1]['data_id'])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
 
                                         @else
 
@@ -129,11 +129,11 @@
 
 
                                                 <a class="btn btn-info mr-2"
-                                                    href="{{ url('edit-lead', $data['leads_data'][$key1]['data_id']) }}"><span
+                                                    href="{{ url('edit-lead', $data['accounts_data'][$key1]['data_id']) }}"><span
                                                         class="fa fa-pencil" style="float: none; margin: 5px;"></span>
                                                 </a>
                                                 <a class="btn btn-danger"
-                                                    onclick="deletelead( '{{ $data['leads_data'][$key1]['data_id'] }}' )">
+                                                    onclick="deletelead( '{{ $data['accounts_data'][$key1]['data_id'] }}' )">
                                                     <span class="fa fa-trash" style="float: none; margin: 5px;"></span>
                                                 </a>
 
