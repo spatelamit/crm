@@ -128,10 +128,23 @@ class CustomerController extends Controller
           $data['lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
            $data['pipeline']=$this->Customer->GetPipeline();
-           print_r($data['pipeline']);
+           // print_r($data['selected_fields']);
          return view('customers.deal-by-lead',compact('data'));
 
     }
+    
+     public function fetch_stages($id){
+      $pipeline_group_id=$req->category_id;
+       $data['PipelineGroup']=$this->Customer->PipelineStages($pipeline_group_id);
+       // print_r($data['PipelineGroup']);
+       // return  $data['PipelineGroup'];
+       foreach($data['PipelineGroup'] as $value){
+        echo "<option value=".$value['id']." >"  .$value['deal_stage_name']."</option>";
+       }
+
+    }
+
+
     public function lead_profile($id){
           $data['lead_data']=$this->Customer->GetEditData($id);
           $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
