@@ -132,12 +132,12 @@ class CustomerController extends Controller
          return view('customers.deal-by-lead',compact('data'));
 
     }
-    
+
      public function fetch_stages($id){
-      $pipeline_group_id=$req->category_id;
+      $pipeline_group_id=$id;
        $data['PipelineGroup']=$this->Customer->PipelineStages($pipeline_group_id);
        // print_r($data['PipelineGroup']);
-       // return  $data['PipelineGroup'];
+       dd($data['PipelineGroup']);
        foreach($data['PipelineGroup'] as $value){
         echo "<option value=".$value['id']." >"  .$value['deal_stage_name']."</option>";
        }

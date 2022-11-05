@@ -207,14 +207,19 @@ class Customer extends Model
 
       }
        public function PipelineStages($pipeline_group_id){
-        $result=DB::table('pipeline_group')
-        ->where('company_id',session()->get('company_id'))
+        $result=DB::table('users_pipeline_stages')
+        ->join('pipeline_group','pipeline_group.id','=','users_pipeline_stages.pipeline_group_id')
+        ->where('users_pipeline_stages.pipeline_group_id',$pipeline_group_id)
+        ->where('users_pipeline_stages.status','1')
         ->get();
-        if($result){
-                  return $result;
-               }else{
-                   return false;
-               }
+        if($result->num_rows() == 0){
+                $result1=DB::table('pipeline_stages')
+                ->where('status','1')
+                ->get();
+                  return $result1;
+        }else{
+            return $result;
+         }
 
       }
 // save task

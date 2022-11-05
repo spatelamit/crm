@@ -107,8 +107,8 @@
                                         </div>
                                          <div class="form-group mb-10">
                                          <label>Stages</label>
-                                          
-                                                <select class="form-control "  >
+                                                
+                                                <select name="value[]" class="form-control deal_stages1"  >
                                                   
                                                     
                                                  
