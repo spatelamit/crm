@@ -107,4 +107,5 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     //activity controller
 
     Route::get('/tasks',[ActivityController::class, 'tasks']);
+    // Route::get('/GetTask/{id}',[ActivityController::class, 'GetTask']);
 });
