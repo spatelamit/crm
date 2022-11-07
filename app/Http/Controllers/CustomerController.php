@@ -128,7 +128,7 @@ class CustomerController extends Controller
           $data['lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
            $data['pipeline']=$this->Customer->GetPipeline();
-           // print_r($data['selected_fields']);
+           
          return view('customers.deal-by-lead',compact('data'));
 
     }
@@ -184,7 +184,7 @@ class CustomerController extends Controller
     //lead filter
     public function leads_filter(Request $req){
        $data['lead_data']=$this->Customer->LeadFilter($req);
-      // dd($req->all());
+      // print_r( $data['lead_data']);
     }
 
     //
@@ -202,6 +202,7 @@ class CustomerController extends Controller
             $data['deal_data']=null;
 
         }
+        // dd($data['deal_data']);
         return view('customers.deals',compact('data'));
     }
 
@@ -219,10 +220,30 @@ class CustomerController extends Controller
      public function add_deal(){
 
            $module_id='9';
-             
+
             $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
             $data['pipeline']=$this->Customer->GetPipeline();
-        // dd($data['selected_fields']);
+            $data['accounts_datas']=$this->Customer->GetDealData('10');
+
+            if( $data['accounts_datas']){
+               foreach ($data['accounts_datas'] as $key => $value) {
+               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+             }
+             foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][]=array(
+                  'id'=>$value1['company_name'],
+                  'text'=>$value1['company_name'],
+                  'name'=>$value1['data_id'],
+                );
+             }
+             }else{
+                $data['accounts_data']=null;
+
+              }
+
+
+        // dd($data['company_names']);
             return view('customers.add-deal',compact('data'));
     }
 

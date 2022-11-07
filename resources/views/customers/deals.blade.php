@@ -110,14 +110,7 @@
                                                     <input class="data_id" type="checkbox" name="data_id"
                                                         value="
                                                 {{ $data['deal_data'][$key1]['data_id'] }}">
-                                                    <input id="email{{ $loop->iteration }}" class="email"
-                                                        type="checkbox" name="email"
-                                                        value="{{ $data['deal_data'][$key1]['email_address'] }}"
-                                                        style="display: none;">
-                                                    <input id="mobile_num{{ $loop->iteration }}" class="mobile_num"
-                                                        type="checkbox" name="mobile_num"
-                                                        value="{{ $data['deal_data'][$key1]['contact_number'] }}"
-                                                        style="display: none;">
+                                                  
                                                 </div>
                                             </td>
 
@@ -126,6 +119,11 @@
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['deal_data'][$key1]['data_id']) }}">{{ $data['deal_data'][$key1]['data_id'] }}</a>
                                                     </td>
+                                                     @elseif ($key == 'company_name')
+                                                    <td class="details-control"> <a
+                                                            href="{{ url('lead-profile', $data['deal_data'][$key1]['account_id']) }}">{{ $data['deal_data'][$key1]['company_name'] }}</a>
+                                                    </td>
+
                                                 @else
                                                     <td class="details-control"> {{ $value }}</td>
                                                 @endif

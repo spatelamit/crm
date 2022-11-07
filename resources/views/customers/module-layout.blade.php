@@ -65,7 +65,9 @@ $field1[]=$selected_field->column_id;
               <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
               <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
             </li>
+          
             @endforeach
+            
           </ul>
           
           <button   type="submit" class="btn btn-info " >Submit</button>

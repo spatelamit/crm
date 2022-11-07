@@ -39,6 +39,18 @@
                                                 required="" value="{{$val->value}}">
                 </div>
               </div>
+              @elseif($val->column_id == 15)
+              <div class="col-md-4">
+                <div class="form-group mb-10 ">
+                  <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                  <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                  <input type="text" name="value[]"
+                                                class="form-control bg_input"
+                                                
+                                                placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
+                                                required="" value="{{$val->value}}">
+                </div>
+              </div>
               @elseif($val->column_id == 22)
               <div class="col-md-4">
                 <div class="form-group mb-10">

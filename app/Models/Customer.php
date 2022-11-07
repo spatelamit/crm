@@ -323,19 +323,19 @@ class Customer extends Model
 
 
     public function LeadFilter($req){
-          // DB::statement("SET SQL_MODE=''");
+          DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
                 ->select('module_data.*','module_columns.col_name')
-                ->where('module_data.module_id','8')
+                ->where('module_data.module_id',8)
                 ->where('module_data.user_id',session()->get('id')) 
-                ->join('module_columns','module_data.column_id','=','module_columns.column_id');
-                // ->groupBy('module_data.data_id');
+                ->join('module_columns','module_data.column_id','=','module_columns.column_id')
+                ->groupBy('module_data.data_id','module_data.column_id');
                 
              $que="call getModulesData(".session()->get('id').",8,10)";
                  $leads_data=DB::select($que);
-                 $search='';
+                 $search=[];
      if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
         if($req->activitiesopt==1){
             $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
@@ -457,28 +457,22 @@ class Customer extends Model
         // echo (count($result1));
         
         foreach ($result1 as $key => $value) {
-            // $data['data_id']=$value->data_id;
-            // print_r($value);
-            foreach ($value as $key2 => $value2) {
-                $data['data_id']=$value2->data_id;
-                 $data[$value2->col_name]=$value2->value;
-               // print_r($value2);
+          
+         
+        
+        foreach ($value as $key2 => $value2) {
+                $data1['data_id']=$value2->data_id;
+                 $data1[$value2->col_name]=$value2->value;
+            
               
             }
-           
-        
-        }
- 
-       
-    
-     // $data= $data;
-       // $data1= (json_decode(json_encode($data1),true));
-        // $array_data=(array_merge($data,$data1));
-print_r($result1);
-// $collection = array_merge($result);
-    
+            $opt[]= $data1;
+      }
+      $fresult=array_merge($opt,$search);
+    // print_r($opt);
+     print_r($result);
 
-        // dd(collect($result)->groupBy('data_id'));
+
 
     }
 

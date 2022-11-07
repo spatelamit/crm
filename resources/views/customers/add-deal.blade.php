@@ -19,26 +19,29 @@
                    
                    
 
-                    <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
+                    <form method="post" action="{{ url('save-deal') }}" autocomplete="nope">
                         @csrf
 
 
 
                         <input type="hidden" name="module_id" value="{{ $data['selected_fields'][0]->module_id }}">
 
-
+                         <input type="hidden" name="column_id[]" value="30">
+                        <input type="hidden" name="value[]" id="accounnt_id" value="">
                         <div class="row">
                             @foreach ($data['selected_fields'] as $val)
+
                                 <div class="col-md-3">
 
                                     @if ($val->column_id == 15)
                                         <div class="form-group mb-10">
                                             <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                             <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
-                                            <input type="{{ $val->type }}" name="value[]"
+                                            <select  name="value[]"
                                                 class="form-control bg_input"
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
-                                                required="" id="compName" >
+                                                     id="compName"  required="">
+                                            </select>   
                                         </div>
                                     @elseif($val->column_id == 2)
                                         <div class="form-group mb-10">
@@ -48,6 +51,25 @@
                                                 pattern="[6-9]{1}[0-9]{9}"
                                                 title="Phone number with 6-9 and remaing 9 digit with 0-9"
                                                 maxlength="10"
+                                                placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
+                                                required="">
+                                        </div>
+                                         @elseif($val->column_id == 1)
+                                        <div class="form-group mb-10">
+                                            <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                            <input type="text" name="value[]" class="form-control bg_input"
+                                               
+                                                placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
+                                                required="">
+                                        </div>
+                                       
+                                            @elseif($val->column_id == 24)
+                                        <div class="form-group mb-10">
+                                            <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                            <input type="text" name="value[]" class="form-control bg_input"
+                                               
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
                                                 required="">
                                         </div>
@@ -76,16 +98,12 @@
                                                     <option value="{{$pipeline->id}}">{{$pipeline->pipeline_name  }}</option>
                                                     @endforeach
                                                 </select>
+                                                <select name="value[]" class="form-control stages" required="" > </select>
                                         </div>
-                                         <div class="form-group mb-10">
-                                         <label>Stages</label>
-                                                
-                                                <select name="value[]" class="form-control stages"  >
-                                                  
-                                                    
-                                                 
-                                                </select>
-                                        </div>
+                                         
+                                       
+                                        
+                                            
                                     @else
                                         <div class="form-group mb-10">
                                             <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
@@ -126,5 +144,27 @@ $(".stages").html(response);
 }
 });
 });
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#compName").select2( {
+       placeholder: "Select a state",
+       data:<?php  echo json_encode($data['company_names']) ;?>,
+     
+        
+    });
+    $("#compName").on('change',function(){
+        var compN=$('#compName').val();
+
+         var  data1= <?php  echo json_encode($data['company_names']) ?>;
+         // console.log(data1);
+
+       // var opt=data1.'0'.filter( record => record.name === compN);
+    var result=data1.filter(obj=> obj.text == compN);
+    // console.log(result['0']['name']);
+    $('#accounnt_id').val(result['0']['name']);
+      
+    });
 });
 </script>
