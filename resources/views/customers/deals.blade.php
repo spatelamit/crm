@@ -6,15 +6,15 @@
 
     <div class="row mb-3">
         <div class="col-sm-8 mb-4 mb-xl-0">
-            <h4 class="font-weight-bold text-dark"> Leads </h4>
+            <h4 class="font-weight-bold text-dark"> Deal </h4>
 
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
 
-                <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i
+                <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-deal') }}"> <i
                         class="fa fa-user-plus"></i>
-                    Create Leads </a>
+                    Create Deal </a>
 
 
 
@@ -85,8 +85,8 @@
 
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                     </div>
-                                    @if ($data['leads_data'] != null)
-                                        @foreach ($data['leads_data'][0] as $key => $value)
+                                    @if ($data['deal_data'] != null)
+                                        @foreach ($data['deal_data'][0] as $key => $value)
                                             <th>{{ $key }}</th>
                                         @endforeach
                                         <th>Actions </th>
@@ -101,22 +101,22 @@
                             </thead>
                             <tbody>
 
-                                @if ($data['leads_data'] != null)
-                                    @foreach ($data['leads_data'] as $key1 => $field)
+                                @if ($data['deal_data'] != null)
+                                    @foreach ($data['deal_data'] as $key1 => $field)
                                         <tr>
 
                                             <td>
                                                 <div>
                                                     <input class="data_id" type="checkbox" name="data_id"
                                                         value="
-                                                {{ $data['leads_data'][$key1]['data_id'] }}">
+                                                {{ $data['deal_data'][$key1]['data_id'] }}">
                                                     <input id="email{{ $loop->iteration }}" class="email"
                                                         type="checkbox" name="email"
-                                                        value="{{ $data['leads_data'][$key1]['email_address'] }}"
+                                                        value="{{ $data['deal_data'][$key1]['email_address'] }}"
                                                         style="display: none;">
                                                     <input id="mobile_num{{ $loop->iteration }}" class="mobile_num"
                                                         type="checkbox" name="mobile_num"
-                                                        value="{{ $data['leads_data'][$key1]['contact_number'] }}"
+                                                        value="{{ $data['deal_data'][$key1]['contact_number'] }}"
                                                         style="display: none;">
                                                 </div>
                                             </td>
@@ -124,7 +124,7 @@
                                             @foreach ($field as $key => $value)
                                                 @if ($key == 'data_id')
                                                     <td class="details-control"> <a
-                                                            href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
+                                                            href="{{ url('lead-profile', $data['deal_data'][$key1]['data_id']) }}">{{ $data['deal_data'][$key1]['data_id'] }}</a>
                                                     </td>
                                                 @else
                                                     <td class="details-control"> {{ $value }}</td>
@@ -137,12 +137,12 @@
 
 
                                                     <a class="btn btn-info mr-2"
-                                                        href="{{ url('edit-lead', $data['leads_data'][$key1]['data_id']) }}"><span
+                                                        href="{{ url('edit-lead', $data['deal_data'][$key1]['data_id']) }}"><span
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span>
                                                     </a>
                                                     <a class="btn btn-danger"
-                                                        onclick="deletelead( '{{ $data['leads_data'][$key1]['data_id'] }}' )">
+                                                        onclick="deletelead( '{{ $data['deal_data'][$key1]['data_id'] }}' )">
                                                         <span class="fa fa-trash"
                                                             style="float: none; margin: 5px;"></span>
                                                     </a>

@@ -119,6 +119,21 @@ class Customer extends Model
                }
 
       }
+      public function GetDealData($module_id){
+        $user_id=session()->get('id');
+      
+        $que="call GetDeal(".$user_id.",".$module_id.")";
+        $data=DB::select($que);
+
+
+        // dd($leads_data  );
+         if($data){
+                  return $data;
+               }else{
+                   return false;
+               }
+
+      }
 	  public function GetEditData($id){
 
 	  	$getdata=DB::table('module_data')
@@ -170,7 +185,7 @@ class Customer extends Model
 
 	}
     //account
-    public function SaveAccount($req){
+    public function SaveData($req){
 
 
         $module_id=$req->module_id;
@@ -212,7 +227,7 @@ class Customer extends Model
         ->where('users_pipeline_stages.pipeline_group_id',$pipeline_group_id)
         ->where('users_pipeline_stages.status','1')
         ->get();
-        if($result->num_rows() == 0){
+        if($result->count() == 0){
                 $result1=DB::table('pipeline_stages')
                 ->where('status','1')
                 ->get();

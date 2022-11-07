@@ -65,3 +65,11 @@ function createdeal(id){
       });
    
     });
+
+   $(document).ready(function() {
+    $("#compName").keyup(function() {
+        var dInput = $(this).val();
+        alert(dInput);
+        //$(".dDimension:contains('" + dInput + "')").css("display","block");
+    });
+});

@@ -99,8 +99,9 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/accounts',[CustomerController::class, 'accounts']);
  	Route::get('/add-account',[CustomerController::class, 'add_account']);
  	 Route::post('/save-account',[CustomerController::class, 'save_account']);
-
-
+		Route::get('/fetch-stages/{id}',[CustomerController::class, 'fetch_stages']);
+		 Route::post('/save-deal',[CustomerController::class, 'save_deal']);
+		 Route::get('/add-deal',[CustomerController::class, 'add_deal']);
     Route::get('/export_data_pankaj',[UserController::class,'export_data_pankaj']);
 
 
