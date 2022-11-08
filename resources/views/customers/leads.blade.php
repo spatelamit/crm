@@ -71,8 +71,8 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="leads" class="display table ">
+                    <div class="table-responsive lead_search">
+                        <table id="leads" class="display table leads">
                             <thead>
 
 
@@ -126,6 +126,7 @@
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>
+                                                 
                                                 @else
                                                     <td class="details-control"> {{ $value }}</td>
                                                 @endif
@@ -202,7 +203,7 @@
             <form action="javascript:void(0)" id="leads_filter">
                 @csrf
                 <input type="hidden" id='coun_filter' name="coun_filter" value="0">
-
+                <input type="hidden" name="module_id" value="8">
 
                 <div class="block block-condensed">
 
@@ -569,7 +570,7 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#leads').DataTable({
+        $('.leads').DataTable({
             dom: 'Bfrtip',
             scrollX: true,
 

@@ -183,8 +183,10 @@ class CustomerController extends Controller
 
     //lead filter
     public function leads_filter(Request $req){
-       $data['lead_data']=$this->Customer->LeadFilter($req);
-      // print_r( $data['lead_data']);
+       $data['leads_data']=$this->Customer->LeadFilter($req);
+        $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
+        // print_r($data['selected_fields']);
+      return view('customers.lead_filter',compact('data'));
     }
 
     //

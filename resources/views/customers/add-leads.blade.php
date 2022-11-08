@@ -62,6 +62,17 @@
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
                                                 required="">
                                         </div>
+                                        @elseif ($val->column_id == 31)
+                                        <div class="form-group mb-10">
+                                            <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                           
+                                                <select  required class="form-control bg_input" name="value[]">
+                                                    <option value=""> A</option>
+                                                    <option value=""> A</option>
+                                                    <option value=""> A</option>
+                                                </select>
+                                        </div>
                                     @elseif($val->column_id == 2)
                                         <div class="form-group mb-10">
                                             <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>

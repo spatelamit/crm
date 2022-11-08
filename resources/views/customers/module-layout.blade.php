@@ -57,6 +57,8 @@ $field1[]=$selected_field->column_id;
        
           <ul class="list-arrow choice padd_50" style="height: 550px;" id="sortable">
             @foreach($data['selected_fields'] as $filelist )
+
+          
             <li draggable="true">
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
               <input type="hidden"  name="module" value="{{$filelist->module_id}}">
