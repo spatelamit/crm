@@ -107,5 +107,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     //activity controller
 
     Route::get('/tasks',[ActivityController::class, 'tasks']);
-    // Route::get('/GetTask/{id}',[ActivityController::class, 'GetTask']);
+    Route::get('/edittask/{id}',[ActivityController::class, 'edittask']);
+    Route::post('/taskupdate',[ActivityController::class, 'taskupdate']);
+    Route::post('/addnots',[ActivityController::class, 'addnots']);
+    Route::get('/notes',[ActivityController::class, 'notes']);
 });
