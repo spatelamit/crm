@@ -10,14 +10,18 @@ class ActivityController extends Controller
     public function tasks()
     {
         $user_id = session()->get('id');
-
+        DB::enableQueryLog();
         $result = DB::table('tasks')
             ->select('tasks.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
             ->join('users as u1', 'u1.id', '=', 'tasks.sender_id')
-            ->join('users as u2', 'u2.id', '=', 'tasks.reciever_id')
-            ->where('tasks.reciever_id', $user_id)
-            ->Orwhere('tasks.sender_id', $user_id)
+            ->leftJoin('users as u2', 'u2.id', '=', 'tasks.reciever_id')
+            ->where('tasks.sender_id', $user_id)
+            ->Orwhere('tasks.reciever_id', $user_id)
+            // ->Orwhere('tasks.reciever_id', null)
+
+
             ->paginate('5');
+            // dd(DB::getQueryLog());
         //   dd($result);
         return view('viewtask', compact('result'));
     }
@@ -84,5 +88,5 @@ class ActivityController extends Controller
 
     }
 
-    
+
 }
