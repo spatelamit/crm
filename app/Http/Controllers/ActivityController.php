@@ -89,4 +89,27 @@ class ActivityController extends Controller
     }
 
 
+
+    public function meetings()
+    {
+        $user_id = session()->get('id');
+        DB::enableQueryLog();
+        $result = DB::table('meetings')
+            ->select('meetings.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
+            ->join('users as u1', 'u1.id', '=', 'meetings.sender_id')
+            ->leftJoin('users as u2', 'u2.id', '=', 'meetings.reciever_id')
+            ->where('meetings.sender_id', $user_id)
+            ->Orwhere('meetings.reciever_id', $user_id)
+            // ->Orwhere('tasks.reciever_id', null)
+
+
+            ->paginate('5');
+            // dd(DB::getQueryLog());
+        //   dd($result);
+        return view('meetings', compact('result'));
+    }
+
+
+
+
 }

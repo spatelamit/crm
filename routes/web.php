@@ -87,7 +87,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::post('/save-leads',[CustomerController::class, 'save_leads']);
      Route::get('/module-layout/{id}',[CustomerController::class, 'module_layout']);
      Route::post('/add-mod-fields',[CustomerController::class, 'add_mod_fields']);
-    Route::get('/meetings',[CustomerController::class, 'meetings']);
+    Route::get('/meetings1',[CustomerController::class, 'meetings']);
     Route::get('/tasks1',[CustomerController::class, 'tasks']);
     Route::post('/save-task',[CustomerController::class, 'save_task']);
     Route::get('/teams',[CustomerController::class, 'teams']);
@@ -106,10 +106,14 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
 
     //activity controller
-
+    //task
     Route::get('/tasks',[ActivityController::class, 'tasks']);
     Route::get('/edittask/{id}',[ActivityController::class, 'edittask']);
     Route::post('/taskupdate',[ActivityController::class, 'taskupdate']);
     Route::post('/addnots',[ActivityController::class, 'addnots']);
     Route::get('/notes',[ActivityController::class, 'notes']);
+
+    //meeting
+
+    Route::get('/meetings',[ActivityController::class, 'meetings']);
 });
