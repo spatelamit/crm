@@ -128,18 +128,21 @@ class CustomerController extends Controller
           $data['lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
            $data['pipeline']=$this->Customer->GetPipeline();
-           // print_r($data['selected_fields']);
+           
          return view('customers.deal-by-lead',compact('data'));
 
     }
 
      public function fetch_stages($id){
+   
       $pipeline_group_id=$id;
        $data['PipelineGroup']=$this->Customer->PipelineStages($pipeline_group_id);
        // print_r($data['PipelineGroup']);
-       dd($data['PipelineGroup']);
+       // print_r($data['PipelineGroup']);
+      
        foreach($data['PipelineGroup'] as $value){
-        echo "<option value=".$value['id']." >"  .$value['deal_stage_name']."</option>";
+        // print_r($value);
+        echo "<option value=".$value->id." >"  .$value->stage_name."</option>";
        }
 
     }
@@ -180,15 +183,72 @@ class CustomerController extends Controller
 
     //lead filter
     public function leads_filter(Request $req){
-       $data['lead_data']=$this->Customer->LeadFilter($req);
-      // dd($req->all());
+       $data['leads_data']=$this->Customer->LeadFilter($req);
+        $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
+        // print_r($data['selected_fields']);
+      return view('customers.lead_filter',compact('data'));
     }
 
     //
-    public function deals()
-    {
-        return view('deals');
+    public function deals(){
+             $module_id='9';
+             $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+             $data['deal_datas']=$this->Customer->GetDealData($module_id);
+
+        if( $data['deal_datas']){
+        foreach ($data['deal_datas'] as $key => $value) {
+          $data['deal_data'][]=(json_decode(json_encode( $value),true));
+
+            }
+        }else{
+            $data['deal_data']=null;
+
+        }
+        // dd($data['deal_data']);
+        return view('customers.deals',compact('data'));
     }
+
+     public function save_deal(Request $req){
+      // dd($req->all());
+     $result=$this->Customer->SaveData($req);
+            if($result){
+              return redirect('deals')->with("success", "Successfully Added Deal!")   ;
+
+             }else{
+              return redirect('deals')->with("error", 'Not Add Deal');
+
+             }
+    }
+     public function add_deal(){
+
+           $module_id='9';
+
+            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+            $data['pipeline']=$this->Customer->GetPipeline();
+            $data['accounts_datas']=$this->Customer->GetDealData('10');
+
+            if( $data['accounts_datas']){
+               foreach ($data['accounts_datas'] as $key => $value) {
+               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+             }
+             foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][]=array(
+                  'id'=>$value1['company_name'],
+                  'text'=>$value1['company_name'],
+                  'name'=>$value1['data_id'],
+                );
+             }
+             }else{
+                $data['accounts_data']=null;
+
+              }
+
+
+        // dd($data['company_names']);
+            return view('customers.add-deal',compact('data'));
+    }
+
     public function accounts(){
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
@@ -206,25 +266,28 @@ class CustomerController extends Controller
         // dd($data['accounts_data']);
         return view('customers.accounts',compact('data'));
     }
+
+
     public function add_account(){
 
-       $module_id='10';
+           $module_id='10';
 
-        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-    // dd($data['selected_fields']);
-        return view('customers.add-account',compact('data'));
+            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+        // dd($data['selected_fields']);
+            return view('customers.add-account',compact('data'));
     }
+
     public function save_account(Request $req){
         // dd($req->all());
 
-         $result=$this->Customer->SaveAccount($req);
-          if($result){
-            return redirect('accounts')->with("success", "Successfully Added Account!")   ;
+           $result=$this->Customer->SaveData($req);
+            if($result){
+              return redirect('accounts')->with("success", "Successfully Added Account!")   ;
 
-        }else{
-            return redirect('accounts')->with("error", 'Not Add Account');
+             }else{
+              return redirect('accounts')->with("error", 'Not Add Account');
 
-        }
+             }
 
     }
 

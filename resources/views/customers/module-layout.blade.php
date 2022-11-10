@@ -50,14 +50,16 @@ $field1[]=$selected_field->column_id;
          </p>
          <hr />
 
-        <form  action="{{ url('add-mod-fields') }}" method="POST">
+        <form  action="{{ url('add-mod-fields') }}" method="POST" >
           @csrf
           <label>Form</label>
           <input type="hidden"  name="module[]" value="{{$data['selected_fields'][0]->module_id}}">
-       
-          <ul class="list-arrow choice padd_50" style="height: 550px;" id="sortable">
+         <div id="selected" >
+
+          <ul class="list-arrow choice padd_50" style="height: 550px;"   >
             @foreach($data['selected_fields'] as $filelist )
-            <li draggable="true">
+               @if(($filelist->module_id=='9') && ($filelist->column_id == '15') )
+             <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
               <input type="hidden"  name="module" value="{{$filelist->module_id}}">
               <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
@@ -65,9 +67,69 @@ $field1[]=$selected_field->column_id;
               <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
               <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
             </li>
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '30') )
+             <li >
+             
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+            @elseif(($filelist->module_id=='8') && ($filelist->column_id == '15') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+             @elseif(($filelist->module_id=='8') && ($filelist->column_id == '3') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+               @elseif(($filelist->module_id=='10') && ($filelist->column_id == '15') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+             @elseif(($filelist->module_id=='10') && ($filelist->column_id == '3') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+             @else
+
+       
+            <li draggable="true"   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
+          @endif
+
+           
             @endforeach
+            
           </ul>
-          
+          </div>
           <button   type="submit" class="btn btn-info " >Submit</button>
         </form>
       </div>
@@ -83,20 +145,24 @@ $field1[]=$selected_field->column_id;
         <h4><i class="fa fa-times" aria-hidden="true"></i> Unselected</h4>
          <p class="font-weight-normal mb-2 text-muted">Note : If you feel that your wrong field has been selected, then you can drag it to the selected option.</p>
          <hr />
-        <ul class=" choice padd_50">
+        
+        <ul class=" choice padd_50" >
           @foreach( $data['all_fields'] as $val)
 
           @if(!in_array($val->column_id,explode(",", $selfield1)))
-          <li draggable="true">
-            <label> {{ str_replace("_"," ",strtoupper($val->col_name)) }} </label>
-            <input type="hidden"  name="module" value="{{$data['mid']}}">
-            <input type="hidden"   name="column_id[]" value=" {{$val->column_id }}" >
-            <input type="hidden"   name="type[]" value=" {{$val->type}} " >
-            <input type="hidden"   name="col_name[]" value="{{ $val->col_name}} " >
-          </li>
+            
+                <li draggable="true">
+                  <label> {{ str_replace("_"," ",strtoupper($val->col_name)) }} </label>
+                  <input type="hidden"  name="module" value="{{$data['mid']}}">
+                  <input type="hidden"   name="column_id[]" value=" {{$val->column_id }}" >
+                  <input type="hidden"   name="type[]" value=" {{$val->type}} " >
+                  <input type="hidden"   name="col_name[]" value="{{ $val->col_name}} " >
+                </li>
+               
           @endif
           @endforeach
         </ul>
+        
         {{-- <p> Note:-  </p> --}}
       </div>
     </div>
@@ -115,6 +181,7 @@ $field1[]=$selected_field->column_id;
 </div>
 @include('footer')
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+ <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
   var input=document.getElementsByTagName('li');
   var choice = document.getElementsByClassName('choice');
@@ -133,6 +200,7 @@ $field1[]=$selected_field->column_id;
     setTimeout(()=>this.style.display="block",0);
     dragitem=null;
 
+
   }
 
   for (j of choice){
@@ -140,12 +208,13 @@ $field1[]=$selected_field->column_id;
     j.addEventListener('dragenter',dragEnter);
     j.addEventListener('dragleave',dragLeave);
      j.addEventListener('drop',Drop);
-
+     
   }
 
   function Drop(){
-    this.append(dragitem);
 
+    this.append(dragitem);
+     
   }
 
   function dragOver(e){
@@ -160,13 +229,21 @@ $field1[]=$selected_field->column_id;
   }
 
   function dragLeave(){
+     $( "#sortable " ).sortable();
+  
      this.style.border ="none";
 
   }
-  $(function  () {
-  $("form.choice").sortable();
-});
-  $( function() {
-    $( "#sortable" ).sortable();
-  } );
+
+ 
+// $(function () {
+//         $("#selected .choice").sortable({
+//                 connectWith: "ul"  
+//         });
+//          
+//         $("ul .choice").draggable({
+//             helper: "clone",
+//             connectToSortable: ".choice"
+//         });
+//     });
 </script>

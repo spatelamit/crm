@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive lead_search">
                         <table id="leads" class="display table ">
                             <thead>
 
@@ -191,7 +191,7 @@
           <form action="javascript:void(0)" id="leads_filter">
             @csrf
           <input type="hidden" id='coun_filter' name="coun_filter" value="0">
-         
+          <input type="hidden" name="module_id" value="10">
       
             <div class="block block-condensed">
          

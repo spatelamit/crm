@@ -59,9 +59,11 @@ function createdeal(id){
 
           // $(".defalut").hide();
           // $('#GlobleLoader').hide();
-          // $("#dataListFilter").html(response);
-          console.log(response);
+          $(".lead_search").html(response);
+          // console.log(response);
         }
       });
    
     });
+
+   

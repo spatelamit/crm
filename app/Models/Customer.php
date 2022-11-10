@@ -93,7 +93,7 @@ class Customer extends Model
 	  public function GetLeadsData(){
 	  	$user_id=session()->get('id');
 	  	$module_id='8';
-	  	$que="call getModulesData(".$user_id.",8,10)";
+	  	$que="call getModulesData(".$user_id.",8)";
 	  	$leads_data=DB::select($que);
 
 
@@ -107,7 +107,22 @@ class Customer extends Model
 	  } public function GetModuleData($module_id){
         $user_id=session()->get('id');
       
-        $que="call getModulesData(".$user_id.",".$module_id.",10)";
+        $que="call getModulesData(".$user_id.",".$module_id.")";
+        $data=DB::select($que);
+
+
+        // dd($leads_data  );
+         if($data){
+                  return $data;
+               }else{
+                   return false;
+               }
+
+      }
+      public function GetDealData($module_id){
+        $user_id=session()->get('id');
+      
+        $que="call GetDeal(".$user_id.",".$module_id.")";
         $data=DB::select($que);
 
 
@@ -170,7 +185,7 @@ class Customer extends Model
 
 	}
     //account
-    public function SaveAccount($req){
+    public function SaveData($req){
 
 
         $module_id=$req->module_id;
@@ -208,11 +223,12 @@ class Customer extends Model
       }
        public function PipelineStages($pipeline_group_id){
         $result=DB::table('users_pipeline_stages')
+        ->select('users_pipeline_stages.*')
         ->join('pipeline_group','pipeline_group.id','=','users_pipeline_stages.pipeline_group_id')
         ->where('users_pipeline_stages.pipeline_group_id',$pipeline_group_id)
         ->where('users_pipeline_stages.status','1')
         ->get();
-        if($result->num_rows() == 0){
+        if($result->count() == 0){
                 $result1=DB::table('pipeline_stages')
                 ->where('status','1')
                 ->get();
@@ -308,38 +324,41 @@ class Customer extends Model
 
 
     public function LeadFilter($req){
-          // DB::statement("SET SQL_MODE=''");
+          DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
-                ->select('module_data.*','module_columns.col_name')
-                ->where('module_data.module_id','8')
+                ->select('module_data.*','module_selected_column.col_name')
+                ->where('module_data.module_id',$req->module_id)
                 ->where('module_data.user_id',session()->get('id')) 
-                ->join('module_columns','module_data.column_id','=','module_columns.column_id');
-                // ->groupBy('module_data.data_id');
+                ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
+                ->groupBy('module_data.data_id','module_data.column_id');
                 
-             $que="call getModulesData(".session()->get('id').",8,10)";
+             $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
                  $leads_data=DB::select($que);
-                 $search='';
-     if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
+                // print_r( $leads_data);
+                 $search=[];
+                 $result=[];
+    if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
+     if(!empty($req->activitiesopt) || $req->activitiesopt !=""){
         if($req->activitiesopt==1){
-            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
-             $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
-            $query->where('tasks.status','2');
+            $query->Join('tasks','module_data.data_id','=','tasks.related_to');
+             $query->Join('meetings','module_data.data_id','=','meetings.related_to');
+            $query->Orwhere('tasks.status','2');
              $query->Orwhere('meetings.status','1');
 
         }
         elseif($req->activitiesopt==2){
 
             if($req->activitiesopt2==1){
-            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
-             $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+            $query->Join('tasks','module_data.data_id','=','tasks.related_to');
+             $query->Join('meetings','module_data.data_id','=','meetings.related_to');
              $query->where('tasks.due_date', '<', now());
               $query->Orwhere('meetings.end_date', '<', now());
             }
 
             elseif($req->activitiesopt2==2){
-            $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
+            $query->Join('tasks','module_data.data_id','=','tasks.related_to');
          
              $query->whereDate('tasks.due_date', '<', now());
             }
@@ -352,22 +371,22 @@ class Customer extends Model
           }
         elseif($req->activitiesopt==3){
             if($req->activitesdue==1){
-                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
-                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->Join('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->Join('meetings','module_data.data_id','=','meetings.related_to');
                  $query->where('tasks.due_date', '=', date('Y-m-d'));
                  $query->Orwhere('meetings.end_date', '=', date('Y-m-d'));
 
             }
              elseif($req->activitesdue==2){
-                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
-                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->Join('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->Join('meetings','module_data.data_id','=','meetings.related_to');
                  $query->where('tasks.due_date', '=', date("Y-m-d", strtotime("+1 day")));
                  $query->Orwhere('meetings.end_date', '=', date("Y-m-d", strtotime("+1 day")));
 
             }
             elseif($req->activitesdue==3){
-                 $query->leftJoin('tasks','module_data.data_id','=','tasks.related_to');
-                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
+                 $query->Join('tasks','module_data.data_id','=','tasks.related_to');
+                 $query->Join('meetings','module_data.data_id','=','meetings.related_to');
                  $query->whereBetween('tasks.due_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
                  $query->orwhereBetween('meetings.end_date',[ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
 
@@ -384,8 +403,8 @@ class Customer extends Model
                  $query->Orwhere('meetings.end_date', '!=', date('Y-m-d'));
 
             }if($req->withoutactivites==2){
-                $query->leftJoin('tasks','module_data.data_id','!=','tasks.related_to');
-                 $query->leftJoin('meetings','module_data.data_id','!=','meetings.related_to' );
+                $query->Join('tasks','module_data.data_id','!=','tasks.related_to');
+                 $query->Join('meetings','module_data.data_id','!=','meetings.related_to' );
                  // $query->where('tasks.related_to',null);
                  //  $query->Orwhere('meetings.related_to',null);
                $query->whereNotBetween('tasks.due_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
@@ -394,6 +413,9 @@ class Customer extends Model
 
             }
          }
+
+         $result=$query->get()->toArray();
+     }
 
          if ($req->companysearch=='is') {
             
@@ -406,7 +428,7 @@ class Customer extends Model
           elseif ($req->companysearch=='isnot') {
            
                  
-                 $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch);
+                 $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch)->toArray();
                  // dd($search);
 
             
@@ -414,7 +436,7 @@ class Customer extends Model
          elseif ($req->companysearch=='contain') {
            
             
-                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch.'%');
+                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch.'%')->toArray();
                  // dd($search);
 
             
@@ -422,7 +444,7 @@ class Customer extends Model
          if ($req->Fnamesearch=='is') {
            
              
-                 $search=collect($leads_data)->where('full_name', $req->Fname_search);
+                 $search=collect($leads_data)->where('full_name', $req->Fname_search)->toArray();
                  // dd($search);
 
              
@@ -430,40 +452,36 @@ class Customer extends Model
           elseif ($req->Fnamesearch=='isnot') {
            
                  
-                 $search=collect($leads_data)->where('full_name','<>', $req->Fname_search);
+                 $search=collect($leads_data)->where('full_name','<>', $req->Fname_search)->toArray();
                  // dd($search);
 
             
          }
-    }
-        $result=$query->get()->toArray();
-         // dd($result);
-        $result1=collect($result)->groupBy('data_id');
-        // echo (count($result1));
+    }else{
         
+         $result=$query->get()->toArray();
+    }
+        $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
+        // echo (count($result1));
+        $opt=[];
         foreach ($result1 as $key => $value) {
-            // $data['data_id']=$value->data_id;
-            // print_r($value);
-            foreach ($value as $key2 => $value2) {
-                $data['data_id']=$value2->data_id;
-                 $data[$value2->col_name]=$value2->value;
-               // print_r($value2);
+          
+         
+        
+        foreach ($value as $key2 => $value2) {
+                $data1['data_id']=$value2->data_id;
+                $data['user_id']=$value2->user_id;
+                 $data1[$value2->col_name]=$value2->value;
+            
               
             }
-           
-        
-        }
- 
-       
-    
-     // $data= $data;
-       // $data1= (json_decode(json_encode($data1),true));
-        // $array_data=(array_merge($data,$data1));
-print_r($result1);
-// $collection = array_merge($result);
-    
+            $opt[]= $data1;
+      }
+      $search=json_decode(json_encode($search), true);
+      $fresult=array_merge($opt,$search);
+    // print_r($result1  );
+     return $fresult;
 
-        // dd(collect($result)->groupBy('data_id'));
 
     }
 
