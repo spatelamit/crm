@@ -296,10 +296,8 @@ class CustomerController extends Controller
         return view('meetings');
     }
 
-    public function tasks()
-    {
-        return view('tasks');
-    }
+   
+   
     public function save_task(Request $req) {
       $result= $this->Customer->SaveTask($req);
       if($result){
