@@ -122,7 +122,7 @@ class Customer extends Model
       public function GetDealData($module_id){
         $user_id=session()->get('id');
       
-        $que="call getModulesData(".$user_id.",".$module_id.")";
+        $que="call GetDeal(".$user_id.",".$module_id.")";
         $data=DB::select($que);
 
 
@@ -223,6 +223,7 @@ class Customer extends Model
       }
        public function PipelineStages($pipeline_group_id){
         $result=DB::table('users_pipeline_stages')
+        ->select('users_pipeline_stages.*')
         ->join('pipeline_group','pipeline_group.id','=','users_pipeline_stages.pipeline_group_id')
         ->where('users_pipeline_stages.pipeline_group_id',$pipeline_group_id)
         ->where('users_pipeline_stages.status','1')

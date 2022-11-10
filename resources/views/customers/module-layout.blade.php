@@ -67,6 +67,15 @@ $field1[]=$selected_field->column_id;
               <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
               <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
             </li>
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '30') )
+             <li >
+             
+              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
+              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
+              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
+              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
+              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            </li>
             @elseif(($filelist->module_id=='8') && ($filelist->column_id == '15') )
              <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>

@@ -84,6 +84,8 @@
                                     <div>
 
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
+                                        <th></th>
+
                                     </div>
                                     @if ($data['leads_data'] != null)
                                         @foreach ($data['leads_data'][0] as $key => $value)
@@ -121,8 +123,10 @@
                                                 </div>
                                             </td>
 
+ <td></td>
                                             @foreach ($field as $key => $value)
                                                 @if ($key == 'data_id')
+                                                 
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>

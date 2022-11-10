@@ -41,6 +41,7 @@
                                                 class="form-control bg_input"
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
                                                      id="compName"  required="">
+                                                     <option value="">Selecte Company name</option>
                                             </select>   
                                         </div>
                                     @elseif($val->column_id == 2)
@@ -63,6 +64,8 @@
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
                                                 required="">
                                         </div>
+                                          @elseif($val->column_id == 30)
+                                        
                                        
                                             @elseif($val->column_id == 24)
                                         <div class="form-group mb-10">
@@ -139,7 +142,7 @@ url: "{{url('/fetch-stages')}}/"+category_id,
 
 
 success: function(response){
-  // console.log(response);
+  console.log(response);
 $(".stages").html(response);
 }
 });
@@ -162,7 +165,7 @@ $(".stages").html(response);
 
        // var opt=data1.'0'.filter( record => record.name === compN);
     var result=data1.filter(obj=> obj.text == compN);
-    // console.log(result['0']['name']);
+    console.log(result['0']['name']);
     $('#accounnt_id').val(result['0']['name']);
       
     });
