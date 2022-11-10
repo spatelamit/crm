@@ -123,11 +123,11 @@
                                                          <h2> Leads </h2>
                                                          <hr />
                                                          <div class="hierarchy-node row ">
-                                                             <div class="col-md-2">
+                                                            
                                                                  <input class="hierarchy-checkbox inPut_1"
                                                                      id="selectAll" type="checkbox">
                                                                  <label class="hierarchy-label inPut_2"> All</label>
-                                                             </div>
+                                                             
 
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '1')
@@ -147,11 +147,11 @@
                                                          <h2> CRM Settings </h2>
                                                          <hr />
                                                          <div class="hierarchy-node row">
-                                                             <div class="col-md-2">
+                                                             
                                                                  <input id="selectAll"
                                                                      class="hierarchy-checkbox inPut_1" type="checkbox">
                                                                  <label class="hierarchy-label inPut_2">All</label>
-                                                             </div>
+                                                             
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '2')
                                                                      <div class="hierarchy-node col-md-2 leaf ">
@@ -172,12 +172,12 @@
                                                                  <h2>Add Accounts</h2>
                                                                  <hr />
                                                              </div>
-                                                             <div class="col-md-2">
+                                                           
                                                                  <input id="selectAll"
                                                                      class="hierarchy-checkbox inPut_1"
                                                                      type="checkbox">
                                                                  <label class="hierarchy-label inPut_2">All</label>
-                                                             </div>
+                                                           
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '3')
                                                                      <div class="hierarchy-node leaf col-md-2">
@@ -198,12 +198,12 @@
                                                                  <h2> Settings </h2>
                                                                  <hr />
                                                              </div>
-                                                             <div class="col-md-2">
+                                                           
                                                                  <input id="selectAll"
                                                                      class="hierarchy-checkbox inPut_1"
                                                                      type="checkbox">
                                                                  <label class="hierarchy-label inPut_2">All</label>
-                                                             </div>
+                                                            
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '4')
                                                                      <div class="hierarchy-node col-md-2 leaf ">
@@ -224,12 +224,12 @@
                                                                  <h2> Mailer </h2>
                                                                  <hr />
                                                              </div>
-                                                             <div class="col-md-2">
+                                                            
                                                                  <input id="selectAll"
                                                                      class="hierarchy-checkbox inPut_1"
                                                                      type="checkbox">
                                                                  <label class="hierarchy-label inPut_2">All</label>
-                                                             </div>
+                                                            
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '6')
                                                                      <div class="hierarchy-node col-md-2 leaf ">
@@ -250,12 +250,12 @@
                                                                  <h2> Universal </h2>
                                                                  <hr />
                                                              </div>
-                                                             <div class="col-md-2">
+                                                           
                                                                  <input id="selectAll"
                                                                      class="hierarchy-checkbox inPut_1"
                                                                      type="checkbox">
                                                                  <label class="hierarchy-label inPut_2">All</label>
-                                                             </div>
+                                                            
                                                              @foreach ($data['allfeatures'] as $value)
                                                                  @if ($value->module_id == '7')
                                                                      <div class="hierarchy-node col-md-2 leaf ">
