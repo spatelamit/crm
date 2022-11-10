@@ -123,7 +123,7 @@ class Customer extends Model
         $user_id=session()->get('id');
       
         $que="call GetDeal(".$user_id.",".$module_id.")";
-        $data=DB::select($que);
+        $data=DB::select(DB::raw($que));
 
 
         // dd($leads_data  );
