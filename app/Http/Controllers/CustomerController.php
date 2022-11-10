@@ -128,18 +128,18 @@ class CustomerController extends Controller
           $data['lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
            $data['pipeline']=$this->Customer->GetPipeline();
-           
+
          return view('customers.deal-by-lead',compact('data'));
 
     }
 
      public function fetch_stages($id){
-   
+
       $pipeline_group_id=$id;
        $data['PipelineGroup']=$this->Customer->PipelineStages($pipeline_group_id);
        // print_r($data['PipelineGroup']);
        // print_r($data['PipelineGroup']);
-      
+
        foreach($data['PipelineGroup'] as $value){
         // print_r($value);
         echo "<option value=".$value->id." >"  .$value->stage_name."</option>";
@@ -291,10 +291,7 @@ class CustomerController extends Controller
 
     }
 
-    public function meetings()
-    {
-        return view('meetings');
-    }
+
 
     public function tasks()
     {
