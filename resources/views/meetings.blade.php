@@ -53,7 +53,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
 
-                                        <td><a href="{{url('edittask/'.$key1->id)}}">{{ $key1->title }} </a></td>
+                                        <td><a href="{{url('editmeeting/'.$key1->id)}}">{{ $key1->title }} </a></td>
 
                                         <td>{{ $key1->description }}</td>
                                         <td>{{ $key1->start_date }}</td>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
 
 </div>

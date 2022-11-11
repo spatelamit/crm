@@ -104,6 +104,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 		 Route::get('/add-deal',[CustomerController::class, 'add_deal']);
     Route::get('/export_data_pankaj',[UserController::class,'export_data_pankaj']);
 
+    Route::post('/save-managecol',[CustomerController::class, 'save_managecol']);
+
 
     //activity controller
     //task
@@ -116,4 +118,5 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     //meeting
 
     Route::get('/meetings',[ActivityController::class, 'meetings']);
+    Route::get('/editmeeting/{id}',[ActivityController::class, 'editmeeting']);
 });
