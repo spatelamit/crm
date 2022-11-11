@@ -27,6 +27,13 @@ $field1[]=$selected_field->column_id;
       <p class="font-weight-normal mb-2 text-muted">Note : Ashish panwar</p>
     </div>
   </div>
+   <div class="row">
+    <div class="col-sm-12 mb-4 mb-xl-0">
+     <a class="btn-info btn" href="{{url('add-fields')}}">Add Field</a>
+    
+    </div>
+  </div>
+  
   
   
   
