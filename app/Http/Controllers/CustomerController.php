@@ -306,9 +306,9 @@ class CustomerController extends Controller
         }
     }
 
-    public function teams()
+    public function tasks()
     {
-        return view('teams');
+        return view('tasks');
     }
 
 }
