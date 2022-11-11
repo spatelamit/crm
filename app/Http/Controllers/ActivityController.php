@@ -110,6 +110,23 @@ class ActivityController extends Controller
     }
 
 
+    public function editmeeting($id)
+    {
+        $edit['meeting'] = DB::table('meetings')->find($id);
+        // dd($edit['meeting']);
+        $user_id = session()->get('id');
+        $edit['notes']= DB::table('notes')
+
+        ->join('users', 'users.id', '=', 'notes.user_id')
+        ->select('notes.*', 'users.username')
+        ->where('notes.user_id', $user_id)
+        ->get();
+
+        return view('editmeetings', compact('edit'));
+
+    }
+
+
 
 
 }
