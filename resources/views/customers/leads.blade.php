@@ -85,27 +85,27 @@
                         <table id="leads" class="display table leads">
                             <thead>
 
-
-
-
-
-
                                 <tr>
                                     <div>
 
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
-                                        <th></th>
+                                        <th>ID</th>
+
 
                                     </div>
-                                    @if ($data['leads_data'] != null)
-                                        @foreach ($data['leads_data'][0] as $key => $value)
-                                            <th>{{ $key }}</th>
+                                    @if ($data['selected_col'] != null)
+                                        @foreach ($data['selected_col'] as $key => $value)
+
+                                          
+                                            <th>{{ $value->col_name }}</th>
+                                           
+                                         
                                         @endforeach
-                                        <th>Actions </th>
+                                     
 
 
                                     @endif
-
+   <th>Actions </th>
 
 
                                 </tr>
@@ -133,17 +133,17 @@
                                                 </div>
                                             </td>
 
-                                            <td></td>
-                                            @foreach ($field as $key => $value)
-                                                @if ($key == 'data_id')
+                                           
+                                            
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>
-                                                @else
-                                                    <td class="details-control"> {{ $value }}</td>
-                                                @endif
+                                                
+                                             @if ($data['selected_col'] != null)    
+                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                                <td class="details-control"> {{ $data['leads_data'][$key1][$selvalue->col_name] }}</td>
                                             @endforeach
-
+                                            @endif
                                             <td>
 
                                                 <div class="btn-group btn-group-sm" style="float: none;">
@@ -234,7 +234,7 @@
 
                                 <option value="lead_type">Lead Types</option>
                                 <option value="data_owners">Users</option>
-                                <option value="company_names">Company Name</option>
+                               <!--  <option value="company_names">Company Name</option>
                                 <option value="full_name">Person name</option>
                                 <option value="email">Email</option>
                                 <option value="number">Number</option>
@@ -243,7 +243,7 @@
                                 <option value="city">City</option>
                                 <option value="state">State</option>
                                 <option value="country">Country</option>
-                                <option value="sectors">Sectors</option>
+                                <option value="sectors">Sectors</option> -->
 
 
                             </select>
@@ -459,10 +459,16 @@
                 @csrf
                 <div class="modal-body">
                     <div class="row">
-                          <ul id="csortable">
+                        <ul id="csortable">
+                            <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
                       @foreach($data['selected_fields'] as $selfield)
-                    
-                          <li><input type="checkbox" name="column_id" value="{{$selfield->column_id}}" checked="">{{$selfield->col_name}}</li>
+                          @if(in_array($selfield->column_id,explode(",", $selcol)))
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" checked="">
+                           {{$selfield->col_name}} </li>
+                           @else
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" >
+                           {{$selfield->col_name}} </li>
+                           @endif
                      
                       @endforeach
                        </ul>
@@ -526,9 +532,9 @@
             dom: 'Bfrtip',
             scrollX: true,
 
-            buttons: [
-                'colvis'
-            ]
+            // buttons: [
+            //     'colvis'
+            // ]
 
         });
     });
@@ -699,7 +705,10 @@
                 meradata +
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
-                '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"><option value=""> </option> </select></div>';
+                '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
+                if(is_array($data['chiledUsers']) || is_object($data['chiledUsers'])){
+                 foreach ($data['chiledUsers'] as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                }}?></select></div>';
 
             $("#idsc").append(text);
             $("#data_owner_names").append(users_input);

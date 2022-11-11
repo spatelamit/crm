@@ -14,25 +14,55 @@ class CustomerController extends Controller
     public function __construct() {
 
         $this->Customer=new Customer();
+          $this->Usersetting=new UserSetting();
+        $this->chiledUsers= $this->Usersetting->ChildNameByparentId();
     }
 
     public function leads(){
         $module_id='8';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+          $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
 
         if( $data['leads_datas']){
-        foreach ($data['leads_datas'] as $key => $value) {
-          $data['leads_data'][]=(json_decode(json_encode( $value),true));
+            foreach ($data['leads_datas'] as $key => $value) {
+                $data['leads_data'][]=(json_decode(json_encode( $value),true));
 
             }
+            foreach (  $data['leads_data'][0] as $key => $value) {
+              $data_k[]=$key;
+            }
+            $data_keys=implode(",",  $data_k);
         }else{
             $data['leads_data']=null;
+              $data_keys=null;
 
         }
-         // dd($data['leads_data']);
-       // dd( $data['selected_fields']);
-       return view('customers.leads',compact('data'));
+
+        
+      //table view columns
+          if($data['selected_col']!=false ){
+          foreach ($data['selected_col'] as $key => $selected_col) {
+          $field1[]=$selected_col->column_id;
+          $field2[]=$selected_col->col_name;
+         }
+           $selcol=$field1;
+           $selcolname=implode(",",  $field2);
+           $selcol=implode(",",  $selcol);
+
+        }else{
+          $selcol= null;
+           $selcolname=null;
+        }
+
+        //end table view columns
+      //
+
+      $data['chiledUsers']=$this->chiledUsers;
+
+       // dd($data['selected_col']);
+       dd($data['chiledUsers']);
+       return view('customers.leads',compact('data','selcol','data_keys','selcolname'));
     }
 
       public function add_leads(){
@@ -193,6 +223,7 @@ class CustomerController extends Controller
     public function deals(){
              $module_id='9';
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+             $data['selected_col']=$this->Customer->GetTableCol($module_id);
              $data['deal_datas']=$this->Customer->GetDealData($module_id);
 
         if( $data['deal_datas']){
@@ -200,12 +231,33 @@ class CustomerController extends Controller
           $data['deal_data'][]=(json_decode(json_encode( $value),true));
 
             }
+             foreach (  $data['deal_datas'][0] as $key => $value) {
+              $data_k[]=$key;
+            }
+            $data_keys=implode(",",  $data_k);
         }else{
             $data['deal_data']=null;
+            $data_keys=null;
 
         }
-        // dd($data['deal_data']);
-        return view('customers.deals',compact('data'));
+          
+       if($data['selected_col']!=false ){
+          foreach ($data['selected_col'] as $key => $selected_col) {
+          $field1[]=$selected_col->column_id;
+          $field2[]=$selected_col->col_name;
+         }
+           $selcol=$field1;
+           $selcolname=implode(",",  $field2);
+           $selcol=implode(",",  $selcol);
+
+        }else{
+          $selcol= null;
+           $selcolname=null;
+        }
+        
+         
+        // dd($data['deal_data']);s
+        return view('customers.deals',compact('data','selcol','data_keys','selcolname'));
     }
 
      public function save_deal(Request $req){
@@ -252,6 +304,7 @@ class CustomerController extends Controller
     public function accounts(){
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+          $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['accounts_datas']=$this->Customer->GetModuleData($module_id);
 
         if( $data['accounts_datas']){
@@ -259,12 +312,34 @@ class CustomerController extends Controller
           $data['accounts_data'][]=(json_decode(json_encode( $value),true));
 
             }
+              foreach (  $data['accounts_datas'][0] as $key => $value) {
+              $data_k[]=$key;
+            }
+            $data_keys=implode(",",  $data_k);
         }else{
             $data['accounts_data']=null;
-
+             $data_keys=null;
         }
-        // dd($data['accounts_data']);
-        return view('customers.accounts',compact('data'));
+        //table view columns
+         if($data['selected_col']!=false ){
+          foreach ($data['selected_col'] as $key => $selected_col) {
+          $field1[]=$selected_col->column_id;
+          $field2[]=$selected_col->col_name;
+         }
+           $selcol=$field1;
+           $selcolname=implode(",",  $field2);
+           $selcol=implode(",",  $selcol);
+
+        }else{
+          $selcol= null;
+           $selcolname=null;
+           $data['selected_col']=null;
+        }
+
+        //end table view columns
+      
+        // dd(  $data['chiledUsers']);
+        return view('customers.accounts',compact('data','selcol','data_keys','selcolname'));
     }
 
 
@@ -306,9 +381,26 @@ class CustomerController extends Controller
         }
     }
 
-    public function tasks()
-    {
+    public function tasks(){
         return view('tasks');
+    }
+    public function save_managecol(Request $req){
+    
+        $result= $this->Customer->SaveManageCol($req);
+        if($req->module_id=='8'){
+          $red='leads';
+        }elseif($req->module_id=='9'){
+          $red='deals';
+        }elseif($req->module_id=='10'){
+          $red='accounts';
+        }
+        if($result){
+            return redirect($red)->with("success", "Successfully Columns  Updated !")   ;
+
+        }else{
+            return redirect($red)->with("error", ' Columns not Updated');
+
+        }
     }
 
 }

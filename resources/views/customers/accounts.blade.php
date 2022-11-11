@@ -66,10 +66,14 @@
                 <div class="card-header">
                     <h5 class="card-title">Accounts List </h5>
                 </div>
-
+                 <div class="m-b-10">
+                     <a class=" btn btn-info" data-animation="slideInRight" data-toggle="modal"
+                                data-target="#managecol"> 
+                                Manage columns </a>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive lead_search">
-                        <table id="leads" class="display table ">
+                        <table id="leads2" class="display table ">
                             <thead>
 
 
@@ -81,18 +85,21 @@
                                     
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
-                           @if( $data['accounts_data'] != null )
-                                 @foreach ($data['accounts_data'][0] as $key => $value)
+                                <th>Id</th>
+                         
+                                 @if ($data['selected_col'] != null)
+                                        @foreach ($data['selected_col'] as $key => $value)
 
-                                               <th>{{$key}}</th>
+                                            <th>{{ $value->col_name }}</th>
+                                         
+                                        @endforeach
 
-                                           @endforeach 
-                                            <th>Actions </th>
-                                 
-                           
-                         @endif
-                                    
-                               
+
+                                       
+
+
+                                   @endif    
+                                <th>Actions </th>
 
                                 </tr>
 
@@ -111,17 +118,18 @@
                                                 <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['accounts_data'][$key1]['contact_number']}}" style="display: none;"> 
                                                  </div>
                                             </td>
-                                         
-                                        @foreach ($field as $key => $value)
 
-                                         @if( $key == 'data_id')
                                          <td  class="details-control"> <a href="{{url('lead-profile',$data['accounts_data'][$key1]['data_id'])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
+                                      @if ($data['selected_col'] != null)
+                                         @foreach ($data['selected_col'] as $key => $selvalue)
+                                               
+                                                <td class="details-control"> {{ $data['accounts_data'][$key1][$selvalue->col_name] }}</td>
+                                               
+                                            @endforeach
+                                        @endif
+                                        
 
-                                        @else
-
-                                            <td  class="details-control"> {{ $value }}</td>
-                                       @endif
-                                        @endforeach
+                                      
 
                                         <td>
 
@@ -427,71 +435,7 @@
               
               
               
-              <!-- <div class=" col-md-4" id="container">
-                <label for="stage_name">Add Repeat </label>
-                <div class="Reminder_btn"> <a href="#" class="show_hide1 btn "> <i class="fa fa-refresh" aria-hidden="true"></i>
- Repeat </a> </div>
-                <div class="slidingDiv1" style="display: block;">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for=""> Repeat </label>
-                            <select class="form-control" id="" name="priority">
-                              <option value="">Daily</option>
-                              <option value="high">Weekly</option>
-                              <option value="lowest">Monthly</option>
-                              <option value="normal">Yearly</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                              Never <i class="input-helper"></i></label>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                                  After <i class="input-helper"></i></label>
-                              </div>
-                            </div>
-                            <div class="col-md-9">
-                              <div class="form-group row">
-                                <div class="col-md-6"> <input type="number"  class="form-control" placeholder=""> </div>
-                                <div class="col-md-6">  <label class="mt-2" for=""> Times </label> </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                                  On <i class="input-helper"></i></label>
-                              </div>
-                            </div>
-                            <div class="col-md-9">
-                              <div class="form-group">
-                                <input class="form-control" type="date" value="yyyy/mm/dd hh/mm" name="taskowner"
-                                                    placeholder="Name" required="">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+            
             </div>
 
                 </div>
@@ -506,11 +450,48 @@
 </div>
 <!-- end task -->
 <!-- Deal modal -->
+<!-- Mnagage Columns -->
+<div class="modal fade come-from-modal right" id="managecol" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Manage Columns</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <form method="post" action="{{ url('save-managecol') }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <ul id="casortable">
+                            <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
+                      @foreach($data['selected_fields'] as $selfield)
+                          @if(in_array($selfield->column_id,explode(",", $selcol)))
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" checked="">
+                           {{$selfield->col_name}} </li>
+                           @else
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" >
+                           {{$selfield->col_name}} </li>
+                           @endif
+                     
+                      @endforeach
+                       </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
 
+        </div>
+    </div>
+</div>
+<!-- End manage columns -->
 <!--end deal modal  -->
 
 @include('footer')
-
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
     function deletelead(id) {
 
@@ -894,4 +875,11 @@ var activitiesopt = $("#activitiesopt").val();
       });
 
 
+</script>
+<script type="text/javascript">
+     $(function () {
+        $("#casortable").sortable();
+         
+      
+    });
 </script>

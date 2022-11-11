@@ -116,6 +116,22 @@ public function GetUsers(){
     }
 
 }
+public function GetAllUsers(){
+
+    $result=DB::table('users')
+    ->select('users.*','users_roles.role_name')
+    ->where('users.company_id',session()->get('company_id'))
+    ->where('users.status','1')
+ 
+    ->join('users_roles','users_roles.id','=','users.role_id')
+    ->get();
+    if($result){
+        return $result;
+    }else{
+        return false;
+    }
+
+}
 public function getRecursiveChildren($roles_id,$roles):array
 {       
 
@@ -134,6 +150,49 @@ public function getRecursiveChildren($roles_id,$roles):array
                          // print_r($chiled);
                          //        die();
     return $chiled;
+}
+public function getReChiByPar($user_id,$users)
+{       
+
+    $chiled = [];
+    foreach ($users as $user) {
+        if ($user->parent_id == $user_id) {
+            $chiled[] = $user->id;
+            array_push($chiled,...$this->getReChiByPar($user->id,$users));
+
+        }
+                            else{
+                               return false;
+                            }
+
+    }
+                         // print_r($chiled);
+                         //        die();
+    return $chiled;
+}
+public function  ChildNameByparentId(){
+    $user_id=session()->get('id');
+    $all_users=$this->GetAllUsers();
+  
+   // die();
+    $RecursiveChildrenUsers=$this->getReChiByPar($user_id,$all_users);
+
+        $chileusers=implode(',', $RecursiveChildrenUsers);
+
+        if($RecursiveChildrenUsers){
+                        $result=DB::table('users')
+                            ->select('id,full_name,email,role_id,parent_id')
+                            ->where_in('id',$RecursiveChildrenUsers)
+                              ->get()->toArray();
+
+                if($result){
+                    return $result;
+                }else{
+                    return false;
+                }
+        }else{
+            return false;
+        }
 }
 
 public function UpdateUser($req){

@@ -484,7 +484,47 @@ class Customer extends Model
 
 
     }
+    public function GetTableCol($module_id){
+        $result=DB::table('module_table_col')
+                ->select('module_table_col.*','module_selected_column.col_name')
+                ->where('module_table_col.user_id',session()->get('id'))
+                ->where('module_table_col.module_id',$module_id)
+                ->where('module_selected_column.module_id',$module_id)
+                ->join('module_selected_column','module_selected_column.column_id','=','module_table_col.column_id')
+                ->orderBy('module_table_col.id')
+                ->get()->toArray();
+                 if($result){
+                          return $result;
+                       }else{
+                           return false;
+                       }
 
+    }
 
+    public function SaveManageCol($req){
+          // dd($req->all());
+
+        $module_id=$req->module_id;
+             $resdel=DB::table('module_table_col')
+                    ->where('module_id',$module_id)
+                    ->where('user_id',session()->get('id'))
+                    ->delete();
+             
+                  for ($i=0; $i <count($req->column_id) ; $i++) {
+                    $data[]=array(
+                    'module_id'=>$module_id,
+                    'column_id'=>$req->column_id[$i],
+                    'user_id'=>session()->get('id'),    
+                );
+
+                }
+                $result=DB::table('module_table_col')->insert($data);
+                 if($result){
+                          return true;
+                       }else{
+                           return false;
+                       }
+            
+    }
 
 }

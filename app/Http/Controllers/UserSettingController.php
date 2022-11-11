@@ -16,6 +16,7 @@ class UserSettingController extends Controller
 
 	public function __construct() {
         $this->Usersetting=new UserSetting();
+        $this->chiledUsers= $this->Usersetting->ChildNameByparentId();
     }
     
 
