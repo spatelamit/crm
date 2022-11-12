@@ -35,6 +35,8 @@ class ActivityController extends Controller
 
         ->join('users', 'users.id', '=', 'notes.user_id')
         ->select('notes.*', 'users.username')
+        ->where('notes.module_id',11 )
+        ->where('notes.related_to',$id )
         ->where('notes.user_id', $user_id)
         ->get();
 
@@ -112,17 +114,52 @@ class ActivityController extends Controller
 
     public function editmeeting($id)
     {
-        $edit['meeting'] = DB::table('meetings')->find($id);
-        // dd($edit['meeting']);
         $user_id = session()->get('id');
-        $edit['notes']= DB::table('notes')
+        $edit['meeting'] = DB::table('meetings')
+        ->select('meetings.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
+        ->join('users as u1', 'u1.id', '=', 'meetings.sender_id')
+        ->leftJoin('users as u2', 'u2.id', '=', 'meetings.reciever_id')
+        ->where('meetings.sender_id', $user_id)
+        ->Orwhere('meetings.reciever_id', $user_id)
+        ->where('meetings.id',$id)
+        ->first();
+        // dd($edit['meeting']);
+        // $user_id = session()->get('id');
 
-        ->join('users', 'users.id', '=', 'notes.user_id')
+
+        $edit['notes']= DB::table('notes')
         ->select('notes.*', 'users.username')
+        ->join('users', 'users.id', '=', 'notes.user_id')
+        // ->join('meetings', 'meetings.id', '=', 'notes.related_to')
+        ->where('notes.module_id',12 )
+        ->where('notes.related_to',$id )
         ->where('notes.user_id', $user_id)
         ->get();
 
         return view('editmeetings', compact('edit'));
+
+    }
+
+
+    public function meeting_notes(Request $req)
+    {
+        $data = array(
+            'related_to' =>$req->meetingid,
+            'user_id'=>session()->get('id'),
+            'note_des'=> $req->note_des,
+            'module_id' => $req->moduleid
+        );
+        // dd($data);
+
+        $addnots = DB::table('notes')->insert($data);
+
+
+
+        if ($addnots) {
+            return redirect()->back();
+        } else {
+            return "error";
+        }
 
     }
 

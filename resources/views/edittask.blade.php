@@ -121,7 +121,7 @@
 
                     <div class="form-group">
                         <label>Write Notes..</label>
-                        <textarea class="form-control" name="note_des">Enter text here...</textarea>
+                        <textarea class="form-control" name="note_des" placeholder="Enter text here..."></textarea>
                     </div>
 
                     <div class="form-group">

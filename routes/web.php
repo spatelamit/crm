@@ -119,4 +119,5 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
     Route::get('/meetings',[ActivityController::class, 'meetings']);
     Route::get('/editmeeting/{id}',[ActivityController::class, 'editmeeting']);
+    Route::post('/meeting_notes',[ActivityController::class,'meeting_notes']);
 });
