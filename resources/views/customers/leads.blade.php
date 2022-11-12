@@ -68,9 +68,16 @@
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Leads List </h5>
+                    
+                    
+                </div>
+                <div class="m-b-10">
+                     <a class=" btn btn-info" data-animation="slideInRight" data-toggle="modal"
+                                data-target="#managecol"> 
+                                Manage columns </a>
                 </div>
                 
-                    <h5 class="card-title">Manage Columns </h5>
+                    
              
 
                 <div class="card-body">
@@ -78,27 +85,27 @@
                         <table id="leads" class="display table leads">
                             <thead>
 
-
-
-
-
-
                                 <tr>
                                     <div>
 
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
-                                        <th></th>
+                                        <th>ID</th>
+
 
                                     </div>
-                                    @if ($data['leads_data'] != null)
-                                        @foreach ($data['leads_data'][0] as $key => $value)
-                                            <th>{{ $key }}</th>
+                                    @if ($data['selected_col'] != null)
+                                        @foreach ($data['selected_col'] as $key => $value)
+
+                                          
+                                            <th>{{ $value->col_name }}</th>
+                                           
+                                         
                                         @endforeach
-                                        <th>Actions </th>
+                                     
 
 
                                     @endif
-
+   <th>Actions </th>
 
 
                                 </tr>
@@ -126,17 +133,17 @@
                                                 </div>
                                             </td>
 
-                                            <td></td>
-                                            @foreach ($field as $key => $value)
-                                                @if ($key == 'data_id')
+                                           
+                                            
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>
-                                                @else
-                                                    <td class="details-control"> {{ $value }}</td>
-                                                @endif
+                                                
+                                             @if ($data['selected_col'] != null)    
+                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                                <td class="details-control"> {{ $data['leads_data'][$key1][$selvalue->col_name] }}</td>
                                             @endforeach
-
+                                            @endif
                                             <td>
 
                                                 <div class="btn-group btn-group-sm" style="float: none;">
@@ -227,7 +234,7 @@
 
                                 <option value="lead_type">Lead Types</option>
                                 <option value="data_owners">Users</option>
-                                <option value="company_names">Company Name</option>
+                               <!--  <option value="company_names">Company Name</option>
                                 <option value="full_name">Person name</option>
                                 <option value="email">Email</option>
                                 <option value="number">Number</option>
@@ -236,7 +243,7 @@
                                 <option value="city">City</option>
                                 <option value="state">State</option>
                                 <option value="country">Country</option>
-                                <option value="sectors">Sectors</option>
+                                <option value="sectors">Sectors</option> -->
 
 
                             </select>
@@ -360,13 +367,6 @@
                     <div class="row">
                         <input type="hidden" name="related_to" id="related_to" value="">
 
-                        <!--  <div class="col-md-4">
-                <div class="form-group">
-                  <label for="usr">Task Owner <font style="color:red;">*</font></label>
-                  <input type="text" class="form-control fieldname" name="taskowner" value=""
-                                    placeholder="Name" >
-                </div>
-              </div> -->
                         <div class=" col-md-4" id="container">
                             <div class="form-group">
                                 <label for="stage_name">Subject: </label>
@@ -424,98 +424,13 @@
                                                         value="yyyy/mm/dd hh:mm" name="reminder" placeholder="Name">
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-12">
-                          <div class="form-group">
-                            <label for="">Notify User </label>
-                            <select class="form-control" id="" name="priority">
-                              <option value="">Notify</option>
-                              <option value="0">Popup</option>
-                              <option value="1">Email</option>
-                              <option value="2">Both</option>
-                            </select>
-                          </div>
-                        </div> -->
+                                        
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-                        <!-- <div class=" col-md-4" id="container">
-                <label for="stage_name">Add Repeat </label>
-                <div class="Reminder_btn"> <a href="#" class="show_hide1 btn "> <i class="fa fa-refresh" aria-hidden="true"></i>
- Repeat </a> </div>
-                <div class="slidingDiv1" style="display: block;">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group">
-                            <label for=""> Repeat </label>
-                            <select class="form-control" id="" name="priority">
-                              <option value="">Daily</option>
-                              <option value="high">Weekly</option>
-                              <option value="lowest">Monthly</option>
-                              <option value="normal">Yearly</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                              Never <i class="input-helper"></i></label>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                                  After <i class="input-helper"></i></label>
-                              </div>
-                            </div>
-                            <div class="col-md-9">
-                              <div class="form-group row">
-                                <div class="col-md-6"> <input type="number"  class="form-control" placeholder=""> </div>
-                                <div class="col-md-6">  <label class="mt-2" for=""> Times </label> </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <div class="row">
-                            <div class="col-md-3">
-                              <div class="form-check">
-                                <label class="form-check-label">
-                                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="">
-                                  On <i class="input-helper"></i></label>
-                              </div>
-                            </div>
-                            <div class="col-md-9">
-                              <div class="form-group">
-                                <input class="form-control" type="date" value="yyyy/mm/dd hh/mm" name="taskowner"
-                                                    placeholder="Name" required="">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+     
                     </div>
 
                 </div>
@@ -531,10 +446,48 @@
 <!-- end task -->
 <!-- Deal modal -->
 
+<!-- Mnagage Columns -->
+<div class="modal fade come-from-modal right" id="managecol" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Manage Columns</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <form method="post" action="{{ url('save-managecol') }}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <ul id="csortable">
+                            <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
+                      @foreach($data['selected_fields'] as $selfield)
+                          @if(in_array($selfield->column_id,explode(",", $selcol)))
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" checked="">
+                           {{$selfield->col_name}} </li>
+                           @else
+                            <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" >
+                           {{$selfield->col_name}} </li>
+                           @endif
+                     
+                      @endforeach
+                       </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- End manage columns -->
 <!--end deal modal  -->
 
 @include('footer')
-
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
     function deletelead(id) {
 
@@ -579,9 +532,9 @@
             dom: 'Bfrtip',
             scrollX: true,
 
-            buttons: [
-                'colvis'
-            ]
+            // buttons: [
+            //     'colvis'
+            // ]
 
         });
     });
@@ -752,7 +705,10 @@
                 meradata +
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
-                '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"><option value=""> </option> </select></div>';
+                '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
+                if(is_array($data['chiledUsers']) || is_object($data['chiledUsers'])){
+                 foreach ($data['chiledUsers'] as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                }}?></select></div>';
 
             $("#idsc").append(text);
             $("#data_owner_names").append(users_input);
@@ -1005,4 +961,11 @@
 
 
     });
+</script>
+<script type="text/javascript">
+     $(function () {
+        $("#csortable").sortable();
+         
+      
+    });
 </script>
