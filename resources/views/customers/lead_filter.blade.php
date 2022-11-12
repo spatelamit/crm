@@ -120,9 +120,7 @@
             dom: 'Bfrtip',
             scrollX: true,
 
-            buttons: [
-                'colvis'
-            ]
+            
 
         });
     });

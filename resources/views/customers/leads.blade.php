@@ -402,6 +402,17 @@
                                 </select>
                             </div>
                         </div>
+                         <div class="col-md-4" id="container">
+                            <div class="form-group">
+                                <label>start: </label>
+                                <input type="text" name="starttime" id="date_timepicker_start">
+                            </div>
+                            <div class="form-group">
+                                <label>end: </label>
+                                 <input type="text" name="endtime" id="date_timepicker_end">
+                            </div>
+                        </div>
+
                         <div class=" col-md-12">
                             <div class="form-group">
                                 <label for="usr"> Description <font style="color:red;">*</font></label>
@@ -430,6 +441,7 @@
                                 </div>
                             </div>
                         </div>
+
      
                     </div>
 
@@ -488,6 +500,7 @@
 
 @include('footer')
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
 <script type="text/javascript">
     function deletelead(id) {
 
@@ -538,6 +551,34 @@
 
         });
     });
+</script>
+<script type="text/javascript">
+           jQuery(function(){
+         jQuery('#date_timepicker_start').datetimepicker({
+          format:'H:i',
+          step:5,
+          timepicker:true,
+          onShow:function( ct ){
+           this.setOptions({
+          
+           })
+          },
+         
+          datepicker:false,
+         });
+         jQuery('#date_timepicker_end').datetimepicker({
+          format:'H:i',
+          step:5,
+           timepicker:true,
+          onShow:function( ct ){
+           this.setOptions({
+            minTime:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():true
+           })
+          },
+         
+          datepicker:false,
+         });
+});
 </script>
 
 <script type="text/javascript">
