@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UserSetting;
 use DB;
 class Customer extends Model
 {
     use HasFactory;
+     public function __construct() {
+
+      
+          $this->Usersetting=new UserSetting();
+       
+    }
 
     public function GetModuleFields($module_id){
 
@@ -324,13 +331,27 @@ class Customer extends Model
 
 
     public function LeadFilter($req){
+
+        $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            $chilesId[]=session()->get('id');
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+       
           DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
                 ->select('module_data.*','module_selected_column.col_name')
                 ->where('module_data.module_id',$req->module_id)
-                ->where('module_data.user_id',session()->get('id')) 
+                // ->Orwhere('module_data.user_id',session()->get('id')) 
+               
                 ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
                 
@@ -340,7 +361,7 @@ class Customer extends Model
                  $search=[];
                  $result=[];
     if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
-     if(!empty($req->activitiesopt) || $req->activitiesopt !=""){
+     
         if($req->activitiesopt==1){
             $query->Join('tasks','module_data.data_id','=','tasks.related_to');
              $query->Join('meetings','module_data.data_id','=','meetings.related_to');
@@ -414,51 +435,20 @@ class Customer extends Model
             }
          }
 
-         $result=$query->get()->toArray();
-     }
+         // User wise filter
+         if($req->userfilter=='is'){
+            $query->whereIn('module_data.user_id',$req->usersid);
 
-         if ($req->companysearch=='is') {
-            
-             
-                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch)->toArray();
-                 // dd($search);
-
-           
+         }else{
+            $query->whereIn('module_data.user_id',$chilesId);
          }
-          elseif ($req->companysearch=='isnot') {
-           
-                 
-                 $search=collect($leads_data)->where('company_name','<>', $req->comapny_Nsearch)->toArray();
-                 // dd($search);
-
-            
-         }
-         elseif ($req->companysearch=='contain') {
-           
-            
-                 $search=collect($leads_data)->where('company_name', $req->comapny_Nsearch.'%')->toArray();
-                 // dd($search);
-
-            
-         }
-         if ($req->Fnamesearch=='is') {
-           
-             
-                 $search=collect($leads_data)->where('full_name', $req->Fname_search)->toArray();
-                 // dd($search);
-
-             
-         }
-          elseif ($req->Fnamesearch=='isnot') {
-           
-                 
-                 $search=collect($leads_data)->where('full_name','<>', $req->Fname_search)->toArray();
-                 // dd($search);
-
-            
-         }
-    }else{
+         // 
         
+   
+
+         $result=$query->get()->toArray();
+    }else{
+         $query->whereIn('module_data.user_id',$chilesId);
          $result=$query->get()->toArray();
     }
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
@@ -479,7 +469,7 @@ class Customer extends Model
       }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
-    // print_r($result1  );
+    // print_r($chilesIds);
      return $fresult;
 
 

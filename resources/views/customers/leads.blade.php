@@ -706,8 +706,8 @@
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
                 '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
-                if(is_array($data['chiledUsers']) || is_object($data['chiledUsers'])){
-                 foreach ($data['chiledUsers'] as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                if(is_array($chiled_parent) || is_object($chiled_parent)){
+                 foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
                 }}?></select></div>';
 
             $("#idsc").append(text);

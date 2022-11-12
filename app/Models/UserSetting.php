@@ -161,9 +161,7 @@ public function getReChiByPar($user_id,$users)
             array_push($chiled,...$this->getReChiByPar($user->id,$users));
 
         }
-                            else{
-                               return false;
-                            }
+                          
 
     }
                          // print_r($chiled);
@@ -174,15 +172,15 @@ public function  ChildNameByparentId(){
     $user_id=session()->get('id');
     $all_users=$this->GetAllUsers();
   
-   // die();
-    $RecursiveChildrenUsers=$this->getReChiByPar($user_id,$all_users);
+  
+       $RecursiveChildrenUsers=$this->getReChiByPar($user_id,$all_users);
 
         $chileusers=implode(',', $RecursiveChildrenUsers);
 
         if($RecursiveChildrenUsers){
                         $result=DB::table('users')
-                            ->select('id,full_name,email,role_id,parent_id')
-                            ->where_in('id',$RecursiveChildrenUsers)
+                            ->select('id','full_name','email','role_id','parent_id')
+                            ->whereIn('id',$RecursiveChildrenUsers)
                               ->get()->toArray();
 
                 if($result){

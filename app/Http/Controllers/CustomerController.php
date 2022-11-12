@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
-        $this->chiledUsers= $this->Usersetting->ChildNameByparentId();
+       
     }
 
     public function leads(){
@@ -58,11 +58,21 @@ class CustomerController extends Controller
         //end table view columns
       //
 
-      $data['chiledUsers']=$this->chiledUsers;
+      $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
 
-       // dd($data['selected_col']);
-       dd($data['chiledUsers']);
-       return view('customers.leads',compact('data','selcol','data_keys','selcolname'));
+       // dd($chilesIds);
+       // echo ( session()->get('id'));
+      
+       return view('customers.leads',compact('data','selcol','data_keys','selcolname','chiled_parent'));
     }
 
       public function add_leads(){
@@ -215,7 +225,7 @@ class CustomerController extends Controller
     public function leads_filter(Request $req){
        $data['leads_data']=$this->Customer->LeadFilter($req);
         $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
-        // print_r($data['selected_fields']);
+        
       return view('customers.lead_filter',compact('data'));
     }
 
