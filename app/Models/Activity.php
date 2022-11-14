@@ -9,11 +9,11 @@ class Activity extends Model
 {
     use HasFactory;
 
-    public function AddTask($req){
+    public function Add_Task($req){
         $req['sender_id']=session()->get('id');
 
        unset($req['_token']);
-    //    dd($req->all());
+       dd($req->all());
 
     $data = array('subject' => $req->subject,
     'description' => $req->description,

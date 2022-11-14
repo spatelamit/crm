@@ -65,7 +65,8 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">DueDate: </label>
-                                    <input class="form-control" type="text" id="duedate" name="duedate">
+                                    {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
+                                    <input class="form-control" type="date" data-date-format="YYYY MMMM DD " name="duedate">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
@@ -205,8 +206,8 @@
                             </div>
                         </div>
                         <div class=" col-md-12 text-right mt-4">
-                            <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit
-                            </button>
+                            <button type="submit" class="btn btn-info font-weight-bold"> Submit</button>
+
                         </div>
                     </form>
                 </div>
@@ -236,16 +237,4 @@
     });
 </script>
 
-<script>
-    $("#duedate").daterangepicker({
-		    timePicker: false,
-		    datePicker:true,
-            singleDatePicker: true,
 
-		    locale: {
-		         format: 'YYYY-MM-DD'
-		    }
-		}).on('show.daterangepicker', function(ev, picker) {
-		            picker.container.find(".calendar-table").hide();
-		});
-</script>

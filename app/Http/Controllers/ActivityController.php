@@ -32,7 +32,7 @@ class ActivityController extends Controller
 
     public function AddTask(Request $req) {
         dd($req);
-        $result= $this->Customer->AddTask($req);
+        $result= $this->Customer->Add_Task($req);
         if($result){
               return redirect('tasks')->with("success", "Successfully Task created !")   ;
 
