@@ -468,6 +468,7 @@ class Customer extends Model
     }
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
+        print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
           
@@ -486,7 +487,7 @@ class Customer extends Model
       }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
-    
+   
      return $fresult;
 
 
