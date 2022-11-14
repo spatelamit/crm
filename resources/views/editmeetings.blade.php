@@ -60,11 +60,11 @@
                 <form method="POST" action="{{ url('meeting_notes') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <input type="text" name="meetingid" class="form-control" value="{{ $edit['meeting']->id }}">
+                        <input type="hidden" name="meetingid" class="form-control" value="{{ $edit['meeting']->id }}">
                     </div>
                     <div class="form-group">
 
-                        <input type="text" name="moduleid" class="form-control" value="12">
+                        <input type="hidden" name="moduleid" class="form-control" value="12">
                     </div>
 
                     <div class="form-group">
