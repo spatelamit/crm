@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-12 " id="bid_d">
-
+        <a href="{{url('add-task')}}" class="btn btn-info">Add task </a>
 
         <div class="card m-b-30">
             <div class="card-header">
