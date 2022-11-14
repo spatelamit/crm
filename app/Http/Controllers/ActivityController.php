@@ -26,6 +26,22 @@ class ActivityController extends Controller
         return view('viewtask', compact('result'));
     }
 
+    public function add_task(){
+        return view('tasks');
+    }
+
+    public function AddTask(Request $req) {
+        dd($req);
+        $result= $this->Customer->AddTask($req);
+        if($result){
+              return redirect('tasks')->with("success", "Successfully Task created !")   ;
+
+          }else{
+              return redirect('tasks')->with("error", ' Taske not created');
+
+          }
+      }
+
     public function edittask($id)
     {
         $edit['task'] = DB::table('tasks')->find($id);
