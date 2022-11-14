@@ -27,15 +27,15 @@
 
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                         <th>Data_id</th>
+                                        <th>Sale Person</th>
                                     </div>
-                                    @if ($data['leads_data'] != null)
-                                        @foreach ($data['selected_fields'] as $key => $value)
-                                            <th>{{ $value->col_name }}</th>
+                                    @if ($data['selected_col'] != null)
+                                        @foreach ($data['selected_col'] as $key => $value)
+                                        <th>{{ $value->col_name }}</th>
                                         @endforeach
-                                        <th>Actions </th>
-
-
+                                    
                                     @endif
+                                        <th>Actions </th>
 
 
 
@@ -65,19 +65,19 @@
                                             </td>
                                              <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
-                                                    </td>
-                                         @foreach($data['selected_fields'] as $key2 => $selected_field)
-                                       @if( isset($data['leads_data'][$key1][$selected_field->col_name]))
-                                          
-                                                <td class="details-control"> <a >
-                                                 {{ $data['leads_data'][$key1][$selected_field->col_name] }}</a>
-                                                    </td>
-                                        @else
-                                             <td class="details-control"> <a
-                                                            >Null</a>
-                                                    </td>
-                                                    @endif
-                                         @endforeach
+                                                </td>
+                                                    <td>{{ $data['leads_data'][$key1]['sale_person'] }}</td>
+                                        @if ($data['selected_col'] != null)    
+                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                                <td class="details-control">
+                                                <?php if(isset($data['leads_data'][$key1][$selvalue->col_name] )){ ?>
+                                                 {{ $data['leads_data'][$key1][$selvalue->col_name] }}
+                                                 <?php } else{
+                                                    echo 'Null';
+                                                 }?>
+                                             </td>
+                                            @endforeach
+                                         @endif
 
                                            
 

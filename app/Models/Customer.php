@@ -98,13 +98,27 @@ class Customer extends Model
 	  }
 
 	  public function GetLeadsData(){
+
+         $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+// dd($chiled_parent  );
 	  	$user_id=session()->get('id');
 	  	$module_id='8';
-	  	$que="call getModulesData(".$user_id.",8)";
+
+	  	$que="call getModulesData2('".$chilesIds."',8)";
 	  	$leads_data=DB::select($que);
 
 
-        // dd($leads_data  );
+        
 	  	 if($leads_data){
 	     		  return $leads_data;
 			   }else{
@@ -348,11 +362,12 @@ class Customer extends Model
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
-                ->select('module_data.*','module_selected_column.col_name')
+                ->select('module_data.*','module_selected_column.col_name','users.full_name as users')
                 ->where('module_data.module_id',$req->module_id)
                 // ->Orwhere('module_data.user_id',session()->get('id')) 
                
                 ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
+                ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
                 
              $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
@@ -460,16 +475,18 @@ class Customer extends Model
         
         foreach ($value as $key2 => $value2) {
                 $data1['data_id']=$value2->data_id;
-                $data['user_id']=$value2->user_id;
+                $data1['user_id']=$value2->user_id;
+                $data1['sale_person']=$value2->users;
                  $data1[$value2->col_name]=$value2->value;
             
-              
+               
             }
+
             $opt[]= $data1;
       }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
-    // print_r($chilesIds);
+    
      return $fresult;
 
 

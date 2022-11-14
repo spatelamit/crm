@@ -69,7 +69,7 @@ class CustomerController extends Controller
             $chilesIds=Null;
           }
 
-       // dd($chilesIds);
+       // dd($data['leads_data']); 
        // echo ( session()->get('id'));
       
        return view('customers.leads',compact('data','selcol','data_keys','selcolname','chiled_parent'));
@@ -225,7 +225,7 @@ class CustomerController extends Controller
     public function leads_filter(Request $req){
        $data['leads_data']=$this->Customer->LeadFilter($req);
         $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
-        
+         $data['selected_col']=$this->Customer->GetTableCol($req->module_id);
       return view('customers.lead_filter',compact('data'));
     }
 
@@ -391,9 +391,7 @@ class CustomerController extends Controller
         }
     }
 
-    public function tasks(){
-        return view('tasks');
-    }
+   
     public function save_managecol(Request $req){
     
         $result= $this->Customer->SaveManageCol($req);

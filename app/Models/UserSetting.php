@@ -154,7 +154,7 @@ public function getRecursiveChildren($roles_id,$roles):array
 public function getReChiByPar($user_id,$users)
 {       
 
-    $chiled = [];
+    $chiled []=session()->get('id');
     foreach ($users as $user) {
         if ($user->parent_id == $user_id) {
             $chiled[] = $user->id;

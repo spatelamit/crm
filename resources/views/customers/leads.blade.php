@@ -91,21 +91,15 @@
                                         <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                         <th>ID</th>
 
-
+                                        <th>Sale Owner</th>
                                     </div>
                                     @if ($data['selected_col'] != null)
                                         @foreach ($data['selected_col'] as $key => $value)
-
-                                          
-                                            <th>{{ $value->col_name }}</th>
-                                           
-                                         
+                                        <th>{{ $value->col_name }}</th>
                                         @endforeach
-                                     
-
-
+                                    
                                     @endif
-   <th>Actions </th>
+                                        <th>Actions </th>
 
 
                                 </tr>
@@ -138,7 +132,7 @@
                                                     <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>
-                                                
+                                                <td>{{ $data['leads_data'][$key1]['user'] }}</td>
                                              @if ($data['selected_col'] != null)    
                                               @foreach ($data['selected_col'] as $key => $selvalue)
                                                 <td class="details-control"> {{ $data['leads_data'][$key1][$selvalue->col_name] }}</td>
@@ -402,16 +396,7 @@
                                 </select>
                             </div>
                         </div>
-                         <div class="col-md-4" id="container">
-                            <div class="form-group">
-                                <label>start: </label>
-                                <input type="text" name="starttime" id="date_timepicker_start">
-                            </div>
-                            <div class="form-group">
-                                <label>end: </label>
-                                 <input type="text" name="endtime" id="date_timepicker_end">
-                            </div>
-                        </div>
+                      
 
                         <div class=" col-md-12">
                             <div class="form-group">
@@ -552,34 +537,7 @@
         });
     });
 </script>
-<script type="text/javascript">
-           jQuery(function(){
-         jQuery('#date_timepicker_start').datetimepicker({
-          format:'H:i',
-          step:5,
-          timepicker:true,
-          onShow:function( ct ){
-           this.setOptions({
-          
-           })
-          },
-         
-          datepicker:false,
-         });
-         jQuery('#date_timepicker_end').datetimepicker({
-          format:'H:i',
-          step:5,
-           timepicker:true,
-          onShow:function( ct ){
-           this.setOptions({
-            minTime:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
-           })
-          },
-         
-          datepicker:false,
-         });
-});
-</script>
+
 
 <script type="text/javascript">
     $(document).ready(function() {
