@@ -402,6 +402,17 @@
                                 </select>
                             </div>
                         </div>
+                         <div class="col-md-4" id="container">
+                            <div class="form-group">
+                                <label>start: </label>
+                                <input type="text" name="starttime" id="date_timepicker_start">
+                            </div>
+                            <div class="form-group">
+                                <label>end: </label>
+                                 <input type="text" name="endtime" id="date_timepicker_end">
+                            </div>
+                        </div>
+
                         <div class=" col-md-12">
                             <div class="form-group">
                                 <label for="usr"> Description <font style="color:red;">*</font></label>
@@ -430,6 +441,7 @@
                                 </div>
                             </div>
                         </div>
+
      
                     </div>
 
@@ -488,6 +500,7 @@
 
 @include('footer')
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 <script type="text/javascript">
     function deletelead(id) {
 
@@ -538,6 +551,34 @@
 
         });
     });
+</script>
+<script type="text/javascript">
+           jQuery(function(){
+         jQuery('#date_timepicker_start').datetimepicker({
+          format:'H:i',
+          step:5,
+          timepicker:true,
+          onShow:function( ct ){
+           this.setOptions({
+          
+           })
+          },
+         
+          datepicker:false,
+         });
+         jQuery('#date_timepicker_end').datetimepicker({
+          format:'H:i',
+          step:5,
+           timepicker:true,
+          onShow:function( ct ){
+           this.setOptions({
+            minTime:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
+           })
+          },
+         
+          datepicker:false,
+         });
+});
 </script>
 
 <script type="text/javascript">
@@ -706,8 +747,8 @@
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
                 '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
-                if(is_array($data['chiledUsers']) || is_object($data['chiledUsers'])){
-                 foreach ($data['chiledUsers'] as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                if(is_array($chiled_parent) || is_object($chiled_parent)){
+                 foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
                 }}?></select></div>';
 
             $("#idsc").append(text);
