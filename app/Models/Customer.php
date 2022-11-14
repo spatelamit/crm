@@ -344,7 +344,7 @@ class Customer extends Model
             $chilesIds=Null;
           }
        
-          DB::statement("SET SQL_MODE=''");
+              DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')

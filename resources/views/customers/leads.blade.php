@@ -500,7 +500,7 @@
 
 @include('footer')
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
 <script type="text/javascript">
     function deletelead(id) {
 
@@ -572,7 +572,7 @@
            timepicker:true,
           onShow:function( ct ){
            this.setOptions({
-            minTime:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():true
+            minTime:jQuery('#date_timepicker_start').val()?jQuery('#date_timepicker_start').val():false
            })
           },
          
