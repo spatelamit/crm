@@ -420,12 +420,14 @@ class CustomerController extends Controller
         }
     }
 
-    public function view_data($id){
-      dd($id);
-      $data['leads_data']=$this->Customer->LeadFilter($req);
-        $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
-         $data['selected_col']=$this->Customer->GetTableCol($req->module_id);
+    public function view_data($id,$module_id){
+     
+      $data['leads_data']=$this->Customer->ViewData($id,$module_id);
+        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+         $data['selected_col']=$this->Customer->GetTableCol($module_id);
+        
       return view('customers.lead_filter',compact('data'));
+
     }
 
 }

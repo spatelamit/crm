@@ -69,17 +69,18 @@ function createdeal(id){
     $( "#view_data" ).on( "change", function(e) {
 
        var view_id=$('#view_data').val();
-       alert(view_id);
+        var mod_id=$('#mod_id').val();
+       // alert(mod_id);
        $.ajax({
         type: "get",
       
-        url: 'view-data',
+        url: 'view-data/'+view_id+'/'+mod_id,
 
-        data: view_id,
+      
         success: function (response) {
 
         
-          // $(".lead_search").html(response);
+          $(".lead_search").html(response);
           console.log(response);
         }
       });
