@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Activity extends Model
 {
     use HasFactory;
 
     public function Add_Task($req){
-        $req['sender_id']=session()->get('id');
+        // $req['sender_id']=session()->get('id');
 
-       unset($req['_token']);
-       dd($req->all());
+    //    unset($req['_token']);
+    //    dd($req->all());
 
     $data = array('subject' => $req->subject,
     'description' => $req->description,
@@ -21,8 +22,8 @@ class Activity extends Model
     'sender_id'=>session()->get('id'),
     'priority' => $req->priority,
     'due_date' => $req->due_date,
-    'related_to' => $req->account,
-    'modify_date' => date('Y-m-d H:i:s')
+    'related_to' => $req->account);
+
         // $result=DB::table('tasks')->insert($req->all());
         $result = DB::table('tasks')->insert($data);
 

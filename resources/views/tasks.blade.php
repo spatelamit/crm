@@ -46,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="usr">Task Owner <font style="color:red;">*</font></label>
                                     <input type="text" class="form-control fieldname" name=""
-                                        value="{{ Session::get('username') }}" readonly>
+                                        value="{{ Session::get('full_name') }}" readonly>
 
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                                         <label for=""> Select Date & Time </label>
                                                         <input class="form-control" type="date"
                                                             value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name"
-                                                            required="">
+                                                            >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -194,7 +194,7 @@
                                                             <div class="form-group">
                                                                 <input class="form-control" type="date"
                                                                     value="yyyy/mm/dd hh/mm" name="taskowner"
-                                                                    placeholder="Name" required="">
+                                                                    placeholder="Name">
                                                             </div>
                                                         </div>
                                                     </div>
