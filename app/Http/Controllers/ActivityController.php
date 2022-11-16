@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
 {
+    public function __construct() {
+
+        $this->Activity=new Activity();
+        // $this->Usersetting=new UserSetting();
+
+    }
     public function tasks()
     {
         $user_id = session()->get('id');
@@ -30,9 +37,9 @@ class ActivityController extends Controller
         return view('tasks');
     }
 
-    public function AddTask(Request $req) {
-        dd($req);
-        $result= $this->Customer->Add_Task($req);
+    public function task_add(Request $req) {
+        // dd($req);
+        $result= $this->Activity->Add_Task($req);
         if($result){
               return redirect('tasks')->with("success", "Successfully Task created !")   ;
 

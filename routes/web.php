@@ -115,7 +115,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::post('/addnots',[ActivityController::class, 'addnots']);
     Route::get('/notes',[ActivityController::class, 'notes']);
     Route::get('/add-task',[ActivityController::class, 'add_task']);
-    Route::post('/AddTask',[ActivityController::class, 'AddTask']);
+    Route::post('/task_add',[ActivityController::class, 'task_add']);
 
     //meeting
 
