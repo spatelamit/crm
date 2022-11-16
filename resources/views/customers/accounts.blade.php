@@ -86,8 +86,9 @@
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
                                 <th>Id</th>
+                                <th>Sale Person</th>
                          
-                                 @if ($data['selected_col'] != null)
+                                      @if ($data['selected_col'] != null)
                                         @foreach ($data['selected_col'] as $key => $value)
 
                                             <th>{{ $value->col_name }}</th>
@@ -120,6 +121,7 @@
                                             </td>
 
                                          <td  class="details-control"> <a href="{{url('lead-profile',$data['accounts_data'][$key1]['data_id'])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
+                                         <td>{{$data['accounts_data'][$key1]['user']}}</td>
                                       @if ($data['selected_col'] != null)
                                          @foreach ($data['selected_col'] as $key => $selvalue)
                                                
@@ -680,7 +682,11 @@ $( "#deal_stages" ).append(deal_input);
 
 if (anem == "data_owners"){
   var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
-  var users_input='<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"><option value=""> </option> </select></div>';
+   var users_input =
+                '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
+                if(is_array($chiled_parent) || is_object($chiled_parent)){
+                 foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                }}?></select></div>';
 
 $( "#idsc" ).append(text);
 $( "#data_owner_names" ).append(users_input);

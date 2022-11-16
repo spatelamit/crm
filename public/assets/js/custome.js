@@ -66,4 +66,24 @@ function createdeal(id){
    
     });
 
+    $( "#view_data" ).on( "change", function(e) {
+
+       var view_id=$('#view_data').val();
+       alert(view_id);
+       $.ajax({
+        type: "get",
+      
+        url: 'view-data',
+
+        data: view_id,
+        success: function (response) {
+
+        
+          // $(".lead_search").html(response);
+          console.log(response);
+        }
+      });
+   
+    });
+
    

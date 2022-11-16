@@ -125,14 +125,29 @@ class Customer extends Model
 			       return false;
 			   }
 
-	  } public function GetModuleData($module_id){
+	  } 
+
+      public function GetAccountData($module_id){
+        $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+// dd($chiled_parent  );
         $user_id=session()->get('id');
-      
-        $que="call getModulesData(".$user_id.",".$module_id.")";
+       
+
+        $que="call getModulesData2('".$chilesIds."',$module_id)";
         $data=DB::select($que);
 
 
-        // dd($leads_data  );
+        // dd($data  );
          if($data){
                   return $data;
                }else{
@@ -141,13 +156,27 @@ class Customer extends Model
 
       }
       public function GetDealData($module_id){
+        
+         $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+// dd($chiled_parent  );
         $user_id=session()->get('id');
       
-        $que="call GetDeal(".$user_id.",".$module_id.")";
-        $data=DB::select(DB::raw($que));
+        $que="call getModulesData2('".$chilesIds."',$module_id)";
+        $data=DB::select($que);
 
 
-        // dd($leads_data  );
+
+        
          if($data){
                   return $data;
                }else{
@@ -466,25 +495,25 @@ class Customer extends Model
          $query->whereIn('module_data.user_id',$chilesId);
          $result=$query->get()->toArray();
     }
+        
+
+
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
-        print_r($result1);
+        // print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-          
-         
-        
-        foreach ($value as $key2 => $value2) {
-                $data1['data_id']=$value2->data_id;
-                $data1['user_id']=$value2->user_id;
-                $data1['sale_person']=$value2->users;
-                 $data1[$value2->col_name]=$value2->value;
-            
-               
-            }
+       
+            foreach ($value as $key2 => $value2) {
+                    $data1['data_id']=$value2->data_id;
+                    $data1['user_id']=$value2->user_id;
+                    $data1['sale_person']=$value2->users;
+                     $data1[$value2->col_name]=$value2->value;
+                
+                }
 
             $opt[]= $data1;
-      }
+        }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
    
