@@ -39,7 +39,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ url('AddTask') }}" method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('task_add') }}"  enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -53,26 +53,26 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">Subject: </label>
-                                    <input class="form-control" name="subject" id="reporting_to">
+                                    <input class="form-control" name="subject">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">Account: </label>
-                                    <input class="form-control" name="account" id="reporting_to">
+                                    <input class="form-control" name="account">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">DueDate: </label>
                                     {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
-                                    <input class="form-control" type="date" data-date-format="YYYY MMMM DD " name="duedate">
+                                    <input class="form-control" type="text" id="duedate"  name="duedate">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
-                                    <label for="stage_name">Status: </label>
-                                    <select class="form-control" id="" name="status">
+                                    <label for="">Status: </label>
+                                    <select class="form-control"  name="status">
                                         <option value="notstarted">NotStarted</option>
                                         <option value="inprogress">In Progress</option>
                                         <option value="complete">Complete</option>
@@ -82,7 +82,7 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="">Priority: </label>
-                                    <select class="form-control" id="" name="priority">
+                                    <select class="form-control"  name="priority">
                                         <option value="">select</option>
                                         <option value="high">High</option>
                                         <option value="lowest">Lowest</option>
@@ -116,7 +116,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="">Notify User </label>
-                                                        <select class="form-control" id="" name="notify">
+                                                        <select class="form-control"  name="notify">
                                                             <option value="">Notify</option>
                                                             <option value="high">Popup</option>
                                                             <option value="lowest">Email</option>
@@ -141,7 +141,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for=""> Repeat </label>
-                                                        <select class="form-control" id="" name="repeat">
+                                                        <select class="form-control" name="repeat">
                                                             <option value="">Daily</option>
                                                             <option value="high">Weekly</option>
                                                             <option value="lowest">Monthly</option>
@@ -153,7 +153,7 @@
                                                     <div class="form-check">
                                                         <label class="form-check-label">
                                                             <input type="radio" class="form-check-input"
-                                                                name="optionsRadios" id="optionsRadios1"
+                                                                name="optionsRadios"
                                                                 value="">
                                                             Never <i class="input-helper"></i></label>
                                                     </div>
@@ -164,7 +164,7 @@
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input"
-                                                                        name="optionsRadios" id="optionsRadios1"
+                                                                        name="optionsRadios"
                                                                         value="">
                                                                     After <i class="input-helper"></i></label>
                                                             </div>
@@ -185,7 +185,7 @@
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input"
-                                                                        name="optionsRadios" id="optionsRadios1"
+                                                                        name="optionsRadios"
                                                                         value="">
                                                                     On <i class="input-helper"></i></label>
                                                             </div>
@@ -206,8 +206,8 @@
                             </div>
                         </div>
                         <div class=" col-md-12 text-right mt-4">
-                            <button type="submit" class="btn btn-info font-weight-bold"> Submit</button>
-
+                            <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -216,6 +216,30 @@
     </div>
 </div>
 @include('footer')
+{{-- <script>
+    $("#duedate").daterangepicker({
+		    timePicker: false,
+		    datePicker:true,
+            singleDatePicker: true,
+
+		    locale: {
+		         format: 'YYYY-MM-DD'
+		    }
+		}).on('show.daterangepicker', function(ev, picker) {
+		            picker.container.find(".calendar-table").hide();
+		});
+</script> --}}
+<script>
+    $( document ).ready(function() {
+     $('#duedate').daterangepicker({
+        singleDatePicker: true,
+        autoApply: true,
+        locale: {
+            format: 'YYYY-MM-DD'
+        }
+    });
+});
+</script>
 <script>
     $(document).ready(function() {
         $(".slidingDiv").hide();

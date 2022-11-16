@@ -30,7 +30,7 @@ class ActivityController extends Controller
         return view('tasks');
     }
 
-    public function AddTask(Request $req) {
+    public function task_add(Request $req) {
         dd($req);
         $result= $this->Customer->Add_Task($req);
         if($result){
