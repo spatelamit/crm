@@ -103,7 +103,19 @@
                                                 </select>
                                                 <select name="value[]" class="form-control stages" required="" > </select>
                                         </div>
-                                         
+                                 @elseif($val->type == 'select')
+                                       <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                           <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                                <select class="form-control dealstage"  >
+                                                    <option value="0">Default Pipeline</option>
+                                                    @foreach($data['pipeline'] as $pipeline)
+
+                                                    <option value="{{$pipeline->id}}">{{$pipeline->pipeline_name  }}</option>
+                                                    @endforeach
+                                                </select>
+                                               
+                                        </div>
                                        
                                         
                                             

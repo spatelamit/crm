@@ -17,13 +17,16 @@ class Customer extends Model
     }
 
     public function GetModuleFields($module_id){
-
+ 
     	$result=DB::table('module_selected_column')
     	->select('module_selected_column.id','module_selected_column.module_id','module_selected_column.column_id','module_selected_column.type','module_selected_column.col_name','modules.modules_name')
     	->where('module_selected_column.module_id',$module_id)
     	->where('module_selected_column.company_id',session()->get('company_id'))
+        // ->where('fields_option.company_id',session()->get('company_id'))
     	->orWhere('module_selected_column.company_id','0')
     	->join('modules','modules.module_id','=','module_selected_column.module_id')
+       
+
     	->get();
     	if($result){
      		  return $result;

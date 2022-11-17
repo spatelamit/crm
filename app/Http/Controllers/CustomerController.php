@@ -316,7 +316,7 @@ class CustomerController extends Controller
               }
 
 
-        // dd($data['company_names']);
+        // dd($data['selected_fields']);
             return view('customers.add-deal',compact('data'));
     }
 
