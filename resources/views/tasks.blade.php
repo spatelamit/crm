@@ -59,23 +59,28 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">Account: </label>
-                                    <input class="form-control" name="account">
+                                    <select  name="account"
+                                    class="form-control bg_input"
+
+                                         id="compName" >
+                                         <option value="">Selecte Company name</option>
+                                </select>
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">DueDate: </label>
                                     {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
-                                    <input class="form-control" type="text" id="duedate"  name="duedate">
+                                    <input class="form-control" type="text" id="duedate"  name="due_date">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="">Status: </label>
                                     <select class="form-control"  name="status">
-                                        <option value="notstarted">NotStarted</option>
-                                        <option value="inprogress">In Progress</option>
-                                        <option value="complete">Complete</option>
+                                        <option value="0">NotStarted</option>
+                                        <option value="1">In Progress</option>
+                                        <option value="2">Complete</option>
                                     </select>
                                 </div>
                             </div>
@@ -83,10 +88,10 @@
                                 <div class="form-group">
                                     <label for="">Priority: </label>
                                     <select class="form-control"  name="priority">
-                                        <option value="">select</option>
-                                        <option value="high">High</option>
-                                        <option value="lowest">Lowest</option>
-                                        <option value="normal">Normal</option>
+
+                                        <option value="0">High</option>
+                                        <option value="1">Lowest</option>
+                                        <option value="2">Normal</option>
                                     </select>
                                 </div>
                             </div>
@@ -237,6 +242,13 @@
         locale: {
             format: 'YYYY-MM-DD'
         }
+    });
+   
+    $("#compName").select2( {
+       placeholder: "Select a state",
+       data:<?php  echo json_encode($data['company_names']) ;?>,
+
+
     });
 });
 </script>
