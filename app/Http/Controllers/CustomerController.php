@@ -138,8 +138,17 @@ class CustomerController extends Controller
       $module_id=8;
           $data['edit_lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-          // dd( $data);
-          return view('customers.edit-lead',compact('data'));
+// dd($data['edit_lead_data']);
+           foreach ($data['edit_lead_data'] as $key => $edit_col) {
+               $field1[]=$edit_col->column_id;
+
+               }
+               $selfield=$field1;
+               $selfield1=implode(",",  $selfield);
+               
+             
+          // dd($data['selected_fields']);
+          return view('customers.edit-lead',compact('data','selfield1'));
 
 
 
@@ -297,7 +306,7 @@ class CustomerController extends Controller
             $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
             $data['pipeline']=$this->Customer->GetPipeline();
             $data['accounts_datas']=$this->Customer->GetDealData('10');
-
+             $data['field_option']=$this->Customer->GetOptionField();
             if( $data['accounts_datas']){
                foreach ($data['accounts_datas'] as $key => $value) {
                $data['accounts_data'][]=(json_decode(json_encode( $value),true));
@@ -316,7 +325,7 @@ class CustomerController extends Controller
               }
 
 
-        // dd($data['selected_fields']);
+        // dd($data['field_option']);
             return view('customers.add-deal',compact('data'));
     }
 

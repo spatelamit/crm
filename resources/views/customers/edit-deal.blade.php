@@ -14,7 +14,6 @@
             <div class="row">
               <input type="hidden" name="module_id" value="{{$data['edit_lead_data'][0]->module_id}}">
               <input type="hidden" name="data_id" value="{{$data['edit_lead_data'][0]->data_id}}">
-
               @foreach($data['edit_lead_data'] as $val)
               @if ($val->column_id == 1)
               <div class="col-md-4">
@@ -82,17 +81,6 @@
               </div>
               @endif
               @endforeach
-              @foreach( $data['selected_fields'] as $select_field)
-               @if(!in_array($select_field->column_id,explode(",", $selfield1) ))
-                <div class="col-md-3">
-                <div class="form-group mb-10 as">
-                  <label>{{ str_replace("_"," ",strtoupper($select_field->col_name)) }}</label>
-                  <input type="hidden" name="column_id[]" value="{{$select_field->column_id}}">
-                  <input type="{{$select_field->type}}"  name="value[]" class="form-control bg_input" placeholder="Enter your {{ str_replace('_','' ,strtoupper($select_field->col_name)) }}" value="" >
-                </div>
-              </div>
-               @endif
-               @endforeach
               <div class="col-md-12 text-right">
                 <button type="submit" class="btn btn-primary">Save</button>
               </div>
