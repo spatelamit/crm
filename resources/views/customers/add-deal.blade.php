@@ -108,10 +108,11 @@
                                          <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
                                                 <select class="form-control dealstage"  >
-                                                    <option value="0">Default Pipeline</option>
-                                                    @foreach($data['pipeline'] as $pipeline)
-
-                                                    <option value="{{$pipeline->id}}">{{$pipeline->pipeline_name  }}</option>
+                                                    
+                                                    @foreach($data['field_option'] as $option)
+                                                    @if($option->column_id == $val->column_id)
+                                                    <option value="{{$option->id}}">{{$option->option_name  }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                                

@@ -74,6 +74,14 @@ class Customer extends Model
 		   }
     }
 
+    public function GetOptionField(){
+        $result=DB::table('fields_option')
+                ->where('company_id',session()->get('company_id'))
+                ->Orwhere('column_id','0')
+                ->get();
+                return $result;
+    }
+
 
     public function SaveLeads($req){
 
