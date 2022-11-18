@@ -138,7 +138,7 @@ class CustomerController extends Controller
       $module_id=8;
           $data['edit_lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-          dd($data['selected_fields']);
+          // dd($data['selected_fields']);
           return view('customers.edit-lead',compact('data'));
 
 
