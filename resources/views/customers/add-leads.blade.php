@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
+                    <form method="POST" action="{{ url('ImportCsv') }}" autocomplete="nope">
                         @csrf
                         <div class="row">
                             <div class="col-md-8">
@@ -66,7 +66,7 @@
                                         <div class="form-group mb-10">
                                             <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                             <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
-                                           
+
                                                 <select  required class="form-control bg_input" name="value[]">
                                                     <option value=""> A</option>
                                                     <option value=""> A</option>

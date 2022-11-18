@@ -206,6 +206,19 @@ class ActivityController extends Controller
     }
 
 
+    public function ImportCsv(Request $req)
+    {
+        dd($req);
+        $result= $this->Activity->Add_Task($req);
+
+        if ($result) {
+            return redirect()->back();
+        } else {
+            return "error";
+        }
+    }
+
+
 
 
 }
