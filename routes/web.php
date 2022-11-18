@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CommunicationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\UserController;
@@ -123,3 +124,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/editmeeting/{id}',[ActivityController::class, 'editmeeting']);
     Route::post('/meeting_notes',[ActivityController::class,'meeting_notes']);
 });
+
+
+    Route::get('/sms-api',[CommunicationController::class, 'sms_api']);
+    Route::get('/voice-api',[CommunicationController::class, 'voice_api']);
+    Route::get('email-api',[CommunicationController::class,], 'email_api');

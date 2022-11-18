@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,6 +12,7 @@ class ActivityController extends Controller
     public function __construct() {
 
         $this->Activity=new Activity();
+        $this->Customer=new Customer();
         // $this->Usersetting=new UserSetting();
 
     }
@@ -34,17 +36,34 @@ class ActivityController extends Controller
     }
 
     public function add_task(){
-        return view('tasks');
+        $data['accounts_datas']=$this->Customer->GetDealData('10');
+        if( $data['accounts_datas']){
+            foreach ($data['accounts_datas'] as $key => $value) {
+            $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+          }
+          foreach ($data['accounts_data'] as $key1 => $value1) {
+             $data['company_names'][]=array(
+               'id'=>$value1['data_id'],
+               'text'=>$value1['company_name'],
+               'name'=>$value1['data_id'],
+             );
+          }
+          }else{
+             $data['accounts_data']=null;
+
+           }
+        return view('tasks', compact('data'));
     }
 
     public function task_add(Request $req) {
         // dd($req);
         $result= $this->Activity->Add_Task($req);
         if($result){
-              return redirect('tasks')->with("success", "Successfully Task created !")   ;
+              return redirect('tasks')->with("success", "Successfully Task created !");
 
           }else{
-              return redirect('tasks')->with("error", ' Taske not created');
+              return redirect('tasks')->with("error", ' Task not created');
 
           }
       }
@@ -85,9 +104,9 @@ class ActivityController extends Controller
         // $data  = array('pe_id' => $req->pe_id, 'sender' => $req->sender, 'description' => $req->description, 'status' => $req->status, 'updated_at' => date('Y-m-d H:i:s'));
 
         if ($updatetask) {
-            return redirect('tasks');
+            return redirect('tasks')->with("success", "Successfully Task updated !");
         } else {
-            return "task not updated";
+            return redirect('tasks')->with("error", ' Task not updated');;
         }
     }
 

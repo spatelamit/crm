@@ -16,13 +16,18 @@ class Activity extends Model
     //    unset($req['_token']);
     //    dd($req->all());
 
+
+
     $data = array('subject' => $req->subject,
     'description' => $req->description,
     'status' => $req->status,
     'sender_id'=>session()->get('id'),
     'priority' => $req->priority,
     'due_date' => $req->due_date,
+
     'related_to' => $req->account);
+
+    // dd($data);
 
         // $result=DB::table('tasks')->insert($req->all());
         $result = DB::table('tasks')->insert($data);
