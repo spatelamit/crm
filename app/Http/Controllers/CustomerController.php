@@ -83,6 +83,7 @@ class CustomerController extends Controller
     // dd($data['selected_fields'][0]->module_id);
         return view('customers.add-leads',compact('data'));
     }
+
     public function save_leads(Request $req){
         // dd($req->all());
 
@@ -120,6 +121,7 @@ class CustomerController extends Controller
 
 
     }
+
     public function add_mod_fields(Request $req){
         $result=$this->Customer->AddModFields($req);
        if($result){
@@ -142,6 +144,7 @@ class CustomerController extends Controller
 
 
     }
+
     public function update_lead(Request $req){
           $result=$this->Customer->UpdateLead($req);
        if($result){
@@ -152,6 +155,7 @@ class CustomerController extends Controller
 
         }
     }
+
     public function delete_lead($id){
         $result=$this->Customer->DeleteLead($id);
         if($result){
@@ -163,6 +167,7 @@ class CustomerController extends Controller
         }
 
     }
+
     public function get_lead_by_id($id){
         $module_id='9';
           $data['lead_data']=$this->Customer->GetEditData($id);
@@ -198,6 +203,7 @@ class CustomerController extends Controller
          return view('customers.lead_profile',compact('data'));
 
     }
+
      public function convert_lead($id){
           $data['lead_data']=$this->Customer->GetEditData($id);
           $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
@@ -207,6 +213,7 @@ class CustomerController extends Controller
          return view('customers.convert-lead',compact('data'));
 
     }
+
     public function save_convert_lead(Request $req){
       // dd($req->data_id);
       $result=DB::table('module_data')->where('data_id',$req->data_id)->update(['module_id'=>'10']);
@@ -223,6 +230,7 @@ class CustomerController extends Controller
 
     //lead filter
     public function leads_filter(Request $req){
+      // dd($req->all());
        $data['leads_data']=$this->Customer->LeadFilter($req);
         $data['selected_fields']=$this->Customer->GetModuleFields($req->module_id);
          $data['selected_col']=$this->Customer->GetTableCol($req->module_id);
@@ -281,6 +289,7 @@ class CustomerController extends Controller
 
              }
     }
+
      public function add_deal(){
 
            $module_id='9';
@@ -307,7 +316,7 @@ class CustomerController extends Controller
               }
 
 
-        // dd($data['company_names']);
+        // dd($data['selected_fields']);
             return view('customers.add-deal',compact('data'));
     }
 
@@ -315,14 +324,14 @@ class CustomerController extends Controller
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
-        $data['accounts_datas']=$this->Customer->GetModuleData($module_id);
-
+        $data['accounts_datas']=$this->Customer->GetAccountData($module_id);
+         $chiled_parent= $this->Usersetting->ChildNameByparentId();
         if( $data['accounts_datas']){
         foreach ($data['accounts_datas'] as $key => $value) {
           $data['accounts_data'][]=(json_decode(json_encode( $value),true));
 
             }
-              foreach (  $data['accounts_datas'][0] as $key => $value) {
+              foreach ( $data['accounts_datas'][0] as $key => $value) {
               $data_k[]=$key;
             }
             $data_keys=implode(",",  $data_k);
@@ -349,7 +358,7 @@ class CustomerController extends Controller
         //end table view columns
       
         // dd(  $data['chiledUsers']);
-        return view('customers.accounts',compact('data','selcol','data_keys','selcolname'));
+        return view('customers.accounts',compact('data','selcol','data_keys','selcolname','chiled_parent'));
     }
 
 
@@ -409,6 +418,16 @@ class CustomerController extends Controller
             return redirect($red)->with("error", ' Columns not Updated');
 
         }
+    }
+
+    public function view_data($id,$module_id){
+     
+      $data['leads_data']=$this->Customer->ViewData($id,$module_id);
+        $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+         $data['selected_col']=$this->Customer->GetTableCol($module_id);
+        
+      return view('customers.lead_filter',compact('data'));
+
     }
 
 }

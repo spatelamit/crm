@@ -106,7 +106,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/export_data_pankaj',[UserController::class,'export_data_pankaj']);
 
     Route::post('/save-managecol',[CustomerController::class, 'save_managecol']);
-
+    Route::get('/view-data/{id}/{mod_id}',[CustomerController::class, 'view_data']);
 
     //activity controller
     //task

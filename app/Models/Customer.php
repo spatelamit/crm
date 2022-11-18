@@ -17,13 +17,16 @@ class Customer extends Model
     }
 
     public function GetModuleFields($module_id){
-
+ 
     	$result=DB::table('module_selected_column')
     	->select('module_selected_column.id','module_selected_column.module_id','module_selected_column.column_id','module_selected_column.type','module_selected_column.col_name','modules.modules_name')
     	->where('module_selected_column.module_id',$module_id)
     	->where('module_selected_column.company_id',session()->get('company_id'))
+        // ->where('fields_option.company_id',session()->get('company_id'))
     	->orWhere('module_selected_column.company_id','0')
     	->join('modules','modules.module_id','=','module_selected_column.module_id')
+       
+
     	->get();
     	if($result){
      		  return $result;
@@ -125,14 +128,29 @@ class Customer extends Model
 			       return false;
 			   }
 
-	  } public function GetModuleData($module_id){
+	  } 
+
+      public function GetAccountData($module_id){
+        $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+// dd($chiled_parent  );
         $user_id=session()->get('id');
-      
-        $que="call getModulesData(".$user_id.",".$module_id.")";
+       
+
+        $que="call getModulesData2('".$chilesIds."',$module_id)";
         $data=DB::select($que);
 
 
-        // dd($leads_data  );
+        // dd($data  );
          if($data){
                   return $data;
                }else{
@@ -141,13 +159,27 @@ class Customer extends Model
 
       }
       public function GetDealData($module_id){
+        
+         $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+// dd($chiled_parent  );
         $user_id=session()->get('id');
       
-        $que="call GetDeal(".$user_id.",".$module_id.")";
-        $data=DB::select(DB::raw($que));
+        $que="call getModulesData2('".$chilesIds."',$module_id)";
+        $data=DB::select($que);
 
 
-        // dd($leads_data  );
+
+        
          if($data){
                   return $data;
                }else{
@@ -466,25 +498,25 @@ class Customer extends Model
          $query->whereIn('module_data.user_id',$chilesId);
          $result=$query->get()->toArray();
     }
+
+
+
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
-        print_r($result1);
+        // print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-          
-         
-        
-        foreach ($value as $key2 => $value2) {
-                $data1['data_id']=$value2->data_id;
-                $data1['user_id']=$value2->user_id;
-                $data1['sale_person']=$value2->users;
-                 $data1[$value2->col_name]=$value2->value;
-            
-               
-            }
+       
+            foreach ($value as $key2 => $value2) {
+                    $data1['data_id']=$value2->data_id;
+                    $data1['user_id']=$value2->user_id;
+                    $data1['sale_person']=$value2->users;
+                     $data1[$value2->col_name]=$value2->value;
+                
+                }
 
             $opt[]= $data1;
-      }
+        }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
    
@@ -533,6 +565,86 @@ class Customer extends Model
                            return false;
                        }
             
+    }
+
+    public function ViewData($id,$module_id){
+
+        $chiled_parent= $this->Usersetting->ChildNameByparentId();
+          if($chiled_parent!=false ){
+            $chilesId[]=session()->get('id');
+              foreach ($chiled_parent as $key => $chiledid) {
+             $chilesId[]=$chiledid->id;
+           
+         }
+              $chilesIds=implode(",",  $chilesId);
+          }else{
+            $chilesIds=Null;
+          }
+        
+              DB::statement("SET SQL_MODE=''");
+        // DB::enableQueryLog();
+
+        $query=DB::table('module_data')
+                ->select('module_data.*','module_selected_column.col_name','users.full_name as users')
+                ->where('module_data.module_id',$module_id)
+                // ->Orwhere('module_data.user_id',session()->get('id')) 
+               
+                ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
+                ->join('users','users.id','=','module_data.user_id')
+                ->groupBy('module_data.data_id','module_data.column_id');
+                
+            
+                 $search=[];
+                 $result=[];
+    if (!empty($id) || $id !=""){
+     
+        
+        
+
+         // User wise filter
+         if($id=='all_leads'){
+            $query->whereIn('module_data.user_id',$chilesId);
+
+         }elseif($id=='my_leads'){
+            $query->where('module_data.user_id',session()->get('id'));
+         }elseif($id=='today'){
+            $query->whereDate('module_data.created_at','=',date('Y-m-d'));
+         }
+
+         // 
+
+         $result=$query->get()->toArray();
+    }else{
+         $query->whereIn('module_data.user_id',$chilesId);
+         $result=$query->get()->toArray();
+    }
+        
+
+
+        $result1=collect($result)->where('module_id',$module_id)->groupBy('data_id');
+        // echo (count($result1));
+        // print_r($result1);
+        $opt=[];
+        foreach ($result1 as $key => $value) {
+       
+            foreach ($value as $key2 => $value2) {
+                    $data1['data_id']=$value2->data_id;
+                    $data1['user_id']=$value2->user_id;
+                    $data1['sale_person']=$value2->users;
+                    $data1['created_date']=$value2->created_at;
+                    $data1['modified_date']=$value2->modified_date;
+                     $data1[$value2->col_name]=$value2->value;
+                
+                }
+
+            $opt[]= $data1;
+        }
+      $search=json_decode(json_encode($search), true);
+      $fresult=array_merge($opt,$search);
+   
+     return $fresult;
+
+
     }
 
 }

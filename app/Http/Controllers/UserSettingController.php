@@ -272,7 +272,7 @@ class UserSettingController extends Controller
     }
     public function save_fields(Request $req){
     //     echo "<pre>";
-    // print_r($req->all());
+    // dd($req->all());
        $result=$this->Usersetting->SaveFields($req);
         if($result){
             return redirect()->back()->with("success", "Successfully Added Fields!")   ;

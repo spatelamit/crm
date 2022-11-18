@@ -390,15 +390,36 @@ public function UpdateEmailDetails($req){
     public function SaveFields($req){
 
         for ($i=0; $i <count($req->label) ; $i++) { 
-            $data[]=array(
+            if($req->type[$i]=='select'){
+                     $data1=array(
+                    'label'=>$req->label[$i],
+                    'type'=>$req->type[$i],
+                    'col_name'=>(str_replace(" ","_",strtolower($req->label[$i]))),
+                    'company_id'=>session()->get('company_id'),
+                    );  
+                         $insert_id=DB::table('module_columns')->insertGetId($data1);
+                        for ($j=0; $j <count($req->optionNames) ; $j++) { 
+                            $optn_data[]=array(
+                                'column_id'=>$insert_id,
+                                'option_name'=>$req->optionNames[$j],
+                                'company_id'=>session()->get('company_id'),
+                            );
+                        }
+                        // echo $insert_id;
+                        // dd($optn_data);
+                          $result1=DB::table('fields_option')->insert($optn_data);
+             }else{
+             $data=array(
             'label'=>$req->label[$i],
             'type'=>$req->type[$i],
             'col_name'=>(str_replace(" ","_",strtolower($req->label[$i]))),
             'company_id'=>session()->get('company_id'),
             );
+              $result=DB::table('module_columns')->insert($data);
+        }
         }
 
-        $result=Db::table('module_columns')->insert($data);
+     
 
             if($result){
               return true;

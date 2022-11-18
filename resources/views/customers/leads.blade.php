@@ -76,6 +76,21 @@
                                 data-target="#managecol"> 
                                 Manage columns </a>
                 </div>
+                <div class="m-b-10">
+
+                
+                       
+                 <input type="hidden" id="mod_id" value="8">
+                     <select name="view_data" id="view_data" >
+                        <option value="">Select </option>
+                         <option value="all_leads">All Leads</option>
+                        <option value="my_leads">My Leads</option>
+                         <option value="today">Today Leads</option>
+                     </select> 
+                        
+            
+                    
+                </div>
                 
                     
              
