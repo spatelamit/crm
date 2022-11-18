@@ -195,13 +195,16 @@ class Customer extends Model
                }
 
       }
-	  public function GetEditData($id){
-
+	  public function  GetEditData($id){
+        // DB::enableQueryLog(); 
 	  	$getdata=DB::table('module_data')
 	  			->select('module_data.*','module_columns.col_name','module_columns.type')
 	  			->where('module_data.data_id',$id)
+               
 	  			->join('module_columns','module_columns.column_id','=','module_data.column_id')
+               
 	  			->get();
+                // dd(DB::getQueryLog()); 
 	  	if($getdata){
 	     		  return $getdata;
 			   }else{
@@ -214,16 +217,12 @@ class Customer extends Model
 	  	$data_id=$req->data_id;
 	  	// dd($req->all());
 	  	for ($i=0; $i <count($req->column_id) ; $i++) {
-	  		$data=array(
-	  			'value'=>$req->value[$i],
-
-	  		);
-
+	  		
 
 	  		$result[]=DB::table('module_data')
-	  				->where('data_id',$data_id)
-	  				->where('column_id',$req->column_id[$i])
-	  				->update($data);
+	  				// ->where('data_id',$data_id)
+	  				// ->where('column_id',$req->column_id[$i])
+	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id]);
 	  	}
 	  	// echo "<pre>";
 	  	// print_r($data);
