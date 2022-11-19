@@ -222,7 +222,7 @@ class Customer extends Model
 	  		$result[]=DB::table('module_data')
 	  				// ->where('data_id',$data_id)
 	  				// ->where('column_id',$req->column_id[$i])
-	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id]);
+	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id ,'user_id'=>$req->user_id]);
 	  	}
 	  	// echo "<pre>";
 	  	// print_r($data);

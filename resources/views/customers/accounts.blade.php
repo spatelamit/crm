@@ -139,7 +139,7 @@
 
 
                                                 <a class="btn btn-info mr-2"
-                                                    href="{{ url('edit-lead', $data['accounts_data'][$key1]['data_id']) }}"><span
+                                                    href="{{ url('edit-lead', [$data['accounts_data'][$key1]['data_id'],10]) }}"><span
                                                         class="fa fa-pencil" style="float: none; margin: 5px;"></span>
                                                 </a>
                                                 <a class="btn btn-danger"

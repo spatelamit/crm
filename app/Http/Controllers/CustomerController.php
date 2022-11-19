@@ -134,11 +134,35 @@ class CustomerController extends Controller
 
     }
 
-    public function edit_lead($id){
-      $module_id=8;
+    public function edit_lead($id,$module_id){
+      // $module_id=8;
+       $data['pipeline']=$this->Customer->GetPipeline();
           $data['edit_lead_data']=$this->Customer->GetEditData($id);
            $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
-// dd($data['edit_lead_data']);
+            $data['field_option']=$this->Customer->GetOptionField();
+
+
+             $data['accounts_datas']=$this->Customer->GetDealData('10');
+           
+            if( $data['accounts_datas']){
+               foreach ($data['accounts_datas'] as $key => $value) {
+               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+             }
+             foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][]=array(
+                  'id'=>$value1['company_name'],
+                  'text'=>$value1['company_name'],
+                  'name'=>$value1['data_id'],
+                );
+             }
+             }else{
+                $data['accounts_data']=null;
+
+              }
+
+
+
            foreach ($data['edit_lead_data'] as $key => $edit_col) {
                $field1[]=$edit_col->column_id;
 
@@ -147,7 +171,7 @@ class CustomerController extends Controller
                $selfield1=implode(",",  $selfield);
                
              
-          // dd($data['selected_fields']);
+          // dd($selfield1);
           return view('customers.edit-lead',compact('data','selfield1'));
 
 
@@ -196,7 +220,7 @@ class CustomerController extends Controller
 
        foreach($data['PipelineGroup'] as $value){
         // print_r($value);
-        echo "<option value=".$value->id." >"  .$value->stage_name."</option>";
+        echo "<option value=".$value->stage_name.'_'.$value->id." >"  .$value->stage_name."</option>";
        }
 
     }
@@ -283,7 +307,7 @@ class CustomerController extends Controller
         }
         
          
-        // dd($data['deal_data']);s
+        // dd($data['deal_data']);
         return view('customers.deals',compact('data','selcol','data_keys','selcolname'));
     }
 

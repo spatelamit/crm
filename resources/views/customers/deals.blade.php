@@ -145,7 +145,7 @@
 
 
                                                     <a class="btn btn-info mr-2"
-                                                        href="{{ url('edit-lead', $data['deal_data'][$key1]['data_id']) }}"><span
+                                                        href="{{ url('edit-lead',[ $data['deal_data'][$key1]['data_id'],9]) }}"><span
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span>
                                                     </a>
