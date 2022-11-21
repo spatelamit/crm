@@ -65,7 +65,7 @@
                                     @if($val1->column_id == 20)
                                      <div class="form-group mb-10">
                                          <label>{{ str_replace('_', ' ', strtoupper($val1->col_name)) }}</label>
-                                           <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                           <input type="hidden" name="column_id[]" value="{{ $val1->column_id }}">
                                                 <select class="form-control dealstage" required="" >
                                                     <option value="0">Default Pipeline</option>
                                                     @foreach($data['pipeline'] as $pipeline)

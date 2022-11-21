@@ -21,9 +21,10 @@ class Customer extends Model
     	$result=DB::table('module_selected_column')
     	->select('module_selected_column.id','module_selected_column.module_id','module_selected_column.column_id','module_selected_column.type','module_selected_column.col_name','modules.modules_name')
     	->where('module_selected_column.module_id',$module_id)
-    	->where('module_selected_column.company_id',session()->get('company_id'))
-        // ->where('fields_option.company_id',session()->get('company_id'))
-    	->orWhere('module_selected_column.company_id','0')
+    	->where(function ($query){
+            $query->where('module_selected_column.company_id',session()->get('company_id'))
+                    ->orWhere('module_selected_column.company_id','0');
+        })
     	->join('modules','modules.module_id','=','module_selected_column.module_id')
        
 
@@ -49,11 +50,12 @@ class Customer extends Model
     }
     public function AddModFields($req){
     	$moduleid=$req->module;
-
+// dd($req->all());
     	$result=DB::table('module_selected_column')
     				->where('module_id',$moduleid)
     				->where('company_id',session()->get('company_id'))
     				->delete();
+        if(isset($req->column_id)){
     	for ($i=0; $i <count($req->column_id) ; $i++) {
     		$data[]=array(
     			'module_id'=>$moduleid,
@@ -72,6 +74,10 @@ class Customer extends Model
 		   }else{
 		       return false;
 		   }
+        }else{
+            return false;
+        }
+
     }
 
     public function GetOptionField(){
@@ -533,11 +539,11 @@ class Customer extends Model
     }
     public function GetTableCol($module_id){
         $result=DB::table('module_table_col')
-                ->select('module_table_col.*','module_selected_column.col_name')
+                ->select('module_table_col.*','module_columns.col_name')
                 ->where('module_table_col.user_id',session()->get('id'))
                 ->where('module_table_col.module_id',$module_id)
-                ->where('module_selected_column.module_id',$module_id)
-                ->join('module_selected_column','module_selected_column.column_id','=','module_table_col.column_id')
+                
+                ->join('module_columns','module_columns.column_id','=','module_table_col.column_id')
                 ->orderBy('module_table_col.id')
                 ->get()->toArray();
                  if($result){
@@ -565,6 +571,7 @@ class Customer extends Model
                 );
 
                 }
+                // dd($data);
                 $result=DB::table('module_table_col')->insert($data);
                  if($result){
                           return true;

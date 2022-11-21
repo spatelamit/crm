@@ -388,7 +388,8 @@ public function UpdateEmailDetails($req){
 
     }
     public function SaveFields($req){
-
+        $result=[];
+        $result1=[];
         for ($i=0; $i <count($req->label) ; $i++) { 
             if($req->type[$i]=='select'){
                      $data1=array(
@@ -415,17 +416,17 @@ public function UpdateEmailDetails($req){
             'col_name'=>(str_replace(" ","_",strtolower($req->label[$i]))),
             'company_id'=>session()->get('company_id'),
             );
-              $result=DB::table('module_columns')->insert($data);
+              $result[]=DB::table('module_columns')->insert($data);
         }
         }
-
-     
-
-            if($result){
+            if($result || $result1 ){
               return true;
              }else{
                return false;
              }
+     
+
+            
 
 
 

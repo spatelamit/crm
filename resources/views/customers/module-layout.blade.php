@@ -66,58 +66,70 @@ $field1[]=$selected_field->column_id;
           <ul class="list-arrow choice padd_50" style="height: 550px;"   >
             @foreach($data['selected_fields'] as $filelist )
                @if(($filelist->module_id=='9') && ($filelist->column_id == '15') )
-             <li   >
-              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
-            </li>
-             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '30') )
              <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+            
+            </li>
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '1') )
+               <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+            </li>
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '20') )
+               <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+            </li>
+            @elseif(($filelist->module_id=='9') && ($filelist->column_id == '25') )
+               <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+            </li>
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '24') )
+             <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+           
+             @elseif(($filelist->module_id=='9') && ($filelist->column_id == '30') )
+             <li style="display: none">
              
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            
             </li>
             @elseif(($filelist->module_id=='8') && ($filelist->column_id == '15') )
              <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+             
             </li>
              @elseif(($filelist->module_id=='8') && ($filelist->column_id == '3') )
              <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+            
             </li>
-               @elseif(($filelist->module_id=='10') && ($filelist->column_id == '15') )
+             @elseif(($filelist->module_id=='8') && ($filelist->column_id == '1') )
              <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+             
+            </li>
+              @elseif(($filelist->module_id=='8') && ($filelist->column_id == '2') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+             
+            </li>
+               @elseif(($filelist->module_id=='10') && ($filelist->column_id == '15') )
+             <li >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+          
             </li>
              @elseif(($filelist->module_id=='10') && ($filelist->column_id == '3') )
              <li   >
               <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
-              <input type="hidden"  name="module" value="{{$filelist->module_id}}">
-              <input type="hidden"   name="module_id[]" value="{{$filelist->module_id}}">
-              <input type="hidden" name="column_id[]" value="{{$filelist->column_id}}">
-              <input type="hidden"   name="type[]" value="{{$filelist->type}}" >
-              <input type="hidden"  name="col_name[]" value="{{$filelist->col_name}}"  >
+             
+            </li>
+            @elseif(($filelist->module_id=='10') && ($filelist->column_id == '1') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+             
+            </li>
+              @elseif(($filelist->module_id=='10') && ($filelist->column_id == '2') )
+             <li   >
+              <label> {{ str_replace("_"," ",strtoupper( $filelist->col_name )) }}</label>
+             
             </li>
              @else
 

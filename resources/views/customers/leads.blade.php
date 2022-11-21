@@ -472,8 +472,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <ul id="csortable">
-                            <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
+                            
                       @foreach($data['selected_fields'] as $selfield)
+                      <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
                           @if(in_array($selfield->column_id,explode(",", $selcol)))
                             <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" checked="">
                            {{$selfield->col_name}} </li>

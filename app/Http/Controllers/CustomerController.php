@@ -171,7 +171,7 @@ class CustomerController extends Controller
                $selfield1=implode(",",  $selfield);
                
              
-          // dd($selfield1);
+          dd( $data['edit_lead_data']);
           return view('customers.edit-lead',compact('data','selfield1'));
 
 
@@ -307,7 +307,7 @@ class CustomerController extends Controller
         }
         
          
-        // dd($data['deal_data']);
+        // dd($data['selected_col']);
         return view('customers.deals',compact('data','selcol','data_keys','selcolname'));
     }
 
@@ -345,11 +345,11 @@ class CustomerController extends Controller
              }
              }else{
                 $data['accounts_data']=null;
-
+                 $data['company_names']=[];
               }
 
 
-        // dd($data['field_option']);
+        // dd($data['accounts_datas']);
             return view('customers.add-deal',compact('data'));
     }
 
@@ -369,7 +369,7 @@ class CustomerController extends Controller
             }
             $data_keys=implode(",",  $data_k);
         }else{
-            $data['accounts_data']=null;
+            $data['accounts_data']=[];
              $data_keys=null;
         }
         //table view columns
@@ -385,12 +385,12 @@ class CustomerController extends Controller
         }else{
           $selcol= null;
            $selcolname=null;
-           $data['selected_col']=null;
+           $data['selected_col']=[];
         }
 
         //end table view columns
       
-        // dd(  $data['chiledUsers']);
+        // dd($data['selected_fields']);
         return view('customers.accounts',compact('data','selcol','data_keys','selcolname','chiled_parent'));
     }
 

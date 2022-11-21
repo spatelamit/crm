@@ -77,10 +77,6 @@
                             <thead>
 
 
-                                
-
-
-                                 
                                 <tr><div>
                                     
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
@@ -89,11 +85,12 @@
                                 <th>Sale Person</th>
                          
                                       @if ($data['selected_col'] != null)
-                                        @foreach ($data['selected_col'] as $key => $value)
+                                        @forelse ($data['selected_col'] as $key => $value)
 
                                             <th>{{ $value->col_name }}</th>
-                                         
-                                        @endforeach
+                                         @empty
+                                         <th>No Table seleet</th>
+                                        @endforelse
 
 
                                        
@@ -107,8 +104,8 @@
                             </thead>
                             <tbody>
 
-                         @if( $data['accounts_data']!=null)
-                             @foreach( $data['accounts_data'] as $key1=>$field)
+                        
+                             @forelse( $data['accounts_data'] as $key1=>$field)
                                  
                                         <tr>
                                            
@@ -158,8 +155,10 @@
                                         <!-- edit -->
                          
                                         <!-- edit -->
-                                       @endforeach
-                                      @endif
+                                        @empty
+                                        <tr></tr>
+                                       @endforelse
+                                     
 
                             </tbody>
                         </table>
@@ -466,8 +465,9 @@
                 <div class="modal-body">
                     <div class="row">
                         <ul id="casortable">
-                            <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
+                           
                       @foreach($data['selected_fields'] as $selfield)
+                        <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
                           @if(in_array($selfield->column_id,explode(",", $selcol)))
                             <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" checked="">
                            {{$selfield->col_name}} </li>
