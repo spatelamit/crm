@@ -43,14 +43,19 @@ class Activity extends Model
 
     public function import_csv($req)
     {
-        if(isset($_POST["Import"])){
+        // dd($req);
+        if(isset($req->importleads)){
 
             $filename=$_FILES["file"]["tmp_name"];
+
              if($_FILES["file"]["size"] > 0)
              {
                 $file = fopen($filename, "r");
+                print_r(fgetcsv($file));
+                die;
                   while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
                    {
+                    dd($getData);
                      $sql = "INSERT into employeeinfo (emp_id,firstname,lastname,email,reg_date)
                            values ('".$getData[0]."','".$getData[1]."','".$getData[2]."','".$getData[3]."','".$getData[4]."')";
                            $result = mysqli_query($con, $sql);
