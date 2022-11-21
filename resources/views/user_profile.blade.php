@@ -8,39 +8,39 @@
 
 
 <div class="content-wrapper">
-           
+
                 <!-- Start row -->
                 <div class="row">
                     <!-- Start col -->
                     <div class="col-lg-5 col-xl-3">
                         <div class="card m-b-30">
-                            <div class="card-header">                                
+                            <div class="card-header">
                                 <h5 class="card-title mb-0">My Account</h5>
                             </div>
                             <div class="card-body">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                
+
                                     <a class="nav-link mb-2 active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-                                    
+
                                     <i class="feather fa fa-user mr-2"></i>Full Details</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-order" aria-selected="false"><i class="feather fa fa-shopping-cart mr-2"></i>My Orders</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-addresses-tab" data-toggle="pill" href="#v-pills-addresses" role="tab" aria-controls="v-pills-addresses" aria-selected="false"><i class="feather fa fa-map-marker mr-2"></i>My Addresses</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false"><i class="feather fa fa-heart mr-2"></i>Wishlist</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-wallet-tab" data-toggle="pill" href="#v-pills-wallet" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Wallet</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false"><i class="feather fa fa-bell mr-2"></i>Notifications</a>
-                                    
+
                                     <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="feather fa fa-pencil-square mr-2"></i>My Profile Edit</a>
-                                    
+
                                     <a class="nav-link" id="v-pills-logout-tab" data-toggle="pill" href="#v-pills-logout" role="tab" aria-controls="v-pills-logout" aria-selected="false"><i class="feather fa fa-power-off mr-2"></i>Logout</a>
-                                    
-                                    
+
+
                                 </div>
                             </div>
                         </div>
@@ -52,14 +52,14 @@
                             <!-- Dashboard Start -->
                             <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">Dashboard</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="profilebox py-4 text-center">
                                             <img width="150" src="https://fortmyersradon.com/wp-content/uploads/2019/12/dummy-user-img-1.png" class="img-fluid mb-3" alt="profile">
                                             <div class="profilename">
-                                                <h5>John Doe</h5>
+                                                <h5>{{ Session::get('full_name') }} </h5>
                                                 <p class="text-muted my-3"><a href="my-account.html"><i class="feather fa fa-edit mr-2"></i>Edit Profile</a></p>
                                             </div>
                                             <div class="button-list">
@@ -123,14 +123,14 @@
                                         </div>
                                     </div>
                                     <!-- End col -->
-                                </div>  
+                                </div>
                                 <!-- End row -->
                             </div>
                             <!-- Dashboard End -->
                             <!-- My Orders Start -->
                             <div class="tab-pane fade" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">My Orders</h5>
                                     </div>
                                     <div class="card-body">
@@ -151,7 +151,7 @@
                                                         <table class="table table-borderless">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">#</th>    
+                                                                    <th scope="col">#</th>
                                                                     <th scope="col">Photo</th>
                                                                     <th scope="col">Product</th>
                                                                     <th scope="col">Qty</th>
@@ -209,7 +209,7 @@
                                                         <table class="table table-borderless">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">#</th>    
+                                                                    <th scope="col">#</th>
                                                                     <th scope="col">Photo</th>
                                                                     <th scope="col">Product</th>
                                                                     <th scope="col">Qty</th>
@@ -249,7 +249,7 @@
                             <!-- My Addresses Start -->
                             <div class="tab-pane fade" id="v-pills-addresses" role="tabpanel" aria-labelledby="v-pills-addresses-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">My Addresses</h5>
                                     </div>
                                     <div class="card-body">
@@ -265,7 +265,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">                                            
+                                        <div class="row">
                                             <div class="col-lg-12 col-xl-6">
                                                 <div class="address-box">
                                                     <div class="card border m-b-30">
@@ -320,7 +320,7 @@
                             <!-- My Wishlist Start -->
                             <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">My Wishlist</h5>
                                     </div>
                                     <div class="card-body">
@@ -329,18 +329,18 @@
                                                 <table class="table table-borderless">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">#</th>                            
+                                                            <th scope="col">#</th>
                                                             <th scope="col">Photo</th>
                                                             <th scope="col">Product</th>
                                                             <th scope="col">Qty</th>
                                                             <th scope="col">Price</th>
                                                             <th scope="col">Total</th>
-                                                            <th scope="col">Action</th> 
+                                                            <th scope="col">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">1</th>                
+                                                            <th scope="row">1</th>
                                                             <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
                                                             <td>Electronic Kettle</td>
                                                             <td>
@@ -402,7 +402,7 @@
                             <!-- My Wallet Start -->
                             <div class="tab-pane fade" id="v-pills-wallet" role="tabpanel" aria-labelledby="v-pills-wallet-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">My Wallet</h5>
                                     </div>
                                     <div class="card-body">
@@ -420,11 +420,11 @@
                                                     <p class="mb-0"><button class="btn btn-success-rgba font-16"><i class="feather icon-plus mr-2"></i>Add Money</button></p>
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="card m-b-30 mt-3">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-8">
                                                 <h5 class="card-title mb-0">Transactions</h5>
@@ -432,7 +432,7 @@
                                             <div class="col-4">
                                                 <ul class="list-inline-group text-right mb-0 pl-0">
                                                     <li class="list-inline-item mr-0 font-12"><button type="button" class="btn btn-sm btn-primary-rgba px-2">Export</button></li>
-                                                </ul>                                        
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -442,17 +442,17 @@
                                                 <table class="table table-borderless">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">ID</th>     
+                                                            <th scope="col">ID</th>
                                                             <th scope="col">Name</th>
                                                             <th scope="col">Withdraw</th>
                                                             <th scope="col">Deposit</th>
                                                             <th scope="col">Status</th>
-                                                            <th scope="col">Comment</th> 
+                                                            <th scope="col">Comment</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <th scope="row">1</th>              
+                                                            <th scope="row">1</th>
                                                             <td>Google Corp.</td>
                                                             <td>$1,50,000</td>
                                                             <td>-</td>
@@ -460,7 +460,7 @@
                                                             <td>Transaction ID : 9966338855</td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row">2</th>                
+                                                            <th scope="row">2</th>
                                                             <td>Facebook Inc.</td>
                                                             <td>-</td>
                                                             <td>$1,25,000</td>
@@ -468,7 +468,7 @@
                                                             <td>Bank Transaction ID : 9988776655</td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row">3</th>                
+                                                            <th scope="row">3</th>
                                                             <td>Amazon</td>
                                                             <td>$75,000</td>
                                                             <td>-</td>
@@ -478,7 +478,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -486,7 +486,7 @@
                             <!-- My Chat Start -->
                             <div class="tab-pane fade" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <div class="row align-items-center">
                                             <div class="col-8">
                                                 <h5 class="card-title mb-0">My Chat</h5>
@@ -503,7 +503,7 @@
                                                             </select>
                                                         </div>
                                                     </li>
-                                                </ul>                                        
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -512,7 +512,7 @@
                                             <div class="chat-body">
                                                 <div class="chat-day text-center mb-3">
                                                     <span class="badge badge-secondary">Today</span>
-                                                </div>                                
+                                                </div>
                                                 <div class="chat-message chat-message-right">
                                                     <div class="chat-message-text">
                                                         <span>Hello! please, let me know the status about project after school.</span>
@@ -592,7 +592,7 @@
                                                         <div class="input-group">
                                                             <div class="input-group-prepend">
                                                                 <button class="btn btn-round btn-secondary-rgba" type="button" id="button-addonmic"><i class="feather fa fa-microphone"></i></button>
-                                                            </div>  
+                                                            </div>
                                                             <input type="text" class="form-control" placeholder="Type a message..." aria-label="Text">
                                                             <div class="input-group-append">
                                                                 <button class="btn btn-round btn-secondary-rgba" type="submit" id="button-addonlink"><i class="feather icon-link"></i></button>
@@ -610,7 +610,7 @@
                             <!-- My Notifications Start -->
                             <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">Notifications</h5>
                                     </div>
                                     <div class="card-body">
@@ -665,7 +665,7 @@
                             <!-- My Profile Start -->
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">My Profile</h5>
                                     </div>
                                     <div class="card-body">
@@ -685,7 +685,7 @@
                                     </div>
                                 </div>
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
+                                    <div class="card-header">
                                         <h5 class="card-title mb-0">Edit Profile Informations</h5>
                                     </div>
                                     <div class="card-body">
@@ -739,8 +739,8 @@
                             <!-- My Logout Start -->
                             <div class="tab-pane fade" id="v-pills-logout" role="tabpanel" aria-labelledby="v-pills-logout-tab">
                                 <div class="card m-b-30">
-                                    <div class="card-header">                                
-                                        <h5 class="card-title mb-0">Logout</h5>                                       
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Logout</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="row justify-content-center">
@@ -759,12 +759,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- My Logout End -->                            
-                        </div>                        
+                            <!-- My Logout End -->
+                        </div>
                     </div>
                     <!-- End col -->
                 </div>
-                <!-- End row -->                  
+                <!-- End row -->
             </div>
 
 

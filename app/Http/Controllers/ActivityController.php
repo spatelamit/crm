@@ -208,8 +208,8 @@ class ActivityController extends Controller
 
     public function ImportCsv(Request $req)
     {
-        dd($req);
-        $result= $this->Activity->Add_Task($req);
+        // dd($req);
+        $result= $this->Activity->import_csv($req);
 
         if ($result) {
             return redirect()->back();
