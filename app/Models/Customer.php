@@ -623,6 +623,7 @@ class Customer extends Model
             $query->where('module_data.user_id',session()->get('id'));
          }elseif($id=='today'){
             $query->whereDate('module_data.created_at','=',date('Y-m-d'));
+            $query->whereIn('module_data.user_id',$chilesId);
          }
 
          // 
