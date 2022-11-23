@@ -596,7 +596,7 @@ class Customer extends Model
           }
         
               DB::statement("SET SQL_MODE=''");
-        // DB::enableQueryLog();
+        DB::enableQueryLog();
 
         $query=DB::table('module_data')
                 ->select('module_data.*','module_selected_column.col_name','users.full_name as users')
@@ -627,14 +627,20 @@ class Customer extends Model
          }
 
          // 
-
+          $que=$query->toSql();
+          $builder=$query->getBindings();
+          // print_r($query->getBindings());
          $result=$query->get()->toArray();
     }else{
          $query->whereIn('module_data.user_id',$chilesId);
          $result=$query->get()->toArray();
+         $que=$query->toSql();
+           $builder=$que->getBindings();
     }
-        
-
+        // print_r(DB::getQueryLog());
+        $query1 = str_replace(array('?'), array('\'%s\''), $que);
+        $query1 = vsprintf($query1, $builder);
+        dump($query1);
 
         $result1=collect($result)->where('module_id',$module_id)->groupBy('data_id');
         // echo (count($result1));

@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 
     public function login(){
-        echo session()->has('IsLoggedIn');
+        // echo session()->has('IsLoggedIn');
 
         if(session()->has('IsLoggedIn')==true){
             return redirect('/user_dashboard');

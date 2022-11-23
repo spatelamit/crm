@@ -57,9 +57,10 @@
                                                         type="checkbox" name="email"
                                                         value="{{ $data['leads_data'][$key1]['email_address'] }}"
                                                         style="display: none;">
+                                                    
                                                     <input id="mobile_num{{ $loop->iteration }}" class="mobile_num"
                                                         type="checkbox" name="mobile_num"
-                                                        value="{{ $data['leads_data'][$key1]['contact_number'] }}"
+                                                        value="{{$data['leads_data'][$key1]['contact_number'] }}"
                                                         style="display: none;">
                                                 </div>
                                             </td>
