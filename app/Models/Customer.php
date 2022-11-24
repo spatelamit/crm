@@ -585,7 +585,7 @@ class Customer extends Model
 
         $chiled_parent= $this->Usersetting->ChildNameByparentId();
           if($chiled_parent!=false ){
-            $chilesId[]=session()->get('id');
+            // $chilesId[]=session()->get('id');
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
            
@@ -610,31 +610,43 @@ class Customer extends Model
             
                  $search=[];
                  $result=[];
-    if (!empty($id) || $id !=""){
+                 if (!empty($id) || $id !="" ){
      
         
         
 
-         // User wise filter
-         if($id=='all_leads'){
-            $query->whereIn('module_data.user_id',$chilesId);
+                     // User wise filter
+                     if($id=='all_leads'){
+                        $query->whereIn('module_data.user_id',$chilesId);
 
-         }elseif($id=='my_leads'){
-            $query->where('module_data.user_id',session()->get('id'));
-         }elseif($id=='today'){
-            $query->whereDate('module_data.created_at','=',date('Y-m-d'));
-         }
+                     }elseif($id=='my_leads'){
+                        $query->where('module_data.user_id',session()->get('id'));
+                     }elseif($id=='today'){
+                        $query->whereDate('module_data.created_at','=',date('Y-m-d'));
+                        $query->whereIn('module_data.user_id',$chilesId);
+                     }else{
+                        $query->whereIn('module_data.user_id',$chilesId);
+                     }
 
-         // 
-
-         $result=$query->get()->toArray();
-    }else{
-         $query->whereIn('module_data.user_id',$chilesId);
-         $result=$query->get()->toArray();
-    }
-        
-
-
+                     // 
+                      // $que=$query->toSql();
+                      // $builder=$query->getBindings();
+                      // // print_r($query->getBindings());
+                      // $result=$query->get()->toArray();
+                }else{
+                     
+                   
+                     // $que=$query->toSql();
+                     //   $builder=$que->getBindings();
+                }
+        // print_r(DB::getQueryLog());
+                 // print_r($chilesId);
+         $que=$query->toSql();
+         $builder=$query->getBindings();
+            $result=$query->get()->toArray();
+            $query1 = str_replace(array('?'), array('\'%s\''), $que);
+            $view_query = vsprintf($query1, $builder);
+            $store_view_que=DB::table('user_table_view')->insert(['user_id'=>session()->get('id'),'module_id'=>$module_id,'view_query'=>$view_query]);
         $result1=collect($result)->where('module_id',$module_id)->groupBy('data_id');
         // echo (count($result1));
         // print_r($result1);

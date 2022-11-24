@@ -171,7 +171,7 @@ class CustomerController extends Controller
                $selfield1=implode(",",  $selfield);
                
              
-          dd( $data['edit_lead_data']);
+          // dd( $data['edit_lead_data']);
           return view('customers.edit-lead',compact('data','selfield1'));
 
 
