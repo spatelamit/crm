@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Storage;
 
 class Activity extends Model
 {
@@ -43,16 +44,21 @@ class Activity extends Model
 
     public function import_csv($req)
     {
-        // dd($req);
+        // dd($req->importleads->getClientOriginalName());
         if(isset($req->importleads)){
+            // $fileName.'_'.time().'.'.$extension;
+            if($req->file('importleads'))
+            $filename=$req->importleads->getClientOriginalName();
+            echo $filename;
+           $path = $req->file($filename)->store('csv');
 
-            $filename=$_FILES["file"]["tmp_name"];
-
-             if($_FILES["file"]["size"] > 0)
+           echo $path ;
+            // dd($filename);
+             if($req->file('importleads') > 0)
              {
                 $file = fopen($filename, "r");
-                print_r(fgetcsv($file));
-                die;
+                // print_r(fgetcsv($file));
+                // die;
                   while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
                    {
                     dd($getData);
