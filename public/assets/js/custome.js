@@ -87,4 +87,28 @@ function createdeal(id){
    
     });
 
-   
+   if (url == "https://http://127.0.0.1:8000/leads") {
+    
+    $.ajax({
+        type: "GET",
+        data: {dtype: "8"},
+        url: "get_viewfilter_id",
+        success: function (response) {
+          if (response) {
+
+            console.log(response);
+            $("#GlobleLoader").hide();
+            var static_filter = response;
+        var count = $("#coun_filter").val();
+        var available = parseInt(count)+1;
+        var meradata = available+','+"'contact-data'";
+        var FiltnAM = static_filter.split('_').join(' ').toUpperCase() ;
+        var DYTest = '<li class = "prashant'+available+'"><button type="button" class="btn btn-sm btn-default">'+FiltnAM+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="fa fa-times crosssign" onclick="del_div('+meradata+')"></span></button></li>';
+
+        $("#ShowDyFilter").show();
+        $( "#ShowDyFilter" ).append(DYTest);
+          }
+        }
+      });
+
+  }
