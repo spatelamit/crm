@@ -80,10 +80,10 @@
                        
                  <input type="hidden" id="mod_id" value="9">
                      <select name="view_data" id="view_data" >
-                        <option value="">Select </option>
-                         <option value="all_leads">All Deals</option>
-                        <option value="my_leads">My deals</option>
-                         <option value="today">Today Deals</option>
+                        <option value="select">Select </option>
+                        <option value="all_leads" {{ $data['filter_name'] == 'all_leads'?'selected':''}} >All Deals</option>
+                        <option value="my_leads"  {{ $data['filter_name'] == 'my_leads'?'selected':''}}>My Deals</option>
+                         <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Deals</option>
                      </select> 
                         
             
@@ -137,7 +137,7 @@
 
                                                
                                                     <td class="details-control"> <a
-                                                            href="{{ url('lead-profile', $data['deal_data'][$key1]['data_id']) }}">{{ $data['deal_data'][$key1]['data_id'] }}</a>
+                                                            href="{{ url('single-profile', [$data['deal_data'][$key1]['data_id'],9]) }}">{{ $data['deal_data'][$key1]['data_id'] }}</a>
                                                     </td>
                                                     <td>{{ $data['deal_data'][$key1]['user'] }}</td>
                                         @if($data['selected_col'] !=null)      
@@ -149,7 +149,13 @@
                                                 @else
 
                                                
-                                                <td class="details-control"> {{ $data['deal_data'][$key1][$selvalue->col_name] }}</td>
+                                                  <td class="details-control">
+                                                 <?php if(isset($data['deal_data'][$key1][$selvalue->col_name] )){ ?>
+                                                 {{ $data['deal_data'][$key1][$selvalue->col_name] }}
+                                                     <?php } else{
+                                                        echo 'Null';
+                                                     }?>
+                                                 </td>
                                                 @endif
                                             @endforeach
                                         @endif

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserSetting;
 use App\Models\Customer;
-
+use App\Models\Activity;
 use DB;
 
 class CustomerController extends Controller
@@ -15,7 +15,7 @@ class CustomerController extends Controller
 
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
-       
+        $this->Activity=new Activity();
     }
 
     public function leads(){
@@ -24,20 +24,31 @@ class CustomerController extends Controller
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
 
-        if( $data['leads_datas']){
-            foreach ($data['leads_datas'] as $key => $value) {
-                $data['leads_data'][]=(json_decode(json_encode( $value),true));
-
-            }
-            foreach (  $data['leads_data'][0] as $key => $value) {
-              $data_k[]=$key;
-            }
-            $data_keys=implode(",",  $data_k);
+        $view_filter=$this->Customer->GetViewfilterId($module_id);
+         $data['filter_name']='';
+        if($view_filter){
+           $data['leads_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
+           $data['filter_name']=$view_filter->filter_name;
+          // dd( $data['leads_data']);
         }else{
-            $data['leads_data']=null;
-              $data_keys=null;
+              if( $data['leads_datas']){
+                foreach ($data['leads_datas'] as $key => $value) {
+                    $data['leads_data'][]=(json_decode(json_encode( $value),true));
 
+                }
+                foreach (  $data['leads_data'][0] as $key => $value) {
+                  $data_k[]=$key;
+                }
+                $data_keys=implode(",",  $data_k);
+            }else{
+                $data['leads_data']=null;
+                  $data_keys=null;
+
+            }
+            // dd($data['leads_data']);
         }
+
+        
 
         
       //table view columns
@@ -69,10 +80,10 @@ class CustomerController extends Controller
             $chilesIds=Null;
           }
 
-       // dd($data['leads_data']); 
+       // dd($data); 
        // echo ( session()->get('id'));
       
-       return view('customers.leads',compact('data','selcol','data_keys','selcolname','chiled_parent'));
+       return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
 
       public function add_leads(){
@@ -226,14 +237,15 @@ class CustomerController extends Controller
     }
 
 
-    public function lead_profile($id){
-          $data['lead_data']=$this->Customer->GetEditData($id);
-          $data['sale_owner']=DB::table('users')->select('full_name')->where('id', $data['lead_data'][0]->user_id)->first();
-          $data['tasks']=$this->Customer->GetTasks($id);
+    public function single_profile($data_id,$module_id){
+          $data['lead_data']=$this->Customer->GetEditData($data_id);
+         
+          $data['tasks']=$this->Customer->GetTasks($data_id);
+          $data['notes']= $this->Activity->GetNotes($module_id,$data_id);
           // echo "<pre>";
-          // print_r($data['tasks']);
+          // print_r($data['notes']);
           // die();
-         return view('customers.lead_profile',compact('data'));
+         return view('customers.single_profile',compact('data','data_id','module_id'));
 
     }
 
@@ -276,21 +288,25 @@ class CustomerController extends Controller
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
              $data['selected_col']=$this->Customer->GetTableCol($module_id);
              $data['deal_datas']=$this->Customer->GetDealData($module_id);
+              $view_filter=$this->Customer->GetViewfilterId($module_id);
+             $data['filter_name']='';
+              if($view_filter){
+                 $data['deal_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
+                 $data['filter_name']=$view_filter->filter_name;
+                // dd( $data['leads_data']);
+              }else{
+                if( $data['deal_datas']){
+                foreach ($data['deal_datas'] as $key => $value) {
+                  $data['deal_data'][]=(json_decode(json_encode( $value),true));
 
-        if( $data['deal_datas']){
-        foreach ($data['deal_datas'] as $key => $value) {
-          $data['deal_data'][]=(json_decode(json_encode( $value),true));
+                    }
+                     
+                }else{
+                    $data['deal_data']=null;
+                    $data_keys=null;
 
-            }
-             foreach (  $data['deal_datas'][0] as $key => $value) {
-              $data_k[]=$key;
-            }
-            $data_keys=implode(",",  $data_k);
-        }else{
-            $data['deal_data']=null;
-            $data_keys=null;
-
-        }
+                }
+              }
           
        if($data['selected_col']!=false ){
           foreach ($data['selected_col'] as $key => $selected_col) {
@@ -308,7 +324,7 @@ class CustomerController extends Controller
         
          
         // dd($data['selected_col']);
-        return view('customers.deals',compact('data','selcol','data_keys','selcolname'));
+        return view('customers.deals',compact('data','selcol','selcolname'));
     }
 
      public function save_deal(Request $req){
@@ -357,21 +373,31 @@ class CustomerController extends Controller
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
-        $data['accounts_datas']=$this->Customer->GetAccountData($module_id);
+      
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
-        if( $data['accounts_datas']){
-        foreach ($data['accounts_datas'] as $key => $value) {
-          $data['accounts_data'][]=(json_decode(json_encode( $value),true));
 
-            }
-              foreach ( $data['accounts_datas'][0] as $key => $value) {
-              $data_k[]=$key;
-            }
-            $data_keys=implode(",",  $data_k);
+        $view_filter=$this->Customer->GetViewfilterId($module_id);
+         $data['filter_name']='';
+        if($view_filter){
+          $data['accounts_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
+           $data['filter_name']=$view_filter->filter_name;
+          // dd( $data['leads_data']);
         }else{
-            $data['accounts_data']=[];
-             $data_keys=null;
-        }
+            $data['accounts_datas']=$this->Customer->GetAccountData($module_id);
+              if( $data['accounts_datas']){
+              foreach ($data['accounts_datas'] as $key => $value) {
+                $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+                  }
+                    foreach ( $data['accounts_datas'][0] as $key => $value) {
+                    $data_k[]=$key;
+                  }
+                  $data_keys=implode(",",  $data_k);
+              }else{
+                  $data['accounts_data']=[];
+                   $data_keys=null;
+              }
+            }
         //table view columns
          if($data['selected_col']!=false ){
           foreach ($data['selected_col'] as $key => $selected_col) {
@@ -390,8 +416,8 @@ class CustomerController extends Controller
 
         //end table view columns
       
-        // dd($data['selected_fields']);
-        return view('customers.accounts',compact('data','selcol','data_keys','selcolname','chiled_parent'));
+        // dd($data);
+        return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
     }
 
 
@@ -423,6 +449,7 @@ class CustomerController extends Controller
    
    
     public function save_task(Request $req) {
+      // dd($req->all());
       $result= $this->Customer->SaveTask($req);
       if($result){
             return redirect('leads')->with("success", "Successfully Task created !")   ;
@@ -458,8 +485,13 @@ class CustomerController extends Controller
       $data['leads_data']=$this->Customer->ViewData($id,$module_id);
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['selected_col']=$this->Customer->GetTableCol($module_id);
-        
+       
       return view('customers.lead_filter',compact('data'));
+
+    }
+     public function get_viewfilter_id($id){
+     $view_filter=$this->Customer->GetViewfilterId($id);
+     echo ($view_filter->filter_name);
 
     }
 

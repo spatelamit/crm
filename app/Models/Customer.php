@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\UserSetting;
+use App\Models\Activity;
 use DB;
 class Customer extends Model
 {
@@ -13,6 +14,7 @@ class Customer extends Model
 
       
           $this->Usersetting=new UserSetting();
+          $this->Activity=new Activity();
        
     }
 
@@ -204,9 +206,9 @@ class Customer extends Model
 	  public function  GetEditData($id){
         // DB::enableQueryLog(); 
 	  	$getdata=DB::table('module_data')
-	  			->select('module_data.*','module_columns.col_name','module_columns.type')
+	  			->select('module_data.*','module_columns.col_name','module_columns.type','users.full_name as user')
 	  			->where('module_data.data_id',$id)
-               
+                ->join('users','users.id','=','module_data.user_id')
 	  			->join('module_columns','module_columns.column_id','=','module_data.column_id')
                
 	  			->get();
@@ -323,10 +325,18 @@ class Customer extends Model
      public function GetTasks($id){
       
         
-      $result=DB::table('tasks')
+       
+       
+        $result = DB::table('tasks')
+            ->select('tasks.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
+            ->join('users as u1', 'u1.id', '=', 'tasks.sender_id')
+            ->leftJoin('users as u2', 'u2.id', '=', 'tasks.reciever_id')
             ->where('related_to',$id)
-            ->where('sender_id',session()->get('id'))
-            ->get();
+            ->where(function ($query){
+                $query->where('tasks.sender_id', session()->get('id'))
+                 ->Orwhere('tasks.reciever_id', session()->get('id'));
+        })->paginate('5');
+
         if($result){
             return $result;
           }else{
@@ -539,7 +549,7 @@ class Customer extends Model
     }
     public function GetTableCol($module_id){
         $result=DB::table('module_table_col')
-                ->select('module_table_col.*','module_columns.col_name')
+                ->select('module_table_col.column_id','module_columns.col_name')
                 ->where('module_table_col.user_id',session()->get('id'))
                 ->where('module_table_col.module_id',$module_id)
                 
@@ -628,16 +638,10 @@ class Customer extends Model
                         $query->whereIn('module_data.user_id',$chilesId);
                      }
 
-                     // 
-                      // $que=$query->toSql();
-                      // $builder=$query->getBindings();
-                      // // print_r($query->getBindings());
-                      // $result=$query->get()->toArray();
                 }else{
                      
                    
-                     // $que=$query->toSql();
-                     //   $builder=$que->getBindings();
+                    
                 }
         // print_r(DB::getQueryLog());
                  // print_r($chilesId);
@@ -646,7 +650,9 @@ class Customer extends Model
             $result=$query->get()->toArray();
             $query1 = str_replace(array('?'), array('\'%s\''), $que);
             $view_query = vsprintf($query1, $builder);
-            $store_view_que=DB::table('user_table_view')->insert(['user_id'=>session()->get('id'),'module_id'=>$module_id,'view_query'=>$view_query]);
+
+        $store_view_que=DB::table('user_table_view')->updateOrInsert(['user_id'=>session()->get('id'),'module_id'=>$module_id],['view_query'=>$view_query,'filter_name'=>$id]);
+
         $result1=collect($result)->where('module_id',$module_id)->groupBy('data_id');
         // echo (count($result1));
         // print_r($result1);
@@ -655,8 +661,9 @@ class Customer extends Model
        
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
+                    $data1['module_id']=$value2->module_id;
                     $data1['user_id']=$value2->user_id;
-                    $data1['sale_person']=$value2->users;
+                    $data1['user']=$value2->users;
                     $data1['created_date']=$value2->created_at;
                     $data1['modified_date']=$value2->modified_date;
                      $data1[$value2->col_name]=$value2->value;
@@ -667,10 +674,17 @@ class Customer extends Model
         }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
-   
+   // print_r($result1);
      return $fresult;
 
 
     }
+    public function GetViewfilterId($id){
+        $user_id=session()->get('id');
+        $result=DB::table('user_table_view')->select('filter_name')->where('user_id',$user_id)->where('module_id',$id)->first();
+
+        return $result;
+    }
+
 
 }

@@ -113,11 +113,12 @@ class ActivityController extends Controller
 
     public function addnots(Request $req)
     {
+        // dd($req->all());
         $data = array(
-            'related_to' =>$req->taskid,
+            'related_to' =>$req->related_id,
             'user_id'=>session()->get('id'),
             'note_des'=> $req->note_des,
-            'module_id' => $req->moduleid
+            'module_id' => $req->module_id
         );
         // dd($data);
 

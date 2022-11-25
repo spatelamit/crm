@@ -78,4 +78,16 @@ class Activity extends Model
              }
           }
     }
+
+    public function GetNotes($module_id = null,$relatedId=null){
+      $user_id = session()->get('id');
+       $result= DB::table('notes')
+        ->join('users', 'users.id', '=', 'notes.user_id')
+        ->select('notes.*', 'users.username')
+        ->where('notes.module_id',$module_id )
+        ->where('notes.related_to',$relatedId )
+        ->where('notes.user_id', $user_id)
+        ->get();
+        return $result;
+    }
 }

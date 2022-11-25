@@ -94,7 +94,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/teams',[CustomerController::class, 'teams']);
     Route::get('/deals',[CustomerController::class, 'deals']);
    Route::get('/get-lead-by-id/{id}',[CustomerController::class, 'get_lead_by_id']);
-    Route::get('/lead-profile/{id}',[CustomerController::class, 'lead_profile']);
+    Route::get('/single-profile/{id}/{module_id}',[CustomerController::class, 'single_profile']);
     Route::get('/convert-lead/{id}',[CustomerController::class, 'convert_lead']);
 	Route::post('/save-convert-lead',[CustomerController::class, 'save_convert_lead']);
     Route::get('/accounts',[CustomerController::class, 'accounts']);
@@ -107,6 +107,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
     Route::post('/save-managecol',[CustomerController::class, 'save_managecol']);
     Route::get('/view-data/{id}/{mod_id}',[CustomerController::class, 'view_data']);
+     Route::get('/get-viewfilter-id/{id}',[CustomerController::class, 'get_viewfilter_id']);
 
     //activity controller
     //task
