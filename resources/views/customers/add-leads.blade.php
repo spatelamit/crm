@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="{{ url('ImportCsv') }}" autocomplete="nope" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('ImportCsv') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-8">
