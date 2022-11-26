@@ -50,13 +50,13 @@ class UserSettingController extends Controller
      public function rolestree(){
      				$Usersetting=new Usersetting();
 			    	$roles=$Usersetting->GetRolesTree();
-
+                    // print_r($roles);
 			    	foreach ($roles as $key => &$value) {
 			    		$output[$value->id]=&$value;
 
 			    	}
 			    	foreach ($roles as $key => &$value) {
-			    		if($value->reporting_to && isset($output[$value->reporting_to])){
+			    		if($value->reporting_to && isset($output[$value->reporting_to]) ){
 			    			$output[$value->reporting_to]->nodes[]=$value;
 			    		}
 			    	}

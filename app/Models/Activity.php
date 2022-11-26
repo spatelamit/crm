@@ -88,11 +88,11 @@ class Activity extends Model
     public function GetNotes($module_id = null,$relatedId=null){
       $user_id = session()->get('id');
        $result= DB::table('notes')
+        ->select('notes.note_des','notes.creation_time', 'users.full_name')
         ->join('users', 'users.id', '=', 'notes.user_id')
-        ->select('notes.*', 'users.username')
         ->where('notes.module_id',$module_id )
         ->where('notes.related_to',$relatedId )
-        ->where('notes.user_id', $user_id)
+        // ->where('notes.user_id', $user_id)
         ->get();
         return $result;
     }

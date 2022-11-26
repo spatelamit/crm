@@ -262,6 +262,10 @@ class CustomerController extends Controller
     public function save_convert_lead(Request $req){
       // dd($req->data_id);
       $result=DB::table('module_data')->where('data_id',$req->data_id)->update(['module_id'=>'10']);
+      $notes_update=DB::table('notes')
+            ->where('related_to',$req->data_id)
+            ->where('user_id',session()->get('id'))
+            ->update(['module_id'=>'10']);
        if($result){
             return redirect('leads')->with("success", "Successfully Convert Lead !")   ;
 

@@ -291,13 +291,13 @@
                                  @forelse ($data['notes'] as $note)
                                             <ul class="list-group list-group-flush">
                                             
-                                                <li class=""><i class="fa fa-comments-o"></i>{{ $note->note_des }}  </li><li><i class="fa fa-clock-o"></i> {{ $note->creation_time }} <i class="fa fa-user-circle"></i>{{ $note->username }} </li>
-                                               </ul>  
+
+                                                <li class="list-group-item"><i class="fa fa-comments-o"></i>{{ $note->note_des }} <br> <i class="fa fa-clock-o"></i>  {{ $note->creation_time }}&nbsp; &nbsp;&nbsp; &nbsp;<i class="fa fa-user-circle"></i>{{ $note->full_name }} </li>
+                                              </ul>   
                                     @empty
                                     <li class="list-group-item">No Records found</li> 
                                       
                                 @endforelse
-
                              </div>
                                        
                             

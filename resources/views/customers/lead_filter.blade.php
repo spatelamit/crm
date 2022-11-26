@@ -67,9 +67,9 @@
                                                 </div>
                                             </td>
                                              <td class="details-control"> <a
-                                                            href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
+             href="{{ url('single-profile',[$data['leads_data'][$key1]['data_id'],$data['leads_data'][$key1]['module_id']]) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                 </td>
-                                                    <td>{{ $data['leads_data'][$key1]['user'] }}</td>
+                                                <td>{{$data['leads_data'][$key1]['user']}}</td>
                                         @if ($data['selected_col'] != null)    
                                               @foreach ($data['selected_col'] as $key => $selvalue)
                                                 <td class="details-control">
