@@ -77,10 +77,10 @@
                        
                  <input type="hidden" id="mod_id" value="10">
                      <select name="view_data" id="view_data" >
-                        <option value="">Select </option>
-                         <option value="all_leads">All Account</option>
-                        <option value="my_leads">My Account</option>
-                         <option value="today">Today Account</option>
+                       <option value="select">Select </option>
+                        <option value="all_leads" {{ $data['filter_name'] == 'all_leads'?'selected':''}} >All Accounts</option>
+                        <option value="my_leads"  {{ $data['filter_name'] == 'my_leads'?'selected':''}}>My Accounts</option>
+                         <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Accounts</option>
                      </select> 
                         
             
@@ -132,7 +132,7 @@
                                                  </div>
                                             </td>
 
-                                         <td  class="details-control"> <a href="{{url('lead-profile',$data['accounts_data'][$key1]['data_id'])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
+                                         <td  class="details-control"> <a href="{{url('single-profile',[$data['accounts_data'][$key1]['data_id'],10])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
                                          <td>{{$data['accounts_data'][$key1]['user']}}</td>
                                       @if ($data['selected_col'] != null)
                                          @foreach ($data['selected_col'] as $key => $selvalue)

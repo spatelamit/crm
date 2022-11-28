@@ -45,7 +45,7 @@
                             <tbody>
 
                                 @if ($data['leads_data'] != null)
-                                    @foreach ($data['leads_data'] as $key1 => $field)
+                                    @forelse ($data['leads_data'] as $key1 => $field)
                                         <tr>
 
                                             <td>
@@ -53,6 +53,7 @@
                                                     <input class="data_id" type="checkbox" name="data_id"
                                                         value="
                                                 {{ $data['leads_data'][$key1]['data_id'] }}">
+                                            @if( $data['leads_data'][$key1]['module_id']!='9')
                                                     <input id="email{{ $loop->iteration }}" class="email"
                                                         type="checkbox" name="email"
                                                         value="{{ $data['leads_data'][$key1]['email_address'] }}"
@@ -62,12 +63,13 @@
                                                         type="checkbox" name="mobile_num"
                                                         value="{{$data['leads_data'][$key1]['contact_number'] }}"
                                                         style="display: none;">
+                                            @endif
                                                 </div>
                                             </td>
                                              <td class="details-control"> <a
-                                                            href="{{ url('lead-profile', $data['leads_data'][$key1]['data_id']) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
+             href="{{ url('single-profile',[$data['leads_data'][$key1]['data_id'],$data['leads_data'][$key1]['module_id']]) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                 </td>
-                                                    <td>{{ $data['leads_data'][$key1]['sale_person'] }}</td>
+                                                <td>{{$data['leads_data'][$key1]['user']}}</td>
                                         @if ($data['selected_col'] != null)    
                                               @foreach ($data['selected_col'] as $key => $selvalue)
                                                 <td class="details-control">
@@ -106,10 +108,12 @@
 
                                             </td>
                                         </tr>
+                                        @empty
+                                        <tr>No Data</tr>
                                         <!-- edit -->
 
                                         <!-- edit -->
-                                    @endforeach
+                                    @endforelse
                                 @endif
 
                             </tbody>

@@ -24,11 +24,11 @@
                                     
                                     <i class="feather fa fa-user mr-2"></i>Full Details</a>
                                     
-                                    <a class="nav-link mb-2" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-order" aria-selected="false"><i class="feather fa fa-shopping-cart mr-2"></i>My Orders</a>
+                                    <a class="nav-link mb-2" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-order" aria-selected="false"><i class="feather fa fa-shopping-cart mr-2"></i>Tasks</a>
                                     
-                                    <a class="nav-link mb-2" id="v-pills-addresses-tab" data-toggle="pill" href="#v-pills-addresses" role="tab" aria-controls="v-pills-addresses" aria-selected="false"><i class="feather fa fa-map-marker mr-2"></i>My Addresses</a>
+                                    <a class="nav-link mb-2" id="v-pills-addresses-tab" data-toggle="pill" href="#v-pills-addresses" role="tab" aria-controls="v-pills-addresses" aria-selected="false"><i class="feather fa fa-map-marker mr-2"></i>Meetings</a>
                                     
-                                    <a class="nav-link mb-2" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false"><i class="feather fa fa-heart mr-2"></i>Wishlist</a>
+                                    <a class="nav-link mb-2" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false"><i class="feather fa fa-heart mr-2"></i>Notes</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-wallet-tab" data-toggle="pill" href="#v-pills-wallet" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Wallet</a>
                                     
@@ -85,8 +85,8 @@
                                                     <div class="media">
                                                       
                                                         <div class="media-body">
-                                                            <h5>Lead Owner</h5>
-                                                            <p>{{$data['sale_owner']->full_name}}</p>
+                                                            <h5>Sale manager</h5>
+                                                            <p>{{$data['lead_data'][0]->user}}</p>
                                                         </div>
                                                        
                                                     </div>
@@ -145,7 +145,7 @@
                             <div class="tab-pane fade" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
                                 <div class="card m-b-30">
                                     <div class="card-header">                                
-                                        <h5 class="card-title mb-0">My Orders</h5>
+                                        <h5 class="card-title mb-0">Tasks</h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="order-box">
@@ -164,32 +164,29 @@
                                                     <div class="table-responsive">
                                                         <table class="table table-borderless">
                                                             <thead>
+
                                                                 <tr>
                                                                     <th scope="col">#</th>    
-                                                                    <th scope="col">Photo</th>
-                                                                    <th scope="col">Product</th>
-                                                                    <th scope="col">Qty</th>
-                                                                    <th scope="col">Price</th>
-                                                                    <th scope="col" class="text-right">Total</th>
+                                                                    <th scope="col">Subject</th>
+                                                                    <th scope="col">Description</th>
+                                                                    <th scope="col">Status</th>
+                                                                    <th scope="col">Priority</th>
+                                                                    <th scope="col" class="text-right">Due Date</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                 @forelse($data['tasks'] as $task)
                                                                 <tr>
                                                                     <th scope="row">1</th>
-                                                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
-                                                                    <td>Electronic Kettle</td>
-                                                                    <td>1</td>
-                                                                    <td>$75</td>
-                                                                    <td class="text-right">$75</td>
+                                                                    <td>{{$task->subject}}</td>
+                                                                    <td>{{$task->description}}</td>
+                                                                    <td>{{$task->status}}</td>
+                                                                    <td>{{$task->priority}}</td>
+                                                                    <td class="text-right">{{$task->due_date}}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
-                                                                    <td>Fitness Band</td>
-                                                                    <td>2</td>
-                                                                    <td>$50</td>
-                                                                    <td class="text-right">$100</td>
-                                                                </tr>
+                                                               @empty
+                                                               <tr> No Records Found</tr>
+                                                               @endforelse
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -206,56 +203,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="order-box mt-3 ">
-                                            <div class="card border m-b-30">
-                                                <div class="card-header">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-sm-6">
-                                                            <h5>ID : #550</h5>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <h6 class="mb-0">Total : <strong>$99</strong></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-borderless">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">#</th>    
-                                                                    <th scope="col">Photo</th>
-                                                                    <th scope="col">Product</th>
-                                                                    <th scope="col">Qty</th>
-                                                                    <th scope="col">Price</th>
-                                                                    <th scope="col" class="text-right">Total</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
-                                                                    <td>iPhone XR</td>
-                                                                    <td>1</td>
-                                                                    <td>$99</td>
-                                                                    <td class="text-right">$99</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-sm-6">
-                                                            <h5>Status : <span class="badge badge-primary-inverse font-14">Delivered</span></h5>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <h6 class="mb-0"><button class="btn btn-success-rgba font-16"><i class="feather icon-file mr-2"></i>Invoice</button></h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -333,84 +281,52 @@
                             <!-- My Addresses End -->
                             <!-- My Wishlist Start -->
                             <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
-                                <div class="card m-b-30">
-                                    <div class="card-header">                                
-                                        <h5 class="card-title mb-0">My Wishlist</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="wishlist-box">
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>                            
-                                                            <th scope="col">Photo</th>
-                                                            <th scope="col">Product</th>
-                                                            <th scope="col">Qty</th>
-                                                            <th scope="col">Price</th>
-                                                            <th scope="col">Total</th>
-                                                            <th scope="col">Action</th> 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th scope="row">1</th>                
-                                                            <td><img src="assets/images/ecommerce/product_01.svg" class="img-fluid" width="35" alt="product"></td>
-                                                            <td>Electronic Kettle</td>
-                                                            <td>
-                                                                <div class="form-group mb-0">
-                                                                    <input type="number" class="form-control cart-qty" name="cartQty1" id="cartQty1" value="1">
-                                                                </div>
-                                                            </td>
-                                                            <td>$75</td>
-                                                            <td>$75</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary-rgba mb-1 mr-1">
-                                                                <i class="feather fa fa-shopping-cart"></i></button>
-                                                                <button type="button" class="btn btn-danger-rgba mb-1"><i class="feather fa fa-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>
-                                                            <td><img src="assets/images/ecommerce/product_02.svg" class="img-fluid" width="35" alt="product"></td>
-                                                            <td>Fitness Band</td>
-                                                            <td>
-                                                                <div class="form-group mb-0">
-                                                                    <input type="number" class="form-control cart-qty" name="cartQty2" id="cartQty2" value="2">
-                                                                </div>
-                                                            </td>
-                                                            <td>$50</td>
-                                                            <td>$100</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary-rgba mb-1 mr-1">
-                                                                <i class="feather fa fa-shopping-cart"></i></button>
-                                                                <button type="button" class="btn btn-danger-rgba mb-1">
-                                                                <i class="feather fa fa-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>
-                                                            <td><img src="assets/images/ecommerce/product_03.svg" class="img-fluid" width="35" alt="product"></td>
-                                                            <td>iPhone XR</td>
-                                                            <td>
-                                                                <div class="form-group mb-0">
-                                                                    <input type="number" class="form-control cart-qty" name="cartQty3" id="cartQty3" value="10">
-                                                                </div>
-                                                            </td>
-                                                            <td>$99</td>
-                                                            <td>$990</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary-rgba mb-1 mr-1">
-                                                                <i class="feather fa fa-shopping-cart"></i></button>
-                                                                <button type="button" class="btn btn-danger-rgba mb-1"><i class="feather fa fa-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                         <h3> Notes list</h3>
                                         </div>
+                                        <div class="card-body" data-spy="scroll">
+                                 @forelse ($data['notes'] as $note)
+                                            <ul class="list-group list-group-flush">
+                                            
+
+                                                <li class="list-group-item"><i class="fa fa-comments-o"></i>{{ $note->note_des }} <br> <i class="fa fa-clock-o"></i>  {{ $note->creation_time }}&nbsp; &nbsp;&nbsp; &nbsp;<i class="fa fa-user-circle"></i>{{ $note->full_name }} </li>
+                                              </ul>   
+                                    @empty
+                                    <li class="list-group-item">No Records found</li> 
+                                      
+                                @endforelse
+                             </div>
+                                       
+                            
+                                        
+                                        <form method="POST" action="{{ url('addnots') }}" enctype="multipart/form-data">
+                                            @csrf
+                                            
+                                                <input type="hidden" name="related_id" class="form-control" value="{{$data_id}}">
+                                           
+                                          
+
+                                                <input type="hidden" name="module_id" class="form-control" value="{{$module_id}}">
+                                          
+
+                                            <div class="form-group">
+                                               
+                                                <textarea class="form-control" name="note_des" placeholder="Enter text here..."></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-info font-weight-bold"> Submit </button>
+                                            </div>
+
+                                        </form>
                                     </div>
+
+
                                 </div>
+                            </div>
                             </div>
                             <!-- My Wishlist End -->
                             <!-- My Wallet Start -->
