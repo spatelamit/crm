@@ -50,9 +50,9 @@ class Activity extends Model
             if($req->file('importleads'))
             $filename=$req->importleads->getClientOriginalName();
             echo $filename;
-           $path = $req->file($filename)->store('csv');
+            $path = $req->file($filename)->store('csv');
 
-           echo $path ;
+            echo $path ;
             // dd($filename);
              if($req->file('importleads') > 0)
              {
