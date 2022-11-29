@@ -20,7 +20,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
-  <link rel="shortcut icon" href="{{url('/assets/images/favicon.png')}}" />
+ 
   <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="{{url('/assets/css/dataTables.css')}}">
    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
