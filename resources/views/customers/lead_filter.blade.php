@@ -19,7 +19,7 @@
 
 
 
-                        <table id="leads" class="display table  leads">
+                        <table id="leads12" class="display table  leads">
                             <thead>
 
                                 <tr>
@@ -45,7 +45,7 @@
                             <tbody>
 
                                 @if ($data['leads_data'] != null)
-                                    @forelse ($data['leads_data'] as $key1 => $field)
+                                    @forelse ( array_chunk($data['leads_data'],2) as $key1 => $field)
                                         <tr>
 
                                             <td>
@@ -118,7 +118,7 @@
 
                             </tbody>
                         </table>
-                   
+                 
 <script>
     $(document).ready(function() {
         $('.leads').DataTable({

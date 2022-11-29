@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+
+use Illuminate\Support\Collection;
+
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\UserSetting;
 use App\Models\Customer;
 use App\Models\Activity;
@@ -18,6 +23,17 @@ class CustomerController extends Controller
         $this->Activity=new Activity();
     }
 
+    public function paginate($items, $perPage = 8, $page = null, $options = []) {
+
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+
+    }
+
+        
     public function leads(){
         $module_id='8';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
@@ -82,7 +98,9 @@ class CustomerController extends Controller
 
        // dd($data); 
        // echo ( session()->get('id'));
-      
+        // $data['leads_data'] = $this->paginate($data['leads_data'],5,null,
+        //   [ 'path' => Paginator::resolveCurrentPath()]);
+        // dd( $data['leads_data']);
        return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
 
@@ -490,9 +508,11 @@ class CustomerController extends Controller
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['selected_col']=$this->Customer->GetTableCol($module_id);
        
+      
       return view('customers.lead_filter',compact('data'));
 
     }
+
      public function get_viewfilter_id($id){
      $view_filter=$this->Customer->GetViewfilterId($id);
      echo ($view_filter->filter_name);
