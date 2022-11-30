@@ -11,89 +11,117 @@ class Activity extends Model
 {
     use HasFactory;
 
-    public function Add_Task($req){
+    public function Add_Task($req)
+    {
         // $req['sender_id']=session()->get('id');
 
-    //    unset($req['_token']);
-    //    dd($req->all());
+        //    unset($req['_token']);
+        //    dd($req->all());
 
 
 
-    $data = array('subject' => $req->subject,
-    'description' => $req->description,
-    'status' => $req->status,
-    'sender_id'=>session()->get('id'),
-    'priority' => $req->priority,
-    'due_date' => $req->due_date,
+        $data = array(
+            'subject' => $req->subject,
+            'description' => $req->description,
+            'status' => $req->status,
+            'sender_id' => session()->get('id'),
+            'priority' => $req->priority,
+            'due_date' => $req->due_date,
 
-    'related_to' => $req->account);
+            'related_to' => $req->account
+        );
 
-    // dd($data);
+        // dd($data);
 
         // $result=DB::table('tasks')->insert($req->all());
         $result = DB::table('tasks')->insert($data);
 
-        if($result){
+        if ($result) {
             return true;
-          }else{
+        } else {
             return false;
-          }
-
+        }
     }
 
 
     public function import_csv($req)
     {
         // dd($req->importleads->getClientOriginalName());
-        if(isset($req->importleads)){
+        if (isset($req->importleads)) {
             // $fileName.'_'.time().'.'.$extension;
-            if($req->file('importleads'))
-            $filename=$req->importleads->getClientOriginalName();
+            if ($req->file('importleads'))
+                $filename = $req->importleads->getClientOriginalName();
             echo $filename;
-            $path = $req->file($filename)->store('csv');
+            $path = storage_path('csv');
+            $req->file('importleads')->move($path, $filename);
+            // storage_path('app/public/docs/user_docs/'.$user->id);
 
-            echo $path ;
+            $file_path = ($path . '\\' . $filename);
+
             // dd($filename);
-             if($req->file('importleads') > 0)
-             {
-                $file = fopen($filename, "r");
-                // print_r(fgetcsv($file));
-                // die;
-                  while (($getData = fgetcsv($file, 10000, ",")) !== FALSE)
-                   {
+            // $data=load($path)->get();
+            // if($data->count() > 0)
+
+            // if ($req->file('importleads') > 0) {
+                $file = fopen($file_path, "r");
+                while (!feof($file)){
+                    print_r(fgetcsv($file));
+                }
+                fclose($file);
+                // print_r(fgetcsv($file,100000,','));
+                die;
+                while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
                     dd($getData);
-                     $sql = "INSERT into employeeinfo (emp_id,firstname,lastname,email,reg_date)
-                           values ('".$getData[0]."','".$getData[1]."','".$getData[2]."','".$getData[3]."','".$getData[4]."')";
-                           $result = mysqli_query($con, $sql);
-                if(!isset($result))
-                {
-                  echo "<script type=\"text/javascript\">
+
+
+                    $module_id=$req->module_id;
+    	            $data_id=uniqid();
+  		            for ($i=0; $i <count($req->column_id) ; $i++) {
+    		        $data[]=array(
+    		        'module_id'=>$module_id,
+    		        'column_id'=>$req->column_id[$i],
+    		        'value'=>$req->value[$i],
+    		        'user_id'=>session()->get('id'),
+    		        'data_id'=>$data_id,
+    	             );
+
+	                 }
+
+
+
+
+
+                    $sql = "INSERT into employeeinfo (emp_id,firstname,lastname,email,reg_date)
+                           values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "','" . $getData[3] . "','" . $getData[4] . "')";
+                    $result = mysqli_query($con, $sql);
+                    if (!isset($result)) {
+                        echo "<script type=\"text/javascript\">
                       alert(\"Invalid File:Please Upload CSV File.\");
                       window.location = \"index.php\"
                       </script>";
-                }
-                else {
-                    echo "<script type=\"text/javascript\">
+                    } else {
+                        echo "<script type=\"text/javascript\">
                     alert(\"CSV File has been successfully Imported.\");
                     window.location = \"index.php\"
                   </script>";
+                    }
                 }
-                   }
 
-                   fclose($file);
-             }
-          }
+                fclose($file);
+            // }
+        }
     }
 
-    public function GetNotes($module_id = null,$relatedId=null){
-      $user_id = session()->get('id');
-       $result= DB::table('notes')
-        ->select('notes.note_des','notes.creation_time', 'users.full_name')
-        ->join('users', 'users.id', '=', 'notes.user_id')
-        ->where('notes.module_id',$module_id )
-        ->where('notes.related_to',$relatedId )
-        // ->where('notes.user_id', $user_id)
-        ->get();
+    public function GetNotes($module_id = null, $relatedId = null)
+    {
+        $user_id = session()->get('id');
+        $result = DB::table('notes')
+            ->select('notes.note_des', 'notes.creation_time', 'users.full_name')
+            ->join('users', 'users.id', '=', 'notes.user_id')
+            ->where('notes.module_id', $module_id)
+            ->where('notes.related_to', $relatedId)
+            // ->where('notes.user_id', $user_id)
+            ->get();
         return $result;
     }
 }

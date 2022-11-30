@@ -12,14 +12,14 @@ class Customer extends Model
     use HasFactory;
      public function __construct() {
 
-      
+
           $this->Usersetting=new UserSetting();
           $this->Activity=new Activity();
-       
+
     }
 
     public function GetModuleFields($module_id){
- 
+
     	$result=DB::table('module_selected_column')
     	->select('module_selected_column.id','module_selected_column.module_id','module_selected_column.column_id','module_selected_column.type','module_selected_column.col_name','modules.modules_name')
     	->where('module_selected_column.module_id',$module_id)
@@ -28,7 +28,7 @@ class Customer extends Model
                     ->orWhere('module_selected_column.company_id','0');
         })
     	->join('modules','modules.module_id','=','module_selected_column.module_id')
-       
+
 
     	->get();
     	if($result){
@@ -120,10 +120,10 @@ class Customer extends Model
 
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
           if($chiled_parent!=false ){
-            
+
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
-           
+
          }
               $chilesIds=implode(",",  $chilesId);
           }else{
@@ -137,22 +137,22 @@ class Customer extends Model
 	  	$leads_data=DB::select($que);
 
 
-        
+
 	  	 if($leads_data){
 	     		  return $leads_data;
 			   }else{
 			       return false;
 			   }
 
-	  } 
+	  }
 
       public function GetAccountData($module_id){
         $chiled_parent= $this->Usersetting->ChildNameByparentId();
           if($chiled_parent!=false ){
-            
+
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
-           
+
          }
               $chilesIds=implode(",",  $chilesId);
           }else{
@@ -160,7 +160,7 @@ class Customer extends Model
           }
 // dd($chiled_parent  );
         $user_id=session()->get('id');
-       
+
 
         $que="call getModulesData2('".$chilesIds."',$module_id)";
         $data=DB::select($que);
@@ -175,13 +175,13 @@ class Customer extends Model
 
       }
       public function GetDealData($module_id){
-        
+
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
           if($chiled_parent!=false ){
-            
+
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
-           
+
          }
               $chilesIds=implode(",",  $chilesId);
           }else{
@@ -189,13 +189,13 @@ class Customer extends Model
           }
 // dd($chiled_parent  );
         $user_id=session()->get('id');
-      
+
         $que="call getModulesData2('".$chilesIds."',$module_id)";
         $data=DB::select($que);
 
 
 
-        
+
          if($data){
                   return $data;
                }else{
@@ -204,15 +204,15 @@ class Customer extends Model
 
       }
 	  public function  GetEditData($id){
-        // DB::enableQueryLog(); 
+        // DB::enableQueryLog();
 	  	$getdata=DB::table('module_data')
 	  			->select('module_data.*','module_columns.col_name','module_columns.type','users.full_name as user')
 	  			->where('module_data.data_id',$id)
                 ->join('users','users.id','=','module_data.user_id')
 	  			->join('module_columns','module_columns.column_id','=','module_data.column_id')
-               
+
 	  			->get();
-                // dd(DB::getQueryLog()); 
+                // dd(DB::getQueryLog());
 	  	if($getdata){
 	     		  return $getdata;
 			   }else{
@@ -225,7 +225,7 @@ class Customer extends Model
 	  	$data_id=$req->data_id;
 	  	// dd($req->all());
 	  	for ($i=0; $i <count($req->column_id) ; $i++) {
-	  		
+
 
 	  		$result[]=DB::table('module_data')
 	  				// ->where('data_id',$data_id)
@@ -309,7 +309,7 @@ class Customer extends Model
 // save task
     public function SaveTask($req){
         $req['sender_id']=session()->get('id');
-        
+
        unset($req['_token']);
        // dd($req->all());
         $result=DB::table('tasks')->insert($req->all());
@@ -323,10 +323,10 @@ class Customer extends Model
 
     // get task by data id
      public function GetTasks($id){
-      
-        
-       
-       
+
+
+
+
         $result = DB::table('tasks')
             ->select('tasks.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
             ->join('users as u1', 'u1.id', '=', 'tasks.sender_id')
@@ -343,7 +343,7 @@ class Customer extends Model
             return false;
           }
 
-    } 
+    }
 
     //export
 
@@ -406,32 +406,32 @@ class Customer extends Model
             $chilesId[]=session()->get('id');
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
-           
+
          }
               $chilesIds=implode(",",  $chilesId);
           }else{
             $chilesIds=Null;
           }
-       
+
               DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
                 ->select('module_data.*','module_selected_column.col_name','users.full_name as users')
                 ->where('module_data.module_id',$req->module_id)
-                // ->Orwhere('module_data.user_id',session()->get('id')) 
-               
+                // ->Orwhere('module_data.user_id',session()->get('id'))
+
                 ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
                 ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
-                
+
              $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
                  $leads_data=DB::select($que);
                 // print_r( $leads_data);
                  $search=[];
                  $result=[];
     if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
-     
+
         if($req->activitiesopt==1){
             $query->Join('tasks','module_data.data_id','=','tasks.related_to');
              $query->Join('meetings','module_data.data_id','=','meetings.related_to');
@@ -450,12 +450,12 @@ class Customer extends Model
 
             elseif($req->activitiesopt2==2){
             $query->Join('tasks','module_data.data_id','=','tasks.related_to');
-         
+
              $query->whereDate('tasks.due_date', '<', now());
             }
             elseif($req->activitiesopt2==3){
                 $query->leftJoin('meetings','module_data.data_id','=','meetings.related_to');
-            
+
              $query->whereDate('meetings.end_date', '<', now());
             }
 
@@ -500,7 +500,7 @@ class Customer extends Model
                  //  $query->Orwhere('meetings.related_to',null);
                $query->whereNotBetween('tasks.due_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
                 $query->whereNotBetween('meetings.end_date', [ date('Y-m-d'),date("Y-m-d", strtotime("+7 day"))]);
-                
+
 
             }
          }
@@ -512,9 +512,9 @@ class Customer extends Model
          }else{
             $query->whereIn('module_data.user_id',$chilesId);
          }
-         // 
-        
-   
+         //
+
+
 
          $result=$query->get()->toArray();
     }else{
@@ -529,20 +529,20 @@ class Customer extends Model
         // print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-       
+
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
                     $data1['user_id']=$value2->user_id;
                     $data1['sale_person']=$value2->users;
                      $data1[$value2->col_name]=$value2->value;
-                
+
                 }
 
             $opt[]= $data1;
         }
       $search=json_decode(json_encode($search), true);
       $fresult=array_merge($opt,$search);
-   
+
      return $fresult;
 
 
@@ -552,7 +552,7 @@ class Customer extends Model
                 ->select('module_table_col.column_id','module_columns.col_name')
                 ->where('module_table_col.user_id',session()->get('id'))
                 ->where('module_table_col.module_id',$module_id)
-                
+
                 ->join('module_columns','module_columns.column_id','=','module_table_col.column_id')
                 ->orderBy('module_table_col.id')
                 ->get()->toArray();
@@ -572,12 +572,12 @@ class Customer extends Model
                     ->where('module_id',$module_id)
                     ->where('user_id',session()->get('id'))
                     ->delete();
-             
+
                   for ($i=0; $i <count($req->column_id) ; $i++) {
                     $data[]=array(
                     'module_id'=>$module_id,
                     'column_id'=>$req->column_id[$i],
-                    'user_id'=>session()->get('id'),    
+                    'user_id'=>session()->get('id'),
                 );
 
                 }
@@ -588,7 +588,7 @@ class Customer extends Model
                        }else{
                            return false;
                        }
-            
+
     }
 
     public function ViewData($id,$module_id){
@@ -598,32 +598,32 @@ class Customer extends Model
             // $chilesId[]=session()->get('id');
               foreach ($chiled_parent as $key => $chiledid) {
              $chilesId[]=$chiledid->id;
-           
+
          }
               $chilesIds=implode(",",  $chilesId);
           }else{
             $chilesIds=Null;
           }
-        
+
               DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
         $query=DB::table('module_data')
                 ->select('module_data.*','module_selected_column.col_name','users.full_name as users')
                 ->where('module_data.module_id',$module_id)
-                // ->Orwhere('module_data.user_id',session()->get('id')) 
-               
+                // ->Orwhere('module_data.user_id',session()->get('id'))
+
                 ->join('module_selected_column','module_data.column_id','=','module_selected_column.column_id')
                 ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
-                
-            
-                
+
+
+                 $search=[];
                  $result=[];
                  if (!empty($id) || $id !="" ){
-     
-        
-        
+
+
+
 
                      // User wise filter
                      if($id=='all_leads'){
@@ -639,9 +639,9 @@ class Customer extends Model
                      }
 
                 }else{
-                     
-                   
-                    
+
+
+
                 }
         // print_r(DB::getQueryLog());
                  // print_r($chilesId);
@@ -658,7 +658,7 @@ class Customer extends Model
         // print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-       
+
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
                     $data1['module_id']=$value2->module_id;
@@ -667,13 +667,13 @@ class Customer extends Model
                     $data1['created_date']=$value2->created_at;
                     $data1['modified_date']=$value2->modified_date;
                      $data1[$value2->col_name]=$value2->value;
-                
+
                 }
 
             $opt[]= $data1;
         }
-   
-      $fresult=$opt;
+      $search=json_decode(json_encode($search), true);
+      $fresult=array_merge($opt,$search);
    // print_r($result1);
      return $fresult;
 
