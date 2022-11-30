@@ -81,7 +81,7 @@ function createdeal(id){
 
         
           $(".lead_search").html(response);
-          console.log(response);
+          // console.log(response);
         }
       });
    

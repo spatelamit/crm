@@ -291,15 +291,16 @@ class Customer extends Model
       }
        public function PipelineStages($pipeline_group_id){
         $result=DB::table('users_pipeline_stages')
-        ->select('users_pipeline_stages.*')
+        ->select('users_pipeline_stages.id','users_pipeline_stages.stage_name','users_pipeline_stages.stage_colour')
         ->join('pipeline_group','pipeline_group.id','=','users_pipeline_stages.pipeline_group_id')
         ->where('users_pipeline_stages.pipeline_group_id',$pipeline_group_id)
         ->where('users_pipeline_stages.status','1')
-        ->get();
-        if($result->count() == 0){
+        ->get()->toArray();
+        // dd($result);
+        if(count($result) == 0){
                 $result1=DB::table('pipeline_stages')
                 ->where('status','1')
-                ->get();
+                ->get()->toArray();
                   return $result1;
         }else{
             return $result;
@@ -685,6 +686,7 @@ class Customer extends Model
 
         return $result;
     }
+
 
 
 }

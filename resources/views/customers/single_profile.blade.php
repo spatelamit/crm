@@ -8,8 +8,9 @@
 
 
 <div class="content-wrapper">
+    @if($module_id == '8')
            <a href="{{url('convert-lead', $data['lead_data'][0]->data_id)}}">Convert</a>
-                <!-- Start row -->
+        @endif      <!-- Start row -->
                 <div class="row">
                     <!-- Start col -->
                     <div class="col-lg-5 col-xl-3">
@@ -29,9 +30,9 @@
                                     <a class="nav-link mb-2" id="v-pills-addresses-tab" data-toggle="pill" href="#v-pills-addresses" role="tab" aria-controls="v-pills-addresses" aria-selected="false"><i class="feather fa fa-map-marker mr-2"></i>Meetings</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false"><i class="feather fa fa-heart mr-2"></i>Notes</a>
-                                    
-                                    <a class="nav-link mb-2" id="v-pills-wallet-tab" data-toggle="pill" href="#v-pills-wallet" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Wallet</a>
-                                    
+                                    @if($module_id == '10')
+                                    <a class="nav-link mb-2" id="v-pills-deals-tab" data-toggle="pill" href="#v-pills-deals" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Deals</a>
+                                    @endif
                                     <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false"><i class="feather fa fa-bell mr-2"></i>Notifications</a>
@@ -329,25 +330,28 @@
                             </div>
                             </div>
                             <!-- My Wishlist End -->
-                            <!-- My Wallet Start -->
-                            <div class="tab-pane fade" id="v-pills-wallet" role="tabpanel" aria-labelledby="v-pills-wallet-tab">
+                            <!-- My Deal Start -->
+                            <div class="tab-pane fade" id="v-pills-deals" role="tabpanel" aria-labelledby="v-pills-deals-tab">
                                 <div class="card m-b-30">
                                     <div class="card-header">                                
-                                        <h5 class="card-title mb-0">My Wallet</h5>
+                                        <h5 class="card-title mb-0">Account Deals</h5>
                                     </div>
                                     <div class="card-body">
-                                        <div class="row justify-content-center">
+                                        <!-- <div class="row justify-content-center">
                                             <div class="col-sm-6 col-md-6 col-lg-4">
                                                 <img src="assets/images/ecommerce/wallet.svg" class="img-fluid" alt="wallet">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="wallet-box">
                                             <div class="row align-items-center">
-                                                <div class="col-sm-6">
-                                                    <h4 class="text-primary"><i class="feather icon-credit-card mr-2"></i>$90 <span class="font-14">Balance</span></h4>
+                                                <div class="col-sm-4">
+                                                    <h6 class="text-primary"><i class="feather icon-credit-card mr-2"></i>₹ {{$data['deal_sum']}} <span class="font-14">Total Amount</span></h6>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <p class="mb-0"><button class="btn btn-success-rgba font-16"><i class="feather icon-plus mr-2"></i>Add Money</button></p>
+                                                <div class="col-sm-4">
+                                                    <h6 class="text-primary"><i class="feather icon-credit-card mr-2"></i>₹ {{$data['won_sum']}} <span class="font-14">Total Won Amount</span></h6>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <h6 class="text-primary"><i class="feather icon-credit-card mr-2"></i>₹ {{$data['lost_sum']}} <span class="font-14">Total Lost Amount</span></h6>
                                                 </div>
                                             </div>
                                         </div>                                        
@@ -357,12 +361,12 @@
                                     <div class="card-header">                                
                                         <div class="row align-items-center">
                                             <div class="col-8">
-                                                <h5 class="card-title mb-0">Transactions</h5>
+                                                <h5 class="card-title mb-0">Deals</h5>
                                             </div>
                                             <div class="col-4">
-                                                <ul class="list-inline-group text-right mb-0 pl-0">
+                                               <!--  <ul class="list-inline-group text-right mb-0 pl-0">
                                                     <li class="list-inline-item mr-0 font-12"><button type="button" class="btn btn-sm btn-primary-rgba px-2">Export</button></li>
-                                                </ul>                                        
+                                                </ul>   -->                                      
                                             </div>
                                         </div>
                                     </div>
@@ -373,38 +377,27 @@
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">ID</th>     
-                                                            <th scope="col">Name</th>
-                                                            <th scope="col">Withdraw</th>
-                                                            <th scope="col">Deposit</th>
+                                                            <th scope="col">Deal name</th>
+                                                            <th scope="col">Amount</th>
                                                             <th scope="col">Status</th>
+                                                          
                                                             <th scope="col">Comment</th> 
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    @forelse( $data['deal_data'] as $deals)
                                                         <tr>
-                                                            <th scope="row">1</th>              
-                                                            <td>Google Corp.</td>
-                                                            <td>$1,50,000</td>
-                                                            <td>-</td>
-                                                            <td><span class="badge badge-success-inverse">Success</span></td>
-                                                            <td>Transaction ID : 9966338855</td>
+                                                            <th scope="row">{{$loop->iteration}}</th>              
+                                                            <td>{{$deals->deal_name}}</td>
+                                                            <td>{{$deals->amount}}</td>
+                                                            
+                                                            <td><span class="badge badge-success-inverse">{{$deals->won_lost_deal}}</span></td>
+                                                            <td>{{$deals->Pipepline}}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <th scope="row">2</th>                
-                                                            <td>Facebook Inc.</td>
-                                                            <td>-</td>
-                                                            <td>$1,25,000</td>
-                                                            <td><span class="badge badge-danger-inverse">Reject</span></td>
-                                                            <td>Bank Transaction ID : 9988776655</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row">3</th>                
-                                                            <td>Amazon</td>
-                                                            <td>$75,000</td>
-                                                            <td>-</td>
-                                                            <td><span class="badge badge-success-inverse">Success</span></td>
-                                                            <td>Book Return</td>
-                                                        </tr>
+                                                        @empty
+                                                            <tr>No records Founds</tr>
+                                                        @endforelse
+                                                        
                                                     </tbody>
                                                 </table>
                                             </div>

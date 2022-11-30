@@ -260,9 +260,18 @@ class CustomerController extends Controller
          
           $data['tasks']=$this->Customer->GetTasks($data_id);
           $data['notes']= $this->Activity->GetNotes($module_id,$data_id);
-          // echo "<pre>";
-          // print_r($data['notes']);
-          // die();
+          if($module_id=='10'){
+                // $data['deal_data']=$this->Customer->DealDataById($data_id);
+                 $data['deal_datas']=$this->Customer->GetDealData('9');
+               
+                  $Collection=collect($data['deal_datas'])->where('account_id',$data_id);
+                  $data['deal_data']=$Collection->all();
+                  $data['deal_sum']=$Collection->sum('amount');
+                   $data['won_sum']=$Collection->where('won_lost_deal','won')->sum('amount');
+                   $data['lost_sum']=$Collection->where('won_lost_deal','lost')->sum('amount');
+                    // dd( $data['deal_sum']);
+          }
+          
          return view('customers.single_profile',compact('data','data_id','module_id'));
 
     }
@@ -389,6 +398,50 @@ class CustomerController extends Controller
 
         // dd($data['accounts_datas']);
             return view('customers.add-deal',compact('data'));
+    }
+
+    public function deals_pipeline(){
+       $data['pipeline']=$this->Customer->GetPipeline();
+       // dd( $data['pipeline']);
+      return view('customers.deals-pipe',compact('data'));
+    }
+
+    public function deal_pipe_ajax($pid){
+      $module_id='9';
+       $data['PipelineGroup']=$this->Customer->PipelineStages($pid);
+        $data['deal_datas']=$this->Customer->GetDealData($module_id);
+      
+        $arraypipe = array_column($data['PipelineGroup'],'id');
+        
+          $Collection=collect($data['deal_datas'])->whereIn('Pipepline',$arraypipe);
+          $data['deal_data']=$Collection->all();
+         // print_r($data['deal_data']);
+          return view('customers.deals_pipe_ajax',compact('data'));
+    }
+    public function update_deal_stage($stageId,$dealId){
+   
+      $result=DB::table('module_data')
+            ->where('data_id',$dealId)
+            ->where('column_id','20')
+            ->update(['value'=>$stageId]);
+
+        if($result){
+          return true;
+        }else{
+          return false;
+        }
+    }
+    public function deal_won_lost($stageId,$dealId){
+   
+      $result=DB::table('module_data')
+            ->updateOrInsert(['data_id'=>$dealId,'column_id'=>'29'],['value'=>$stageId,'module_id'=>'9' ,'user_id'=>session()->get('id')]);
+           
+
+        if($result){
+          return true;
+        }else{
+          return false;
+        }
     }
 
     public function accounts(){

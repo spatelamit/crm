@@ -78,7 +78,19 @@
              @endif
          });
      </script>
+<script>
+    $(document).ready(function() {
+        $('.leads').DataTable({
+            dom: 'Bfrtip',
+            scrollX: true,
 
+            // buttons: [
+            //     'colvis'
+            // ]
+
+        });
+    });
+</script>
      </body>
 
      </html>
