@@ -258,11 +258,14 @@
 
         
           $("#deal_ajax").html(response);
-
+         
          
         }
       });
    
     });
+
+               
+                     
  </script>
  

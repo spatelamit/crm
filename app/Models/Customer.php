@@ -426,7 +426,7 @@ class Customer extends Model
                 ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
                 
-             $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
+             $que="call getModulesData2(".session()->get('id').",".$req->module_id.")";
                  $leads_data=DB::select($que);
                 // print_r( $leads_data);
                  $search=[];
@@ -686,6 +686,7 @@ class Customer extends Model
 
         return $result;
     }
+   
 
 
 }

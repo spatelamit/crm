@@ -98,7 +98,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive lead_search">
-                        <table id="leads" class="display table leads">
+                        <table  class="display table leads">
                             <thead>
 
                                 <tr>

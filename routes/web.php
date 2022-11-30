@@ -112,6 +112,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
       Route::get('/deals-pipeline',[CustomerController::class, 'deals_pipeline']);
       Route::get('/deal-pipe-ajax/{pid}',[CustomerController::class, 'deal_pipe_ajax']);
     Route::get('/update-deal-stage/{stageId}/{dealId}',[CustomerController::class, 'update_deal_stage']);
+    Route::get('/deal-won-lost/{stageId}/{dealId}',[CustomerController::class, 'deal_won_lost']);
 
     //activity controller
     //task

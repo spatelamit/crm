@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
-  <div class="text-center mb-5 sortable Won_box" id="wondeal"> Won </div></div>
+  <div class="text-center mb-5 sortable Won_box" id="won"> Won </div></div>
   
   <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 d-xs-block">
   </div>
 
   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12 text-right">
-  <div class="text-center mb-5 sortable Lost_box " id="lossdeal">Lost </div></div>
+  <div class="text-center mb-5 sortable Lost_box " id="lost">Lost </div></div>
   
                 @forelse ($data['PipelineGroup'] as $stages)
                     <div class="col-lg-6 col-xl-3 ">
@@ -28,13 +28,14 @@
                                             <div class="row align-items-center ">
                                                 <div class="col-8">
                                                     <div class="kanban-tag">
-                                                        <h5 class="mb-0"> {{$deal->deal_name}} </h5>
+                                                        <h5 class="mb-0"> {{$deal->deal_name}}</h5>
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
                                                     <div class="kanban-menu p-btn-0">
                                                     
-                       
+                                                     <span>{{$deal->won_lost_deal}}</span>
                                                     
                                                        
                                                     </div>
@@ -124,11 +125,11 @@
             iddata = [];
               iddata[0] = receiver.attr('id');
               iddata[1] = div.item.attr("id");
-              alert(iddata);
-                if (iddata[0] == 'wondeal' || iddata[0] == 'lossdeal') {
+              // alert(iddata);
+                if (iddata[0] == 'won' || iddata[0] == 'lost') {
                 //alert("Won Loss Case.");
                 $.ajax({
-                  url:'make-deal-won-loss/'+iddata,
+                  url:'deal-won-lost/'+iddata[0]+'/'+ iddata[1],
                  
                   type:'get',
                   success:function(response)
@@ -138,6 +139,20 @@
                         positionClass: "toast-bottom-left",
                         tapToDismiss: 1  
                     });
+                    pipe_stage=$('#pipeline').val();
+                            $.ajax({
+                                type: "get",
+                              
+                                url: 'deal-pipe-ajax/'+pipe_stage,
+
+                                success: function (response) {
+
+                                  $("#deal_ajax").html(response);
+                                 
+                                 
+                                }
+                            });
+                   
                   },
                   error:function(response) {
                     toastr.error("Deal Won/Loss Status Not Changed.", "Oops", {
@@ -157,6 +172,8 @@
                         positionClass: "toast-bottom-left",
                         tapToDismiss: 1  
                     });
+                    
+                   
                   },
                   error:function(response) {
                     toastr.error("Deal Status Not Changed.", "Oops", {
