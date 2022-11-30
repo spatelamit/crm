@@ -391,6 +391,38 @@ class CustomerController extends Controller
             return view('customers.add-deal',compact('data'));
     }
 
+    public function deals_pipeline(){
+       $data['pipeline']=$this->Customer->GetPipeline();
+       // dd( $data['pipeline']);
+      return view('customers.deals-pipe',compact('data'));
+    }
+
+    public function deal_pipe_ajax($pid){
+      $module_id='9';
+       $data['PipelineGroup']=$this->Customer->PipelineStages($pid);
+        $data['deal_datas']=$this->Customer->GetDealData($module_id);
+      
+        $arraypipe = array_column($data['PipelineGroup'],'id');
+        
+          $Collection=collect($data['deal_datas'])->whereIn('Pipepline',$arraypipe);
+          $data['deal_data']=$Collection->all();
+         // print_r($data['deal_data']);
+          return view('customers.deals_pipe_ajax',compact('data'));
+    }
+    public function update_deal_stage($stageId,$dealId){
+   
+      $result=DB::table('module_data')
+            ->where('data_id',$dealId)
+            ->where('column_id','20')
+            ->update(['value'=>$stageId]);
+
+        if($result){
+          return true;
+        }else{
+          return false;
+        }
+    }
+
     public function accounts(){
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
