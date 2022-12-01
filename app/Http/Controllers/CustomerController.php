@@ -561,7 +561,7 @@ class CustomerController extends Controller
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['selected_col']=$this->Customer->GetTableCol($module_id);
        
-      
+      // dd($data['leads_data']);
       return view('customers.lead_filter',compact('data'));
 
     }

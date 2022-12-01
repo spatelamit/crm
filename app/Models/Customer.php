@@ -620,7 +620,7 @@ class Customer extends Model
 
 
                  $search=[];
-                 $result=[];
+             
                  if (!empty($id) || $id !="" ){
 
 
@@ -673,8 +673,8 @@ class Customer extends Model
 
             $opt[]= $data1;
         }
-      $search=json_decode(json_encode($search), true);
-      $fresult=array_merge($opt,$search);
+    
+      $fresult=$opt;
    // print_r($result1);
      return $fresult;
 

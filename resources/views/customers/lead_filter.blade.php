@@ -45,7 +45,7 @@
                             <tbody>
 
                                 @if ($data['leads_data'] != null)
-                                    @forelse ( array_chunk($data['leads_data'],2) as $key1 => $field)
+                                    @forelse ( $data['leads_data'] as $key1 => $field)
                                         <tr>
 
                                             <td>
