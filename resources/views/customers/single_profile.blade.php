@@ -33,14 +33,14 @@
                                     @if($module_id == '10')
                                     <a class="nav-link mb-2" id="v-pills-deals-tab" data-toggle="pill" href="#v-pills-deals" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Deals</a>
                                     @endif
-                                    <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
+                                   <!--  <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false"><i class="feather fa fa-bell mr-2"></i>Notifications</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="feather fa fa-pencil-square mr-2"></i>My Profile Edit</a>
                                     
                                     <a class="nav-link" id="v-pills-logout-tab" data-toggle="pill" href="#v-pills-logout" role="tab" aria-controls="v-pills-logout" aria-selected="false"><i class="feather fa fa-power-off mr-2"></i>Logout</a>
-                                    
+                                     -->
                                     
                                 </div>
                             </div>
