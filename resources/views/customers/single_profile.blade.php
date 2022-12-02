@@ -33,14 +33,14 @@
                                     @if($module_id == '10')
                                     <a class="nav-link mb-2" id="v-pills-deals-tab" data-toggle="pill" href="#v-pills-deals" role="tab" aria-controls="v-pills-wallet" aria-selected="true"><i class="feather fa fa-wpforms mr-2"></i>Deals</a>
                                     @endif
-                                    <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
+                                   <!--  <a class="nav-link mb-2" id="v-pills-chat-tab" data-toggle="pill" href="#v-pills-chat" role="tab" aria-controls="v-pills-chat" aria-selected="false"><i class="feather fa fa-comments mr-2"></i>My Chat</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-notifications-tab" data-toggle="pill" href="#v-pills-notifications" role="tab" aria-controls="v-pills-notifications" aria-selected="false"><i class="feather fa fa-bell mr-2"></i>Notifications</a>
                                     
                                     <a class="nav-link mb-2" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="feather fa fa-pencil-square mr-2"></i>My Profile Edit</a>
                                     
                                     <a class="nav-link" id="v-pills-logout-tab" data-toggle="pill" href="#v-pills-logout" role="tab" aria-controls="v-pills-logout" aria-selected="false"><i class="feather fa fa-power-off mr-2"></i>Logout</a>
-                                    
+                                     -->
                                     
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                                     <div class="card-body">
                                         <div class="order-box">
                                             <div class="card border m-b-30">
-                                                <div class="card-header">
+                                                <!-- <div class="card-header">
                                                     <div class="row align-items-center">
                                                         <div class="col-sm-6">
                                                             <h5>ID : #551</h5>
@@ -160,7 +160,7 @@
                                                             <h6 class="mb-0">Total : <strong>$175</strong></h6>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-borderless">
@@ -192,7 +192,7 @@
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer">
+                                               <!--  <div class="card-footer">
                                                     <div class="row align-items-center">
                                                         <div class="col-sm-6">
                                                             <h5>Status : <span class="badge badge-info-inverse font-14">Shipped</span></h5>
@@ -201,7 +201,7 @@
                                                             <h6 class="mb-0"><button class="btn btn-success-rgba font-16"><i class="feather icon-file mr-2"></i>Invoice</button></h6>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                        
@@ -331,6 +331,7 @@
                             </div>
                             <!-- My Wishlist End -->
                             <!-- My Deal Start -->
+                           @if($module_id == '10')
                             <div class="tab-pane fade" id="v-pills-deals" role="tabpanel" aria-labelledby="v-pills-deals-tab">
                                 <div class="card m-b-30">
                                     <div class="card-header">                                
@@ -390,8 +391,11 @@
                                                             <th scope="row">{{$loop->iteration}}</th>              
                                                             <td>{{$deals->deal_name}}</td>
                                                             <td>{{$deals->amount}}</td>
-                                                            
+                                                            @if($deals->won_lost_deal=='won')
                                                             <td><span class="badge badge-success-inverse">{{$deals->won_lost_deal}}</span></td>
+                                                            @elseif($deals->won_lost_deal=='lost')
+                                                             <td><span class="badge badge-danger-inverse">{{$deals->won_lost_deal}}</span></td>
+                                                             @endif
                                                             <td>{{$deals->Pipepline}}</td>
                                                         </tr>
                                                         @empty
@@ -405,6 +409,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <!-- My Wallet End -->
                             <!-- My Chat Start -->
                             <div class="tab-pane fade" id="v-pills-chat" role="tabpanel" aria-labelledby="v-pills-chat-tab">

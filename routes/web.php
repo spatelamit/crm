@@ -57,6 +57,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 
 	Route::get('/add-fields',[UserSettingController::class, 'add_fields']);
 	Route::post('/save-fields',[UserSettingController::class, 'save_fields']);
+    Route::post('/add-pipeline',[UserSettingController::class, 'add_pipeline']);
 	// end user setting//
 
 

@@ -426,8 +426,8 @@ class Customer extends Model
                 ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
 
-             $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
-                 $leads_data=DB::select($que);
+             // $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
+             //     $leads_data=DB::select($que);
                 // print_r( $leads_data);
                  $search=[];
                  $result=[];
@@ -533,8 +533,9 @@ class Customer extends Model
 
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
+                     $data1['module_id']=$value2->module_id;
                     $data1['user_id']=$value2->user_id;
-                    $data1['sale_person']=$value2->users;
+                    $data1['user']=$value2->users;  
                      $data1[$value2->col_name]=$value2->value;
 
                 }
@@ -620,11 +621,8 @@ class Customer extends Model
 
 
                  $search=[];
-                 $result=[];
+             
                  if (!empty($id) || $id !="" ){
-
-
-
 
                      // User wise filter
                      if($id=='all_leads'){
@@ -635,6 +633,11 @@ class Customer extends Model
                      }elseif($id=='today'){
                         $query->whereDate('module_data.created_at','=',date('Y-m-d'));
                         $query->whereIn('module_data.user_id',$chilesId);
+                     }elseif($id=='last_week'){
+                            $subsql="select a.data_id from module_data a where a.column_id='1' and value='email@gmail.com' ";
+                           $run=DB::select($subsql);
+                           $subquery =array_column(json_decode(json_encode($run),true),'data_id');
+                        $query->whereIn('module_data.data_id', $subquery);
                      }else{
                         $query->whereIn('module_data.user_id',$chilesId);
                      }
@@ -655,8 +658,8 @@ class Customer extends Model
         $store_view_que=DB::table('user_table_view')->updateOrInsert(['user_id'=>session()->get('id'),'module_id'=>$module_id],['view_query'=>$view_query,'filter_name'=>$id]);
 
         $result1=collect($result)->where('module_id',$module_id)->groupBy('data_id');
-        // echo (count($result1));
-        // print_r($result1);
+        // echo ($view_query);
+        // dd($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
 
@@ -673,8 +676,8 @@ class Customer extends Model
 
             $opt[]= $data1;
         }
-      $search=json_decode(json_encode($search), true);
-      $fresult=array_merge($opt,$search);
+    
+      $fresult=$opt;
    // print_r($result1);
      return $fresult;
 
@@ -686,6 +689,8 @@ class Customer extends Model
 
         return $result;
     }
+
+    
 
 
 
