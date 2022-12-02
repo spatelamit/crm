@@ -8,6 +8,10 @@
 
         </div>
 
+        <div class="col-sm-4 mb-2 mb-xl-0">
+            <a href="{{url('add-meetings')}}" class="btn btn-info">AddMeeting </a>
+         </div>
+
     </div>
 
 

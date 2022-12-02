@@ -219,6 +219,59 @@ class ActivityController extends Controller
         }
     }
 
+    public function add_meetings()
+    {
+        $data['accounts_datas']=$this->Customer->GetDealData('10');
+        if( $data['accounts_datas']){
+            foreach ($data['accounts_datas'] as $key => $value) {
+            $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+          }
+          foreach ($data['accounts_data'] as $key1 => $value1) {
+             $data['company_names'][]=array(
+               'id'=>$value1['data_id'],
+               'text'=>$value1['company_name'],
+               'name'=>$value1['data_id'],
+             );
+          }
+          }else{
+             $data['accounts_data']=null;
+
+           }
+        return view('add_meetings', compact('data'));
+    }
+
+    public function create_meeting(Request $req)
+    {
+        // dd($req);
+        $file = $req->file('attachments');
+        // dd($file);
+        $filename = 'attachments' . time() . '.' . $req->attachments->extension();
+        // dd($filename);
+        // exit;
+        $file->move("upload/", $filename);
+        // dd($file);
+        // exit;
+        $data = array('title' => $req->title,
+            'description' => $req->description,
+            'status' => $req->status,
+            'sender_id'=>session()->get('id'),
+            'location' => $req->location,
+            'start_date' => $req->start_date,
+            'end_date' => $req->end_date,
+            'reciever_id' => $req->reciever_id,
+            'related_to' => $req->related_to,
+            'attachments'=>$filename,
+            'meeting_url' => $req->meeting_url
+
+
+
+            // 'modify_date' => date('Y-m-d H:i:s')
+        );
+        dd($data);
+        return redirect('meetings');
+    }
+
 
 
 

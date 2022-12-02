@@ -128,7 +128,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     //csv
     Route::post('/ImportCsv',[ActivityController::class, 'ImportCsv']);
     //meeting
-
+    Route::get('/add-meetings', [ActivityController::class, 'add_meetings']);
+    Route::post('/create-meeting', [ActivityController::class, 'create_meeting']);
     Route::get('/meetings',[ActivityController::class, 'meetings']);
     Route::get('/editmeeting/{id}',[ActivityController::class, 'editmeeting']);
     Route::post('/meeting_notes',[ActivityController::class,'meeting_notes']);

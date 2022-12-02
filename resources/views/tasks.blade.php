@@ -60,9 +60,9 @@
                                 <div class="form-group">
                                     <label for="stage_name">Account: </label>
                                     <select  name="account"
-                                    class="form-control bg_input"
+                                    class="form-control bg_input" id="compName">
 
-                                         id="compName" >
+
                                          <option value="">Selecte Company name</option>
                                 </select>
                                 </div>
@@ -243,7 +243,7 @@
             format: 'YYYY-MM-DD'
         }
     });
-   
+
     $("#compName").select2( {
        placeholder: "Select a state",
        data:<?php  echo json_encode($data['company_names']) ;?>,
