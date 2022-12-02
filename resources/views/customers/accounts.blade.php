@@ -506,7 +506,13 @@
 </div>
 <!-- End manage columns -->
 <!--end deal modal  -->
-
+<div class="modal_bg">
+  <div class="modal_box">
+    <h1>Demo form</h1>
+    
+  </div>
+  
+</div>
 @include('footer')
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">

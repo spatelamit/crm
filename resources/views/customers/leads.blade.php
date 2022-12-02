@@ -86,7 +86,7 @@
                         <option value="all_leads" {{ $data['filter_name'] == 'all_leads'?'selected':''}} >All Leads</option>
                         <option value="my_leads"  {{ $data['filter_name'] == 'my_leads'?'selected':''}}>My Leads</option>
                          <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Leads</option>
-                    <option value="last_week"  {{ $data['filter_name'] == 'today'?'selected':''}}>last week leads</option>
+                    <option value="last_week"  {{ $data['filter_name'] == 'last_week'?'selected':''}}>last week leads</option>
                      </select> 
                         
             
