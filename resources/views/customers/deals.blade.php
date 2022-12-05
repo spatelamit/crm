@@ -541,13 +541,9 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#leads').DataTable({
+        $('.leads').DataTable({
             dom: 'Bfrtip',
             scrollX: true,
-
-            // buttons: [
-            //     'colvis'
-            // ]
 
         });
     });

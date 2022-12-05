@@ -634,10 +634,13 @@ class Customer extends Model
                         $query->whereDate('module_data.created_at','=',date('Y-m-d'));
                         $query->whereIn('module_data.user_id',$chilesId);
                      }elseif($id=='last_week'){
-                            $subsql="select a.data_id from module_data a where a.column_id='1' and value='email@gmail.com' ";
-                           $run=DB::select($subsql);
-                           $subquery =array_column(json_decode(json_encode($run),true),'data_id');
-                        $query->whereIn('module_data.data_id', $subquery);
+                          
+                        $query->whereIn('module_data.data_id',function($subq){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('column_id','1')
+                                    ->where('value','email@gmail.com');
+                        });
                      }else{
                         $query->whereIn('module_data.user_id',$chilesId);
                      }
