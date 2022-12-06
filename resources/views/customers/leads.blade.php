@@ -788,7 +788,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_full_names"><div class="form-group"><select class="Fnamesearch form-control" name="Fnamesearch" id="Fnamesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=Fname_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_full_names"><div class="form-group"><select class="Fnamesearch form-control" name="Fnamesearch" id="Fnamesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=Fname_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -800,7 +800,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_address"><div class="form-group"><select class="Addsearch form-control" name="Addsearch" id="Addsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=add_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_address"><div class="form-group"><select class="Addsearch form-control" name="Addsearch" id="Addsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=add_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -812,7 +812,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_city"><div class="form-group"><select class="citysearch form-control" name="citysearch" id="citysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=city_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_city"><div class="form-group"><select class="citysearch form-control" name="citysearch" id="citysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=city_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -824,7 +824,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_state"><div class="form-group"><select class="statesearch form-control" name="statesearch" id="statesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=state_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_state"><div class="form-group"><select class="statesearch form-control" name="statesearch" id="statesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=state_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -836,7 +836,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_country"><div class="form-group"><select class="countrysearch form-control" name="countrysearch" id="countrysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=country_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_country"><div class="form-group"><select class="countrysearch form-control" name="countrysearch" id="countrysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=country_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -848,7 +848,7 @@
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_pin"><div class="form-group"><select class="pinsearch form-control" name="pinsearch" id="pinsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=pin_search required ></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_pin"><div class="form-group"><select class="pinsearch form-control" name="pinsearch" id="pinsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=pin_search required ></div></div></div>';
 
 
             $("#idsc").append(text);
@@ -889,7 +889,7 @@
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="daterange"></div></div></div>';
             $("#idsc").append(text);
             var activtab1 =
-                '<div class="form-group dataType" id="daterange1"><select class="customizedate form-control" name="daterangeopt" id="daterangeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">Last week </option><option value="5">This Month </option><option value="6">customize date </option></select></div>';
+                '<div class="form-group dataType" id="daterange1"><select class="customizedate form-control" name="daterangeopt" id="daterangeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">Last week </option><option value="5">This Month </option><option value="6">Last Month </option><option value="7">customize date </option></select></div>';
 
             $("#daterange").append(activtab1);
 
@@ -906,7 +906,7 @@
             // alert(datatypeopt);
 
             $(".custdates").remove();
-            if (daterangeopt == '6') {
+            if (daterangeopt == '7') {
                 var custdate =
                     '<div class="form-group custdates"> Start Date:-<input class="form-control" type="date"   name="startdate"> End Date:-<input class="form-control" placeholder="End Date" type="date" name="enddate"></div>';
                 // alert(custdate);
