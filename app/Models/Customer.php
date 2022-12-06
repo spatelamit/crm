@@ -413,7 +413,7 @@ class Customer extends Model
           }else{
             $chilesIds=Null;
           }
-
+          $mod_id=$req->module_id;
               DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
 
@@ -513,10 +513,167 @@ class Customer extends Model
          }else{
             $query->whereIn('module_data.user_id',$chilesId);
          }
+/////
+         if($req->pinsearch=='is'){
+           $pin_search=$req->pin_search;
+            $query->whereIn('module_data.data_id',function($subq) use( $pin_search){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('column_id','13')
+                                    ->where('value',$pin_search);
+                        });
+         }elseif($req->pinsearch=='isnot'){
+           $pin_search=$req->pin_search;
+            $query->whereIn('module_data.data_id',function($subq) use($pin_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','13')
+                                    ->where('value','<>' ,$pin_search);
+
+                        });
+         }
+         elseif($req->pinsearch=='contain'){
+           $pin_search=$req->pin_search;
+            $query->whereIn('module_data.data_id',function($subq) use($pin_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','13')
+                                    ->where('value' ,'LIKE','%'.$pin_search.'%');
+
+                        });
+         }
+         ////// company search
+
+         if($req->citysearch=='is'){
+           $city_search=$req->city_search;
+            $query->whereIn('module_data.data_id',function($subq) use( $city_search,$mod_id){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','11')
+                                    ->where('value',$city_search);
+                        });
+         }elseif($req->citysearch=='isnot'){
+           $city_search=$req->city_search;
+            $query->whereIn('module_data.data_id',function($subq) use($city_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','11')
+                                    ->where('value','<>' ,$city_search);
+
+                        });
+         }
+         elseif($req->citysearch=='contain'){
+           $city_search=$req->city_search;
+            $query->whereIn('module_data.data_id',function($subq) use($city_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','11')
+                                    ->where('value' ,'LIKE','%'.$city_search.'%');
+
+                        });
+         }
+         ///////
+         //country search
+         if($req->countrysearch=='is'){
+           $country_search=$req->country_search;
+            $query->whereIn('module_data.data_id',function($subq) use( $country_search,$mod_id){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','12')
+                                    ->where('value',$country_search);
+                        });
+         }elseif($req->countrysearch=='isnot'){
+           $country_search=$req->country_search;
+            $query->whereIn('module_data.data_id',function($subq) use($country_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','12')
+                                    ->where('value','<>' ,$country_search);
+
+                        });
+         }
+         elseif($req->countrysearch=='contain'){
+           $country_search=$req->country_search;
+            $query->whereIn('module_data.data_id',function($subq) use($country_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','12')
+                                    ->where('value' ,'LIKE','%'.$country_search.'%');
+
+                        });
+         }
+          //state search
+          if($req->statesearch=='is'){
+           $state_search=$req->state_search;
+            $query->whereIn('module_data.data_id',function($subq) use( $state_search,$mod_id){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','10')
+                                    ->where('value',$state_search);
+                        });
+         }elseif($req->statesearch=='isnot'){
+           $state_search=$req->state_search;
+            $query->whereIn('module_data.data_id',function($subq) use($state_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','10')
+                                    ->where('value','<>' ,$state_search);
+
+                        });
+         }
+         elseif($req->statesearch=='contain'){
+           $state_search=$req->state_search;
+            $query->whereIn('module_data.data_id',function($subq) use($state_search,$mod_id) {
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','10')
+                                    ->where('value' ,'LIKE','%'.$state_search.'%');
+
+                        });
+         }
+         // date_range filter
+        if($req->daterangeopt=='1'){
+           
+            $query->whereDate('module_data.created_at','=',date('Y-m-d'));
+         }elseif($req->daterangeopt=='2'){
+           
+            $query->whereDate('module_data.created_at','=',date("Y-m-d", strtotime("-1 day")));
+         }elseif ($req->daterangeopt=='3') {
+             $previous_week = strtotime(" this week ");
+             $start_week = strtotime("last sunday midnight",$previous_week);
+             $end_week = strtotime("next saturday",$start_week);
+             $start_week = date("Y-m-d",$start_week);
+             $end_week = date("Y-m-d",$end_week);
+             echo ($start_week."-".$end_week);
+             $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
+
+         }elseif ($req->daterangeopt=='4') {
+             $previous_week = strtotime(" -1 week +1 day ");
+             $start_week = strtotime("last sunday midnight",$previous_week);
+             $end_week = strtotime("next saturday",$start_week);
+             $start_week = date("Y-m-d",$start_week);
+             $end_week = date("Y-m-d",$end_week);
+             echo ($start_week."-".$end_week);
+             $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
+
+         }elseif ($req->daterangeopt=='5') {
+            echo (date("m",strtotime(" -2 month")));
+             $query->whereMonth('module_data.created_at','=',date("m",strtotime(" -2 month")));
+
+         }
+      
          //
-
-
-
          $result=$query->get()->toArray();
     }else{
          $query->whereIn('module_data.user_id',$chilesId);
@@ -634,10 +791,13 @@ class Customer extends Model
                         $query->whereDate('module_data.created_at','=',date('Y-m-d'));
                         $query->whereIn('module_data.user_id',$chilesId);
                      }elseif($id=='last_week'){
-                            $subsql="select a.data_id from module_data a where a.column_id='1' and value='email@gmail.com' ";
-                           $run=DB::select($subsql);
-                           $subquery =array_column(json_decode(json_encode($run),true),'data_id');
-                        $query->whereIn('module_data.data_id', $subquery);
+                          
+                        $query->whereIn('module_data.data_id',function($subq){
+                            $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('column_id','1')
+                                    ->where('value','email@gmail.com');
+                        });
                      }else{
                         $query->whereIn('module_data.user_id',$chilesId);
                      }

@@ -86,7 +86,7 @@
                         <option value="all_leads" {{ $data['filter_name'] == 'all_leads'?'selected':''}} >All Leads</option>
                         <option value="my_leads"  {{ $data['filter_name'] == 'my_leads'?'selected':''}}>My Leads</option>
                          <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Leads</option>
-                    <option value="last_week"  {{ $data['filter_name'] == 'today'?'selected':''}}>last week leads</option>
+                    <option value="last_week"  {{ $data['filter_name'] == 'last_week'?'selected':''}}>last week leads</option>
                      </select> 
                         
             
@@ -251,18 +251,19 @@
                                 <option value="activites">Activites</option>
 
 
-                                <option value="lead_type">Lead Types</option>
-                                <option value="data_owners">Users</option>
-                               <!--  <option value="company_names">Company Name</option>
+                                <option value="data_type">Lead Types</option>
+                             <!--    <option value="company_names">Company Name</option>
                                 <option value="full_name">Person name</option>
                                 <option value="email">Email</option>
-                                <option value="number">Number</option>
-                                <option value="address">Address</option>
+                                <option value="number">Number</option> -->
+                                <!-- <option value="address">Address</option> -->
                                 <option value="pin_code">Pin code</option>
                                 <option value="city">City</option>
                                 <option value="state">State</option>
                                 <option value="country">Country</option>
-                                <option value="sectors">Sectors</option> -->
+                                <option value="sectors">Sectors</option>
+                                 <option value="date_range">Date range</option>
+                          
 
 
                             </select>
@@ -879,18 +880,18 @@
         }
 
 
-        if (anem == "data_type") {
+        if (anem == "date_range") {
             var text = '<div class="filters_box_row1 mt-5 prashant' + available +
                 '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
                 anem +
                 '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
                 meradata +
-                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="datatypetab"><div class="form-group"><select name="datatype" id="datatype" class="form-control"> <option value="1">Company Data</option><option value="2">Conatct Data</option><option value="3">deals Data</option></select></div></div></div></div>';
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="daterange"></div></div></div>';
             $("#idsc").append(text);
             var activtab1 =
-                '<div class="form-group dataType" id="datatypetab1"><select class="customizedate form-control" name="datatypeopt" id="datatypeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">This This month </option><option value="5">This This Year </option><option value="6">customize date </option></select></div>';
+                '<div class="form-group dataType" id="daterange1"><select class="customizedate form-control" name="daterangeopt" id="daterangeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">Last week </option><option value="5">This Month </option><option value="6">customize date </option></select></div>';
 
-            $("#datatypetab").append(activtab1);
+            $("#daterange").append(activtab1);
 
 
 
@@ -900,24 +901,16 @@
 
         $("#coun_filter").val(available);
 
-
-
-
-
-        //data-typef
-
-
-        //dataype customize date
-        $("#datatypeopt").change(function() {
-            var datatypeopt = $("#datatypeopt").val();
+        $("#daterangeopt").change(function() {
+            var daterangeopt = $("#daterangeopt").val();
             // alert(datatypeopt);
 
             $(".custdates").remove();
-            if (datatypeopt == '6') {
+            if (daterangeopt == '6') {
                 var custdate =
-                    '<div class="form-group custdates"> Start Date:-<input class="form-control" type="date"     ame="startdate"> End Date:-<input class="form-control" placeholder="End Date" type="date" name="enddate"></div>';
+                    '<div class="form-group custdates"> Start Date:-<input class="form-control" type="date"   name="startdate"> End Date:-<input class="form-control" placeholder="End Date" type="date" name="enddate"></div>';
                 // alert(custdate);
-                $("#datatypetab1").append(custdate);
+                $("#daterange1").append(custdate);
             }
 
 

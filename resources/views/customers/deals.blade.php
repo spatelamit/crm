@@ -67,7 +67,7 @@
 
             <div class="card m-b-30">
                 <div class="card-header">
-                    <h5 class="card-title">Leads List </h5>
+                    <h5 class="card-title">Deal List </h5>
                 </div>
                  <div class="m-b-10">
                      <a class=" btn btn-info" data-animation="slideInRight" data-toggle="modal"
@@ -541,13 +541,9 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#leads').DataTable({
+        $('.leads').DataTable({
             dom: 'Bfrtip',
             scrollX: true,
-
-            // buttons: [
-            //     'colvis'
-            // ]
 
         });
     });

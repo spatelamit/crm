@@ -45,23 +45,23 @@
                                                 <div class="col-10">
                                                     <div class="kanban-comment">
                                                         <span class="font-14">Web Development</span><br />
-                                                        <span class="font-10">10-12-2022</span>
+                                                        <span class="font-10">{{date('Y-m-d',strtotime($deal->created_date))}}</span>
                                                     </div>
                                                 </div>
                                                 
                                                 
-                                                <div class="col-2">
+                                               <!--  <div class="col-2">
                                                     <div class="kanban-comment text-right">
-                                                        <span class="font-10 bg-danger text-white">Hot</span>
+                                                        <span class="font-10 bg-danger text-white"></span>
                                                         
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 
                                                 
                                                  <div class="col-6 ">
                                                  <div class="kanban-users text-left">
                                                         <div class="avatar-group black_color">
-                                                            <h5 class="mb-0">$259</h5>
+                                                            <h5 class="mb-0">₹{{$deal->amount}}</h5>
                                                         </div>
                                                     </div>
                                                  </div>
@@ -91,7 +91,7 @@
                                
                                 
                                 
-                                <button type="button" class="btn btn-primary-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Leads</button>
+                                <!-- <button type="button" class="btn btn-primary-rgba btn-block btn-lg font-16"><i class="feather icon-plus mr-2"></i>Add Leads</button> -->
                             </div>
                         </div>
                     </div> 

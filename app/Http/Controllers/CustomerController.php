@@ -314,7 +314,7 @@ class CustomerController extends Controller
     }
 
     //
-    public function deals(){
+    public function deals1(){
              $module_id='9';
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
              $data['selected_col']=$this->Customer->GetTableCol($module_id);
@@ -400,7 +400,7 @@ class CustomerController extends Controller
             return view('customers.add-deal',compact('data'));
     }
 
-    public function deals_pipeline(){
+    public function deals(){
        $data['pipeline']=$this->Customer->GetPipeline();
        // dd( $data['pipeline']);
       return view('customers.deals-pipe',compact('data'));
