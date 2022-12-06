@@ -45,10 +45,16 @@
                                 </div>
                             </div>
 
-                            <div class=" col-md-4" id="container">
+
+                            <div class="col-md-4" id="container">
                                 <div class="form-group">
-                                    <label for="stage_name">RecieverId: </label>
-                                    <input class="form-control" name="reciever_id">
+                                    <label for="">RecieverId:</label>
+                                    <select class="form-control" name="reciever_id">
+                                        @foreach ( ($data['meeting_user']) as $reciever )
+                                        <option value="{{$reciever->id}}">{{ $reciever->username }}</option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
@@ -82,6 +88,12 @@
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
+                                    <label for="stage_name">Attachments: </label>
+                                    <input type="file" class="form-control" name="attachments">
+                                </div>
+                            </div>
+                            <div class=" col-md-4" id="container">
+                                <div class="form-group">
                                     <label for="stage_name">MeetingUrl: </label>
                                     {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
                                     <input class="form-control" type="text"   name="meeting_url">
@@ -89,10 +101,19 @@
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
-                                    <label for="stage_name">Attachments: </label>
-                                    <input type="file" class="form-control" name="attachments">
+                                    <label for="">MeetingPlateform: </label>
+                                    <select class="form-control"  name="meeting_plateform">
+                                        <option>select</option>
+                                        <option value="googlemeet">GoogleMeet</option>
+                                        <option value="zoommeet">ZoomMeet</option>
+                                        <option value="skype">Skype</option>
+                                        <option value="microsoftteam">MicrosoftTeam</option>
+                                        <option value="other">Other</option>
+
+                                    </select>
                                 </div>
                             </div>
+
                         </div>
                         <div class=" col-md-12 text-right mt-4">
                             <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit
