@@ -655,7 +655,7 @@ class Customer extends Model
              $end_week = strtotime("next saturday",$start_week);
              $start_week = date("Y-m-d",$start_week);
              $end_week = date("Y-m-d",$end_week);
-             echo ($start_week."-".$end_week);
+             
              $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
 
          }elseif ($req->daterangeopt=='4') {
@@ -664,23 +664,40 @@ class Customer extends Model
              $end_week = strtotime("next saturday",$start_week);
              $start_week = date("Y-m-d",$start_week);
              $end_week = date("Y-m-d",$end_week);
-             echo ($start_week."-".$end_week);
+             
              $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
 
          }elseif ($req->daterangeopt=='5') {
-            echo (date("m",strtotime(" -2 month")));
-             $query->whereMonth('module_data.created_at','=',date("m",strtotime(" -2 month")));
+           
+             $query->whereMonth('module_data.created_at','=',date("m",strtotime(" this month")));
+
+         }elseif ($req->daterangeopt=='6') {
+           
+             $query->whereMonth('module_data.created_at','=',date("m",strtotime(" -1 month")));
+
+         }elseif ($req->daterangeopt=='7') {
+           
+           $query->whereDate('module_data.created_at', '>=', $req->startdate)            
+            ->whereDate('module_data.created_at', '<=', $req->enddate);
 
          }
       
          //
-         $result=$query->get()->toArray();
+         
     }else{
          $query->whereIn('module_data.user_id',$chilesId);
-         $result=$query->get()->toArray();
+        
     }
+        $result=$query->get()->toArray();
+         $que=$query->toSql();
+         $builder=$query->getBindings();
+          $query1 = str_replace(array('?'), array('\'%s\''), $que);
+        $filter_query = vsprintf($query1, $builder);
 
-
+         // print_r($view_query);
+        if(isset($req->filtersave)){
+             $store_filter_que=DB::table('user_filters')->insert(['user_id'=>session()->get('id'),'module_id'=>$mod_id,'filter_query'=>$filter_query,'filter_name'=>$req->filtersave]);
+        }
 
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
@@ -693,6 +710,7 @@ class Customer extends Model
                      $data1['module_id']=$value2->module_id;
                     $data1['user_id']=$value2->user_id;
                     $data1['user']=$value2->users;  
+                    $data1['created_at']=$value2->created_at;  
                      $data1[$value2->col_name]=$value2->value;
 
                 }
@@ -828,8 +846,8 @@ class Customer extends Model
                     $data1['module_id']=$value2->module_id;
                     $data1['user_id']=$value2->user_id;
                     $data1['user']=$value2->users;
-                    $data1['created_date']=$value2->created_at;
-                    $data1['modified_date']=$value2->modified_date;
+                    $data1['created_at']=$value2->created_at;
+                    $data1['modified_at']=$value2->modified_date;
                      $data1[$value2->col_name]=$value2->value;
 
                 }

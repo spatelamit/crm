@@ -35,6 +35,7 @@
                                         @endforeach
                                     
                                     @endif
+                                    <th>Created date</th>
                                         <th>Actions </th>
 
 
@@ -79,10 +80,11 @@
                                                     echo 'Null';
                                                  }?>
                                              </td>
+                                            
                                             @endforeach
                                          @endif
 
-                                           
+                                        <td>{{$data['leads_data'][$key1]['created_at']}}</td>
 
                                             <td>
 
