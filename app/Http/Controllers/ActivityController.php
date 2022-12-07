@@ -149,7 +149,7 @@ class ActivityController extends Controller
             // ->Orwhere('tasks.reciever_id', null)
 
 
-            ->paginate('5');
+            ->paginate('10');
             // dd(DB::getQueryLog());
         //   dd($result);
         return view('meetings', compact('result'));
