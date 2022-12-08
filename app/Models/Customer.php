@@ -221,7 +221,7 @@ class Customer extends Model
 	  }
 
 	  public function UpdateLead($req){
-
+   DB::enableQueryLog();
 	  	$data_id=$req->data_id;
 	  	// dd($req->all());
 	  	for ($i=0; $i <count($req->column_id) ; $i++) {
@@ -232,9 +232,10 @@ class Customer extends Model
 	  				// ->where('column_id',$req->column_id[$i])
 	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id ,'user_id'=>$req->user_id]);
 	  	}
+         dd(DB::getQueryLog());
 	  	// echo "<pre>";
 	  	// print_r($data);
-	  	// 	die();
+	  		die();
 	  	if($result){
 	  		return true;
 		  }else{
@@ -403,16 +404,16 @@ class Customer extends Model
     public function LeadFilter($req){
 
         $chiled_parent= $this->Usersetting->ChildNameByparentId();
-          if($chiled_parent!=false ){
-            $chilesId[]=session()->get('id');
-              foreach ($chiled_parent as $key => $chiledid) {
-             $chilesId[]=$chiledid->id;
+                  if($chiled_parent!=false ){
+                    $chilesId[]=session()->get('id');
+                      foreach ($chiled_parent as $key => $chiledid) {
+                     $chilesId[]=$chiledid->id;
 
-         }
-              $chilesIds=implode(",",  $chilesId);
-          }else{
-            $chilesIds=Null;
-          }
+                 }
+                      $chilesIds=implode(",",  $chilesId);
+                  }else{
+                    $chilesIds=Null;
+                  }
           $mod_id=$req->module_id;
               DB::statement("SET SQL_MODE=''");
         // DB::enableQueryLog();
@@ -704,7 +705,7 @@ class Customer extends Model
         // print_r($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-
+                $data1=[];
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
                      $data1['module_id']=$value2->module_id;
@@ -717,10 +718,10 @@ class Customer extends Model
 
             $opt[]= $data1;
         }
-      $search=json_decode(json_encode($search), true);
-      $fresult=array_merge($opt,$search);
+     
+      // $fresult=array_merge($opt,$search);
 
-     return $fresult;
+     return $opt;
 
 
     }
@@ -840,7 +841,7 @@ class Customer extends Model
         // dd($result1);
         $opt=[];
         foreach ($result1 as $key => $value) {
-
+            $data1=[];
             foreach ($value as $key2 => $value2) {
                     $data1['data_id']=$value2->data_id;
                     $data1['module_id']=$value2->module_id;
@@ -849,14 +850,17 @@ class Customer extends Model
                     $data1['created_at']=$value2->created_at;
                     $data1['modified_at']=$value2->modified_date;
                      $data1[$value2->col_name]=$value2->value;
-
+                      
                 }
-
+ 
             $opt[]= $data1;
+
         }
-    
+        // echo "<pre>";
+        //              print_r($opt);
+        // dd($opt);
       $fresult=$opt;
-   // print_r($result1);
+   // dd($fresult);
      return $fresult;
 
 
@@ -868,7 +872,11 @@ class Customer extends Model
         return $result;
     }
 
-    
+    public function GetUserfilterId($id){
+
+        $filter_data=DB::table('user_filters')->select('filter_query','module_id')->where('id',$id)->get()->toArray();
+        return $filter_data;
+    }
 
 
 

@@ -87,5 +87,23 @@ function createdeal(id){
    
     });
 
+$(document).ready(function(){
+$('#saveFilter1').on('change',function(){
+    var savefilterid=$("#saveFilter1").val();
+    // alert(savefilterid);
+    $.ajax({
+        type: "get",
+        url: "get_filter_by_users/"+savefilterid,
 
+       
+        success: function (response) {
+        
+          $(".lead_search").html(response);
 
+          
+        },
+       
+      });
+
+  });
+  });
