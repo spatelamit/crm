@@ -134,13 +134,16 @@
 
                                          <td  class="details-control"> <a href="{{url('single-profile',[$data['accounts_data'][$key1]['data_id'],10])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
                                          <td>{{$data['accounts_data'][$key1]['user']}}</td>
-                                      @if ($data['selected_col'] != null)
-                                         @foreach ($data['selected_col'] as $key => $selvalue)
-                                               
-                                                <td class="details-control"> {{ $data['accounts_data'][$key1][$selvalue->col_name] }}</td>
-                                               
-                                            @endforeach
-                                        @endif
+                                      
+                                        @forelse ($data['selected_col'] as $key => $selvalue)
+                                              @if(isset($data['accounts_data'][$key1][$selvalue->col_name]))
+                                          <td class="details-control"> {{ $data['accounts_data'][$key1][$selvalue->col_name] }}</td>
+                                          @else
+                                          <td>Null</td>
+                                          @endif
+                                         @empty 
+                                         @endforelse
+                                      
                                         
 
                                       

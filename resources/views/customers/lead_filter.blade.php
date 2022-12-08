@@ -45,7 +45,7 @@
                             </thead>
                             <tbody>
 
-                                @if ($data['leads_data'] != null)
+                                
                                     @forelse ( $data['leads_data'] as $key1 => $field)
                                         <tr>
 
@@ -71,8 +71,8 @@
              href="{{ url('single-profile',[$data['leads_data'][$key1]['data_id'],$data['leads_data'][$key1]['module_id']]) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                 </td>
                                                 <td>{{$data['leads_data'][$key1]['user']}}</td>
-                                        @if ($data['selected_col'] != null)    
-                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                         
+                                         @forelse ($data['selected_col'] as $key => $selvalue)
                                                 <td class="details-control">
                                                 <?php if(isset($data['leads_data'][$key1][$selvalue->col_name] )){ ?>
                                                  {{ $data['leads_data'][$key1][$selvalue->col_name] }}
@@ -80,10 +80,10 @@
                                                     echo 'Null';
                                                  }?>
                                              </td>
-                                            
-                                            @endforeach
-                                         @endif
-
+                                            @empty
+                                            <td>No records</td>
+                                            @endforelse
+                                       
                                         <td>{{$data['leads_data'][$key1]['created_at']}}</td>
 
                                             <td>
@@ -111,12 +111,12 @@
                                             </td>
                                         </tr>
                                         @empty
-                                        <tr>No Data</tr>
+                                        <tr><td>No Data</td></tr>
                                         <!-- edit -->
 
                                         <!-- edit -->
                                     @endforelse
-                                @endif
+                               
 
                             </tbody>
                         </table>

@@ -1,6 +1,6 @@
 @include('header')
 
-
+@include('customers.popup');
 <div class="content-wrapper">
 
 
@@ -12,11 +12,12 @@
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
 
-                <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i
+                <!-- <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i
                         class="fa fa-user-plus"></i>
-                    Create Leads </a>
-
-
+                    Create Leads </a> -->
+                <a class="dropdown-item" 
+                               onclick="modals('newlead')" > <i class="fa fa-user-plus"></i>
+                                Add Lead </a>
 
 
                 <a class="btn btn-info font-weight-bold new_w mr-2" id="Filter_box"><i class="fa fa-filter"
@@ -56,11 +57,6 @@
     </div>
 
 
-
-
-
-
-
     <div class="row">
         <div class="col-md-12 " id="bid_d">
 
@@ -68,8 +64,7 @@
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="card-title">Leads List </h5>
-                    
-                    
+                     
                 </div>
                 <div class="m-b-10">
                      <a class=" btn btn-info" data-animation="slideInRight" data-toggle="modal"
@@ -78,8 +73,7 @@
                 </div>
                 <div class="m-b-10">
 
-                
-                       
+                               
                  <input type="hidden" id="mod_id" value="8">
                      <select name="view_data" id="view_data" >
                         <option value="select">Select </option>
@@ -88,15 +82,11 @@
                          <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Leads</option>
                     <option value="last_week"  {{ $data['filter_name'] == 'last_week'?'selected':''}}>last week leads</option>
                      </select> 
-                        
-            
-                    
+                 
                 </div>
     <ul class=" list-inline" id="viewfilter" style="display: none;">
-             </ul>
-                    
-             
-
+    </ul>
+                 
                 <div class="card-body">
                     <div class="table-responsive lead_search">
                         <table  class="display table leads">
@@ -150,17 +140,18 @@
                                                             href="{{ url('single-profile', [$data['leads_data'][$key1]['data_id'],8]) }}">{{ $data['leads_data'][$key1]['data_id'] }}</a>
                                                     </td>
                                                 <td>{{ $data['leads_data'][$key1]['user'] }}</td>
-                                             @if ($data['selected_col'] != null)    
-                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                        
+                                     @forelse ($data['selected_col'] as $key => $selvalue)
                                                <td class="details-control">
-                                                <?php if(isset($data['leads_data'][$key1][$selvalue->col_name] )){ ?>
-                                                 {{ $data['leads_data'][$key1][$selvalue->col_name] }}
+                         <?php if(isset($data['leads_data'][$key1][$selvalue->col_name] )){ ?>
+                                         {{ $data['leads_data'][$key1][$selvalue->col_name] }}
                                                  <?php } else{
                                                     echo 'Null';
                                                  }?>
                                              </td>
-                                            @endforeach
-                                            @endif
+                                    @empty
+                                     @endforelse
+                                      
                                             <td>
 
                                                 <div class="btn-group btn-group-sm" style="float: none;">
@@ -199,6 +190,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-3 b-left fadeIn p-0 d-none" id="small_d">
 
             <div class="block block-condensed mb-4">
@@ -262,18 +254,12 @@
                                 <option value="sectors">Sectors</option>
                                  <option value="date_range">Date range</option>
                           
-
-
                             </select>
                         </div>
-
-
 
                         <!-- END HEADING -->
                     </div>
                     <div class="block-content " id="idsc">
-
-
 
                     </div>
 
@@ -296,16 +282,9 @@
 
                         </div>
 
-
-
-
                     </div>
 
-
                 </div>
-
-
-
 
             </form>
             </div>
@@ -757,7 +736,7 @@
                 meradata +
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="sectordata"><div class="form-group"><select class="sectorfilter form-control" name="sectorfilter" id="sectorfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
-                '<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;">><option value=""></option> </select></div>';
+                '<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;"><option value=""></option> </select></div>';
 
             $("#idsc").append(text);
             $("#sectordata").append(users_input);

@@ -110,7 +110,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/view-data/{id}/{mod_id}',[CustomerController::class, 'view_data']);
      Route::get('/get-viewfilter-id/{id}',[CustomerController::class, 'get_viewfilter_id']);
      Route::get('/deals-pipeline',[CustomerController::class, 'deals_pipeline']);
-      Route::get('/deals-pipeline',[CustomerController::class, 'deals_pipeline']);
+    
       Route::get('/deal-pipe-ajax/{pid}',[CustomerController::class, 'deal_pipe_ajax']);
     Route::get('/update-deal-stage/{stageId}/{dealId}',[CustomerController::class, 'update_deal_stage']);
     Route::get('/deal-won-lost/{stageId}/{dealId}',[CustomerController::class, 'deal_won_lost']);

@@ -107,3 +107,7 @@ $('#saveFilter1').on('change',function(){
 
   });
   });
+function modals(id){
+  // alert('#'+id);
+  $('#'+id).modal('show');
+}

@@ -102,7 +102,7 @@
                                        <div class="form-group mb-10">
                                          <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
-                                                <select class="form-control dealstage"  >
+                                                <select class="form-control dealstage" name="value[]" >
                                                     
                                                     @foreach($data['field_option'] as $option)
                                                     @if($option->column_id == $val->column_id)

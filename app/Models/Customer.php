@@ -82,7 +82,7 @@ class Customer extends Model
 
     }
 
-    public function GetOptionField(){
+    public function GetOptionField($id=null){
         $result=DB::table('fields_option')
                 ->where('company_id',session()->get('company_id'))
                 ->Orwhere('column_id','0')
@@ -92,7 +92,7 @@ class Customer extends Model
 
 
     public function SaveLeads($req){
-
+// dd($req->all());
 
     	$module_id=$req->module_id;
     	$data_id=uniqid();

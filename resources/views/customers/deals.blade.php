@@ -140,8 +140,9 @@
                                                             href="{{ url('single-profile', [$data['deal_data'][$key1]['data_id'],9]) }}">{{ $data['deal_data'][$key1]['data_id'] }}</a>
                                                     </td>
                                                     <td>{{ $data['deal_data'][$key1]['user'] }}</td>
-                                        @if($data['selected_col'] !=null)      
-                                              @foreach ($data['selected_col'] as $key => $selvalue)
+                                              
+                            @forelse ($data['selected_col'] as $key => $selvalue)
+                                @if(isset($data['deal_data'][$key1][$selvalue->col_name]))
                                                 @if($selvalue->col_name=='company_name')
                                                  <td class="details-control"> <a
                                                             href="{{ url('lead-profile', $data['deal_data'][$key1]['account_id']) }}">{{ $data['deal_data'][$key1][$selvalue->col_name] }}</a>
@@ -157,9 +158,12 @@
                                                      }?>
                                                  </td>
                                                 @endif
-                                            @endforeach
-                                        @endif
-
+                                            @else
+                                            <td>null</td>
+                                            @endif
+                                  @empty
+                            @endforelse
+                                        
                                             <td>
 
                                                 <div class="btn-group btn-group-sm" style="float: none;">

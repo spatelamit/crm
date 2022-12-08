@@ -40,60 +40,53 @@ class CustomerController extends Controller
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
+         $data['field_option']=$this->Customer->GetOptionField();
 
         $view_filter=$this->Customer->GetViewfilterId($module_id);
          $data['filter_name']='';
         if($view_filter){
            $data['leads_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
-            // dd( $data['leads_data']);
+            
            $data['filter_name']=$view_filter->filter_name;
-          // dd( $data['leads_data']);
+          
         }else{
               if( $data['leads_datas']){
                 foreach ($data['leads_datas'] as $key => $value) {
                     $data['leads_data'][]=(json_decode(json_encode( $value),true));
 
                 }
-                foreach (  $data['leads_data'][0] as $key => $value) {
-                  $data_k[]=$key;
-                }
-                $data_keys=implode(",",  $data_k);
-            }else{
+               
+              }else{
                 $data['leads_data']=null;
-                  $data_keys=null;
+                 
 
-            }
+             }
             // dd($data['leads_data']);
         }
 
-        
-
-        
+    
       //table view columns
           if($data['selected_col']!=false ){
-          foreach ($data['selected_col'] as $key => $selected_col) {
-            $field1[]=$selected_col->column_id;
-            $field2[]=$selected_col->col_name;
-         }
-           $selcol=$field1;
-           $selcolname=implode(",",  $field2);
-           $selcol=implode(",",  $selcol);
+                foreach ($data['selected_col'] as $key => $selected_col) {
+                  $field1[]=$selected_col->column_id;
+                  $field2[]=$selected_col->col_name;
+               }
+                 $selcol=$field1;
+                 $selcolname=implode(",",  $field2);
+                 $selcol=implode(",",  $selcol);
 
-        }else{
-          $selcol= null;
-           $selcolname=null;
-        }
+           }else{
+                $selcol= null;
+                 $selcolname=null;
+           }
 
         //end table view columns
-      //
+     
 
-      $chiled_parent= $this->Usersetting->ChildNameByparentId();
-      $data['user_filters']=DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
+        $chiled_parent= $this->Usersetting->ChildNameByparentId();
+         $data['user_filters']=DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
 
-       // dd( $data['leads_data']); 
-       // echo ( session()->get('id'));
-        // $data['leads_data'] = $this->paginate($data['leads_data'],5,null,
-        //   [ 'path' => Paginator::resolveCurrentPath()]);
+      
        
        return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
@@ -106,6 +99,7 @@ class CustomerController extends Controller
     // dd($data['selected_fields'][0]->module_id);
         return view('customers.add-leads',compact('data'));
     }
+
 
     public function save_leads(Request $req){
         // dd($req->all());
@@ -308,7 +302,7 @@ class CustomerController extends Controller
     }
 
     //
-    public function deals1(){
+    public function deals_pipeline(){
              $module_id='9';
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
              $data['selected_col']=$this->Customer->GetTableCol($module_id);
@@ -400,6 +394,7 @@ class CustomerController extends Controller
       return view('customers.deals-pipe',compact('data'));
     }
 
+
     public function deal_pipe_ajax($pid){
       $module_id='9';
        $data['PipelineGroup']=$this->Customer->PipelineStages($pid);
@@ -485,7 +480,7 @@ class CustomerController extends Controller
 
         //end table view columns
       
-        // dd($data);
+        // dd($data['accounts_data']  );
         return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
     }
 
