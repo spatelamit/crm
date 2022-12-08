@@ -856,13 +856,11 @@ class Customer extends Model
             $opt[]= $data1;
 
         }
-<<<<<<< HEAD
 
-=======
         // echo "<pre>";
         //              print_r($opt);
         // dd($opt);
->>>>>>> 19edaffcf5d0b38b6cd6e929ce72359da1b80ca3
+
       $fresult=$opt;
    // dd($fresult);
      return $fresult;
@@ -876,15 +874,12 @@ class Customer extends Model
         return $result;
     }
 
-<<<<<<< HEAD
 
-=======
     public function GetUserfilterId($id){
 
         $filter_data=DB::table('user_filters')->select('filter_query','module_id')->where('id',$id)->get()->toArray();
         return $filter_data;
     }
->>>>>>> 19edaffcf5d0b38b6cd6e929ce72359da1b80ca3
 
 
 
