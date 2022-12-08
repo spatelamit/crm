@@ -201,23 +201,21 @@
         </div>
         <div class="col-md-3 b-left fadeIn p-0 d-none" id="small_d">
 
-            <div class="block block-condensed">
+            <div class="block block-condensed mb-4">
 
-
-
-
-
-                <div class="block-heading mb-0">
+                <div class="block-heading" class="col-md-6">
                     <!-- HEADING -->
 
                     <div class="app-heading app-heading-bordered app-heading-page row">
 
-                        <div id="listOfSavedFilter" class="filters_box_row1 mt-5">
-                            <select class="form-control col-md-6" id="saveFilter" name="saveFilter">
-                                <option>Select Save Filter</option>
+                     <div id="listOfSavedFilter" class="form-control filters_box_row1 mt-5">
+                            <select class="form-control saveFilter" id="saveFilter1" name="saveFilter" style="width: 100%;" tabindex="-1" >
+                              
 
-
-                                <option value=""></option>
+                                @forelse($data['user_filters'] as $filter)
+                                <option value="{{$filter->id}}">{{$filter->filter_name}}</option>
+                                @empty
+                                @endforelse
 
 
                             </select>
@@ -229,7 +227,7 @@
 
 
 
-
+            <div class="block mt-2">
 
             <form action="javascript:void(0)" id="leads_filter">
                 @csrf
@@ -310,6 +308,7 @@
 
 
             </form>
+            </div>
         </div>
     </div>
 
@@ -639,6 +638,14 @@
 
 
 <script type="text/javascript">
+
+    $("#saveFilter1").select2({
+                placeholder: "Select an Option",
+              
+                allowClear: true,
+                // data:stagename,
+            });
+
     $("#StaticFilter").change(function() {
 
         var anem = $("#StaticFilter").val();

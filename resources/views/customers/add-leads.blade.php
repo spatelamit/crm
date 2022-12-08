@@ -98,7 +98,22 @@
                                             <input type="hidden" name="value[]" class="form-control bg_input"
                                                 value="{{ date('Y-m-d H:i:s') }}">
                                         </div>
+                                     @elseif($val->type == 'select')
+                                       <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                           <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                                <select class="form-control dealstage"  >
+                                                    
+                                                    @foreach($data['field_option'] as $option)
+                                                    @if($option->column_id == $val->column_id)
+                                                    <option value="{{$option->id}}">{{$option->option_name  }}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+                                               
+                                        </div>
                                     @else
+
                                         <div class="form-group mb-10">
                                             <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                             <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">

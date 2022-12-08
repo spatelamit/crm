@@ -176,6 +176,10 @@ $field1[]=$selected_field->column_id;
                   <input type="hidden"   name="column_id[]" value=" {{$val->column_id }}" >
                   <input type="hidden"   name="type[]" value=" {{$val->type}} " >
                   <input type="hidden"   name="col_name[]" value="{{ $val->col_name}} " >
+                  @if($val->company_id!=0)
+                  <a href="">edit</a>
+                   <a href="">Delete</a>
+                  @endif
                 </li>
                
           @endif
@@ -205,64 +209,61 @@ $field1[]=$selected_field->column_id;
   var input=document.getElementsByTagName('li');
   var choice = document.getElementsByClassName('choice');
   var dragitem=null;
-  for(var i of input){
-    i.addEventListener('dragstart',dragStart);
-    i.addEventListener('dragend',dragEnd);
-  }
+  // for(var i of input){
+  //   i.addEventListener('dragstart',dragStart);
+  //   i.addEventListener('dragend',dragEnd);
+  // }
 
-  function dragStart(){
-    dragitem=this;
-    setTimeout(()=>this.style.display="none",0);
+  // function dragStart(){
+  //   dragitem=this;
+  //   setTimeout(()=>this.style.display="none",0);
 
-  }
-  function dragEnd(){
-    setTimeout(()=>this.style.display="block",0);
-    dragitem=null;
+  // }
+  // function dragEnd(){
+  //   setTimeout(()=>this.style.display="block",0);
+  //   dragitem=null;
 
 
-  }
+  // }
 
-  for (j of choice){
-     j.addEventListener('dragover',dragOver);
-    j.addEventListener('dragenter',dragEnter);
-    j.addEventListener('dragleave',dragLeave);
-     j.addEventListener('drop',Drop);
+  // for (j of choice){
+  //    j.addEventListener('dragover',dragOver);
+  //   j.addEventListener('dragenter',dragEnter);
+  //   j.addEventListener('dragleave',dragLeave);
+  //    j.addEventListener('drop',Drop);
      
-  }
+  // }
 
-  function Drop(){
+  // function Drop(){
 
-    this.append(dragitem);
-     
-  }
+  //   this.append(dragitem);
+  //    
+  // }
 
-  function dragOver(e){
-    e.preventDefault();
-    this.style.border ="2px dotted cyan";
+  // function dragOver(e){
+  //   e.preventDefault();
+  //   this.style.border ="2px dotted cyan";
 
-  }
+  // }
 
-  function dragEnter(e){
-    e.preventDefault();
+  // function dragEnter(e){
+  //   e.preventDefault();
 
-  }
+  // }
 
-  function dragLeave(){
-     $( "#sortable " ).sortable();
+  // function dragLeave(){
+  //    $( "#sortable " ).sortable();
   
-     this.style.border ="none";
+  //    this.style.border ="none";
 
-  }
+  // }
 
  
-// $(function () {
-//         $("#selected .choice").sortable({
-//                 connectWith: "ul"  
-//         });
-//          
-//         $("ul .choice").draggable({
-//             helper: "clone",
-//             connectToSortable: ".choice"
-//         });
-//     });
+$(function () {
+        $('.choice').sortable({
+     cursor: "move",
+       connectWith: ".choice",
+ });  
+
+    });
 </script>

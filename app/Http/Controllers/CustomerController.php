@@ -36,6 +36,7 @@ class CustomerController extends Controller
         
     public function leads(){
         $module_id='8';
+        $user_id=session()->get('id');
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
@@ -44,6 +45,7 @@ class CustomerController extends Controller
          $data['filter_name']='';
         if($view_filter){
            $data['leads_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
+            // dd( $data['leads_data']);
            $data['filter_name']=$view_filter->filter_name;
           // dd( $data['leads_data']);
         }else{
@@ -70,8 +72,8 @@ class CustomerController extends Controller
       //table view columns
           if($data['selected_col']!=false ){
           foreach ($data['selected_col'] as $key => $selected_col) {
-          $field1[]=$selected_col->column_id;
-          $field2[]=$selected_col->col_name;
+            $field1[]=$selected_col->column_id;
+            $field2[]=$selected_col->col_name;
          }
            $selcol=$field1;
            $selcolname=implode(",",  $field2);
@@ -86,28 +88,20 @@ class CustomerController extends Controller
       //
 
       $chiled_parent= $this->Usersetting->ChildNameByparentId();
-          if($chiled_parent!=false ){
-              foreach ($chiled_parent as $key => $chiledid) {
-             $chilesId[]=$chiledid->id;
-           
-         }
-              $chilesIds=implode(",",  $chilesId);
-          }else{
-            $chilesIds=Null;
-          }
+      $data['user_filters']=DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
 
-       // dd($data); 
+       // dd( $data['leads_data']); 
        // echo ( session()->get('id'));
         // $data['leads_data'] = $this->paginate($data['leads_data'],5,null,
         //   [ 'path' => Paginator::resolveCurrentPath()]);
-        // dd( $data['leads_data']);
+       
        return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
 
       public function add_leads(){
 
        $module_id='8';
-
+         $data['field_option']=$this->Customer->GetOptionField();
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
     // dd($data['selected_fields'][0]->module_id);
         return view('customers.add-leads',compact('data'));
@@ -572,4 +566,41 @@ class CustomerController extends Controller
 
     }
 
+      public function get_filter_by_users($id){
+         DB::statement("SET SQL_MODE=''");
+        $query=$this->Customer->GetUserfilterId($id);
+        $module_id=$query[0]->module_id;
+        $filter_data=DB::select($query[0]->filter_query);
+        $collection=collect($filter_data)->where('module_id',$module_id)->groupBy('data_id');
+         $data['leads_data']=$this->col_row_convert($collection);
+         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+         $data['selected_col']=$this->Customer->GetTableCol($module_id);
+        return view('customers.lead_filter',compact('data'));
+     
+      }
+
+      public function col_row_convert($data){
+       
+        
+        $result=[];
+        foreach ($data as $key => $value) {
+          $data1=[];
+            foreach ($value as $key2 => $value2) {
+                    $data1['data_id']=$value2->data_id;
+                    $data1['module_id']=$value2->module_id;
+                    $data1['user_id']=$value2->user_id;
+                    $data1['user']=$value2->users;
+                    $data1['created_at']=$value2->created_at;
+                    $data1['modified_at']=$value2->modified_date;
+                     $data1[$value2->col_name]=$value2->value;
+
+                }
+
+            $result[]= $data1;
+        }
+    
+    
+      return $result;
+
+      }
 }
