@@ -57,15 +57,27 @@ class User extends Authenticatable
     }
     public function csv_export_data()
     {
-        $quary =$this->Customer->GetLeadsData();
+        // $quary =$this->Customer->GetLeadsData();
+        $quary = DB::table('module_selected_column')
+        ->where('module_id', 8)
+        ->where(function ($query){
+            $query->where( 'company_id', 0)
+            ->orWhere('company_id',session()->get('company_id'));
+        })
+
+        ->get();
         // dd($quary);
         // $data = json_decode(json_encode($quary), True);
         $i = 0;
-        foreach ($quary[0] as $key => $value) {
-            $data[]=(json_decode(json_encode( $key),true));
+        $data=[];
+        foreach ($quary as $key => $value) {
+            $data[]=$value->column_id.'_'.$value->col_name;
+            // $data[]=(json_decode(json_encode( $key),true));
 
               }
-            //   dd($data);
+            //   $data=implode(',',$data);
+            //   print_r($data);
+            //   die;
         // $dat1 = $data_array;
 
 

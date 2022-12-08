@@ -361,12 +361,12 @@ class Customer extends Model
         foreach($quary as $key => $val){
             // $data_array[ $val->col_name]=$val->col_name;
             $data_array[]=array(
-                'col_name'=>$val->col_name,
+                'col_name'=>$val->col_name.'_'.$val->col_name,
             );
             $i++;
         }
         $dat1=$data_array;
-// dd($dat1);
+        // dd($dat1);
         function cleanData(&$str)
         {
             if ($str == 't') $str = 'TRUE';
@@ -644,10 +644,10 @@ class Customer extends Model
          }
          // date_range filter
         if($req->daterangeopt=='1'){
-           
+
             $query->whereDate('module_data.created_at','=',date('Y-m-d'));
          }elseif($req->daterangeopt=='2'){
-           
+
             $query->whereDate('module_data.created_at','=',date("Y-m-d", strtotime("-1 day")));
          }elseif ($req->daterangeopt=='3') {
              $previous_week = strtotime(" this week ");
@@ -655,7 +655,7 @@ class Customer extends Model
              $end_week = strtotime("next saturday",$start_week);
              $start_week = date("Y-m-d",$start_week);
              $end_week = date("Y-m-d",$end_week);
-             
+
              $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
 
          }elseif ($req->daterangeopt=='4') {
@@ -664,29 +664,29 @@ class Customer extends Model
              $end_week = strtotime("next saturday",$start_week);
              $start_week = date("Y-m-d",$start_week);
              $end_week = date("Y-m-d",$end_week);
-             
+
              $query->whereBetween('module_data.created_at',[$start_week, $end_week]);
 
          }elseif ($req->daterangeopt=='5') {
-           
+
              $query->whereMonth('module_data.created_at','=',date("m",strtotime(" this month")));
 
          }elseif ($req->daterangeopt=='6') {
-           
+
              $query->whereMonth('module_data.created_at','=',date("m",strtotime(" -1 month")));
 
          }elseif ($req->daterangeopt=='7') {
-           
-           $query->whereDate('module_data.created_at', '>=', $req->startdate)            
+
+           $query->whereDate('module_data.created_at', '>=', $req->startdate)
             ->whereDate('module_data.created_at', '<=', $req->enddate);
 
          }
-      
+
          //
-         
+
     }else{
          $query->whereIn('module_data.user_id',$chilesId);
-        
+
     }
         $result=$query->get()->toArray();
          $que=$query->toSql();
@@ -709,8 +709,8 @@ class Customer extends Model
                     $data1['data_id']=$value2->data_id;
                      $data1['module_id']=$value2->module_id;
                     $data1['user_id']=$value2->user_id;
-                    $data1['user']=$value2->users;  
-                    $data1['created_at']=$value2->created_at;  
+                    $data1['user']=$value2->users;
+                    $data1['created_at']=$value2->created_at;
                      $data1[$value2->col_name]=$value2->value;
 
                 }
@@ -796,7 +796,7 @@ class Customer extends Model
 
 
                  $search=[];
-             
+
                  if (!empty($id) || $id !="" ){
 
                      // User wise filter
@@ -809,7 +809,7 @@ class Customer extends Model
                         $query->whereDate('module_data.created_at','=',date('Y-m-d'));
                         $query->whereIn('module_data.user_id',$chilesId);
                      }elseif($id=='last_week'){
-                          
+
                         $query->whereIn('module_data.data_id',function($subq){
                             $subq->select('data_id')
                                     ->from('module_data')
@@ -854,7 +854,7 @@ class Customer extends Model
 
             $opt[]= $data1;
         }
-    
+
       $fresult=$opt;
    // print_r($result1);
      return $fresult;
@@ -868,7 +868,7 @@ class Customer extends Model
         return $result;
     }
 
-    
+
 
 
 

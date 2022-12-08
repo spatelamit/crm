@@ -20,7 +20,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
   <!-- endinject -->
- 
+
   <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="{{url('/assets/css/dataTables.css')}}">
    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-  
+
 <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -196,7 +196,7 @@
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li> -->
-                <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li> --}}
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li> -->
               </ul>
             </div>
@@ -237,12 +237,12 @@
               <span class="menu-title"> Tasks</span>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="{{url('teams')}}">
               <i class="fa fa-users menu-icon"></i>
               <span class="menu-title"> Teams</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="{{url('user_profile')}}">
               <i class="fa fa-user menu-icon"></i>
@@ -253,4 +253,4 @@
       </nav>
       <!-- partial -->
       <div class="main-panel">
-        
+
