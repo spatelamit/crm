@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Customer;
+use Database\Seeders\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -148,7 +149,7 @@ class ActivityController extends Controller
             // ->Orwhere('tasks.reciever_id', null)
 
 
-            ->paginate('5');
+            ->paginate('10');
             // dd(DB::getQueryLog());
         //   dd($result);
         return view('meetings', compact('result'));
@@ -238,11 +239,22 @@ class ActivityController extends Controller
              $data['accounts_data']=null;
 
            }
+
+           $data['meeting_user']= DB::table('users')
+           ->where('company_id',session()->get('company_id'))
+           ->select('username','id')
+           ->get();
+
         return view('add_meetings', compact('data'));
     }
 
     public function create_meeting(Request $req)
     {
+        // $req->validate([
+        //     'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:3048'
+        //   ]);
+
+
         // dd($req);
         $file = $req->file('attachments');
         // dd($file);
@@ -262,15 +274,25 @@ class ActivityController extends Controller
             'reciever_id' => $req->reciever_id,
             'related_to' => $req->related_to,
             'attachments'=>$filename,
-            'meeting_url' => $req->meeting_url
+            'meeting_url' => $req->meeting_url,
+            'meeting_plateform' => $req->meeting_plateform
 
 
 
             // 'modify_date' => date('Y-m-d H:i:s')
         );
-        dd($data);
-        return redirect('meetings');
+        // dd($data);
+        $add_meeting = DB::table('meetings')->insert($data);
+
+        if ($add_meeting) {
+            return redirect('meetings');
+        } else {
+            return "error";
+        }
+
     }
+
+
 
 
 

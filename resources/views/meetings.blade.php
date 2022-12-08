@@ -15,8 +15,8 @@
     </div>
 
 
- 
-   
+
+
 
 
 
@@ -76,7 +76,8 @@
 
 
                                         <td>{{ $key1->related_to }}</td>
-                                        <td>{{$key1->attachments}}</td>
+                                        <td><a href="{{ url('upload/' .$key1->attachments) }}" class="btn btn-info" target="_blank">Attachments
+                                            </a></td>
                                         <td>{{ $key1->modify_date}}</td>
                                         <td>{{ $key1->creation_date }}</td>
 
