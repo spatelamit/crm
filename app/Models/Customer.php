@@ -221,7 +221,8 @@ class Customer extends Model
 	  }
 
 	  public function UpdateLead($req){
-   DB::enableQueryLog();
+   // DB::enableQueryLog();
+        // dd($req->all());
 	  	$data_id=$req->data_id;
 	  	// dd($req->all());
 	  	for ($i=0; $i <count($req->column_id) ; $i++) {
@@ -230,12 +231,12 @@ class Customer extends Model
 	  		$result[]=DB::table('module_data')
 	  				// ->where('data_id',$data_id)
 	  				// ->where('column_id',$req->column_id[$i])
-	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id ,'user_id'=>$req->user_id]);
+	  				->updateOrInsert(['data_id'=>$data_id,'column_id'=>$req->column_id[$i]],['value'=>$req->value[$i],'module_id'=>$req->module_id ,'user_id'=>$req->user_id,'created_at'=>$req->created_at]);
 	  	}
-         dd(DB::getQueryLog());
+         // dd(DB::getQueryLog());
 	  	// echo "<pre>";
 	  	// print_r($data);
-	  		die();
+	  		// die();
 	  	if($result){
 	  		return true;
 		  }else{
@@ -525,12 +526,12 @@ class Customer extends Model
                         });
          }elseif($req->pinsearch=='isnot'){
            $pin_search=$req->pin_search;
-            $query->whereIn('module_data.data_id',function($subq) use($pin_search,$mod_id) {
+            $query->whereNotIn('module_data.data_id',function($subq) use($pin_search,$mod_id) {
                             $subq->select('data_id')
                                     ->from('module_data')
                                     ->where('module_id',$mod_id)
                                     ->where('column_id','13')
-                                    ->where('value','<>' ,$pin_search);
+                                    ->where('value' ,$pin_search);
 
                         });
          }
@@ -558,12 +559,12 @@ class Customer extends Model
                         });
          }elseif($req->citysearch=='isnot'){
            $city_search=$req->city_search;
-            $query->whereIn('module_data.data_id',function($subq) use($city_search,$mod_id) {
+            $query->whereNotIn('module_data.data_id',function($subq) use($city_search,$mod_id) {
                             $subq->select('data_id')
                                     ->from('module_data')
                                     ->where('module_id',$mod_id)
                                     ->where('column_id','11')
-                                    ->where('value','<>' ,$city_search);
+                                    ->where('value',$city_search);
 
                         });
          }
@@ -591,12 +592,12 @@ class Customer extends Model
                         });
          }elseif($req->countrysearch=='isnot'){
            $country_search=$req->country_search;
-            $query->whereIn('module_data.data_id',function($subq) use($country_search,$mod_id) {
+            $query->whereNotIn('module_data.data_id',function($subq) use($country_search,$mod_id) {
                             $subq->select('data_id')
                                     ->from('module_data')
                                     ->where('module_id',$mod_id)
                                     ->where('column_id','12')
-                                    ->where('value','<>' ,$country_search);
+                                    ->where('value',$country_search);
 
                         });
          }
@@ -623,12 +624,12 @@ class Customer extends Model
                         });
          }elseif($req->statesearch=='isnot'){
            $state_search=$req->state_search;
-            $query->whereIn('module_data.data_id',function($subq) use($state_search,$mod_id) {
+            $query->whereNotIn('module_data.data_id',function($subq) use($state_search,$mod_id) {
                             $subq->select('data_id')
                                     ->from('module_data')
                                     ->where('module_id',$mod_id)
                                     ->where('column_id','10')
-                                    ->where('value','<>' ,$state_search);
+                                    ->where('value',$state_search);
 
                         });
          }
@@ -642,6 +643,32 @@ class Customer extends Model
                                     ->where('value' ,'LIKE','%'.$state_search.'%');
 
                         });
+         }
+         //sectors filter 
+         if($req->sectorfilter=='is'){
+            $sectors_id=$req->sectors;
+            $query->whereIn('module_data.data_id',function($subq) use($sectors_id,$mod_id){
+                    $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','40')
+                                    ->whereIn('value' ,$sectors_id);
+  
+            });
+
+
+         }elseif($req->sectorfilter=='isnot'){
+            $sectors_id=$req->sectors;
+            $query->whereNotIn('module_data.data_id',function($subq) use($sectors_id,$mod_id){
+                    $subq->select('data_id')
+                                    ->from('module_data')
+                                    ->where('module_id',$mod_id)
+                                    ->where('column_id','40')
+                                    ->whereIn('value' ,$sectors_id);
+  
+            });
+
+
          }
          // date_range filter
         if($req->daterangeopt=='1'){
@@ -695,14 +722,17 @@ class Customer extends Model
           $query1 = str_replace(array('?'), array('\'%s\''), $que);
         $filter_query = vsprintf($query1, $builder);
 
-         // print_r($view_query);
+
+         // print_r($filter_query);
         if(isset($req->filtersave)){
              $store_filter_que=DB::table('user_filters')->insert(['user_id'=>session()->get('id'),'module_id'=>$mod_id,'filter_query'=>$filter_query,'filter_name'=>$req->filtersave]);
         }
 
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
-        // print_r($result1);
+ // echo "<pre>";
+ //        print_r($result);
+ //        die;
         $opt=[];
         foreach ($result1 as $key => $value) {
                 $data1=[];
@@ -718,7 +748,7 @@ class Customer extends Model
 
             $opt[]= $data1;
         }
-     
+
       // $fresult=array_merge($opt,$search);
 
      return $opt;

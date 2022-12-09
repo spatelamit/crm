@@ -9,25 +9,23 @@
                         aria-hidden="true">&times;</span> </button>
             </div>
             <div class="row">
-        <div class="col-sm-8 mb-4 mb-xl-0">
-            <h4 class="font-weight-bold text-dark"> Add Leads </h4>
-            <p class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
-                have your own fields then click on create dynamic layouts..</p>
-        </div>
-        <div class="col-sm-4 mb-4 mb-xl-0">
-            <div class="widgetbar text-right"> <a class="btn btn-info font-weight-bold mb-2"
-                    href="{{ url('module-layout', $data['selected_fields'][0]->module_id) }}">Create Dynamic Layout </a>
-            </div>
-        </div>
-    </div>
+		        <div class="col-sm-8 mb-4 mb-xl-0">
+		            <h4 class="font-weight-bold text-dark"> Add Leads </h4>
+		            <p class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
+		                have your own fields then click on create dynamic layouts..</p>
+		        </div>
+		        <div class="col-sm-4 mb-4 mb-xl-0">
+		            <div class="widgetbar text-right"> <a class="btn btn-info font-weight-bold mb-2"
+		                    href="{{ url('module-layout', $data['selected_fields'][0]->module_id) }}">Create Dynamic Layout </a>
+		            </div>
+		        </div>
+  		  </div>
        <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
          			  <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
                         @csrf
-
-
 
                         <input type="hidden" name="module_id" value="{{ $data['selected_fields'][0]->module_id }}">
 

@@ -41,7 +41,7 @@ class CustomerController extends Controller
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
          $data['field_option']=$this->Customer->GetOptionField();
-
+         // dd( $data['field_option']);
         $view_filter=$this->Customer->GetViewfilterId($module_id);
          $data['filter_name']='';
         if($view_filter){

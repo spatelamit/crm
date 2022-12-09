@@ -12,6 +12,7 @@
           <form method="post" action="{{url('update-lead')}}" autocomplete="nope">
             @csrf
             <div class="row">
+              <input type="hidden" name="created_at" value="{{$data['edit_lead_data'][0]->created_at}}">
               <input type="hidden" name="module_id" value="{{$data['edit_lead_data'][0]->module_id}}">
               <input type="hidden" name="data_id" value="{{$data['edit_lead_data'][0]->data_id}}">
               <input type="hidden" name="user_id" value="{{$data['edit_lead_data'][0]->user_id}}">
