@@ -1,5 +1,6 @@
 @include('header')
 
+@include('customers.popup');
 
 <div class="content-wrapper">
 
@@ -12,10 +13,12 @@
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
   
-                 <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-account') }}"> <i class="fa fa-user-plus"></i>
-                    Create Accounts </a> 
+                <!--  <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-account') }}"> <i class="fa fa-user-plus"></i>
+                    Create Accounts </a>  -->
                     
-                    
+                     <a class="btn btn-info font-weight-bold new_w mr-2" 
+                               onclick="modals('newaccount')" > <i class="fa fa-user-plus"></i>
+                                Add Account </a>
                   
                     
                     <a class="btn btn-info font-weight-bold new_w mr-2" id="Filter_box" ><i class="fa fa-filter" aria-hidden="true"></i>

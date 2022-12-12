@@ -428,10 +428,8 @@ class Customer extends Model
                 ->join('users','users.id','=','module_data.user_id')
                 ->groupBy('module_data.data_id','module_data.column_id');
 
-             // $que="call getModulesData(".session()->get('id').",".$req->module_id.")";
-             //     $leads_data=DB::select($que);
-                // print_r( $leads_data);
-                 $search=[];
+            
+             
                  $result=[];
     if (!empty($req->ftaticfilter) || $req->ftaticfilter !=""){
 
@@ -723,7 +721,7 @@ class Customer extends Model
         $filter_query = vsprintf($query1, $builder);
 
 
-         // print_r($filter_query);
+         print_r($filter_query);
         if(isset($req->filtersave)){
              $store_filter_que=DB::table('user_filters')->insert(['user_id'=>session()->get('id'),'module_id'=>$mod_id,'filter_query'=>$filter_query,'filter_name'=>$req->filtersave]);
         }
@@ -731,7 +729,7 @@ class Customer extends Model
         $result1=collect($result)->where('module_id',$req->module_id)->groupBy('data_id');
         // echo (count($result1));
  // echo "<pre>";
- //        print_r($result);
+        // print_r($result);
  //        die;
         $opt=[];
         foreach ($result1 as $key => $value) {

@@ -81,9 +81,11 @@
 <script>
     $(document).ready(function() {
         $('.leads').DataTable({
-            dom: 'Bfrtip',
+           columnDefs: [
+                        { orderable: false, targets: 0 }
+                        ],
             scrollX: true,
-
+            
             // buttons: [
             //     'colvis'
             // ]

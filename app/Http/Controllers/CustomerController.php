@@ -439,7 +439,7 @@ class CustomerController extends Controller
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
       
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
-
+          $data['field_option']=$this->Customer->GetOptionField();
         $view_filter=$this->Customer->GetViewfilterId($module_id);
          $data['filter_name']='';
         if($view_filter){
