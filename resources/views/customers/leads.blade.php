@@ -736,7 +736,7 @@
                 meradata +
                 ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="sectordata"><div class="form-group"><select class="sectorfilter form-control" name="sectorfilter" id="sectorfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
             var users_input =
-                '<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;"><option value=""></option> </select></div>';
+                '<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;"><?php foreach($data['field_option'] as $sector){ if($sector->column_id =='40'){ ?><option value="<?php echo $sector->id ;?>"><?php echo $sector->option_name; ?></option> <?php }}; ?></select></div>';
 
             $("#idsc").append(text);
             $("#sectordata").append(users_input);
