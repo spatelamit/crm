@@ -5,17 +5,17 @@
 
 
     <div class="row mb-3">
-        <div class="col-sm-8 mb-4 mb-xl-0">
+        <div class="col-sm-4 mb-4 mb-xl-0">
             <h4 class="font-weight-bold text-dark"> Leads </h4>
 
         </div>
-        <div class="col-sm-4 mb-4 mb-xl-0">
+        <div class="col-sm-8 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
 
                 <!-- <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-leads') }}"> <i
                         class="fa fa-user-plus"></i>
                     Create Leads </a> -->
-                <a class="dropdown-item" 
+                <a class="btn btn-info font-weight-bold new_w mr-2" 
                                onclick="modals('newlead')" > <i class="fa fa-user-plus"></i>
                                 Add Lead </a>
 

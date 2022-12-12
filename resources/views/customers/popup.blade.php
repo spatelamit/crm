@@ -4,18 +4,18 @@
     <div class="modal-dialog  slideInRight  animated" role="document">
       <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle-1">send Email</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Add Leads</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span> </button>
             </div>
             <div class="row">
 		        <div class="col-sm-8 mb-4 mb-xl-0">
 		            <h4 class="font-weight-bold text-dark"> Add Leads </h4>
-		            <p class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
-		                have your own fields then click on create dynamic layouts..</p>
+		            <span class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
+		                have your own fields then click on create dynamic layouts..</span>
 		        </div>
 		        <div class="col-sm-4 mb-4 mb-xl-0">
-		            <div class="widgetbar text-right"> <a class="btn btn-info font-weight-bold mb-2"
+		            <div class="widgetbar text-right"> <a target="_blank" class="btn btn-info font-weight-bold mb-2"
 		                    href="{{ url('module-layout', $data['selected_fields'][0]->module_id) }}">Create Dynamic Layout </a>
 		            </div>
 		        </div>
@@ -24,6 +24,30 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                     <form method="POST" action="{{ url('ImportCsv') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-8">
+
+                            </div>
+
+                            <div class="col-md-4 text-right">
+                                <div class="form-group mb-10">
+                                    <label>Upload Csv</label>
+                                    <input type="file" name="importleads" accept=".csv,application/vnd.ms-excel"
+                                        value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Upload CSv</button>
+                        </div>
+
+
+                    </form>
+                     <form method="GET" action="{{url('export_data_pankaj')}}">
+                        <button type="submit" class="btn-info">Export Data</button>
+                    </form>
          			  <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
                         @csrf
 
