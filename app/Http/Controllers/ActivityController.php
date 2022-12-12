@@ -214,7 +214,7 @@ class ActivityController extends Controller
         $result= $this->Activity->import_csv($req);
 
         if ($result) {
-            return redirect()->back();
+            return redirect()->back()->with("success", "Successfully UploadCSV!");
         } else {
             return "error";
         }

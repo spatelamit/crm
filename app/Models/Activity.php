@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Support\Arr;
 use Storage;
 
 class Activity extends Model
@@ -49,9 +50,9 @@ class Activity extends Model
         // dd($req->importleads->getClientOriginalName());
         if (isset($req->importleads)) {
             // $fileName.'_'.time().'.'.$extension;
-            if ($req->file('importleads'))
-                $filename = $req->importleads->getClientOriginalName();
-            echo $filename;
+
+            $filename = $req->importleads->getClientOriginalName();
+            // echo $filename;
             $path = storage_path('csv');
             $req->file('importleads')->move($path, $filename);
             // storage_path('app/public/docs/user_docs/'.$user->id);
@@ -63,52 +64,32 @@ class Activity extends Model
             // if($data->count() > 0)
 
             // if ($req->file('importleads') > 0) {
-                $file = fopen($file_path, "r");
-                while (!feof($file)){
-                    print_r(fgetcsv($file));
+            $file = fopen($file_path, "r");
+            //    print_r(fgetcsv($file));
+            foreach (fgetcsv($file) as $header) {
+                $val = explode('_', $header);
+                $col_id[] = $val[0];
+            }
+            // print_r($col_id);
+            while ($getData = fgetcsv($file, 10000, ",")) {
+                $data_id = uniqid();
+                for ($i = 0; $i < count($col_id); $i++) {
+                    $data[] = array(
+                        'module_id' => '8',
+                        'column_id' => $col_id[$i],
+                        'value' => $getData[$i],
+                        'user_id' => session()->get('id'),
+                        'data_id' => $data_id,
+                    );
                 }
-                fclose($file);
-                // print_r(fgetcsv($file,100000,','));
-                die;
-                while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
-                    dd($getData);
+                $result = DB::table('module_data')->insert($data);
+            }
 
-
-                    $module_id=$req->module_id;
-    	            $data_id=uniqid();
-  		            for ($i=0; $i <count($req->column_id) ; $i++) {
-    		        $data[]=array(
-    		        'module_id'=>$module_id,
-    		        'column_id'=>$req->column_id[$i],
-    		        'value'=>$req->value[$i],
-    		        'user_id'=>session()->get('id'),
-    		        'data_id'=>$data_id,
-    	             );
-
-	                 }
-
-
-
-
-
-                    $sql = "INSERT into employeeinfo (emp_id,firstname,lastname,email,reg_date)
-                           values ('" . $getData[0] . "','" . $getData[1] . "','" . $getData[2] . "','" . $getData[3] . "','" . $getData[4] . "')";
-                    $result = mysqli_query($con, $sql);
-                    if (!isset($result)) {
-                        echo "<script type=\"text/javascript\">
-                      alert(\"Invalid File:Please Upload CSV File.\");
-                      window.location = \"index.php\"
-                      </script>";
-                    } else {
-                        echo "<script type=\"text/javascript\">
-                    alert(\"CSV File has been successfully Imported.\");
-                    window.location = \"index.php\"
-                  </script>";
-                    }
-                }
-
-                fclose($file);
-            // }
+            fclose($file);
+            if($result){
+                return "true";
+            }
+            return "false";
         }
     }
 

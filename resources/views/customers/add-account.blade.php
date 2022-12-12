@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
+                    <form method="POST" action="{{ url('save-leads') }}" autocomplete="nope">
                         @csrf
                         <div class="row">
                             <div class="col-md-8">
