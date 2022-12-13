@@ -65,31 +65,56 @@ class Activity extends Model
 
             // if ($req->file('importleads') > 0) {
             $file = fopen($file_path, "r");
-            //    print_r(fgetcsv($file));
-            foreach (fgetcsv($file) as $header) {
+            //    dd(fgetcsv($file));
+            $header1 = fgetcsv($file, 0, ',');
+            // dd($header1);
+            $countheader = count($header1);
+            if (in_array(null, $header1) || in_array('', array_map('trim', $header1))) {
+                echo 'Found a empty value in your array!';
+            }
+
+
+
+            foreach ($header1 as $header) {
+                // dd($header);
                 $val = explode('_', $header);
                 $col_id[] = $val[0];
             }
-            // print_r($col_id);
+            // dd($col_id);
             while ($getData = fgetcsv($file, 10000, ",")) {
                 $data_id = uniqid();
-                for ($i = 0; $i < count($col_id); $i++) {
-                    $data[] = array(
-                        'module_id' => '8',
-                        'column_id' => $col_id[$i],
-                        'value' => $getData[$i],
-                        'user_id' => session()->get('id'),
-                        'data_id' => $data_id,
-                    );
+                if (empty($getData[0])) {
+                    echo 'Found a empty value in your array!';
                 }
-                $result = DB::table('module_data')->insert($data);
+
+
+                for ($i = 0; $i < count($col_id); $i++) {
+                    if($col_id[$i]==3 && ($getData[$i] !='' && !empty($getData[$i]))){
+                        $data[] = array(
+                            'module_id' => '8',
+                            'column_id' => $col_id[$i],
+                            'value' => $getData[$i],
+                            'user_id' => session()->get('id'),
+                            'data_id' => $data_id,
+                        );
+                        // dd($data);
+                        $result = DB::table('module_data')->insert($data);
+
+                        fclose($file);
+                        if ($result) {
+                            return "true";
+                        }
+                        return "false";
+                    }
+
+
+
+                }
+
+
             }
 
-            fclose($file);
-            if($result){
-                return "true";
-            }
-            return "false";
+
         }
     }
 
