@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Customer;
 use Database\Seeders\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class ActivityController extends Controller
@@ -290,6 +291,26 @@ class ActivityController extends Controller
             return "error";
         }
 
+    }
+
+
+    public function meeting_notification()
+    {
+        $user_id = session()->get('id');
+
+        $notify = DB::table('meetings')->select('start_date','title')
+        ->where('meetings.reciever_id', $user_id)
+        ->Orwhere('meetings.sender_id', $user_id)
+        ->whereDate('start_date', now())
+        ->get();
+        foreach($notify as $meeting){
+            $date=$meeting->start_date;
+            $hours=date('Y-m-d H:i:s',strtotime($date.'-1 hours'));
+            dd($hours);
+
+        }
+
+        if()
     }
 
 

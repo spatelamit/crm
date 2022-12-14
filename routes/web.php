@@ -110,12 +110,12 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/view-data/{id}/{mod_id}',[CustomerController::class, 'view_data']);
      Route::get('/get-viewfilter-id/{id}',[CustomerController::class, 'get_viewfilter_id']);
      Route::get('/deals-pipeline',[CustomerController::class, 'deals_pipeline']);
-    
+
       Route::get('/deal-pipe-ajax/{pid}',[CustomerController::class, 'deal_pipe_ajax']);
     Route::get('/update-deal-stage/{stageId}/{dealId}',[CustomerController::class, 'update_deal_stage']);
     Route::get('/deal-won-lost/{stageId}/{dealId}',[CustomerController::class, 'deal_won_lost']);
     Route::get('/get_filter_by_users/{id}',[CustomerController::class, 'get_filter_by_users']);
-
+    Route::get('/GetTemplate/{sender_id}', [CustomerController::class, 'GetTemplate']);
     //activity controller
     //task
     Route::get('/tasks',[ActivityController::class, 'tasks']);
@@ -140,3 +140,8 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/sms-api',[CommunicationController::class, 'sms_api']);
     Route::get('/voice-api',[CommunicationController::class, 'voice_api']);
     Route::get('email-api',[CommunicationController::class,], 'email_api');
+
+
+    //meeting notification
+
+    Route::get('/meeting_notification',[ActivityController::class, 'meeting_notification']);

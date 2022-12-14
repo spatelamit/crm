@@ -132,9 +132,11 @@
      $( document ).ready(function() {
      $('#startdate').daterangepicker({
         singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
         autoApply: true,
         locale: {
-            format: 'YYYY-MM-DD'
+            format: 'YYYY-MM-DD hh:mm'
         }
     });
 });
@@ -144,9 +146,11 @@
     $( document ).ready(function() {
     $('#enddate').daterangepicker({
        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: false,
        autoApply: true,
        locale: {
-           format: 'YYYY-MM-DD'
+           format: 'YYYY-MM-DD hh:mm'
        }
    });
 
