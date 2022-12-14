@@ -106,10 +106,25 @@ class CustomerController extends Controller
 
          $result=$this->Customer->SaveLeads($req);
           if($result){
-            return redirect('leads')->with("success", "Successfully Added Leads!")   ;
+              if($req->module_id=='8'){
+                return redirect('leads')->with("success", "Successfully Added Leads!") ;
+              }elseif($req->module_id=='9'){
+                return redirect('deals')->with("success", "Successfully Added Deals!") ;
+              }elseif($req->module_id=='10'){
+                return redirect('accounts')->with("success", "Successfully Added Accounts!") ;
+
+              }
 
         }else{
-            return redirect('leads')->with("error", 'Not Add leads');
+          if($req->module_id=='8'){
+                return redirect('leads')->with("error", "Not Added Leads!") ;
+              }elseif($req->module_id=='9'){
+                return redirect('deals')->with("error", "Not Added Deals!") ;
+              }elseif($req->module_id=='10'){
+                return redirect('accounts')->with("error", "Not Added Accounts!") ;
+
+              }
+            
 
         }
 
@@ -159,24 +174,24 @@ class CustomerController extends Controller
             $data['field_option']=$this->Customer->GetOptionField();
 
 
-             $data['accounts_datas']=$this->Customer->GetDealData('10');
+            //  $data['accounts_datas']=$this->Customer->GetDealData('10');
            
-            if( $data['accounts_datas']){
-               foreach ($data['accounts_datas'] as $key => $value) {
-               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+            // if( $data['accounts_datas']){
+            //    foreach ($data['accounts_datas'] as $key => $value) {
+            //    $data['accounts_data'][]=(json_decode(json_encode( $value),true));
 
-             }
-             foreach ($data['accounts_data'] as $key1 => $value1) {
-                $data['company_names'][]=array(
-                  'id'=>$value1['company_name'],
-                  'text'=>$value1['company_name'],
-                  'name'=>$value1['data_id'],
-                );
-             }
-             }else{
-                $data['accounts_data']=null;
+            //  }
+            //  foreach ($data['accounts_data'] as $key1 => $value1) {
+            //     $data['company_names'][]=array(
+            //       'id'=>$value1['company_name'],
+            //       'text'=>$value1['company_name'],
+            //       'name'=>$value1['data_id'],
+            //     );
+            //  }
+            //  }else{
+            //     $data['accounts_data']=null;
 
-              }
+            //   }
 
 
 
@@ -196,12 +211,28 @@ class CustomerController extends Controller
     }
 
     public function update_lead(Request $req){
+      // dd($req->all());
           $result=$this->Customer->UpdateLead($req);
-       if($result){
-            return redirect('leads')->with("success", "Successfully Updates Fileds!")   ;
+        if($result){
+              if($req->module_id=='8'){
+                return redirect('leads')->with("success", "Successfully Updated Leads!") ;
+              }elseif($req->module_id=='9'){
+                return redirect('deals')->with("success", "Successfully Updated Deals!") ;
+              }elseif($req->module_id=='10'){
+                return redirect('accounts')->with("success", "Successfully Updated Accounts!") ;
+
+              }
 
         }else{
-            return redirect('leads')->with("error", 'Not updated');
+          if($req->module_id=='8'){
+                return redirect('leads')->with("error", "Not Updated Leads!") ;
+              }elseif($req->module_id=='9'){
+                return redirect('deals')->with("error", "Not Updated Deals!") ;
+              }elseif($req->module_id=='10'){
+                return redirect('accounts')->with("error", "Not Updated Accounts!") ;
+
+              }
+            
 
         }
     }
