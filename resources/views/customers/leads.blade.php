@@ -162,6 +162,8 @@
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span>
                                                     </a>
+                                                    <a class=" btn btn-info" onclick="editdata('{{$data['leads_data'][$key1]['data_id']}}','8')"> 
+                                edit leads </a>
                                                     <a class="btn btn-danger"
                                                         onclick="deletelead( '{{ $data['leads_data'][$key1]['data_id'] }}' )">
                                                         <span class="fa fa-trash"
@@ -446,7 +448,21 @@
 </div>
 <!-- end task -->
 <!-- Deal modal -->
+<!-- edit  -->
+<div class="modal fade come-from-modal right" id="editlead" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">send Email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
 
+
+        </div>
+    </div>
+</div>
+<!-- end edit -->
 <!-- Mnagage Columns -->
 <div class="modal fade come-from-modal right" id="managecol" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  slideInRight  animated" role="document">

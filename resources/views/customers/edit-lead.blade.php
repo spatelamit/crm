@@ -65,7 +65,8 @@
                                                 class="form-control bg_input"
                                                 
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
-                                                readonly="" value="{{$val->value}}">
+                                                {{ isset($val->value) ? "readonly" : "" }}
+                                                 value="{{$val->value}}">
                 </div>
               </div>
                @elseif($val->column_id == 30)
