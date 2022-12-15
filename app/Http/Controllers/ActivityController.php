@@ -303,14 +303,72 @@ class ActivityController extends Controller
         ->Orwhere('meetings.sender_id', $user_id)
         ->whereDate('start_date', now())
         ->get();
+        // print_r($notify);
         foreach($notify as $meeting){
+            // echo $meeting->start_date;
             $date=$meeting->start_date;
-            $hours=date('Y-m-d H:i:s',strtotime($date.'-1 hours'));
-            dd($hours);
+
+            $hours=strtotime($date.'-1 hours');
+            // dd($hours);
+            $cur_date=date('Y-m-d H:i:s');
+            $from=strtotime($cur_date.'- 1 hours -2 minutes');
+            $to=strtotime($cur_date.'- 1 hours +15 minutes');
+
+            // echo "</BR>";
+            // echo (date('Y-m-d H:i:s',$from));
+
+            // echo "</BR>";
+            // echo (date('Y-m-d H:i:s',$to));
+            // echo "</BR>";
+            // echo($hours.'-'.$from.'-'. $to);
+        if( ($hours < $to) &&  ($hours > $from)){
+            echo($hours.'-'.$from.'-'. $to);
+            return back()->with("success","meeting Title-".$meeting->title."  DateTime-".$date );
+
+
 
         }
 
-        if()
+        }
+    }
+
+
+    public function task_notification()
+    {
+        $user_id = session()->get('id');
+
+        $notify = DB::table('tasks')->select('start_date','subject')
+        ->where('tasks.reciever_id', $user_id)
+        ->Orwhere('tasks.sender_id', $user_id)
+        ->whereDate('start_date', now())
+        ->get();
+        // print_r($notify);
+        foreach($notify as $meeting){
+            // echo $meeting->start_date;
+            $date=$meeting->start_date;
+
+            $hours=strtotime($date.'-1 hours');
+            // dd($hours);
+            $cur_date=date('Y-m-d H:i:s');
+            $from=strtotime($cur_date.'- 1 hours -2 minutes');
+            $to=strtotime($cur_date.'- 1 hours +15 minutes');
+
+            // echo "</BR>";
+            // echo (date('Y-m-d H:i:s',$from));
+
+            // echo "</BR>";
+            // echo (date('Y-m-d H:i:s',$to));
+            // echo "</BR>";
+            // echo($hours.'-'.$from.'-'. $to);
+        if( ($hours < $to) &&  ($hours > $from)){
+            echo($hours.'-'.$from.'-'. $to);
+            return back()->with("success","Task Title-".$meeting->subject."  DateTime-".$date );
+
+
+
+        }
+
+        }
     }
 
 

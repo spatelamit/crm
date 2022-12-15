@@ -149,3 +149,4 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     //meeting notification
 
     Route::get('/meeting_notification',[ActivityController::class, 'meeting_notification']);
+    Route::get('/task_notification',[ActivityController::class, 'task_notification']);
