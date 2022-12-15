@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Customer;
+use App\Models\User;
 use Database\Seeders\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -15,7 +16,7 @@ class ActivityController extends Controller
 
         $this->Activity=new Activity();
         $this->Customer=new Customer();
-        // $this->Usersetting=new UserSetting();
+        $this->User=new User();
 
     }
     public function tasks()
@@ -371,6 +372,30 @@ class ActivityController extends Controller
         }
     }
 
+
+
+    public function notify(Request $req)
+    {
+        $result= $this->Activity->notification($req);
+
+        if($result = true ){
+            return redirect()->back()->with("success", "Successfully Task Done!");
+        }
+        return redirect()->back()->with("error", 'Details are not valid');
+
+
+    }
+
+    public function show_notification()
+    {
+        $user_id = session()->get('id');
+        $show = DB::table('notifications')->select('message')
+        ->where('notifications.reciever_id', $user_id)
+        ->where('notifications.sender_id', $user_id)
+        ->get();
+
+        dd($show);
+    }
 
 
 

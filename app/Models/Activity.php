@@ -130,4 +130,21 @@ class Activity extends Model
             ->get();
         return $result;
     }
+
+
+    public function notification($req)
+    {
+        $noti_data = array(
+            'type' => 'Task',
+            'message' => 'Task'.session()->get('full_name').'',
+            'link' => '',
+            'icons' => '',
+            'sender_id' => '',
+            'reciever_id' => ''
+        );
+
+        $this->User->SendNotification($noti_data);
+
+        return "true";
+    }
 }
