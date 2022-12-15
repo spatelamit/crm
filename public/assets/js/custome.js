@@ -110,4 +110,10 @@ $('#saveFilter1').on('change',function(){
 function modals(id){
   // alert('#'+id);
   $('#'+id).modal('show');
+};
+
+function editdata(data_id,module_id){
+
+  // alert()
+
 }

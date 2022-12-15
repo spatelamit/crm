@@ -909,6 +909,17 @@ class Customer extends Model
         return $filter_data;
     }
 
+public function GetSender(){
+        $user_id=session()->get('id');
 
+        $result=DB::table('user_massage_dlt_details')
+        ->select('sender_id')
+        ->where('user_id',$user_id)
+        ->groupBy('sender_id')
+        ->get();
+
+
+        return $result;
+    }
 
 }

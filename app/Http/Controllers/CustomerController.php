@@ -468,7 +468,7 @@ class CustomerController extends Controller
          $module_id='10';
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
-      
+        $data['sms_sender'] = $this->Customer->GetSender();
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
           $data['field_option']=$this->Customer->GetOptionField();
         $view_filter=$this->Customer->GetViewfilterId($module_id);
@@ -628,5 +628,25 @@ class CustomerController extends Controller
     
       return $result;
 
+      }
+
+       public function GetTemplate($sender_id){
+         $user_id=session()->get('id');
+        $data = DB::table('user_massage_dlt_details')->select('template','template_id')->where('sender_id', $sender_id)->where('user_id',$user_id)->get();
+
+
+        $text = '<label for="template">Choose a Template</label>
+                        <select name="template_id" id="template_ids" required>
+                          <option value="" disabled selected>Select Sender</option>';
+
+                  foreach ($data as $value) {
+                    $text.= '
+                    <option value="'.$value->template_id.'">'.$value->template.'</option>';
+                  }
+        $text = $text . '</select>';
+
+        return $text;
+                          
+                        
       }
 }
