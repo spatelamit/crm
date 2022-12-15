@@ -317,7 +317,7 @@ class CustomerController extends Controller
     }
 
     //
-    public function deals_pipeline(){
+    public function deals_list(){
              $module_id='9';
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
              $data['selected_col']=$this->Customer->GetTableCol($module_id);

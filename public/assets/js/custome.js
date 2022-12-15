@@ -131,23 +131,3 @@ function editdata(data_id,module_id){
 
 }
 
-$(document).ready(function(){
-$('#listView').on('click',function(){
-    
-    // alert(savefilterid);
-    $.ajax({
-        type: "get",
-        url: "get_deals_List/",
-
-       
-        success: function (response) {
-        
-          $("#listviews").html(response);
-
-          
-        },
-       
-      });
-
-  });
-  });

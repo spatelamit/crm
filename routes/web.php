@@ -109,7 +109,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::post('/save-managecol',[CustomerController::class, 'save_managecol']);
     Route::get('/view-data/{id}/{mod_id}',[CustomerController::class, 'view_data']);
      Route::get('/get-viewfilter-id/{id}',[CustomerController::class, 'get_viewfilter_id']);
-     Route::get('/deals-pipeline',[CustomerController::class, 'deals_pipeline']);
+     Route::get('/deals-list',[CustomerController::class, 'deals_list']);
 
       Route::get('/deal-pipe-ajax/{pid}',[CustomerController::class, 'deal_pipe_ajax']);
     Route::get('/update-deal-stage/{stageId}/{dealId}',[CustomerController::class, 'update_deal_stage']);
@@ -120,6 +120,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
  Route::get('/get_edit_data/{dataid}/{moduleid}',[CustomerController::class, 'get_edit_data']);
 
     Route::get('/GetTemplate/{sender_id}', [CustomerController::class, 'GetTemplate']);
+     
     //activity controller
     //task
     Route::get('/tasks',[ActivityController::class, 'tasks']);
