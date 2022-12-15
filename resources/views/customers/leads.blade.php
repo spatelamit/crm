@@ -157,13 +157,15 @@
                                                 <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                                                    <a class="btn btn-info mr-2"
+                                                   <!--  <a class="btn btn-info mr-2"
             href="{{ url('edit-lead', [$data['leads_data'][$key1]['data_id'],'8'])}}"><span
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span>
-                                                    </a>
-                                                    <a class=" btn btn-info" onclick="editdata('{{$data['leads_data'][$key1]['data_id']}}','8')"> 
-                                edit leads </a>
+                                                    </a> -->
+                                                    <a class="btn btn-info mr-2" onclick="editdata('{{$data['leads_data'][$key1]['data_id']}}','8')"> 
+                               <span
+                                                            class="fa fa-pencil"
+                                                            style="float: none; margin: 5px;"></span> </a>
                                                     <a class="btn btn-danger"
                                                         onclick="deletelead( '{{ $data['leads_data'][$key1]['data_id'] }}' )">
                                                         <span class="fa fa-trash"
@@ -204,7 +206,7 @@
 
                      <div id="listOfSavedFilter" class="form-control filters_box_row1 mt-5">
                             <select class="form-control saveFilter" id="saveFilter1" name="saveFilter" style="width: 100%;" tabindex="-1" >
-                              
+                              <option value="select">Select Filter</option>
 
                                 @forelse($data['user_filters'] as $filter)
                                 <option value="{{$filter->id}}">{{$filter->filter_name}}</option>
@@ -463,6 +465,9 @@
     </div>
 </div>
 <!-- end edit -->
+
+
+
 <!-- Mnagage Columns -->
 <div class="modal fade come-from-modal right" id="managecol" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  slideInRight  animated" role="document">
@@ -976,4 +981,22 @@
          
       
     });
+</script>
+<script>
+$(document).ready(function() {
+$('.dealstage').on('change', function() {
+var category_id = this.value;
+// alert(category_id);
+$.ajax({
+type:"GET",
+url: "{{url('/fetch-stages')}}/"+category_id,
+
+
+success: function(response){
+  console.log(response);
+$(".stages").html(response);
+}
+});
+});
+});
 </script>

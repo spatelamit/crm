@@ -156,10 +156,14 @@
                                             <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                                                <a class="btn btn-info mr-2"
+                                                <!-- <a class="btn btn-info mr-2"
                                                     href="{{ url('edit-lead', [$data['accounts_data'][$key1]['data_id'],10]) }}"><span
                                                         class="fa fa-pencil" style="float: none; margin: 5px;"></span>
-                                                </a>
+                                                </a> -->
+                                                 <a class=" btn btn-info mr-2" onclick="editdata('{{$data['accounts_data'][$key1]['data_id']}}','10')"> 
+                               <span
+                                                            class="fa fa-pencil"
+                                                            style="float: none; margin: 5px;"></span></a>
                                                 <a class="btn btn-danger"
                                                     onclick="deletelead( '{{ $data['accounts_data'][$key1]['data_id'] }}' )">
                                                     <span class="fa fa-trash" style="float: none; margin: 5px;"></span>
@@ -199,16 +203,17 @@
               
               <div class="app-heading app-heading-bordered app-heading-page row"> 
 
-            <div id="listOfSavedFilter" class="filters_box_row1 mt-5"> 
-             <select class="form-control col-md-6" id="saveFilter" name="saveFilter">
-               <option>Select Save Filter</option>
-               
-                 
-                  <option value=""></option>
-                  
-              
-             </select>
-         </div>
+            <div id="listOfSavedFilter" class="form-control filters_box_row1 mt-5">
+                            <select class="form-control saveFilter" id="saveFilter1" name="saveFilter" style="width: 100%;" tabindex="-1" >
+                              <option value="select">Select Filter</option>
+                                @forelse($data['user_filters'] as $filter)
+                                <option value="{{$filter->id}}">{{$filter->filter_name}}</option>
+                                @empty
+                                @endforelse
+
+
+                            </select>
+                        </div>
          
          </div>
          </div>
@@ -236,18 +241,12 @@
                     <option value="activites">Activites</option>
                  
                      
-                    <option value="lead_type">Lead Types</option>
-                     <option value="data_owners">Users</option>
-                      <option value="company_names">Company Name</option>
-                      <option value="full_name">Person name</option>
-                      <option value="email">Email</option>
-                        <option value="number">Number</option>
-                     <option value="address">Address</option>
-                      <option value="pin_code">Pin code</option>
-                      <option value="city">City</option>
-                      <option value="state">State</option>
-                         <option value="country">Country</option>
-                         <option value="sectors">Sectors</option>
+                    <option value="pin_code">Pin code</option>
+                                <option value="city">City</option>
+                                <option value="state">State</option>
+                                <option value="country">Country</option>
+                                <option value="sectors">Sectors</option>
+                                 <option value="date_range">Date range</option>
                   
                     
                   </select>
@@ -664,244 +663,333 @@
 
 <script type="text/javascript">
 
+    $("#saveFilter1").select2({
+                placeholder: "Select an Option",
+              
+                allowClear: true,
+                // data:stagename,
+            });
 
-      $("#StaticFilter").change(function(){
+    $("#StaticFilter").change(function() {
 
-    var anem = $("#StaticFilter").val();
-    var count = $("#coun_filter").val();
-    var available = parseInt(count)+1;
-    var meradata = available;
-  
-  if ( anem == "untouched" || anem == "touched" ) {
-  
-   var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" ><div class="form-group"><select name="dateformat" class="form-control"> <option value="today">Today</option><option value="week">This week</option><option value="month">This month</option><option value="year">This year</option></select></div></div></div></div>';
-   $( "#idsc" ).append(text);
- 
-}  if (anem == "activites"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="activtab"><div class="form-group"><select name="activitiesopt" id="activitiesopt" class="form-control"> <option value="1">Without open Activities</option><option value="2">Overdue</option><option value="3">Activities Due</option><option value="4">Without Activities</option><option value="5">Activities Done</option></select></div></div></div></div>';
+        var anem = $("#StaticFilter").val();
+        var count = $("#coun_filter").val();
+        var available = parseInt(count) + 1;
+        var meradata = available;
 
-$( "#idsc" ).append(text);
- 
-    
+        if (anem == "untouched" || anem == "touched") {
 
-}
-if (anem == "lead_type"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" ><div class="form-group"><select name="lead_type" id="lead_type" class="form-control"> <option value="1">Hot</option><option value="2">Cold</option><option value="3">Warm</option></select></div></div></div></div>';
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" ><div class="form-group"><select name="dateformat" class="form-control"> <option value="today">Today</option><option value="week">This week</option><option value="month">This month</option><option value="year">This year</option></select></div></div></div></div>';
+            $("#idsc").append(text);
 
-$( "#idsc" ).append(text);
- 
-    
+        }
+        if (anem == "activites") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="activtab"><div class="form-group"><select name="activitiesopt" id="activitiesopt" class="form-control"> <option value="1">Without open Activities</option><option value="2">Overdue</option><option value="3">Activities Due</option><option value="4">Without Activities</option><option value="5">Activities Done</option></select></div></div></div></div>';
 
-}
-if (anem == "deal_stages"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="deal_stages"><div class="form-group"><select class="dealstagefilter form-control" name="dealstagefilter" id="dealstagefilter"> <option value="is">Is</option><option value="isnot">Is not</option><option value="isopen">Is open </option><option value="iswon">Is won</option><option value="islost">Is lost</option><option value="isempty">Is Empty </option><option value="isnotempty">Is Not Empty </option></select></div></div></div></div>';
-  var deal_input='<div class="form-group deal_search"> <select class="sle" id="dealStageid" name="dealStageid" style="width:300px;"><option value=""></option></select></div>';
+            $("#idsc").append(text);
 
-$( "#idsc" ).append(text);
-$( "#deal_stages" ).append(deal_input);
 
- 
-        
-   $("#dealStageid").select2({
-          placeholder: {value: '',text: 'None Selected'},
-          allowClear: true,
-         // data:stagename,
-        });
- 
-    
 
-}
+        }
+        if (anem == "lead_type") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" ><div class="form-group"><select name="lead_type" id="lead_type" class="form-control"> <option value="1">Hot</option><option value="2">Cold</option><option value="3">Warm</option></select></div></div></div></div>';
 
-if (anem == "data_owners"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
-   var users_input =
+            $("#idsc").append(text);
+
+
+
+        }
+        if (anem == "deal_stages") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="deal_stages"><div class="form-group"><select class="dealstagefilter form-control" name="dealstagefilter" id="dealstagefilter"> <option value="is">Is</option><option value="isnot">Is not</option><option value="isopen">Is open </option><option value="iswon">Is won</option><option value="islost">Is lost</option><option value="isempty">Is Empty </option><option value="isnotempty">Is Not Empty </option></select></div></div></div></div>';
+            var deal_input =
+                '<div class="form-group deal_search"> <select class="sle" id="dealStageid" name="dealStageid" style="width:300px;"><option value=""></option></select></div>';
+
+            $("#idsc").append(text);
+            $("#deal_stages").append(deal_input);
+
+
+
+            $("#dealStageid").select2({
+                placeholder: {
+                    value: '',
+                    text: 'None Selected'
+                },
+                allowClear: true,
+                // data:stagename,
+            });
+
+
+
+        }
+
+        if (anem == "data_owners") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_owner_names"><div class="form-group"><select class="userfilter form-control" name="userfilter" id="userfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
+            var users_input =
                 '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
                 if(is_array($chiled_parent) || is_object($chiled_parent)){
                  foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
                 }}?></select></div>';
 
-$( "#idsc" ).append(text);
-$( "#data_owner_names" ).append(users_input);
+            $("#idsc").append(text);
+            $("#data_owner_names").append(users_input);
 
- 
-        
-   $("#usersid").select2({
-          placeholder: {value: '',text: 'None Selected'},
-          allowClear: true,
-          multiple: true,
-         // data:stagename,
+
+
+            $("#usersid").select2({
+                placeholder: {
+                    value: '',
+                    text: 'None Selected'
+                },
+                allowClear: true,
+                multiple: true,
+                // data:stagename,
+            });
+
+
+
+        }
+        if (anem == "sectors") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="sectordata"><div class="form-group"><select class="sectorfilter form-control" name="sectorfilter" id="sectorfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
+            var users_input =
+                '<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;"><?php foreach($data['field_option'] as $sector){ if($sector->column_id =='40'){ ?><option value="<?php echo $sector->option_name ;?>"><?php echo $sector->option_name; ?></option> <?php }}; ?></select></div>';
+
+            $("#idsc").append(text);
+            $("#sectordata").append(users_input);
+
+
+
+            $("#sectors").select2({
+                placeholder: {
+                    value: '',
+                    text: 'None Selected'
+                },
+                allowClear: true,
+                multiple: true,
+                // data:stagename,
+            });
+
+
+
+        }
+        if (anem == "company_names") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_company_names"><div class="form-group"><select class="companysearch form-control" name="companysearch" id="companysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="compstart">start with</option><option value="compend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text"  name=comapny_Nsearch required></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "full_name") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_full_names"><div class="form-group"><select class="Fnamesearch form-control" name="Fnamesearch" id="Fnamesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=Fname_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "address") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_address"><div class="form-group"><select class="Addsearch form-control" name="Addsearch" id="Addsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=add_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "city") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_city"><div class="form-group"><select class="citysearch form-control" name="citysearch" id="citysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=city_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "state") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_state"><div class="form-group"><select class="statesearch form-control" name="statesearch" id="statesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=state_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "country") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_country"><div class="form-group"><select class="countrysearch form-control" name="countrysearch" id="countrysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=country_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "pin_code") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_pin"><div class="form-group"><select class="pinsearch form-control" name="pinsearch" id="pinsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=pin_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "email") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_emailid"><div class="form-group"><select class="emailsearch form-control" name="emailsearch" id="emailsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" placeholder="Enter your text" type="text" name=email_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+        if (anem == "number") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_number"><div class="form-group"><select class="numbersearch form-control" name="numbersearch" id="numbersearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" placeholder="Enter your text" type="text" name=number_search required ></div></div></div>';
+
+
+            $("#idsc").append(text);
+
+        }
+
+
+        if (anem == "date_range") {
+            var text = '<div class="filters_box_row1 mt-5 prashant' + available +
+                '"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">' +
+                anem +
+                '</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div(' +
+                meradata +
+                ')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="daterange"></div></div></div>';
+            $("#idsc").append(text);
+            var activtab1 =
+                '<div class="form-group dataType" id="daterange1"><select class="customizedate form-control" name="daterangeopt" id="daterangeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">Last week </option><option value="5">This Month </option><option value="6">Last Month </option><option value="7">customize date </option></select></div>';
+
+            $("#daterange").append(activtab1);
+
+
+
+        }
+
+
+
+        $("#coun_filter").val(available);
+
+        $("#daterangeopt").change(function() {
+            var daterangeopt = $("#daterangeopt").val();
+            // alert(datatypeopt);
+
+            $(".custdates").remove();
+            if (daterangeopt == '7') {
+                var custdate =
+                    '<div class="form-group custdates"> Start Date:-<input class="form-control" type="date"   name="startdate"> End Date:-<input class="form-control" placeholder="End Date" type="date" name="enddate"></div>';
+                // alert(custdate);
+                $("#daterange1").append(custdate);
+            }
+
+
+
+
         });
- 
-    
 
-}
-if (anem == "sectors"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="sectordata"><div class="form-group"><select class="sectorfilter form-control" name="sectorfilter" id="sectorfilter"> <option value="is">Is</option><option value="isnot">Is not</option></select></div></div></div></div>';
-  var users_input='<div class="form-group deal_search"> <select class="sle"  id="sectors" name="sectors[]" style="width:300px;">><option value=""></option> </select></div>';
+        //end dataype customize date
 
-$( "#idsc" ).append(text);
-$( "#sectordata" ).append(users_input);
 
- 
-        
-   $("#sectors").select2({
-          placeholder: {value: '',text: 'None Selected'},
-          allowClear: true,
-          multiple: true,
-         // data:stagename,
+
+
+        $("#activitiesopt").change(function() {
+            var activitiesopt = $("#activitiesopt").val();
+            if (activitiesopt == '1') {
+
+                $(".activtab1").remove();
+                $(".activtab2").remove();
+                $(".activtab3").remove();
+
+            } else if (activitiesopt == '2') {
+
+                var activtab1 =
+                    '<div class="form-group activtab1 "><select name="activitiesopt2" id="activitiesopt2" class="form-control"> <option value="1">Activities</option><option value="2">Task</option><option value="3">Meeting </option></select></div>';
+                $(".activtab2").remove();
+                $(".activtab3").remove();
+                $("#activtab").append(activtab1);
+            } else if (activitiesopt == '3') {
+
+                var activtab2 =
+                    '<div class="form-group activtab2 "><select name="activitesdue" id="activitesdue" class="form-control"> <option value="1">Today</option><option value="2">Tomorrow</option><option value="3">Next 7 days </option></select></div>';
+                $(".activtab3").remove();
+                $(".activtab1").remove();
+                $("#activtab").append(activtab2);
+            } else if (activitiesopt == '4') {
+
+                var activtab3 =
+                    '<div class="form-group activtab3 "><select name="withoutactivites" id="withoutactivites" class="form-control"> <option value="1">Today</option><option value="2">This week</option><option value="3">This month</option></select></div>';
+                $(".activtab1").remove();
+                $(".activtab2").remove();
+                $("#activtab").append(activtab3);
+            }
+
         });
- 
-    
-
-}
-if (anem == "company_names"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_company_names"><div class="form-group"><select class="companysearch form-control" name="companysearch" id="companysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="compstart">start with</option><option value="compend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text"  name=comapny_Nsearch required></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "full_name"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="data_full_names"><div class="form-group"><select class="Fnamesearch form-control" name="Fnamesearch" id="Fnamesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=Fname_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "address"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_address"><div class="form-group"><select class="Addsearch form-control" name="Addsearch" id="Addsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=add_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "city"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_city"><div class="form-group"><select class="citysearch form-control" name="citysearch" id="citysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=city_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "state"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_state"><div class="form-group"><select class="statesearch form-control" name="statesearch" id="statesearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=state_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "country"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_country"><div class="form-group"><select class="countrysearch form-control" name="countrysearch" id="countrysearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=country_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "pin_code"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_pin"><div class="form-group"><select class="pinsearch form-control" name="pinsearch" id="pinsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" type="text" placeholder="Enter your text" name=pin_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
-if (anem == "email"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_emailid"><div class="form-group"><select class="emailsearch form-control" name="emailsearch" id="emailsearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" placeholder="Enter your text" type="text" name=email_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}if (anem == "number"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="lead_number"><div class="form-group"><select class="numbersearch form-control" name="numbersearch" id="numbersearch"> <option value="is">Is</option><option value="isnot">Is not</option><option value="contain">Contain</option><option value="searchstart">start with</option><option value="searchend">End with</option></select></div></div><div class="form-group"><input class="form-control" placeholder="Enter your text" type="text" name=number_search required ></div></div></div>';
-  
-
-$( "#idsc" ).append(text);
-
-}
 
 
-  if (anem == "data_type"){
-  var text='<div class="filters_box_row1 mt-5 prashant'+available+'"><div class="block bg_g p-3 mt-5" ><div class=""><div class="row"><div class="col-md-10"><div class="title"><h2 class="filt_name">'+anem+'</h2></div></div><div class="col-md-2"><div class="heading-elements" id="activeadd"><a id="block-delete" onclick="del_div('+meradata+')" class="btn btn-default btn-sm btn-icon" ><span class="fa fa-times"></span></a></div></div></div></div><div class="block-content" id="datatypetab"><div class="form-group"><select name="datatype" id="datatype" class="form-control"> <option value="1">Company Data</option><option value="2">Conatct Data</option><option value="3">deals Data</option></select></div></div></div></div>';
-$( "#idsc" ).append(text);
-var activtab1='<div class="form-group dataType" id="datatypetab1"><select class="customizedate form-control" name="datatypeopt" id="datatypeopt"> <option value="1">Today</option><option value="2">Yesteday</option><option value="3">This week </option><option value="4">This This month </option><option value="5">This This Year </option><option value="6">customize date </option></select></div>';
-            
-  $( "#datatypetab" ).append(activtab1);
-
-    
-
-}
-
- 
-      
-    $("#coun_filter").val(available);
-
-
-
-  
-
-  //data-type
-  
- 
-  //dataype customize date
-  $("#datatypeopt").change(function(){
-    var datatypeopt = $("#datatypeopt").val();
-   // alert(datatypeopt);
-    
-     $( ".custdates" ).remove();
-    if(datatypeopt == '6'){
-      var custdate ='<div class="form-group custdates"> Start Date:-<input class="form-control" type="date"     ame="startdate"> End Date:-<input class="form-control" placeholder="End Date" type="date" name="enddate"></div>';
-       // alert(custdate);
-        $( "#datatypetab1" ).append(custdate);
-      }
-     
-
-
-
-  });
-
-  //end dataype customize date
-
-
-
-
-  $("#activitiesopt").change(function(){
-var activitiesopt = $("#activitiesopt").val();
-    if(activitiesopt == '1'){
-
-         $( ".activtab1" ).remove();
-         $( ".activtab2" ).remove();
-          $( ".activtab3" ).remove();
-       
-      }
-  
-     else if(activitiesopt == '2'){
-
-        var activtab1='<div class="form-group activtab1 "><select name="activitiesopt2" id="activitiesopt2" class="form-control"> <option value="1">Activities</option><option value="2">Task</option><option value="3">Meeting </option></select></div>';
-         $( ".activtab2" ).remove();
-          $( ".activtab3" ).remove();
-        $( "#activtab" ).append(activtab1);
-      }
-      else if(activitiesopt == '3'){
-
-        var activtab2='<div class="form-group activtab2 "><select name="activitesdue" id="activitesdue" class="form-control"> <option value="1">Today</option><option value="2">Tomorrow</option><option value="3">Next 7 days </option></select></div>';
-         $( ".activtab3" ).remove();
-        $( ".activtab1" ).remove();
-        $( "#activtab" ).append(activtab2);
-      }
-      else if(activitiesopt == '4'){
-
-        var activtab3='<div class="form-group activtab3 "><select name="withoutactivites" id="withoutactivites" class="form-control"> <option value="1">Today</option><option value="2">This week</option><option value="3">This month</option></select></div>';
-        $( ".activtab1" ).remove();
-        $( ".activtab2" ).remove();
-        $( "#activtab" ).append(activtab3);
-      }
-      
     });
-
-
- });
-      
-
-
-    </script>
+</script>
 
     <script type="text/javascript">
    
@@ -927,4 +1015,22 @@ var activitiesopt = $("#activitiesopt").val();
          
       
     });
+</script>
+<script>
+$(document).ready(function() {
+  $('.dealstage').on('change', function() {
+  var category_id = this.value;
+  // alert(category_id);
+      $.ajax({
+      type:"GET",
+      url: "{{url('/fetch-stages')}}/"+category_id,
+
+
+      success: function(response){
+        console.log(response);
+      $(".stages").html(response);
+      }
+      });
+  });
+});
 </script>

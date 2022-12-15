@@ -84,7 +84,8 @@ class CustomerController extends Controller
      
 
         $chiled_parent= $this->Usersetting->ChildNameByparentId();
-         $data['user_filters']=DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
+         $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
+        
 
       
        
@@ -174,24 +175,7 @@ class CustomerController extends Controller
             $data['field_option']=$this->Customer->GetOptionField();
 
 
-            //  $data['accounts_datas']=$this->Customer->GetDealData('10');
-           
-            // if( $data['accounts_datas']){
-            //    foreach ($data['accounts_datas'] as $key => $value) {
-            //    $data['accounts_data'][]=(json_decode(json_encode( $value),true));
-
-            //  }
-            //  foreach ($data['accounts_data'] as $key1 => $value1) {
-            //     $data['company_names'][]=array(
-            //       'id'=>$value1['company_name'],
-            //       'text'=>$value1['company_name'],
-            //       'name'=>$value1['data_id'],
-            //     );
-            //  }
-            //  }else{
-            //     $data['accounts_data']=null;
-
-            //   }
+         
 
 
 
@@ -268,7 +252,7 @@ class CustomerController extends Controller
 
        foreach($data['PipelineGroup'] as $value){
         // print_r($value);
-        echo "<option value=".$value->stage_name.'_'.$value->id." >"  .$value->stage_name."</option>";
+        echo "<option value=".$value->id." >"  .$value->stage_name."</option>";
        }
 
     }
@@ -420,7 +404,28 @@ class CustomerController extends Controller
     }
 
     public function deals(){
+      $module_id='9';
+       $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
        $data['pipeline']=$this->Customer->GetPipeline();
+         $data['field_option']=$this->Customer->GetOptionField();
+          $data['accounts_datas']=$this->Customer->GetDealData('10');
+             
+            if( $data['accounts_datas']){
+               foreach ($data['accounts_datas'] as $key => $value) {
+               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+             }
+             foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][]=array(
+                  'id'=>$value1['company_name'],
+                  'text'=>$value1['company_name'],
+                  'name'=>$value1['data_id'],
+                );
+             }
+             }else{
+                $data['accounts_data']=null;
+                 $data['company_names']=[];
+              }
        // dd( $data['pipeline']);
       return view('customers.deals-pipe',compact('data'));
     }
@@ -435,7 +440,7 @@ class CustomerController extends Controller
         
           $Collection=collect($data['deal_datas'])->whereIn('Pipepline',$arraypipe);
           $data['deal_data']=$Collection->all();
-         // print_r($data['deal_data']);
+         // dd($data['deal_datas']);
           return view('customers.deals_pipe_ajax',compact('data'));
     }
     public function update_deal_stage($stageId,$dealId){
@@ -466,6 +471,7 @@ class CustomerController extends Controller
 
     public function accounts(){
          $module_id='10';
+          $user_id=session()->get('id');
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['sms_sender'] = $this->Customer->GetSender();
@@ -509,7 +515,7 @@ class CustomerController extends Controller
            $data['selected_col']=[];
         }
 
-        //end table view columns
+        $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
       
         // dd($data['accounts_data']  );
         return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
@@ -609,24 +615,24 @@ class CustomerController extends Controller
        
         
         $result=[];
-        foreach ($data as $key => $value) {
-          $data1=[];
-            foreach ($value as $key2 => $value2) {
-                    $data1['data_id']=$value2->data_id;
-                    $data1['module_id']=$value2->module_id;
-                    $data1['user_id']=$value2->user_id;
-                    $data1['user']=$value2->users;
-                    $data1['created_at']=$value2->created_at;
-                    $data1['modified_at']=$value2->modified_date;
-                     $data1[$value2->col_name]=$value2->value;
+            foreach ($data as $key => $value) {
+              $data1=[];
+                foreach ($value as $key2 => $value2) {
+                        $data1['data_id']=$value2->data_id;
+                        $data1['module_id']=$value2->module_id;
+                        $data1['user_id']=$value2->user_id;
+                        $data1['user']=$value2->users;
+                        $data1['created_at']=$value2->created_at;
+                        $data1['modified_at']=$value2->modified_date;
+                         $data1[$value2->col_name]=$value2->value;
 
-                }
+                    }
 
-            $result[]= $data1;
-        }
+                $result[]= $data1;
+            }
     
     
-      return $result;
+        return $result;
 
       }
 
@@ -649,4 +655,32 @@ class CustomerController extends Controller
                           
                         
       }
+     public function get_edit_data($id,$module_id){
+      // echo ($id.'-'.$module_id);
+       $data['pipeline']=$this->Customer->GetPipeline();
+          $data['edit_lead_data']=$this->Customer->GetEditData($id);
+           $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+            $data['field_option']=$this->Customer->GetOptionField();
+            foreach ($data['selected_fields'] as $key => $selected_field) {
+                $sel_col_id[]=$selected_field->column_id;
+
+                 }
+                 $sel_col_ids=$sel_col_id;
+                 $sel_col_ids=implode(",",  $sel_col_ids);
+
+
+           foreach ($data['edit_lead_data'] as $key => $edit_col) {
+               $field1[]=$edit_col->column_id;
+
+               }
+               $selfield=$field1;
+               $selfield1=implode(",",  $selfield);
+               
+             
+          // print_r(  $data['selected_fields']);
+   return view('customers.edit-data',compact('data','selfield1','sel_col_ids'));
+
+
+
+    }
 }

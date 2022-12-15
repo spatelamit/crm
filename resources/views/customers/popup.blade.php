@@ -260,6 +260,7 @@
                             @endforeach
 
                             <div class="col-md-12 text-right">
+                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Save</button>
                             </div>
 
@@ -274,3 +275,22 @@
 </div>
 
 <!-- end add account -->
+
+<!-- edit data -->
+<div class="modal fade come-from-modal right show" id="edit_data" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Edit data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body editdata" id="">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end edit data -->
+

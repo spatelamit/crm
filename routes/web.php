@@ -115,6 +115,10 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::get('/update-deal-stage/{stageId}/{dealId}',[CustomerController::class, 'update_deal_stage']);
     Route::get('/deal-won-lost/{stageId}/{dealId}',[CustomerController::class, 'deal_won_lost']);
     Route::get('/get_filter_by_users/{id}',[CustomerController::class, 'get_filter_by_users']);
+
+    // testing route for edit data 
+ Route::get('/get_edit_data/{dataid}/{moduleid}',[CustomerController::class, 'get_edit_data']);
+
     Route::get('/GetTemplate/{sender_id}', [CustomerController::class, 'GetTemplate']);
     //activity controller
     //task

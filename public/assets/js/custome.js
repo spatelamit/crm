@@ -108,12 +108,46 @@ $('#saveFilter1').on('change',function(){
   });
   });
 function modals(id){
-  // alert('#'+id);
+  alert('#'+id);
   $('#'+id).modal('show');
 };
 
 function editdata(data_id,module_id){
 
-  // alert()
+  // alert(data_id+'-'+module_id);
+    $.ajax({
+        type: "get",
+        url: "get_edit_data/"+data_id+'/'+module_id,
+
+       
+        success: function (response) {
+        // console.log(response);
+          $(".editdata").html(response);
+
+           $('#edit_data').modal('show');
+        },
+       
+      });
 
 }
+
+$(document).ready(function(){
+$('#listView').on('click',function(){
+    
+    // alert(savefilterid);
+    $.ajax({
+        type: "get",
+        url: "get_deals_List/",
+
+       
+        success: function (response) {
+        
+          $("#listviews").html(response);
+
+          
+        },
+       
+      });
+
+  });
+  });

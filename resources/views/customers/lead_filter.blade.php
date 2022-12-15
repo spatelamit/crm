@@ -91,10 +91,11 @@
                                                 <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                                                    <a class="btn btn-info mr-2"
-                                                        href="{{ url('edit-lead', [$data['leads_data'][$key1]['data_id'],$data['leads_data'][$key1]['module_id']]) }}"><span
-                                                            class="fa fa-pencil"
-                                                            style="float: none; margin: 5px;"></span>
+                <a class="btn btn-info mr-2"
+        onclick="editdata('{{ $data['leads_data'][$key1]['data_id'] }}','{{ $data['leads_data'][$key1]['module_id'] }}' )">
+<span
+                                        class="fa fa-pencil"
+                                    style="float: none; margin: 5px;"></span>
                                                     </a>
                                                     <a class="btn btn-danger"
                                                         onclick="deletelead( '{{ $data['leads_data'][$key1]['data_id'] }}' )">
