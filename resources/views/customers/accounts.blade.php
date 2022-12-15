@@ -341,7 +341,18 @@
                         <input type="text" name="sms_numbers" class="form-control bg_input sms_numbers"
                             placeholder="Enter your Authentication Key" required>
                     </div>
-
+                    <div class="form-group mb-10">
+                        <label for="sender_id">Choose a Sender Id</label>
+                        <select name="sender_id" id="sender_id" required>
+                            <option value="" disabled selected>Select Sender</option>
+                            @forelse ($data['sms_sender'] as $post)
+                                <option value="{{ $post->sender_id}}">{{ $post->sender_id}}</option>
+                            @empty
+                                <option value="">No Sender</option>
+                            @endforelse
+                        </select> 
+                    </div>
+                    <div class="form-group mb-10" id="template_id"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -900,7 +911,14 @@ var activitiesopt = $("#activitiesopt").val();
 
 
       });
-
+       $("#sender_id").change(function(){
+        var sender_id = $("#sender_id").val();
+        alert(sender_id)
+        $.get("/GetTemplate/"+ sender_id ,function( data ) {
+            console.log("done")
+            $("#template_id").html(data);
+        });
+    });
 
 </script>
 <script type="text/javascript">
