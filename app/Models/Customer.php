@@ -721,7 +721,7 @@ class Customer extends Model
         $filter_query = vsprintf($query1, $builder);
 
 
-         print_r($filter_query);
+         // print_r($filter_query);
         if(isset($req->filtersave)){
              $store_filter_que=DB::table('user_filters')->insert(['user_id'=>session()->get('id'),'module_id'=>$mod_id,'filter_query'=>$filter_query,'filter_name'=>$req->filtersave]);
         }
@@ -919,6 +919,11 @@ public function GetSender(){
         ->get();
 
 
+        return $result;
+    }
+
+    public function get_user_filter($user_id,$module_id){
+        $result= DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
         return $result;
     }
 
