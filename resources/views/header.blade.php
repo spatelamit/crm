@@ -79,9 +79,22 @@
             <li class="nav-item dropdown d-lg-flex d-none">
                 <button type="button" class="btn btn-info font-weight-bold">+ Create New</button>
             </li>
-            <li class="nav-item dropdown d-lg-flex d-none">
-                <button type="button" class="btn btn-info font-weight-bold dropdown">notification</button>
-            </li>
+            <li class="nav-item dropdown d-flex mr-4 ">
+                <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+                  <i class="icon-bell"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                  <p class="mb-0 font-weight-normal float-left dropdown-header">notification</p>
+                  <a class="dropdown-item preview-item">
+                      <i class="icon-head"></i> Profile
+                  </a>
+
+                  <a class="dropdown-item preview-item" href="{{url('logout')}}">
+
+                      <i class="icon-inbox"></i> Logout
+                  </a>
+                </div>
+              </li>
           <li class="nav-item dropdown d-flex">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
               <i class="icon-air-play mx-0"></i>
