@@ -73,6 +73,12 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 	Route::get('/user_account_setting',[UserSettingController::class, 'user_account_setting']);
 
+    //saksham
+    Route::get('/voice_settings',[UserSettingController::class, 'voice_settings']);
+    Route::post('/update-voice-details',[UserSettingController::class, 'update_voice_details']);
+    Route::post('/add-voice-details',[UserSettingController::class, 'add_voice_details']);
+    Route::get('/delete-voice-details/{id}',[UserSettingController::class, 'delete_voice_details']);
+
 
 
 
