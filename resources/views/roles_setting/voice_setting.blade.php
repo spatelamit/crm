@@ -21,8 +21,9 @@
                   
                   <div class="table-responsive">
                     <table id="default-datatable" class="display table table-striped table-bordered">
-                      <
-                          <th>Auth key </th>head>
+                      <thead>
+                      	<th>Sr No.</th>
+                          <th>Auth key </th>
          
                           <th>Caller Id</th>
                           <th>Voice Content</th>

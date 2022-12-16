@@ -427,44 +427,54 @@ public function UpdateEmailDetails($req){
      
 
     }
+     //saksham
 
-    //saksham
-
-    public function voice_settings(){
-
-        $data['voice_data']=$this->Usersetting->GetVoiceData();
-        return view('roles_setting.voice_setting',compact('data'));
-    }
-
-
-    public function add_voice_details(Request $req){
-        $result=$this->Usersetting->AddVoiceDetails($req); 
+    public function GetVoiceData(){
+        $result=DB::table('user_voice_details')
+        ->where('company_id',session()->get('company_id'))
+        ->get();
         if($result){
-            return redirect('voice_settings')->with("success", "Successfully Added Email details!") ;
+            return $result;
         }else{
-            return redirect('voice_settings')->with("error", 'Email Details Not Added');
-        }    
-    }
-
-
-    public function update_voice_details(Request $req){
-        $result=$this->Usersetting->UpdateVoiceDetails($req);  
-        if($result){
-            return redirect('voice_settings')->with("success", "Successfully Updated SMS DLT details!");
-        }else{
-            return redirect('voice_settings')->with("error", 'Details not updated');
+            return false;
         }
     }
 
-    public function delete_voice_details($id){
-        $result=DB::table('user_voice_details')->where('id',$id)->delete();
+    public function AddVoiceDetails($req){
+
+        $data=array(
+            'caller_id'=>$req->caller_id,
+            'auth_Key'=>$req->auth_Key, 
+            'msg_content'=>$req->msg_content, 
+            'company_id'=>session()->get('company_id')
+        );
+
+        $result=DB::table('user_voice_details')->insert($data);
         if($result){
-            return redirect('voice_settings')->with("success", "Successfully Deleted Email details!");
+            return true;
         }else{
-            return redirect('voice_settings')->with("error", 'Email Details Not delete!');
+            return false;
         }
-
-
     }
+
+
+    public function UpdateVoiceDetails($req){
+
+        $data=array(
+         'caller_id'=>$req->caller_id,
+            'auth_Key'=>$req->auth_Key, 
+            'msg_content'=>$req->msg_content, 
+     );
+        // dd($data);
+
+        $result=DB::table('user_voice_details')->where('id',$req->eid)->update($data);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
 }
  

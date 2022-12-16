@@ -287,7 +287,7 @@ class UserSettingController extends Controller
         
     }
 
-    /saksham
+    //saksham
 
     public function voice_settings(){
 
