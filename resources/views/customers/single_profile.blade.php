@@ -364,17 +364,13 @@
                                             <div class="col-8">
                                                 <h5 class="card-title mb-0">Deals</h5>
                                             </div>
-                                            <div class="col-4">
-                                               <!--  <ul class="list-inline-group text-right mb-0 pl-0">
-                                                    <li class="list-inline-item mr-0 font-12"><button type="button" class="btn btn-sm btn-primary-rgba px-2">Export</button></li>
-                                                </ul>   -->                                      
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="wallet-transaction-box">
                                             <div class="table-responsive">
-                                                <table class="table table-borderless">
+                                            <table class="table table-borderless">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col">ID</th>     
@@ -382,7 +378,7 @@
                                                             <th scope="col">Amount</th>
                                                             <th scope="col">Status</th>
                                                           
-                                                            <th scope="col">Comment</th> 
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -395,8 +391,11 @@
                                                             <td><span class="badge badge-success-inverse">{{$deals->won_lost_deal}}</span></td>
                                                             @elseif($deals->won_lost_deal=='lost')
                                                              <td><span class="badge badge-danger-inverse">{{$deals->won_lost_deal}}</span></td>
+                                                             @else
+                                                              <td><span class="badge badge-info-inverse">NA</span></td>
+                                                         
                                                              @endif
-                                                            <td>{{$deals->Pipepline}}</td>
+                                                           
                                                         </tr>
                                                         @empty
                                                             <tr>No records Founds</tr>
