@@ -209,6 +209,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-4" id="container">
+                                <div class="form-group">
+                                    <label for="">RecieverId:</label>
+                                    <select class="form-control" name="reciever_id">
+                                        @foreach ( ($data['meeting_user']) as $reciever )
+                                        <option value="{{$reciever->id}}">{{ $reciever->username }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class=" col-md-12 text-right mt-4">
                             <button type="submit" class="btn btn-info font-weight-bold" id=""> Submit

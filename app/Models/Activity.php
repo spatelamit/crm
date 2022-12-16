@@ -18,7 +18,7 @@ class Activity extends Model
 
         //    unset($req['_token']);
         //    dd($req->all());
-
+        $user_model = new User();
 
 
         $data = array(
@@ -28,7 +28,7 @@ class Activity extends Model
             'sender_id' => session()->get('id'),
             'priority' => $req->priority,
             'due_date' => $req->due_date,
-
+            'reciever_id' => $req->reciever_id,
             'related_to' => $req->account
         );
 
@@ -36,6 +36,18 @@ class Activity extends Model
 
         // $result=DB::table('tasks')->insert($req->all());
         $result = DB::table('tasks')->insert($data);
+        $reciever_name = $user_model->GetUserById($req->reciever_id);
+        $noti_data = array(
+            'type' => 'Task',
+            'message' => 'Task Assign by '.session()->get('full_name').' Assigned to'.$reciever_name,
+            'link' => '',
+            'icons' => '',
+            'sender_id' => session()->get('id'),
+            'reciever_id' => $req->reciever_id
+        );
+
+
+         $user_model->SendNotification($noti_data);
 
         if ($result) {
             return true;
@@ -132,7 +144,7 @@ class Activity extends Model
     }
 
 
-    public function notification($req)
+    public function notification()
     {
         $noti_data = array(
             'type' => 'Task',

@@ -56,6 +56,12 @@ class ActivityController extends Controller
              $data['accounts_data']=null;
 
            }
+
+           $data['meeting_user']= DB::table('users')
+           ->where('company_id',session()->get('company_id'))
+           ->select('username','id')
+           ->get();
+
         return view('tasks', compact('data'));
     }
 
@@ -201,6 +207,8 @@ class ActivityController extends Controller
 
 
 
+
+
         if ($addnots) {
             return redirect()->back();
         } else {
@@ -285,6 +293,17 @@ class ActivityController extends Controller
         );
         // dd($data);
         $add_meeting = DB::table('meetings')->insert($data);
+        $reciever_name = $this->User->GetUserById($req->reciever_id);
+        $noti_data = array(
+            'type' => 'Meeting',
+            'message' => 'Meeting Assign by '.session()->get('full_name').' Assigned to'.$reciever_name,
+            'link' => '',
+            'icons' => '',
+            'sender_id' => session()->get('id'),
+            'reciever_id' => $req->reciever_id
+        );
+        //  $notifi = new User();
+        $this->User->SendNotification($noti_data);
 
         if ($add_meeting) {
             return redirect('meetings');
