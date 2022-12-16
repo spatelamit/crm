@@ -38,7 +38,7 @@
                 </div>
               </div>
               @elseif($val->column_id == 20)
-              <div class="col-md-10">
+             <!--  <div class="col-md-10">
                                        <div class="form-group mb-10">
                                          <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
@@ -51,7 +51,7 @@
                                                 </select>
                                                 <select name="value[]" class="form-control stages" required="" > </select>
                                         </div>
-                                      </div>
+                                      </div> -->
               @elseif($val->column_id == 15)
 
               <div class="col-md-10">
@@ -153,7 +153,7 @@
                                           <div class="form-group mb-10">
                                          <label>{{ str_replace('_', ' ', strtoupper($select_field->col_name)) }}</label>
                                            <input type="hidden" name="column_id[]" value="{{ $select_field->column_id }}">
-                                                <select class="form-control dealstage"  name="value[]">
+                                                <select class="form-control "  name="value[]">
                                                     
                                                     @foreach($data['field_option'] as $option)
                                                     @if($option->column_id == $select_field->column_id)
@@ -189,4 +189,21 @@
 
        
     
+<script>
+$(document).ready(function() {
+$('.dealstage').on('change', function() {
+var category_id = this.value;
+// alert(category_id);
+$.ajax({
+type:"GET",
+url: "{{url('/fetch-stages')}}/"+category_id,
 
+
+success: function(response){
+  // console.log(response);
+$(".stages").html(response);
+}
+});
+});
+});
+</script>

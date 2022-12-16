@@ -106,9 +106,17 @@ $('#saveFilter1').on('change',function(){
       });
 
   });
+$("#sender_id").change(function(){
+        var sender_id = $("#sender_id").val();
+        alert(sender_id)
+        $.get("/GetTemplate/"+ sender_id ,function( data ) {
+            console.log("done")
+            $("#template_id").html(data);
+        });
+    });
   });
 function modals(id){
-  alert('#'+id);
+  // alert('#'+id);
   $('#'+id).modal('show');
 };
 
@@ -131,23 +139,3 @@ function editdata(data_id,module_id){
 
 }
 
-$(document).ready(function(){
-$('#listView').on('click',function(){
-    
-    // alert(savefilterid);
-    $.ajax({
-        type: "get",
-        url: "get_deals_List/",
-
-       
-        success: function (response) {
-        
-          $("#listviews").html(response);
-
-          
-        },
-       
-      });
-
-  });
-  });

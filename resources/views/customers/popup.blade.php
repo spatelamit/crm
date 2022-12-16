@@ -24,6 +24,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    @if($data['selected_fields'][0]->module_id != 9)
                         <div class="col-md-12 mb-4 mb-xl-0">
                              <form method="GET" action="{{url('export_data_pankaj')}}">
                                 <label>Export Sample Header</label>
@@ -51,6 +52,7 @@
 
                             </form>
                         </div>
+                        @endif
          			  <form method="post" action="{{ url('save-leads') }}" autocomplete="nope">
                         @csrf
 
@@ -91,6 +93,19 @@
                                                 maxlength="10"
                                                 placeholder="Enter your {{ str_replace('_', '', strtoupper($val->col_name)) }}"
                                                 required="">
+                                        </div>
+                                 @elseif($val->column_id == 20)
+                                       <div class="form-group mb-10">
+                                         <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
+                                           <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
+                                                <select class="form-control dealstage"  >
+                                                    <option value="0">Default Pipeline</option>
+                                                    @foreach($data['pipeline'] as $pipeline)
+
+                                                    <option value="{{$pipeline->id}}">{{$pipeline->pipeline_name  }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <select name="value[]" class="form-control stages" required="" > </select>
                                         </div>
                                     @elseif($val->column_id == 22)
                                         <div class="form-group mb-10">

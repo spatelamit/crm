@@ -40,6 +40,9 @@
                             <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
                                 data-target="#sendemail"> <i class="fa fa-user-plus"></i>
                                 Email </a>
+                                <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
+            data-target="#sendvoice"> <i class="fa fa-user-plus"></i>
+            Send Voice </a>
 
                             <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
                                 data-target="#leadtask"> <i class="fa fa-user-plus"></i>
@@ -302,16 +305,46 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle-1">send Email</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
-                        aria-hidden="true">&times;</span> </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <form method="post" action="{{ url('add-sms-details') }}" autocomplete="nope">
+            <form method="post" action="{{ url('email-api') }}" autocomplete="nope">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group mb-10">
+                        <label>Email Ids:</label>
+                        <input type="text" name="email_ids" class="form-control bg_input email_ids"
+                            placeholder="Enter Email Ids" required>
+                    </div>
+
+                    <div class="form-group mb-10">
                         <label>Authentication Key:</label>
-                        <input type="text" name="authKey" class="form-control bg_input email_ids"
+                        <input type="text" name="authKey" class="form-control bg_input"
                             placeholder="Enter your Authentication Key" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>sender:</label>
+                        <input type="text" name="sender_name" class="form-control bg_input"
+                            placeholder="Enter Sender" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>sender Email:</label>
+                        <input type="text" name="sender_email" class="form-control bg_input"
+                            placeholder="Enter Sender Email" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>Subject:</label>
+                        <input type="text" name="subject" class="form-control bg_input"
+                            placeholder="Enter Subject" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>Message</label>
+                        <textarea id="email_message" name="email_message" class="form-control bg_input" rows="4" cols="50" placeholder="Enter Email Message" required></textarea>
                     </div>
 
                 </div>
@@ -334,7 +367,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span> </button>
             </div>
-            <form method="post" action="{{ url('add-sms-details') }}" autocomplete="nope">
+            <form method="post" action="{{ url('sms-api') }}" autocomplete="nope">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group mb-10">
@@ -342,6 +375,21 @@
                         <input type="text" name="sms_numbers" class="form-control bg_input sms_numbers"
                             placeholder="Enter your Authentication Key" required>
                     </div>
+
+                    <div class="form-group mb-10">
+                        <label for="sender_id">Choose a Sender Id</label>
+                        <select name="sender_id" id="sender_id" required>
+                            <option value=""  selected>Select Sender</option>
+                            @forelse ($data['sms_sender'] as $post)
+                                <option value="{{ $post->sender_id}}">{{ $post->sender_id}}</option>
+                            @empty
+                                <option value="">No Sender</option>
+                            @endforelse
+                        </select> 
+                    </div>
+
+                    <div class="form-group mb-10" id="template_id"></div>
+
 
                 </div>
                 <div class="modal-footer">
@@ -466,7 +514,58 @@
 </div>
 <!-- end edit -->
 
+<!-- Voice modal -->
+<div class="modal fade come-from-modal right" id="sendvoice" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Send Voice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <form method="post" action="{{ url('voice-api') }}" autocomplete="nope">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group mb-10">
+                        <label>Number</label>
+                        <input type="text" name="voice_numbers" class="form-control bg_input sms_numbers"
+                            placeholder="Enter your Authentication Key" required>
+                    </div>
 
+                    <div class="form-group mb-10">
+                        <label>Authentication Key:</label>
+                        <input type="text" name="authKey" class="form-control bg_input"
+                            placeholder="Enter your Authentication Key" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>Sender</label>
+                        <input type="text" name="voice_sender" class="form-control bg_input"
+                            placeholder="Enter Sender" required>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <input type="radio" id="tr" name="route"required  value="TR">
+                        <label for="tr">Transactional</label>
+                        <input type="radio" id="pr" name="route" required value="PR">
+                        <label for="pr">Promotional</label>
+                    </div>
+
+                    <div class="form-group mb-10">
+                        <label>Message</label>
+                        <textarea id="voice_message" name="voice_message" class="form-control bg_input" rows="4" cols="50" placeholder="Enter Message" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- end voice modal -->
 
 <!-- Mnagage Columns -->
 <div class="modal fade come-from-modal right" id="managecol" tabindex="-1" role="dialog" aria-hidden="true">

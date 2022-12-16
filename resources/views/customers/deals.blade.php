@@ -1,6 +1,6 @@
 @include('header')
 
-
+@include('customers.add-deal');
 <div class="content-wrapper">
 
 
@@ -12,11 +12,17 @@
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
 
-                <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-deal') }}"> <i
+                
+             <!-- <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-deal') }}"> <i
                         class="fa fa-user-plus"></i>
-                    Create Deal </a>
+                    Create Deal </a> -->
+                     <a class="btn btn-info font-weight-bold new_w mr-2" 
+                               onclick="modals('newdeal')" > <i class="fa fa-user-plus"></i>
+                                Add Deal </a>
 
-
+<a class="btn btn-info font-weight-bold mr-2" href="{{ url('deals') }}"> <i
+                        class="fa fa-user-plus"></i>
+                     Grid view </a>
 
 
                 <a class="btn btn-info font-weight-bold new_w mr-2" id="Filter_box"><i class="fa fa-filter"
@@ -24,7 +30,7 @@
                     Filter </a>
 
 
-                <div class="btn-group-vertical " role="group" aria-label="Basic example">
+                <div class="btn-group-vertical mr-2 " role="group" >
                     <div class="btn-group">
                         <button type="button" class="btn btn-info font-weight-bold dropdown-toggle"
                             data-toggle="dropdown"><i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -91,7 +97,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive lead_search" >
-                        <table id="leads1" class="display table leads ">
+                        <table  class="display table leads ">
                             <thead>
 
 
@@ -145,7 +151,7 @@
                                 @if(isset($data['deal_data'][$key1][$selvalue->col_name]))
                                                 @if($selvalue->col_name=='company_name')
                                                  <td class="details-control"> <a
-                                                            href="{{ url('lead-profile', $data['deal_data'][$key1]['account_id']) }}">{{ $data['deal_data'][$key1][$selvalue->col_name] }}</a>
+                                                            href="{{ url('single-profile', [$data['deal_data'][$key1]['account_id'],'10']) }}">{{ $data['deal_data'][$key1][$selvalue->col_name] }}</a>
                                                  </td>
                                                 @else
 
@@ -169,11 +175,15 @@
                                                 <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                                                    <a class="btn btn-info mr-2"
+                                                    <!-- <a class="btn btn-info mr-2"
                                                         href="{{ url('edit-lead',[ $data['deal_data'][$key1]['data_id'],9]) }}"><span
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span>
-                                                    </a>
+                                                    </a> -->
+                                                    <a class="btn btn-info mr-2" onclick="editdata('{{$data['deal_data'][$key1]['data_id']}}','9')"> 
+                               <span
+                                                            class="fa fa-pencil"
+                                                            style="float: none; margin: 5px;"></span> </a>
                                                     <a class="btn btn-danger"
                                                         onclick="deletelead( '{{ $data['deal_data'][$key1]['data_id'] }}' )">
                                                         <span class="fa fa-trash"
@@ -309,7 +319,7 @@
     </div>
 
 </div>
-
+<!-- add deals -->
 <div class="modal fade come-from-modal right" id="sendemail" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  slideInRight  animated" role="document">
         <div class="modal-content">
@@ -543,7 +553,7 @@
 
     }
 </script>
-<script>
+<!-- <script>
     $(document).ready(function() {
         $('.leads').DataTable({
             dom: 'Bfrtip',
@@ -551,7 +561,7 @@
 
         });
     });
-</script>
+</script> -->
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -978,4 +988,44 @@
          
       
     });
+</script>
+<script>
+$(document).ready(function() {
+$('.dealstage').on('change', function() {
+var category_id = this.value;
+// alert(category_id);
+$.ajax({
+type:"GET",
+url: "{{url('/fetch-stages')}}/"+category_id,
+
+
+success: function(response){
+  // console.log(response);
+$(".stages").html(response);
+}
+});
+});
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#compName").select2( {
+       placeholder: "Select a state",
+       data:<?php  echo json_encode($data['company_names']) ;?>,
+     
+        
+    });
+    $("#compName").on('change',function(){
+        var compN=$('#compName').val();
+
+         var  data1= <?php  echo json_encode($data['company_names']) ?>;
+         // console.log(data1);
+
+       // var opt=data1.'0'.filter( record => record.name === compN);
+    var result=data1.filter(obj=> obj.text == compN);
+    console.log(result['0']['name']);
+    $('#accounnt_id').val(result['0']['name']);
+      
+    });
+});
 </script>

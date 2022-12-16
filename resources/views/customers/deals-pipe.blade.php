@@ -223,7 +223,7 @@
                                 data-target="#newdeals"> <i class="fa fa-user-plus"></i>
                                  Add Deals </a>
 
-                <a class="btn btn-info font-weight-bold new_w mr-2" id="listView"><i class="fa fa-list"
+                <a class="btn btn-info font-weight-bold new_w mr-2"  href="{{ url('deals-list') }}" ><i class="fa fa-list"
                         aria-hidden="true"></i>
                     list view </a>
 
