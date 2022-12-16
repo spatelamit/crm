@@ -314,7 +314,7 @@
                 <div class="modal-body">
                     <div class="form-group mb-10">
                         <label>Email Ids:</label>
-                        <input type="text" name="email_ids" class="form-control bg_input email_ids"
+                        <input  type="text" name="email_ids" class="form-control bg_input email_ids"
                             placeholder="Enter Email Ids" required>
                     </div>
 
@@ -686,7 +686,7 @@
             var val1 = [];
             $('.data_id').each(function(i) {
                 val1[i] = $(this).val();
-
+                alert(i);
             });
 
             // $("#selectedemails").val(val1);
@@ -707,6 +707,7 @@
 
         $(':checkbox[class="data_id"]').click(function() {
             var data_id = [];
+            var val1=[];
             if ($(this).is(':checked')) {
                 $(".mobile_num").prop("checked", true);
                 $(".ids12").prop("checked", true);
@@ -714,7 +715,9 @@
 
 
                 data_id = $(this).val();
-                // alert(data_id);
+             
+              
+                 
                 $("#lead_id").val(data_id);
                 $('#related_to').val(data_id);
             } else {

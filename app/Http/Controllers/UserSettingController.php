@@ -287,4 +287,43 @@ class UserSettingController extends Controller
         
     }
 
+    /saksham
+
+    public function voice_settings(){
+
+        $data['voice_data']=$this->Usersetting->GetVoiceData();
+        return view('roles_setting.voice_setting',compact('data'));
+    }
+
+
+    public function add_voice_details(Request $req){
+        $result=$this->Usersetting->AddVoiceDetails($req); 
+        if($result){
+            return redirect('voice_settings')->with("success", "Successfully Added Email details!") ;
+        }else{
+            return redirect('voice_settings')->with("error", 'Email Details Not Added');
+        }    
+    }
+
+
+    public function update_voice_details(Request $req){
+        $result=$this->Usersetting->UpdateVoiceDetails($req);  
+        if($result){
+            return redirect('voice_settings')->with("success", "Successfully Updated SMS DLT details!");
+        }else{
+            return redirect('voice_settings')->with("error", 'Details not updated');
+        }
+    }
+
+    public function delete_voice_details($id){
+        $result=DB::table('user_voice_details')->where('id',$id)->delete();
+        if($result){
+            return redirect('voice_settings')->with("success", "Successfully Deleted Email details!");
+        }else{
+            return redirect('voice_settings')->with("error", 'Email Details Not delete!');
+        }
+
+
+    }
+
 }
