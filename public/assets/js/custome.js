@@ -6,37 +6,37 @@ function createdeal(id){
             $.ajax({
                 type:"GET",
                   url: "get-lead-by-id/"+id,
-                  
-                  success : function (data) {
-                  
-                   $(".main-panel").html(data);
-                  
 
-                  
+                  success : function (data) {
+
+                   $(".main-panel").html(data);
+
+
+
                   },
               });
     }
 
     $("#Filter_box").click(function(){
       // alert("hello");
-  
+
     var className = $('#bid_d').attr('class');
     //alert(className);
     if (className != 'col-md-12') {
       var className = $('#bid_d').attr('class');
     }
-     
+
     if(className == 'col-md-12'){
         $("#bid_d").addClass("col-md-9");
          $("#bid_d").css({"padding": "0px"});
         $("#bid_d").removeClass("col-md-12");
-        $("#small_d").removeClass("d-none");  
+        $("#small_d").removeClass("d-none");
     }else{
         $("#bid_d").addClass("col-md-12");
         $("#bid_d").removeClass("col-md-9");
         $("#small_d").addClass("d-none");
     }
-    
+
   });
 
     function del_div(id){
@@ -63,7 +63,7 @@ function createdeal(id){
           // console.log(response);
         }
       });
-   
+
     });
 
     $( "#view_data" ).on( "change", function(e) {
@@ -73,18 +73,18 @@ function createdeal(id){
        // alert(mod_id);
        $.ajax({
         type: "get",
-      
+
         url: 'view-data/'+view_id+'/'+mod_id,
 
-      
+
         success: function (response) {
 
-        
+
           $(".lead_search").html(response);
           // console.log(response);
         }
       });
-   
+
     });
 
 $(document).ready(function(){
@@ -95,14 +95,14 @@ $('#saveFilter1').on('change',function(){
         type: "get",
         url: "get_filter_by_users/"+savefilterid,
 
-       
+
         success: function (response) {
-        
+
           $(".lead_search").html(response);
 
-          
+
         },
-       
+
       });
 
   });
@@ -127,15 +127,30 @@ function editdata(data_id,module_id){
         type: "get",
         url: "get_edit_data/"+data_id+'/'+module_id,
 
-       
+
         success: function (response) {
         // console.log(response);
           $(".editdata").html(response);
 
            $('#edit_data').modal('show');
         },
-       
+
       });
 
+}
+
+function getnotification(){
+
+    // alert("hello");
+    $.ajax({
+        type: "get",
+        url: "show_notification/",
+        success: function (response) {
+            console.log(response);
+
+            $("#notifications").html(response);
+            },
+
+    });
 }
 

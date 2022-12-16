@@ -59,7 +59,7 @@ class ActivityController extends Controller
 
            $data['meeting_user']= DB::table('users')
            ->where('company_id',session()->get('company_id'))
-           ->select('username','id')
+           ->select('username','id','full_name')
            ->get();
 
         return view('tasks', compact('data'));
@@ -252,7 +252,7 @@ class ActivityController extends Controller
 
            $data['meeting_user']= DB::table('users')
            ->where('company_id',session()->get('company_id'))
-           ->select('username','id')
+           ->select('username','id','full_name')
            ->get();
 
         return view('add_meetings', compact('data'));
@@ -410,10 +410,10 @@ class ActivityController extends Controller
         $user_id = session()->get('id');
         $show = DB::table('notifications')->select('message')
         ->where('notifications.reciever_id', $user_id)
-        ->where('notifications.sender_id', $user_id)
+        ->orWhere('notifications.sender_id', $user_id)
         ->get();
 
-        dd($show);
+        return view('user_notification', compact('show'));
     }
 
 
