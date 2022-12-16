@@ -51,7 +51,7 @@
                                     <label for="">RecieverId:</label>
                                     <select class="form-control" name="reciever_id">
                                         @foreach ( ($data['meeting_user']) as $reciever )
-                                        <option value="{{$reciever->id}}">{{ $reciever->username }}</option>
+                                        <option value="{{$reciever->id}}">{{ $reciever->full_name }}</option>
                                         @endforeach
 
                                     </select>
