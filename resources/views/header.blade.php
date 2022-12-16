@@ -203,7 +203,8 @@
                 <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li> -->
-                <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
+               <li class="nav-item"><a class="nav-link" href="{{url('voice_settings')}}">Voice Setting</a></li>
+               <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li> -->
                 {{-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li> --}}
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li> -->
