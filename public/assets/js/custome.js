@@ -106,9 +106,17 @@ $('#saveFilter1').on('change',function(){
       });
 
   });
+$("#sender_id").change(function(){
+        var sender_id = $("#sender_id").val();
+        alert(sender_id)
+        $.get("/GetTemplate/"+ sender_id ,function( data ) {
+            console.log("done")
+            $("#template_id").html(data);
+        });
+    });
   });
 function modals(id){
-  alert('#'+id);
+  // alert('#'+id);
   $('#'+id).modal('show');
 };
 

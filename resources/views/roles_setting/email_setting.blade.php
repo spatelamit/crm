@@ -10,7 +10,7 @@
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
                 <button type="button" class="btn btn-info font-weight-bold" data-animation="slideInRight"
-                    data-toggle="modal" data-target="#exampleModalLong-1"><i class="icon-speech-bubble"></i>
+                    data-toggle="modal" data-target="#addemail"><i class="icon-speech-bubble"></i>
                     Add Email template </button>
             </div>
         </div>

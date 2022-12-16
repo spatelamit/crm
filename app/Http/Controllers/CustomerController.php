@@ -41,6 +41,7 @@ class CustomerController extends Controller
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
         $data['leads_datas']=$this->Customer->GetLeadsData();
          $data['field_option']=$this->Customer->GetOptionField();
+          $data['sms_sender'] = $this->Customer->GetSender();
          // dd( $data['field_option']);
         $view_filter=$this->Customer->GetViewfilterId($module_id);
          $data['filter_name']='';
@@ -320,27 +321,29 @@ class CustomerController extends Controller
     public function deals_list(){
              $module_id='9';
              $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
+             $data['field_option']=$this->Customer->GetOptionField();
+             $data['pipeline']=$this->Customer->GetPipeline();
              $data['selected_col']=$this->Customer->GetTableCol($module_id);
              $data['deal_datas']=$this->Customer->GetDealData($module_id);
               $view_filter=$this->Customer->GetViewfilterId($module_id);
              $data['filter_name']='';
-              if($view_filter){
-                 $data['deal_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
-                 $data['filter_name']=$view_filter->filter_name;
-                // dd( $data['leads_data']);
-              }else{
-                if( $data['deal_datas']){
-                foreach ($data['deal_datas'] as $key => $value) {
-                  $data['deal_data'][]=(json_decode(json_encode( $value),true));
-
-                    }
-                     
+                if($view_filter){
+                   $data['deal_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
+                   $data['filter_name']=$view_filter->filter_name;
+                  // dd( $data['leads_data']);
                 }else{
-                    $data['deal_data']=null;
-                    $data_keys=null;
+                  if( $data['deal_datas']){
+                  foreach ($data['deal_datas'] as $key => $value) {
+                    $data['deal_data'][]=(json_decode(json_encode( $value),true));
 
+                      }
+                       
+                  }else{
+                      $data['deal_data']=null;
+                      $data_keys=null;
+
+                  }
                 }
-              }
           
        if($data['selected_col']!=false ){
           foreach ($data['selected_col'] as $key => $selected_col) {
@@ -355,6 +358,25 @@ class CustomerController extends Controller
           $selcol= null;
            $selcolname=null;
         }
+
+        $data['accounts_datas']=$this->Customer->GetDealData('10');
+             
+            if( $data['accounts_datas']){
+               foreach ($data['accounts_datas'] as $key => $value) {
+               $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+
+             }
+             foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][]=array(
+                  'id'=>$value1['company_name'],
+                  'text'=>$value1['company_name'],
+                  'name'=>$value1['data_id'],
+                );
+             }
+             }else{
+                $data['accounts_data']=null;
+                 $data['company_names']=[];
+              }
         
          
         // dd($data['selected_col']);

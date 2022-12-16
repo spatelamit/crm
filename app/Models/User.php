@@ -55,6 +55,10 @@ class User extends Authenticatable
             return false;
         }
     }
+    public function GetUserById($user_id){
+        $user_name=DB::table('users')->select('full_name')->where('id',$user_id)->first();
+        return $user_name;
+    }
     public function csv_export_data()
     {
         // $quary =$this->Customer->GetLeadsData();

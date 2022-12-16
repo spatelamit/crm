@@ -142,9 +142,9 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 });
 
 
-    Route::get('/sms-api',[CommunicationController::class, 'sms_api']);
-    Route::get('/voice-api',[CommunicationController::class, 'voice_api']);
-    Route::get('email-api',[CommunicationController::class,], 'email_api');
+    Route::post('/sms-api',[CommunicationController::class, 'sms_api']);
+    Route::post('/voice-api',[CommunicationController::class, 'voice_api']);
+    Route::post('/email-api',[CommunicationController::class, 'email_api']);
 
 
     //meeting notification

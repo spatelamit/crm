@@ -1,25 +1,29 @@
-@include('header')
-<div class="content-wrapper">
-    <div class="row">
-        <div class="col-sm-8 mb-4 mb-xl-0">
-            <h4 class="font-weight-bold text-dark"> Add Deal </h4>
-            <p class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
-                have your own fields then click on create dynamic layouts..</p>
-        </div>
-        <div class="col-sm-4 mb-4 mb-xl-0">
-            <div class="widgetbar text-right"> <a class="btn btn-info font-weight-bold mb-2"
-                    href="{{ url('module-layout', $data['selected_fields'][0]->module_id) }}">Create Dynamic Layout </a>
+<div class="modal fade come-from-modal right in" id="newdeal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+      <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle-1">Add Deals</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
             </div>
-        </div>
-    </div>
-    <div class="row">
+            <div class="row">
+                <div class="col-sm-8 mb-4 mb-xl-0">
+                   
+                    <span class="font-weight-normal mb-2 text-muted">Note : Enter the details in the following fields If you want to
+                        have your own fields then click on create dynamic layouts..</span>
+                </div>
+                <div class="col-sm-4 mb-4 mb-xl-0">
+                    <div class="widgetbar text-right"> <a target="_blank" class="btn btn-info  mb-2"
+                            href="{{ url('module-layout', $data['selected_fields'][0]->module_id) }}">Create Dynamic Layout </a>
+                    </div>
+                </div>
+          </div>
+       <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                    
-                   
-
-                    <form method="post" action="{{ url('save-deal') }}" autocomplete="nope">
+                     <form method="post" action="{{ url('save-deal') }}" autocomplete="nope">
                         @csrf
 
 
@@ -31,7 +35,7 @@
                         <div class="row">
                             @foreach ($data['selected_fields'] as $val)
 
-                                <div class="col-md-3">
+                                <div class="col-md-12">
 
                                     @if ($val->column_id == 15)
                                         <div class="form-group mb-10">
@@ -133,6 +137,7 @@
                             @endforeach
 
                             <div class="col-md-12 text-right">
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-info font-weight-bold mb-2 ">Save</button>
                             </div>
 
@@ -143,44 +148,22 @@
         </div>
     </div>
 </div>
-@include('footer')
-<script>
-$(document).ready(function() {
-$('.dealstage').on('change', function() {
-var category_id = this.value;
-// alert(category_id);
-$.ajax({
-type:"GET",
-url: "{{url('/fetch-stages')}}/"+category_id,
+</div>
+</div>
 
+<div class="modal fade come-from-modal right show" id="edit_data" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Edit data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body editdata" id="">
 
-success: function(response){
-  console.log(response);
-$(".stages").html(response);
-}
-});
-});
-});
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-    $("#compName").select2( {
-       placeholder: "Select a state",
-       data:<?php  echo json_encode($data['company_names']) ;?>,
-     
-        
-    });
-    $("#compName").on('change',function(){
-        var compN=$('#compName').val();
+            </div>
 
-         var  data1= <?php  echo json_encode($data['company_names']) ?>;
-         // console.log(data1);
+        </div>
+    </div>
+</div>
 
-       // var opt=data1.'0'.filter( record => record.name === compN);
-    var result=data1.filter(obj=> obj.text == compN);
-    console.log(result['0']['name']);
-    $('#accounnt_id').val(result['0']['name']);
-      
-    });
-});
-</script>
