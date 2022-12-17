@@ -11,7 +11,7 @@
          background-color: #e8eff4;
          position: relative;
      }
-	 
+     
 #treeparent {
   position: absolute;
   width: 100%;
@@ -21,8 +21,8 @@
      .Permission_box_li {
          background-color: #2E92B8;
      }
-	 
-	 .Permission_box_li a {
+     
+     .Permission_box_li a {
   color: #fff;
 }
 
@@ -103,15 +103,30 @@
                                              <div class="col-md-2">
                                                  <div class="Permission_box_li">
                                                      <ul class="nav nav-tabs">
-                                                         <li class="active"><a data-toggle="tab"
-                                                                 href="#Leads">Leads</a></li>
-                                                         <li><a data-toggle="tab" href="#crmSettings">CRM Settings</a>
+                                                        <li class="active"><a data-toggle="tab" href="#crmSettings">CRM Settings</a>
                                                          </li>
-                                                         <li><a data-toggle="tab" href="#AddAccounts">Users</a></li>
-                                                         <li><a data-toggle="tab" href="#Settings">Roles Settings</a>
+                                                         
+                                                         
+                                                         <li><a data-toggle="tab" href="#users">Users</a></li>
+                                                         <li><a data-toggle="tab" href="#RoleSettings">Roles Settings</a>
                                                          </li>
+                                                         <li ><a data-toggle="tab"
+                                                                 href="#Leads">Leads</a>
+                                                             </li>
+                                                             <li ><a data-toggle="tab"
+                                                                 href="#Deals">Deals</a>
+                                                             </li>
+                                                             <li ><a data-toggle="tab"
+                                                                 href="#Accounts">Accounts</a>
+                                                             </li>
+                                                              <li ><a data-toggle="tab"
+                                                                 href="#Tasks">Tasks</a>
+                                                             </li>
+                                                             <li ><a data-toggle="tab"
+                                                                 href="#Meeting">Meeting</a>
+                                                             </li>
                                                          <li><a data-toggle="tab" href="#Mailer">Mailer</a></li>
-                                                         <li><a data-toggle="tab" href="#Universal">Universal Filter</a>
+                                                        
                                                          </li>
                                                      </ul>
                                                  </div>
@@ -119,7 +134,7 @@
                                              <input type="hidden" id="add_permission" name="features_permission">
                                              <div class="col-md-10">
                                                  <div class="tab-content Permission_box_tab">
-                                                     <div id="Leads" class="tab-pane fade in active">
+                                                     <div id="Leads" class="tab-pane fade in ">
                                                          <h2> Leads </h2>
                                                          <hr />
                                                          <div class="hierarchy-node row ">
@@ -129,21 +144,134 @@
                                                                  <label class="hierarchy-label inPut_2"> All</label>
                                                              
 
-                                                             @foreach ($data['allfeatures'] as $value)
-                                                                 @if ($value->module_id == '1')
-                                                                     <div class="hierarchy-node col-md-2 leaf ">
-                                                                         <input class="hierarchy-checkbox"
+             @forelse ($data['allfeatures'] as $value)
+                         @if ($value->module_id == '8')
+                                 <div class="hierarchy-node col-md-2 leaf ">
+                                     <input class="hierarchy-checkbox"
                                                                              name="permissions[]"
                                                                              value="{{ $value->id }}"
                                                                              type="checkbox">
                                                                          <label
                                                                              class="hierarchy-label">{{ $value->features_name }}</label>
                                                                      </div>
-                                                                 @endif
-                                                             @endforeach
+                         @endif
+                             @empty
+            @endforelse
                                                          </div>
                                                      </div>
-                                                     <div id="crmSettings" class="tab-pane fade hierarchy-node leaf">
+                                                     <!--Deals  -->
+                                                     <div id="Deals" class="tab-pane fade in ">
+                                                         <h2> Deals </h2>
+                                                         <hr />
+                                                         <div class="hierarchy-node row ">
+                                                            
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                             
+
+             @forelse ($data['allfeatures'] as $value)
+                         @if ($value->module_id == '9')
+                                 <div class="hierarchy-node col-md-2 leaf ">
+                                     <input class="hierarchy-checkbox"
+                                                                             name="permissions[]"
+                                                                             value="{{ $value->id }}"
+                                                                             type="checkbox">
+                                                                         <label
+                                                                             class="hierarchy-label">{{ $value->features_name }}</label>
+                                                                     </div>
+                         @endif
+                             @empty
+            @endforelse
+                                                         </div>
+                                                     </div>
+                                                     <!--end Deals  -->
+
+                                                     <!-- start Accounts -->
+                                        <div id="Accounts" class="tab-pane fade in ">
+                                                         <h2> Accounts </h2>
+                                                         <hr />
+                                                         <div class="hierarchy-node row ">
+                                                            
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                             
+
+                                             @forelse ($data['allfeatures'] as $value)
+                                                         @if ($value->module_id == '10')
+                                                                 <div class="hierarchy-node col-md-2 leaf ">
+                                                 <input class="hierarchy-checkbox"
+                                                                                  name="permissions[]"
+                                                                 value="{{ $value->id }}"
+                                                                 type="checkbox">
+                                                             <label
+                                                                 class="hierarchy-label">{{ $value->features_name }}</label>
+                                                         </div>
+                                                         @endif
+                                                             @empty
+                                            @endforelse
+                                                                         </div>
+                                        </div>
+                                                     <!-- end Accounts  -->
+
+                                                     <!-- start Task -->
+                                    <div id="Tasks" class="tab-pane fade in ">
+                                             <h2> Tasks </h2>
+                                                 <hr />
+                                                 <div class="hierarchy-node row ">
+                                                    
+                                                         <input class="hierarchy-checkbox inPut_1"
+                                                             id="selectAll" type="checkbox">
+                                                         <label class="hierarchy-label inPut_2"> All</label>
+                                                     
+
+                                            @forelse ($data['allfeatures'] as $value)
+                                                         @if ($value->module_id == '12')
+                                                     <div class="hierarchy-node col-md-2 leaf ">
+                                                 <input class="hierarchy-checkbox"
+                                                                                  name="permissions[]"
+                                                                 value="{{ $value->id }}"
+                                                                 type="checkbox">
+                                                             <label
+                                                                 class="hierarchy-label">{{ $value->features_name }}</label>
+                                                         </div>
+                                                         @endif
+                                                             @empty
+                                            @endforelse
+                                                                         </div>
+                                        </div>
+
+                                                     <!-- end Task -->
+
+                                                     <!-- Start Meeting -->
+                                                     <div id="Meeting" class="tab-pane fade in ">
+                                             <h2> Meeting </h2>
+                                                 <hr />
+                                                 <div class="hierarchy-node row ">
+                                                    
+                                                         <input class="hierarchy-checkbox inPut_1"
+                                                             id="selectAll" type="checkbox">
+                                                         <label class="hierarchy-label inPut_2"> All</label>
+                                                     
+
+                                            @forelse ($data['allfeatures'] as $value)
+                                                         @if ($value->module_id == '11')
+                                                     <div class="hierarchy-node col-md-2 leaf ">
+                                                 <input class="hierarchy-checkbox"
+                                                                                  name="permissions[]"
+                                                                 value="{{ $value->id }}"
+                                                                 type="checkbox">
+                                                             <label
+                                                                 class="hierarchy-label">{{ $value->features_name }}</label>
+                                                         </div>
+                                                         @endif
+                                                             @empty
+                                            @endforelse
+                                                                         </div>
+                                        </div>
+                                                     <!-- end Meeting -->
+                                             <div id="crmSettings" class="tab-pane fade in active hierarchy-node leaf ">
                                                          <h2> CRM Settings </h2>
                                                          <hr />
                                                          <div class="hierarchy-node row">
@@ -166,10 +294,10 @@
                                                              @endforeach
                                                          </div>
                                                      </div>
-                                                     <div id="AddAccounts" class="tab-pane fade hierarchy-node leaf">
+                                                     <div id="users" class="tab-pane fade hierarchy-node leaf">
                                                          <div class="hierarchy-node row">
                                                              <div class="col-md-12">
-                                                                 <h2>Add Accounts</h2>
+                                                                 <h2>Users</h2>
                                                                  <hr />
                                                              </div>
                                                            
@@ -192,10 +320,10 @@
                                                              @endforeach
                                                          </div>
                                                      </div>
-                                                     <div id="Settings" class="tab-pane fade">
+                                                     <div id="RoleSettings" class="tab-pane fade">
                                                          <div class="hierarchy-node row">
                                                              <div class="col-md-12">
-                                                                 <h2> Settings </h2>
+                                                                 <h2> Role Settings </h2>
                                                                  <hr />
                                                              </div>
                                                            
@@ -244,32 +372,7 @@
                                                              @endforeach
                                                          </div>
                                                      </div>
-                                                     <div id="Universal" class="tab-pane fade">
-                                                         <div class="hierarchy-node row">
-                                                             <div class="col-md-12">
-                                                                 <h2> Universal </h2>
-                                                                 <hr />
-                                                             </div>
-                                                           
-                                                                 <input id="selectAll"
-                                                                     class="hierarchy-checkbox inPut_1"
-                                                                     type="checkbox">
-                                                                 <label class="hierarchy-label inPut_2">All</label>
-                                                            
-                                                             @foreach ($data['allfeatures'] as $value)
-                                                                 @if ($value->module_id == '7')
-                                                                     <div class="hierarchy-node col-md-2 leaf ">
-                                                                         <input class="hierarchy-checkbox"
-                                                                             name="permissions[]"
-                                                                             value="{{ $value->id }}"
-                                                                             type="checkbox">
-                                                                         <label
-                                                                             class="hierarchy-label">{{ $value->features_name }}</label>
-                                                                     </div>
-                                                                 @endif
-                                                             @endforeach
-                                                         </div>
-                                                     </div>
+                                                    
                                                  </div>
                                              </div>
                                          </div>

@@ -43,11 +43,11 @@ class UserSetting extends Model
     ->orderby('id','ASC')
     ->get()
     ->toArray();
-    if($features){
+   
         return $features;
-    }else{
-        return false;
-    }
+ 
+       
+   
 }
 
 public function SaveRole($req){

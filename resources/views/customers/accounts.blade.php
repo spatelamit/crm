@@ -116,7 +116,8 @@
                                        
 
 
-                                   @endif    
+                                   @endif   
+                                    <th>Created date</th> 
                                 <th>Actions </th>
 
                                 </tr>
@@ -137,7 +138,7 @@
                                                  </div>
                                             </td>
 
-                                         <td  class="details-control"> <a href="{{url('single-profile',[$data['accounts_data'][$key1]['data_id'],10])}}">{{        $data['accounts_data'][$key1]['data_id'] }}</a> </td>
+                                         <td  class="details-control"> <a href="{{url('single-profile',[$data['accounts_data'][$key1]['data_id'],10])}}">{{$data['accounts_data'][$key1]['data_id'] }}</a> </td>
                                          <td>{{$data['accounts_data'][$key1]['user']}}</td>
                                       
                                         @forelse ($data['selected_col'] as $key => $selvalue)
