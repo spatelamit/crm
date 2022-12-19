@@ -423,7 +423,7 @@ class ActivityController extends Controller
         //  $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));
 
         //  dd($query);
-        return view('header')->with('query', $query);
-        // return $query;
+        // return view('header')->with('query', $query);
+        return $query;
     }
 }
