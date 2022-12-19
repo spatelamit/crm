@@ -136,4 +136,32 @@ class CommunicationController extends Controller
         curl_close($curl);
         dd($response);
     }
+
+    public function Ivrcallapi(){
+
+
+        $postData=[
+              "to_number_1"=> "+919130139351",
+             "to_number_2"=> "+919691106178",
+            "api_key"=> "CLgOCACCZgZLOMt5VDwmCkfWu5o7W4DMD8WljnyC5YNlcUc61T",
+            "cloud_phone"=> "+914049638500",
+            "calldet_callback_url"=>"https://crm.bulk24sms.in/amit/webhook.php"
+        ];
+         $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://api.salesquared.io/v2/call-connect',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($postData),
+            CURLOPT_HTTPHEADER => ['Content-Type: application/json']
+        ]);
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+    }
 }
