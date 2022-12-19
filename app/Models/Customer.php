@@ -11,7 +11,7 @@ class Customer extends Model
 {
     use HasFactory;
      public function __construct() {
-
+         // $varaible="hello";
 
           $this->Usersetting=new UserSetting();
           $this->Activity=new Activity();

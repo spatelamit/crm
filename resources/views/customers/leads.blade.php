@@ -36,6 +36,9 @@
                             <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
                                 data-target="#sendsms"> <i class="fa fa-user-plus"></i>
                                 SendSMS </a>
+                                <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
+                                data-target="#ivrcall"> <i class="fa fa-user-plus"></i>
+                                Ivr call </a>
 
                             <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
                                 data-target="#sendemail"> <i class="fa fa-user-plus"></i>
@@ -402,6 +405,43 @@
     </div>
 </div>
 <!--  -->
+<div class="modal fade come-from-modal right" id="ivrcall" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Ivr Call</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <form method="post" action="{{ url('ivrcall-api') }}" autocomplete="nope">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group mb-10">
+                        <label>Dailer:</label>
+                        <input type="text" name="dailer" class="form-control bg_input sms_numbers"
+                            placeholder="Enter your Authentication Key" required>
+                    </div>
+                    <div class="form-group mb-10">
+                        <label>Receiver</label>
+                        <input type="text" name="receiver" class="form-control bg_input sms_numbers"
+                            placeholder="Enter your Authentication Key" required>
+                    </div>
+
+                   
+
+                  
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Call</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 <!--start task  -->
 <div class="modal fade come-from-modal right" id="leadtask" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog  slideInRight  animated" role="document">
