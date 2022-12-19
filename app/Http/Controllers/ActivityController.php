@@ -406,10 +406,24 @@ class ActivityController extends Controller
 
     public function notification_count()
     {
+        $user_id = session()->get('id');
+        // dd($user_id);
+        $query = DB::table('notifications')
+                //  ->select( DB::raw('count(*) as total'))
+                 ->where(function ($subq) use($user_id){
+                    $subq->where('notifications.reciever_id', $user_id)
+                    ->orWhere('notifications.sender_id', $user_id);
+            })->where('read_status',1)
+
+                 ->get()->count();
 
 
-         $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));
 
-         dd($query);
+
+        //  $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));
+
+        //  dd($query);
+        return view('header')->with('query', $query);
+        // return $query;
     }
 }
