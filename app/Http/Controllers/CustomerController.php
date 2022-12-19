@@ -11,17 +11,21 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\UserSetting;
 use App\Models\Customer;
 use App\Models\Activity;
+use App\Models\ActivityController;
 use DB;
 
 class CustomerController extends Controller
 
 {
+
     public function __construct() {
          // parent::__construct();
-      $varaible="hello";
+     
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
         $this->Activity=new Activity();
+        $this->ActivityController=new ActivityController();
+        // $this->test=$this->ActivityController->notification_count();
     }
 
     public function paginate($items, $perPage = 8, $page = null, $options = []) {
@@ -36,6 +40,7 @@ class CustomerController extends Controller
 
         
     public function leads(){
+
         $module_id='8';
         $user_id=session()->get('id');
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
