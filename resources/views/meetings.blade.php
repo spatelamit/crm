@@ -9,8 +9,8 @@
         </div>
 
         <div class="col-sm-4 mb-2 mb-xl-0">
-            <a href="{{url('add-meetings')}}" class="btn btn-info">AddMeeting </a>
-         </div>
+            <a href="{{ url('add-meetings') }}" class="btn btn-info">AddMeeting </a>
+        </div>
 
     </div>
 
@@ -48,40 +48,42 @@
                                     <th>Attachments</th>
                                     <th>ModifyDate</th>
                                     <th>CreationDate</th>
-                                 </tr>
+                                </tr>
                             </thead>
                             <tbody>
 
                                 @if ($result != null)
                                     @foreach ($result as $key1)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
 
-                                        <td><a href="{{url('editmeeting/'.$key1->id)}}">{{ $key1->title }} </a></td>
+                                            <td><a href="{{ url('editmeeting/' . $key1->id) }}">{{ $key1->title }} </a>
+                                            </td>
 
-                                        <td>{{ $key1->description }}</td>
-                                        <td>{{ $key1->start_date }}</td>
-                                        <td>{{ $key1->end_date }}</td>
-                                        <td>{{ $key1->location }}</td>
-                                        <td>{{ $key1->sender_user }}</td>
-                                        <td>{{ $key1->reciever_user }}</td>
-                                        <td>
+                                            <td>{{ $key1->description }}</td>
+                                            <td>{{ $key1->start_date }}</td>
+                                            <td>{{ $key1->end_date }}</td>
+                                            <td>{{ $key1->location }}</td>
+                                            <td>{{ $key1->sender_user }}</td>
+                                            <td>{{ $key1->reciever_user }}</td>
+                                            <td>
 
-                                        @if ($key1->status == 0)
-                                        <span>Pending</span>
-                                        @elseif($key1->status == 1)
-                                        <span>Compelete</span>
-                                        @endif
-                                        </td>
+                                                @if ($key1->status == 0)
+                                                    <span>Pending</span>
+                                                @elseif($key1->status == 1)
+                                                    <span>Compelete</span>
+                                                @endif
+                                            </td>
 
 
-                                        <td>{{ $key1->related_to }}</td>
-                                        <td><a href="{{ url('upload/' .$key1->attachments) }}" class="btn btn-info" target="_blank">Attachments
-                                            </a></td>
-                                        <td>{{ $key1->modify_date}}</td>
-                                        <td>{{ $key1->creation_date }}</td>
+                                            <td>{{ $key1->related_to }}</td>
+                                            <td><a href="{{ url('upload/' . $key1->attachments) }}" class="btn btn-info"
+                                                    target="_blank">Attachments
+                                                </a></td>
+                                            <td>{{ $key1->modify_date }}</td>
+                                            <td>{{ $key1->creation_date }}</td>
 
-                                    </tr>
+                                        </tr>
                                         <!-- edit -->
 
                                         <!-- edit -->

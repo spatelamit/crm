@@ -10,14 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
+use function PHPSTORM_META\type;
+
 class ActivityController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
 
-        $this->Activity=new Activity();
-        $this->Customer=new Customer();
-        $this->User=new User();
-
+        $this->Activity = new Activity();
+        $this->Customer = new Customer();
+        $this->User = new User();
     }
     public function tasks()
     {
@@ -33,63 +35,61 @@ class ActivityController extends Controller
 
 
             ->paginate('5');
-            // dd(DB::getQueryLog());
+        // dd(DB::getQueryLog());
         //   dd($result);
         return view('viewtask', compact('result'));
     }
 
-    public function add_task(){
-        $data['accounts_datas']=$this->Customer->GetDealData('10');
-        if( $data['accounts_datas']){
+    public function add_task()
+    {
+        $data['accounts_datas'] = $this->Customer->GetDealData('10');
+        if ($data['accounts_datas']) {
             foreach ($data['accounts_datas'] as $key => $value) {
-            $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+                $data['accounts_data'][] = (json_decode(json_encode($value), true));
+            }
+            foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][] = array(
+                    'id' => $value1['data_id'],
+                    'text' => $value1['company_name'],
+                    'name' => $value1['data_id'],
+                );
+            }
+        } else {
+            $data['accounts_data'] = null;
+        }
 
-          }
-          foreach ($data['accounts_data'] as $key1 => $value1) {
-             $data['company_names'][]=array(
-               'id'=>$value1['data_id'],
-               'text'=>$value1['company_name'],
-               'name'=>$value1['data_id'],
-             );
-          }
-          }else{
-             $data['accounts_data']=null;
-
-           }
-
-           $data['meeting_user']= DB::table('users')
-           ->where('company_id',session()->get('company_id'))
-           ->select('username','id','full_name')
-           ->get();
+        $data['meeting_user'] = DB::table('users')
+            ->where('company_id', session()->get('company_id'))
+            ->select('username', 'id', 'full_name')
+            ->get();
 
         return view('tasks', compact('data'));
     }
 
-    public function task_add(Request $req) {
+    public function task_add(Request $req)
+    {
         // dd($req);
-        $result= $this->Activity->Add_Task($req);
-        if($result){
-              return redirect('tasks')->with("success", "Successfully Task created !");
-
-          }else{
-              return redirect('tasks')->with("error", ' Task not created');
-
-          }
-      }
+        $result = $this->Activity->Add_Task($req);
+        if ($result) {
+            return redirect('tasks')->with("success", "Successfully Task created !");
+        } else {
+            return redirect('tasks')->with("error", ' Task not created');
+        }
+    }
 
     public function edittask($id)
     {
         $edit['task'] = DB::table('tasks')->find($id);
         // dd($edit);
         $user_id = session()->get('id');
-        $edit['notes']= DB::table('notes')
+        $edit['notes'] = DB::table('notes')
 
-        ->join('users', 'users.id', '=', 'notes.user_id')
-        ->select('notes.*', 'users.username')
-        ->where('notes.module_id',11 )
-        ->where('notes.related_to',$id )
-        ->where('notes.user_id', $user_id)
-        ->get();
+            ->join('users', 'users.id', '=', 'notes.user_id')
+            ->select('notes.*', 'users.username')
+            ->where('notes.module_id', 11)
+            ->where('notes.related_to', $id)
+            ->where('notes.user_id', $user_id)
+            ->get();
 
         // dd($edit['notes']);
 
@@ -100,7 +100,8 @@ class ActivityController extends Controller
     public function taskupdate(Request $req)
     {
         // dd($req);
-        $data = array('subject' => $req->subject,
+        $data = array(
+            'subject' => $req->subject,
             'description' => $req->description,
             'status' => $req->status,
             // 'user_id'=>session()->get('id'),
@@ -124,9 +125,9 @@ class ActivityController extends Controller
     {
         // dd($req->all());
         $data = array(
-            'related_to' =>$req->related_id,
-            'user_id'=>session()->get('id'),
-            'note_des'=> $req->note_des,
+            'related_to' => $req->related_id,
+            'user_id' => session()->get('id'),
+            'note_des' => $req->note_des,
             'module_id' => $req->module_id
         );
         // dd($data);
@@ -139,7 +140,6 @@ class ActivityController extends Controller
         } else {
             return "error";
         }
-
     }
 
 
@@ -158,7 +158,7 @@ class ActivityController extends Controller
 
 
             ->paginate('10');
-            // dd(DB::getQueryLog());
+        // dd(DB::getQueryLog());
         //   dd($result);
         return view('meetings', compact('result'));
     }
@@ -168,37 +168,36 @@ class ActivityController extends Controller
     {
         $user_id = session()->get('id');
         $edit['meeting'] = DB::table('meetings')
-        ->select('meetings.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
-        ->join('users as u1', 'u1.id', '=', 'meetings.sender_id')
-        ->leftJoin('users as u2', 'u2.id', '=', 'meetings.reciever_id')
-        ->where('meetings.sender_id', $user_id)
-        ->Orwhere('meetings.reciever_id', $user_id)
-        ->where('meetings.id',$id)
-        ->first();
+            ->select('meetings.*', 'u1.username as sender_user', 'u2.username as  reciever_user')
+            ->join('users as u1', 'u1.id', '=', 'meetings.sender_id')
+            ->leftJoin('users as u2', 'u2.id', '=', 'meetings.reciever_id')
+            ->where('meetings.sender_id', $user_id)
+            ->Orwhere('meetings.reciever_id', $user_id)
+            ->where('meetings.id', $id)
+            ->first();
         // dd($edit['meeting']);
         // $user_id = session()->get('id');
 
 
-        $edit['notes']= DB::table('notes')
-        ->select('notes.*', 'users.username')
-        ->join('users', 'users.id', '=', 'notes.user_id')
-        // ->join('meetings', 'meetings.id', '=', 'notes.related_to')
-        ->where('notes.module_id',12 )
-        ->where('notes.related_to',$id )
-        ->where('notes.user_id', $user_id)
-        ->get();
+        $edit['notes'] = DB::table('notes')
+            ->select('notes.*', 'users.username')
+            ->join('users', 'users.id', '=', 'notes.user_id')
+            // ->join('meetings', 'meetings.id', '=', 'notes.related_to')
+            ->where('notes.module_id', 12)
+            ->where('notes.related_to', $id)
+            ->where('notes.user_id', $user_id)
+            ->get();
 
         return view('editmeetings', compact('edit'));
-
     }
 
 
     public function meeting_notes(Request $req)
     {
         $data = array(
-            'related_to' =>$req->meetingid,
-            'user_id'=>session()->get('id'),
-            'note_des'=> $req->note_des,
+            'related_to' => $req->meetingid,
+            'user_id' => session()->get('id'),
+            'note_des' => $req->note_des,
             'module_id' => $req->moduleid
         );
         // dd($data);
@@ -214,14 +213,13 @@ class ActivityController extends Controller
         } else {
             return "error";
         }
-
     }
 
 
     public function ImportCsv(Request $req)
     {
         // dd($req);
-        $result= $this->Activity->import_csv($req);
+        $result = $this->Activity->import_csv($req);
 
         if ($result) {
             return redirect()->back()->with("success", "Successfully UploadCSV!");
@@ -232,28 +230,26 @@ class ActivityController extends Controller
 
     public function add_meetings()
     {
-        $data['accounts_datas']=$this->Customer->GetDealData('10');
-        if( $data['accounts_datas']){
+        $data['accounts_datas'] = $this->Customer->GetDealData('10');
+        if ($data['accounts_datas']) {
             foreach ($data['accounts_datas'] as $key => $value) {
-            $data['accounts_data'][]=(json_decode(json_encode( $value),true));
+                $data['accounts_data'][] = (json_decode(json_encode($value), true));
+            }
+            foreach ($data['accounts_data'] as $key1 => $value1) {
+                $data['company_names'][] = array(
+                    'id' => $value1['data_id'],
+                    'text' => $value1['company_name'],
+                    'name' => $value1['data_id'],
+                );
+            }
+        } else {
+            $data['accounts_data'] = null;
+        }
 
-          }
-          foreach ($data['accounts_data'] as $key1 => $value1) {
-             $data['company_names'][]=array(
-               'id'=>$value1['data_id'],
-               'text'=>$value1['company_name'],
-               'name'=>$value1['data_id'],
-             );
-          }
-          }else{
-             $data['accounts_data']=null;
-
-           }
-
-           $data['meeting_user']= DB::table('users')
-           ->where('company_id',session()->get('company_id'))
-           ->select('username','id','full_name')
-           ->get();
+        $data['meeting_user'] = DB::table('users')
+            ->where('company_id', session()->get('company_id'))
+            ->select('username', 'id', 'full_name')
+            ->get();
 
         return view('add_meetings', compact('data'));
     }
@@ -274,16 +270,17 @@ class ActivityController extends Controller
         $file->move("upload/", $filename);
         // dd($file);
         // exit;
-        $data = array('title' => $req->title,
+        $data = array(
+            'title' => $req->title,
             'description' => $req->description,
             'status' => $req->status,
-            'sender_id'=>session()->get('id'),
+            'sender_id' => session()->get('id'),
             'location' => $req->location,
             'start_date' => $req->start_date,
             'end_date' => $req->end_date,
             'reciever_id' => $req->reciever_id,
             'related_to' => $req->related_to,
-            'attachments'=>$filename,
+            'attachments' => $filename,
             'meeting_url' => $req->meeting_url,
             'meeting_plateform' => $req->meeting_plateform
 
@@ -296,7 +293,7 @@ class ActivityController extends Controller
         $reciever_name = $this->User->GetUserById($req->reciever_id);
         $noti_data = array(
             'type' => 'Meeting',
-            'message' => 'Meeting Assign by '.session()->get('full_name').' Assigned to'.$reciever_name,
+            'message' => 'Meeting Assign by ' . session()->get('full_name') . ' Assigned to' . $reciever_name,
             'link' => '',
             'icons' => '',
             'sender_id' => session()->get('id'),
@@ -310,7 +307,6 @@ class ActivityController extends Controller
         } else {
             return "error";
         }
-
     }
 
 
@@ -318,21 +314,21 @@ class ActivityController extends Controller
     {
         $user_id = session()->get('id');
 
-        $notify = DB::table('meetings')->select('start_date','title')
-        ->where('meetings.reciever_id', $user_id)
-        ->Orwhere('meetings.sender_id', $user_id)
-        ->whereDate('start_date', now())
-        ->get();
+        $notify = DB::table('meetings')->select('start_date', 'title')
+            ->where('meetings.reciever_id', $user_id)
+            ->Orwhere('meetings.sender_id', $user_id)
+            ->whereDate('start_date', now())
+            ->get();
         // print_r($notify);
-        foreach($notify as $meeting){
+        foreach ($notify as $meeting) {
             // echo $meeting->start_date;
-            $date=$meeting->start_date;
+            $date = $meeting->start_date;
 
-            $hours=strtotime($date.'-1 hours');
+            $hours = strtotime($date . '-1 hours');
             // dd($hours);
-            $cur_date=date('Y-m-d H:i:s');
-            $from=strtotime($cur_date.'- 1 hours -2 minutes');
-            $to=strtotime($cur_date.'- 1 hours +15 minutes');
+            $cur_date = date('Y-m-d H:i:s');
+            $from = strtotime($cur_date . '- 1 hours -2 minutes');
+            $to = strtotime($cur_date . '- 1 hours +15 minutes');
 
             // echo "</BR>";
             // echo (date('Y-m-d H:i:s',$from));
@@ -341,14 +337,10 @@ class ActivityController extends Controller
             // echo (date('Y-m-d H:i:s',$to));
             // echo "</BR>";
             // echo($hours.'-'.$from.'-'. $to);
-        if( ($hours < $to) &&  ($hours > $from)){
-            echo($hours.'-'.$from.'-'. $to);
-            return back()->with("success","meeting Title-".$meeting->title."  DateTime-".$date );
-
-
-
-        }
-
+            if (($hours < $to) &&  ($hours > $from)) {
+                echo ($hours . '-' . $from . '-' . $to);
+                return back()->with("success", "meeting Title-" . $meeting->title . "  DateTime-" . $date);
+            }
         }
     }
 
@@ -357,21 +349,21 @@ class ActivityController extends Controller
     {
         $user_id = session()->get('id');
 
-        $notify = DB::table('tasks')->select('start_date','subject')
-        ->where('tasks.reciever_id', $user_id)
-        ->Orwhere('tasks.sender_id', $user_id)
-        ->whereDate('start_date', now())
-        ->get();
+        $notify = DB::table('tasks')->select('start_date', 'subject')
+            ->where('tasks.reciever_id', $user_id)
+            ->Orwhere('tasks.sender_id', $user_id)
+            ->whereDate('start_date', now())
+            ->get();
         // print_r($notify);
-        foreach($notify as $meeting){
+        foreach ($notify as $meeting) {
             // echo $meeting->start_date;
-            $date=$meeting->start_date;
+            $date = $meeting->start_date;
 
-            $hours=strtotime($date.'-1 hours');
+            $hours = strtotime($date . '-1 hours');
             // dd($hours);
-            $cur_date=date('Y-m-d H:i:s');
-            $from=strtotime($cur_date.'- 1 hours -2 minutes');
-            $to=strtotime($cur_date.'- 1 hours +15 minutes');
+            $cur_date = date('Y-m-d H:i:s');
+            $from = strtotime($cur_date . '- 1 hours -2 minutes');
+            $to = strtotime($cur_date . '- 1 hours +15 minutes');
 
             // echo "</BR>";
             // echo (date('Y-m-d H:i:s',$from));
@@ -380,14 +372,10 @@ class ActivityController extends Controller
             // echo (date('Y-m-d H:i:s',$to));
             // echo "</BR>";
             // echo($hours.'-'.$from.'-'. $to);
-        if( ($hours < $to) &&  ($hours > $from)){
-            echo($hours.'-'.$from.'-'. $to);
-            return back()->with("success","Task Title-".$meeting->subject."  DateTime-".$date );
-
-
-
-        }
-
+            if (($hours < $to) &&  ($hours > $from)) {
+                echo ($hours . '-' . $from . '-' . $to);
+                return back()->with("success", "Task Title-" . $meeting->subject . "  DateTime-" . $date);
+            }
         }
     }
 
@@ -395,29 +383,33 @@ class ActivityController extends Controller
 
     public function notify(Request $req)
     {
-        $result= $this->Activity->notification($req);
+        $result = $this->Activity->notification($req);
 
-        if($result = true ){
+        if ($result = true) {
             return redirect()->back()->with("success", "Successfully Task Done!");
         }
         return redirect()->back()->with("error", 'Details are not valid');
-
-
     }
 
     public function show_notification()
     {
         $user_id = session()->get('id');
-        $show = DB::table('notifications')->select('message')
-        ->where('notifications.reciever_id', $user_id)
-        ->orWhere('notifications.sender_id', $user_id)
-        ->get();
-
+        $show = DB::table('notifications')->select('message','type')
+            ->where('notifications.reciever_id', $user_id)
+            ->orWhere('notifications.sender_id', $user_id)
+            ->get();
+            // ->groupBy('type')
+            // ->count();
+            // dd($show);
         return view('user_notification', compact('show'));
     }
 
+    public function notification_count()
+    {
 
 
+         $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));
 
-
+         dd($query);
+    }
 }

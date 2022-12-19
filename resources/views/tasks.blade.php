@@ -39,7 +39,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="{{ url('task_add') }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('task_add') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -59,25 +59,24 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">Account: </label>
-                                    <select  name="account"
-                                    class="form-control bg_input" id="compName">
+                                    <select name="account" class="form-control bg_input" id="compName">
 
 
-                                         <option value="">Selecte Company name</option>
-                                </select>
+                                        <option value="">Selecte Company name</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="stage_name">DueDate: </label>
                                     {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
-                                    <input class="form-control" type="text" id="duedate"  name="due_date">
+                                    <input class="form-control" type="text" id="duedate" name="due_date">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="">Status: </label>
-                                    <select class="form-control"  name="status">
+                                    <select class="form-control" name="status">
                                         <option value="0">NotStarted</option>
                                         <option value="1">In Progress</option>
                                         <option value="2">Complete</option>
@@ -87,7 +86,7 @@
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
                                     <label for="">Priority: </label>
-                                    <select class="form-control"  name="priority">
+                                    <select class="form-control" name="priority">
 
                                         <option value="0">High</option>
                                         <option value="1">Lowest</option>
@@ -114,14 +113,13 @@
                                                     <div class="form-group">
                                                         <label for=""> Select Date & Time </label>
                                                         <input class="form-control" type="date"
-                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name"
-                                                            >
+                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="">Notify User </label>
-                                                        <select class="form-control"  name="notify">
+                                                        <select class="form-control" name="notify">
                                                             <option value="">Notify</option>
                                                             <option value="high">Popup</option>
                                                             <option value="lowest">Email</option>
@@ -158,8 +156,7 @@
                                                     <div class="form-check">
                                                         <label class="form-check-label">
                                                             <input type="radio" class="form-check-input"
-                                                                name="optionsRadios"
-                                                                value="">
+                                                                name="optionsRadios" value="">
                                                             Never <i class="input-helper"></i></label>
                                                     </div>
                                                 </div>
@@ -169,8 +166,7 @@
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input"
-                                                                        name="optionsRadios"
-                                                                        value="">
+                                                                        name="optionsRadios" value="">
                                                                     After <i class="input-helper"></i></label>
                                                             </div>
                                                         </div>
@@ -190,8 +186,7 @@
                                                             <div class="form-check">
                                                                 <label class="form-check-label">
                                                                     <input type="radio" class="form-check-input"
-                                                                        name="optionsRadios"
-                                                                        value="">
+                                                                        name="optionsRadios" value="">
                                                                     On <i class="input-helper"></i></label>
                                                             </div>
                                                         </div>
@@ -213,8 +208,8 @@
                                 <div class="form-group">
                                     <label for="">RecieverId:</label>
                                     <select class="form-control" name="reciever_id">
-                                        @foreach ( ($data['meeting_user']) as $reciever )
-                                        <option value="{{$reciever->id}}">{{ $reciever->full_name }}</option>
+                                        @foreach ($data['meeting_user'] as $reciever)
+                                            <option value="{{ $reciever->id }}">{{ $reciever->full_name }}</option>
                                         @endforeach
 
                                     </select>
@@ -246,22 +241,22 @@
 		});
 </script> --}}
 <script>
-    $( document ).ready(function() {
-     $('#duedate').daterangepicker({
-        singleDatePicker: true,
-        autoApply: true,
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
+    $(document).ready(function() {
+        $('#duedate').daterangepicker({
+            singleDatePicker: true,
+            autoApply: true,
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
+
+        $("#compName").select2({
+            placeholder: "Select a state",
+            data: <?php echo json_encode($data['company_names']); ?>,
+
+
+        });
     });
-
-    $("#compName").select2( {
-       placeholder: "Select a state",
-       data:<?php  echo json_encode($data['company_names']) ;?>,
-
-
-    });
-});
 </script>
 <script>
     $(document).ready(function() {
@@ -283,5 +278,3 @@
 
     });
 </script>
-
-

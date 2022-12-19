@@ -2,24 +2,25 @@
 <html lang="en">
 
 <head>
-  <title> {{ Config::get('app.title') }} </title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- base:css -->
-  <link rel="stylesheet" href="{{url('/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/vendors/feather/feather.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/vendors/base/vendor.bundle.base.css')}}">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <link rel="stylesheet" href="{{url('/assets/vendors/font-awesome/css/font-awesome.min.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/vendors/jquery-bar-rating/fontawesome-stars.css')}}">
-  <!-- End plugin css for this page -->
-  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-  <!-- inject:css -->
-  <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
-  <!-- endinject -->
+    <title> {{ Config::get('app.title') }} </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- base:css -->
+    <link rel="stylesheet" href="{{ url('/assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/vendors/feather/feather.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/vendors/base/vendor.bundle.base.css') }}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <link rel="stylesheet" href="{{ url('/assets/vendors/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css') }}">
+    <link rel="stylesheet" href="{{ url('/assets/vendors/jquery-bar-rating/fontawesome-stars.css') }}">
+    <!-- End plugin css for this page -->
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
+    <!-- endinject -->
+
 
   <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="{{url('/assets/css/dataTables.css')}}">
@@ -48,54 +49,61 @@
 </script> -->
 <!-- End Matomo Code -->
 
+   
+    <!-- End Matomo Code -->
+
+
 </head>
 
 <body>
 
-<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="{{url('')}}">{{ Config::get('app.title') }}</a>
-        <a class="navbar-brand brand-logo-mini" href="{{url('')}}">B</a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Search Projects.." aria-label="search" aria-describedby="search">
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" href="{{ url('') }}">{{ Config::get('app.title') }}</a>
+                <a class="navbar-brand brand-logo-mini" href="{{ url('') }}">B</a>
             </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-nav-right ">
-            <li class="nav-item dropdown d-lg-flex d-none">
-                <button type="button" class="btn btn-info font-weight-bold">+ Create New</button>
-            </li>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="icon-menu"></span>
+                </button>
+                <ul class="navbar-nav mr-lg-2">
+                    <li class="nav-item nav-search d-none d-lg-block">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Search Projects.."
+                                aria-label="search" aria-describedby="search">
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right ">
+                    <li class="nav-item dropdown d-lg-flex d-none">
+                        <button type="button" class="btn btn-info font-weight-bold">+ Create New</button>
+                    </li>
 
-            <li class="nav-item dropdown d-flex mr-4 ">
-                <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" onclick="getnotification()" data-toggle="dropdown">
-                  <i class="icon-bell"></i>
-                </a>
+                    <li class="nav-item dropdown d-flex mr-4 ">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
+                            id="notificationDropdown" onclick="getnotification()" data-toggle="dropdown">
+                            <i class="icon-bell"></i>
+                        </a>
 
-              </li>
-              <div  id="notifications">
+                    </li>
+                    <div id="notifications">
 
 
 
-            </div>
-          <li class="nav-item dropdown d-flex">
-            <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-air-play mx-0"></i>
-            </a>
-            <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                    </div>
+                    <li class="nav-item dropdown d-flex">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
+                            id="messageDropdown" href="#" data-toggle="dropdown">
+                            <i class="icon-air-play mx-0"></i>
+                        </a>
+                        <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -134,39 +142,43 @@
                 </div>
               </a>
             </div> -->
-          </li>
-          <li class="nav-item dropdown d-flex mr-4 ">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-cog"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">
-                  <i class="icon-head"></i> Profile
-              </a>
+                    </li>
+                    <li class="nav-item dropdown d-flex mr-4 ">
+                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
+                            id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="icon-cog"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+                            aria-labelledby="notificationDropdown">
+                            <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
+                            <a class="dropdown-item preview-item">
+                                <i class="icon-head"></i> Profile
+                            </a>
 
-              <a class="dropdown-item preview-item" href="{{url('logout')}}">
+                            <a class="dropdown-item preview-item" href="{{ url('logout') }}">
 
-                  <i class="icon-inbox"></i> Logout
-              </a>
+                                <i class="icon-inbox"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown mr-4 d-lg-flex d-none">
+                        <a class="nav-link count-indicatord-flex align-item s-center justify-content-center"
+                            href="#">
+                            <i class="icon-grid"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
             </div>
-          </li>
-          <li class="nav-item dropdown mr-4 d-lg-flex d-none">
-            <a class="nav-link count-indicatord-flex align-item s-center justify-content-center" href="#">
-              <i class="icon-grid"></i>
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <!--<div class="user-profile">
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <!--<div class="user-profile">
           <div class="user-image">
             <img src="assets_2/images/faces/face28.png">
           </div>
@@ -177,6 +189,7 @@
               Developer
           </div>
         </div>-->
+
         <ul class="nav main-menu menu-fixed">
         <li class="nav-item">
             <a class="nav-link" href="{{url('home')}}">
@@ -243,38 +256,33 @@
               <span class="menu-title">  Deals </span>
             </a>
           </li>
-        <!--   <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa fa-filter menu-icon"></i>
-              <span class="menu-title"> Universal Filter</span>
-            </a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('meetings')}}">
-              <i class="fa fa-handshake-o menu-icon"></i>
-              <span class="menu-title"> Meetings</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('tasks')}}">
-              <i class="fa fa-file-text-o menu-icon"></i>
-              <span class="menu-title"> Tasks</span>
-            </a>
-          </li>
-          {{-- <li class="nav-item">
+       
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('meetings') }}">
+                            <i class="fa fa-handshake-o menu-icon"></i>
+                            <span class="menu-title"> Meetings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('tasks') }}">
+                            <i class="fa fa-file-text-o menu-icon"></i>
+                            <span class="menu-title"> Tasks</span>
+                        </a>
+                    </li>
+                    {{-- <li class="nav-item">
             <a class="nav-link" href="{{url('teams')}}">
               <i class="fa fa-users menu-icon"></i>
               <span class="menu-title"> Teams</span>
             </a>
           </li> --}}
-          <li class="nav-item">
-            <a class="nav-link" href="{{url('user_profile')}}">
-              <i class="fa fa-user menu-icon"></i>
-              <span class="menu-title"> User Profile</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- partial -->
-      <div class="main-panel">
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('user_profile') }}">
+                            <i class="fa fa-user menu-icon"></i>
+                            <span class="menu-title"> User Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
