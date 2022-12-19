@@ -39,7 +39,7 @@ class Activity extends Model
         $reciever_name = $user_model->GetUserById($req->reciever_id);
         $noti_data = array(
             'type' => 'Task',
-            'message' => 'Task Assign by '.session()->get('full_name').' Assigned to'.$reciever_name,
+            'message' => 'Task Assign by ' . session()->get('full_name') . ' Assigned to' . $reciever_name,
             'link' => '',
             'icons' => '',
             'sender_id' => session()->get('id'),
@@ -47,7 +47,7 @@ class Activity extends Model
         );
 
 
-         $user_model->SendNotification($noti_data);
+        $user_model->SendNotification($noti_data);
 
         if ($result) {
             return true;
@@ -101,7 +101,7 @@ class Activity extends Model
 
 
                 for ($i = 0; $i < count($col_id); $i++) {
-                    if($col_id[$i]==3 && ($getData[$i] !='' && !empty($getData[$i]))){
+                    if ($col_id[$i] == 3 && ($getData[$i] != '' && !empty($getData[$i]))) {
                         $data[] = array(
                             'module_id' => '8',
                             'column_id' => $col_id[$i],
@@ -118,15 +118,8 @@ class Activity extends Model
                         }
                         return "false";
                     }
-
-
-
                 }
-
-
             }
-
-
         }
     }
 
@@ -148,7 +141,7 @@ class Activity extends Model
     {
         $noti_data = array(
             'type' => 'Task',
-            'message' => 'Task'.session()->get('full_name').'',
+            'message' => 'Task' . session()->get('full_name') . '',
             'link' => '',
             'icons' => '',
             'sender_id' => '',
