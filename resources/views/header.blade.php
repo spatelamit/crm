@@ -21,37 +21,37 @@
     <link rel="stylesheet" href="{{ url('/assets/css/style.css') }}">
     <!-- endinject -->
 
-    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url('/assets/css/dataTables.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css
-" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <!-- Matomo -->
-    <script>
-        var _paq = window._paq = window._paq || [];
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-        _paq.push(["setCookieDomain", "*.localhost"]);
-        _paq.push(["setDomains", ["*.localhost"]]);
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-            var u = "//127.0.0.1/matomo/";
-            _paq.push(['setTrackerUrl', u + 'matomo.php']);
-            _paq.push(['setSiteId', '1']);
-            var d = document,
-                g = d.createElement('script'),
-                s = d.getElementsByTagName('script')[0];
-            g.async = true;
-            g.src = u + 'matomo.js';
-            s.parentNode.insertBefore(g, s);
-        })();
-    </script>
+
+  <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet" />
+   <link rel="stylesheet" href="{{url('/assets/css/dataTables.css')}}">
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <!-- <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css
+"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!-- Matomo -->
+<!-- <script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.localhost"]);
+  _paq.push(["setDomains", ["*.localhost"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//127.0.0.1/matomo/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script> -->
+<!-- End Matomo Code -->
+
+   
     <!-- End Matomo Code -->
+
 
 </head>
 
@@ -189,71 +189,75 @@
               Developer
           </div>
         </div>-->
-                <ul class="nav main-menu menu-fixed">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('home') }}">
-                            <i class="fa fa-home  menu-icon"></i>
-                            <span class="menu-title">Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('user_dashboard') }}">
-                            <i class="icon-pie-graph  menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="icon-cog menu-icon"></i>
-                            <span class="menu-title"> CRM Setting </span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{ url('roles') }}">Roles
-                                        Setting</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="{{ url('user_account_setting') }}">Users Account Setting</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ url('sms_settings') }}">SMS
-                                        Setting</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ url('email_settings') }}">Email
-                                        Setting</a></li>
-                                <!--  <li class="nav-item"><a class="nav-link" href="{{ url('forms') }}">Forms</a></li> -->
-                                <li class="nav-item"><a class="nav-link" href="{{ url('voice_settings') }}">Voice
-                                        Setting</a></li>
-                                <li class="nav-item"><a class="nav-link"
-                                        href="{{ url('pipelines_stages') }}">Pipelines & Stages</a></li>
-                                <!--  <li class="nav-item"><a class="nav-link" href="{{ url('') }}">Data Admin</a></li> -->
-                                {{-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li> --}}
-                                <!--  <li class="nav-item"><a class="nav-link" href="{{ url('modules') }}">Modules </a></li> -->
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('accounts') }}">
-                            <i class="fa fa-briefcase menu-icon"></i>
-                            <span class="menu-title"> Accounts </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('leads') }}">
-                            <i class="fa fa-briefcase menu-icon"></i>
-                            <span class="menu-title"> Leads </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('deals') }}">
-                            <i class="fa fa-briefcase menu-icon"></i>
-                            <span class="menu-title"> Deals </span>
-                        </a>
-                    </li>
-                    <!--   <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fa fa-filter menu-icon"></i>
-              <span class="menu-title"> Universal Filter</span>
+
+        <ul class="nav main-menu menu-fixed">
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('home')}}">
+              <i class="fa fa-home  menu-icon"></i>
+              <span class="menu-title">Home</span>
             </a>
-          </li> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('user_dashboard')}}">
+              <i class="icon-pie-graph  menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-cog menu-icon"></i>
+              <span class="menu-title">  CRM Setting </span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                @if(in_array('25',explode(",", session()->get('features_permission'))))
+                <li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
+                @endif
+                @if(in_array('21',explode(",", session()->get('features_permission'))))
+                <li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users  Setting</a></li>
+                @endif
+                 @if(in_array('41',explode(",", session()->get('features_permission'))))
+                <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
+                 @endif
+                 @if(in_array('45',explode(",", session()->get('features_permission'))))
+                <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
+                  @endif
+                 @if(in_array('2',explode(",", session()->get('features_permission'))))
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li> -->
+                @endif
+                @if(in_array('49',explode(",", session()->get('features_permission'))))
+               <li class="nav-item"><a class="nav-link" href="{{url('voice_settings')}}">Voice Setting</a></li>
+                @endif
+                @if(in_array('38',explode(",", session()->get('features_permission'))))
+               <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
+               @endif
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li> -->
+              <!-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>  -->
+               <!--  <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li> -->
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('accounts')}}">
+              <i class="fa fa-briefcase menu-icon"></i>
+              <span class="menu-title">  Accounts </span>
+            </a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{{url('leads')}}">
+              <i class="fa fa-briefcase menu-icon"></i>
+              <span class="menu-title"> Leads </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url('deals')}}">
+              <i class="fa fa-briefcase menu-icon"></i>
+              <span class="menu-title">  Deals </span>
+            </a>
+          </li>
+       
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('meetings') }}">
                             <i class="fa fa-handshake-o menu-icon"></i>

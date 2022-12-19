@@ -17,7 +17,7 @@ class CustomerController extends Controller
 
 {
     public function __construct() {
-
+         // parent::__construct();
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
         $this->Activity=new Activity();
@@ -88,7 +88,7 @@ class CustomerController extends Controller
          $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
         
 
-      
+      // dd($data['selected_col']);
        
        return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
@@ -504,7 +504,7 @@ class CustomerController extends Controller
         if($view_filter){
           $data['accounts_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
            $data['filter_name']=$view_filter->filter_name;
-            dd($data['accounts_data']  );
+            // dd($data['accounts_data']  );
         }else{
             $data['accounts_datas']=$this->Customer->GetAccountData($module_id);
               if( $data['accounts_datas']){
