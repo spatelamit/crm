@@ -151,6 +151,7 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     Route::post('/sms-api',[CommunicationController::class, 'sms_api']);
     Route::post('/voice-api',[CommunicationController::class, 'voice_api']);
     Route::post('/email-api',[CommunicationController::class, 'email_api']);
+    Route::post('/ivrcall-api',[CommunicationController::class, 'ivrcallapi']);
 
 
     //meeting notification

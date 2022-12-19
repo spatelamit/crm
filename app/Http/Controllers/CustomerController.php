@@ -18,6 +18,7 @@ class CustomerController extends Controller
 {
     public function __construct() {
          // parent::__construct();
+      $varaible="hello";
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
         $this->Activity=new Activity();

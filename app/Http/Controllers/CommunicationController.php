@@ -54,8 +54,7 @@ class CommunicationController extends Controller
         ));
         $response = curl_exec($curl);
         curl_close($curl);
-        dd($response);
-
+        return $response;
     }
 
 
@@ -134,17 +133,18 @@ class CommunicationController extends Controller
         ));
         $response =  curl_exec ($curl);
         curl_close($curl);
-        dd($response);
+          echo $response;
     }
 
-    public function Ivrcallapi(){
-
+    public function ivrcallapi(Request $request){
+        $dailer=$request->dailer;
+        $receiver=$request->receiver;
 
         $postData=[
-              "to_number_1"=> "+919130139351",
-             "to_number_2"=> "+919691106178",
+              "to_number_1"=> $dailer,
+             "to_number_2"=> $receiver,
             "api_key"=> "CLgOCACCZgZLOMt5VDwmCkfWu5o7W4DMD8WljnyC5YNlcUc61T",
-            "cloud_phone"=> "+914049638500",
+            "cloud_phone"=> "+914049638611",
             "calldet_callback_url"=>"https://crm.bulk24sms.in/amit/webhook.php"
         ];
          $curl = curl_init();
@@ -162,6 +162,13 @@ class CommunicationController extends Controller
         ]);
         $response = curl_exec($curl);
         curl_close($curl);
+          $opt=json_decode($response,true);
+// print_r( $opt);
+          if($opt['errcode'] =='0'){
+             return redirect()->back()->with("success", "Successfully Called !")   ;
+          }else{
+                 return redirect()->back()->with("error", "call not connect  !")   ;
+          }
 
     }
 }
