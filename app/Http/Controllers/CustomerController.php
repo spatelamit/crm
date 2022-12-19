@@ -11,13 +11,13 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\UserSetting;
 use App\Models\Customer;
 use App\Models\Activity;
-use App\Models\ActivityController;
+use App\Http\Controllers\ActivityController;
 use DB;
 
 class CustomerController extends Controller
 
 {
-
+  public $note_count;
     public function __construct() {
          // parent::__construct();
      
@@ -25,9 +25,10 @@ class CustomerController extends Controller
           $this->Usersetting=new UserSetting();
         $this->Activity=new Activity();
         $this->ActivityController=new ActivityController();
-        // $this->test=$this->ActivityController->notification_count();
+        $note_count=$this->ActivityController->notification_count();
+        // dd($note_count);
     }
-
+    
     public function paginate($items, $perPage = 8, $page = null, $options = []) {
 
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);

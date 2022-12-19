@@ -89,7 +89,7 @@
                     <li class="nav-item dropdown d-flex mr-4 ">
                         <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center"
                             id="notificationDropdown" onclick="getnotification()" data-toggle="dropdown">
-                          <i class="icon-bell"></i>
+                         <i class="icon-bell"></i>
                         </a>
 
                     </li>
