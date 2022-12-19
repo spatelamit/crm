@@ -49,7 +49,7 @@
 </script> -->
 <!-- End Matomo Code -->
 
-   
+
     <!-- End Matomo Code -->
 
 
@@ -256,8 +256,8 @@
               <span class="menu-title">  Deals </span>
             </a>
           </li>
-       
-                   
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('meetings') }}">
                             <i class="fa fa-handshake-o menu-icon"></i>
