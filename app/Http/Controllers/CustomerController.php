@@ -504,7 +504,7 @@ class CustomerController extends Controller
         if($view_filter){
           $data['accounts_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
            $data['filter_name']=$view_filter->filter_name;
-          // dd( $data['leads_data']);
+            dd($data['accounts_data']  );
         }else{
             $data['accounts_datas']=$this->Customer->GetAccountData($module_id);
               if( $data['accounts_datas']){
@@ -520,6 +520,7 @@ class CustomerController extends Controller
                   $data['accounts_data']=[];
                    $data_keys=null;
               }
+
             }
         //table view columns
          if($data['selected_col']!=false ){
@@ -539,7 +540,7 @@ class CustomerController extends Controller
 
         $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
       
-        // dd($data['accounts_data']  );
+        
         return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
     }
 

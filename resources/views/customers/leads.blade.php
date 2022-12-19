@@ -686,7 +686,7 @@
             var val1 = [];
             $('.data_id').each(function(i) {
                 val1[i] = $(this).val();
-                alert(i);
+                // alert(i);
             });
 
             // $("#selectedemails").val(val1);
