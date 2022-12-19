@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Customer;
 use App\Models\User;
 use Database\Seeders\users;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -417,7 +418,7 @@ class ActivityController extends Controller
 
                  ->get()->count();
 
-
+                 session()->put($query);
 
 
         //  $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));
