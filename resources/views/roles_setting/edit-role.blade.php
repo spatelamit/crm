@@ -115,14 +115,37 @@
                                                  </div>
                                                  <div class="col-md-2">
                                                      <div class="Permission_box_li">
-                                                          <ul class="nav nav-tabs">
-                                                        <li class="active"><a data-toggle="tab" href="#crmSettings">CRM Settings</a>
-                                                         </li>
+                                                <ul class="nav nav-tabs">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                                                             
+                                                        <span class="menu-title">  CRM Setting </span>
+                                                             <i class="menu-arrow"></i>
+                                                         </a>
+                                                         <div class="collapse" id="ui-basic1">
+                                                                 
+                                                            <ul class="nav flex-column sub-menu">
+                                                                <li><a data-toggle="tab" href="#users">Users</a></li>
+                                                                <li><a data-toggle="tab" href="#RoleSettings">Roles Settings</a></li>
+                                                                <li ><a data-toggle="tab"
+                                                                         href="#Pipe_stage">Pipeline and Stage</a>
+                                                                </li>
+                                                                 <li ><a data-toggle="tab"
+                                                                         href="#SmsSetting">SMS</a>
+                                                                </li>
+                                                                 <li ><a data-toggle="tab"
+                                                                         href="#EmailSetting">E-mail</a>
+                                                                </li>
+                                                                 <li ><a data-toggle="tab"
+                                                                         href="#VoiceSetting">Voice</a>
+                                                                </li>
+                                                             </ul>
+                                                                
+                                                         </div>
+                                                     </li>
                                                          
                                                          
-                                                         <li><a data-toggle="tab" href="#users">Users</a></li>
-                                                         <li><a data-toggle="tab" href="#RoleSettings">Roles Settings</a>
-                                                         </li>
+                                                        
                                                          <li ><a data-toggle="tab"
                                                                  href="#Leads">Leads</a>
                                                              </li>
@@ -195,6 +218,111 @@
                                                                  @endforeach
                                                              </div>
                                                          </div>
+                                                         <!-- Start Pipeline and stages -->
+                                                         <div id="Pipe_stage" class="tab-pane fade in ">
+                                                             <div class="col-md-12">
+                                                                 <h2> Pipeline and stages </h2>
+                                                                 <hr />
+                                                             </div>
+                                                             <div class="hierarchy-node row ">
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                                 @foreach ($naya_array as $value)
+                                                                     @if ($value['module_id'] == '5')
+                                                                         <div class="hierarchy-node col-md-2 leaf ">
+                                                                             <input class="hierarchy-checkbox"
+                                                                                 name="permissions[]"
+                                                                                 value="{{ $value['id'] }}"
+                                                                                 type="checkbox" <?php if($value['status']=='1') {?>
+                                                                                 checked="unchecked"<?php } ?>>
+                                                                             <label
+                                                                                 class="hierarchy-label">{{ $value['features_name'] }}</label>
+                                                                         </div>
+                                                                     @endif
+                                                                 @endforeach
+                                                             </div>
+                                                         </div>
+                                                         <!-- End pipeline and stages -->
+                                                          <!-- Start SMS -->
+                                                         <div id="SmsSetting" class="tab-pane fade in ">
+                                                             <div class="col-md-12">
+                                                                 <h2> SMS </h2>
+                                                                 <hr />
+                                                             </div>
+                                                             <div class="hierarchy-node row ">
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                                 @foreach ($naya_array as $value)
+                                                                     @if ($value['module_id'] == '13')
+                                                                         <div class="hierarchy-node col-md-2 leaf ">
+                                                                             <input class="hierarchy-checkbox"
+                                                                                 name="permissions[]"
+                                                                                 value="{{ $value['id'] }}"
+                                                                                 type="checkbox" <?php if($value['status']=='1') {?>
+                                                                                 checked="unchecked"<?php } ?>>
+                                                                             <label
+                                                                                 class="hierarchy-label">{{ $value['features_name'] }}</label>
+                                                                         </div>
+                                                                     @endif
+                                                                 @endforeach
+                                                             </div>
+                                                         </div>
+                                                         <!-- End SMS -->
+
+                                                          <!-- Start EmailSetting -->
+                                                         <div id="EmailSetting" class="tab-pane fade in ">
+                                                             <div class="col-md-12">
+                                                                 <h2> Email </h2>
+                                                                 <hr />
+                                                             </div>
+                                                             <div class="hierarchy-node row ">
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                                 @foreach ($naya_array as $value)
+                                                                     @if ($value['module_id'] == '14')
+                                                                         <div class="hierarchy-node col-md-2 leaf ">
+                                                                             <input class="hierarchy-checkbox"
+                                                                                 name="permissions[]"
+                                                                                 value="{{ $value['id'] }}"
+                                                                                 type="checkbox" <?php if($value['status']=='1') {?>
+                                                                                 checked="unchecked"<?php } ?>>
+                                                                             <label
+                                                                                 class="hierarchy-label">{{ $value['features_name'] }}</label>
+                                                                         </div>
+                                                                     @endif
+                                                                 @endforeach
+                                                             </div>
+                                                         </div>
+                                                         <!-- End EmailSetting -->
+                                                         <!-- Start VoiceSetting -->
+                                                         <div id="VoiceSetting" class="tab-pane fade in ">
+                                                             <div class="col-md-12">
+                                                                 <h2> Voice </h2>
+                                                                 <hr />
+                                                             </div>
+                                                             <div class="hierarchy-node row ">
+                                                                 <input class="hierarchy-checkbox inPut_1"
+                                                                     id="selectAll" type="checkbox">
+                                                                 <label class="hierarchy-label inPut_2"> All</label>
+                                                                 @foreach ($naya_array as $value)
+                                                                     @if ($value['module_id'] == '15')
+                                                                         <div class="hierarchy-node col-md-2 leaf ">
+                                                                             <input class="hierarchy-checkbox"
+                                                                                 name="permissions[]"
+                                                                                 value="{{ $value['id'] }}"
+                                                                                 type="checkbox" <?php if($value['status']=='1') {?>
+                                                                                 checked="unchecked"<?php } ?>>
+                                                                             <label
+                                                                                 class="hierarchy-label">{{ $value['features_name'] }}</label>
+                                                                         </div>
+                                                                     @endif
+                                                                 @endforeach
+                                                             </div>
+                                                         </div>
+                                                         <!-- End VoiceSetting -->
                                                          <div id="Tasks" class="tab-pane fade in ">
                                                              <div class="col-md-12">
                                                                  <h2> Tasks </h2>

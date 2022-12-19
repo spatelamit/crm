@@ -30,7 +30,7 @@
 "/>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <!-- Matomo -->
-<script>
+<!-- <script>
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
@@ -45,7 +45,7 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
-</script>
+</script> -->
 <!-- End Matomo Code -->
 
 </head>
@@ -198,15 +198,29 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                @if(in_array('25',explode(",", session()->get('features_permission'))))
                 <li class="nav-item"><a class="nav-link" href="{{url('roles')}}">Roles Setting</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users Account Setting</a></li>
+                @endif
+                @if(in_array('21',explode(",", session()->get('features_permission'))))
+                <li class="nav-item"><a class="nav-link" href="{{url('user_account_setting')}}">Users  Setting</a></li>
+                @endif
+                 @if(in_array('41',explode(",", session()->get('features_permission'))))
                 <li class="nav-item"><a class="nav-link" href="{{url('sms_settings')}}">SMS Setting</a></li>
+                 @endif
+                 @if(in_array('45',explode(",", session()->get('features_permission'))))
                 <li class="nav-item"><a class="nav-link" href="{{url('email_settings')}}">Email Setting</a></li>
+                  @endif
+                 @if(in_array('2',explode(",", session()->get('features_permission'))))
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('forms')}}">Forms</a></li> -->
+                @endif
+                @if(in_array('49',explode(",", session()->get('features_permission'))))
                <li class="nav-item"><a class="nav-link" href="{{url('voice_settings')}}">Voice Setting</a></li>
+                @endif
+                @if(in_array('38',explode(",", session()->get('features_permission'))))
                <li class="nav-item"><a class="nav-link" href="{{url('pipelines_stages')}}">Pipelines & Stages</a></li>
+               @endif
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('')}}">Data Admin</a></li> -->
-                {{-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li> --}}
+              <!-- <li class="nav-item"><a class="nav-link" href="{{url('theme_settings')}}">Theme Settings</a></li>  -->
                <!--  <li class="nav-item"><a class="nav-link" href="{{url('modules')}}">Modules </a></li> -->
               </ul>
             </div>

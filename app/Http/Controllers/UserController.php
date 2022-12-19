@@ -37,7 +37,11 @@ class UserController extends Controller
         ]);
 
         if($req == true){
-        $data = DB::table('users')->where('username', $request->username)->orWhere('email',$request->username)->where('password', $request->password)->first();
+        $data = DB::table('users')
+        ->select('users.*','users_roles.role_name','users_roles.features_permission','company_profiles.comp_name')
+        ->join('users_roles','users_roles.id','=','users.role_id')
+        ->join('company_profiles','company_profiles.id','=','users.company_id')
+        ->Where('email',$request->username)->where('password', $request->password)->first();
 
         }
 
@@ -51,6 +55,8 @@ class UserController extends Controller
             Session::put('parent_id', $data->parent_id);
             Session::put('email_id', $data->email);
             Session::put('role_id', $data->role_id);
+            Session::put('features_permission', $data->features_permission);
+            Session::put('comp_name', $data->comp_name);
 
             // if($data->IsAdmin == 'Y'){
             //     Session::put('IsAdmin', 'Y');

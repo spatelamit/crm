@@ -762,11 +762,9 @@ class Customer extends Model
                 ->join('module_columns','module_columns.column_id','=','module_table_col.column_id')
                 ->orderBy('module_table_col.id')
                 ->get()->toArray();
-                 if($result){
+                
                           return $result;
-                       }else{
-                           return false;
-                       }
+                     
 
     }
 
