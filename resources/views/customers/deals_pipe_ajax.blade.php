@@ -1,8 +1,8 @@
 
         
                
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- -->
+  <!-- <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet"> -->
+
   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
   <div class="text-center mb-5 sortable Won_box" id="won"> Won </div></div>
   
@@ -98,6 +98,7 @@
                     @empty
                     @endforelse
                     
+
 
 
 

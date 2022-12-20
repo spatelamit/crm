@@ -246,7 +246,7 @@ public function AddUser($req){
 
 public function GetSmsData(){
     $result=DB::table('user_massage_dlt_details')
-    ->where('user_id',session()->get('id'))
+    ->where('company_id',session()->get('company_id'))
     ->get();
     if($result){
         return $result;
@@ -281,7 +281,7 @@ public function AddSmsDetails($req){
         'sender_id'=>$req->sender_id,
         'pe_id'=>$req->pe_id,
         'template_id'=>$req->template_id,
-        'user_id'=>session()->get('id'),
+        'company_id'=>session()->get('company_id'),
         'authKey'=>$req->authKey,
 
     );
@@ -296,7 +296,7 @@ public function AddSmsDetails($req){
 
 public function GetEmailData(){
     $result=DB::table('email_api_details')
-    ->where('user_id',session()->get('id'))
+    ->where('company_id',session()->get('company_id'))
     ->get();
     if($result){
         return $result;
@@ -311,7 +311,7 @@ public function AddEmailDetails($req){
     $data=array(
         'email_id'=>$req->email_id,
         'api_key'=>$req->auth_Key, 
-        'user_id'=>session()->get('id'),
+        'company_id'=>session()->get('company_id'),
 
     );
                 // dd($data);

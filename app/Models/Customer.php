@@ -908,18 +908,42 @@ class Customer extends Model
     }
 
 public function GetSender(){
-        $user_id=session()->get('id');
+        $company_id=session()->get('company_id');
 
         $result=DB::table('user_massage_dlt_details')
         ->select('sender_id')
-        ->where('user_id',$user_id)
+        ->where('company_id',$company_id)
         ->groupBy('sender_id')
         ->get();
 
 
         return $result;
     }
+    public function GetEmailSender(){
+        $company_id=session()->get('company_id');
 
+        $result=DB::table('email_api_details')
+        ->select('api_key', 'email_id')
+        ->where('company_id',$company_id)
+        // ->groupBy('sender_id')
+        ->get();
+
+
+        return $result;
+    }
+
+     public function GetVoiceSender(){
+        $company_id=session()->get('company_id');
+
+        $result=DB::table('user_voice_details')
+        ->select('caller_id')
+        ->where('company_id',$company_id)
+        ->groupBy('caller_id')
+        ->get();
+
+
+        return $result;
+    }
     public function get_user_filter($user_id,$module_id){
         $result= DB::table('user_filters')->select('id','filter_name')->where('module_id',$module_id)->where('user_id',$user_id)->get()->toArray();
         return $result;

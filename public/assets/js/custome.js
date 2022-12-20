@@ -122,7 +122,7 @@ function modals(id){
 
 function editdata(data_id,module_id){
 
-  // alert(data_id+'-'+module_id);
+  alert(data_id+'-'+module_id);
     $.ajax({
         type: "get",
         url: "get_edit_data/"+data_id+'/'+module_id,
@@ -131,8 +131,8 @@ function editdata(data_id,module_id){
         success: function (response) {
         // console.log(response);
           $(".editdata").html(response);
-
            $('#edit_data').modal('show');
+           
         },
 
       });
