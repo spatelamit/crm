@@ -198,9 +198,7 @@
 
                                             </td>
                                         </tr>
-                                        <!-- edit -->
-
-                                        <!-- edit -->
+                                       
                                     @endforeach
                                 @endif
 

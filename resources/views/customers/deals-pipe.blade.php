@@ -1,6 +1,6 @@
 @include('header')
    
- 
+ @include('customers.add-deal');
  
  
    

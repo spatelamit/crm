@@ -70,8 +70,8 @@
                                                 <div class="col-6">
                                                 
                                                 <div class="Updates_dox text-right">
-                                                <a class="Updates_btn" data-animation="slideInRight" data-toggle="modal" data-target="#deal_date_update">
-                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Updates</a>
+                                                <a class="Updates_btn" onclick="editdata('{{$deal->data_id}}','9')">
+                                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                </div>
                                                
                                                 </div>
