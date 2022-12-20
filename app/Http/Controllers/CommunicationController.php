@@ -11,21 +11,21 @@ class CommunicationController extends Controller
     {
 
    $curl=curl_init();
-        
+
         $message="verification code: {#var#}Request From IP: {#var#}Number: {#var#}SR Technology Services Pvt. Ltd..";
-        
-        $template_id = $request->template_id;  
+
+        $template_id = $request->template_id;
 
 
-        $user_id=session()->get('id');
-        $data = DB::table('user_massage_dlt_details')->select('authKey','template','route')->where('template_id', $template_id)->where('user_id',$user_id)->first();
+        $company_id=session()->get('company_id');
+        $data = DB::table('user_massage_dlt_details')->select('authKey','template','route')->where('template_id', $template_id)->where('company_id',$company_id)->first();
 
         $sender = $request->sender_id;
         $mobileNumber = $request->sms_numbers;
-        $route = $data->route; 
+        $route = $data->route;
         $authKey = $data->authKey;
-        $message = $data->template;
-        $coding="1"; 
+        $message = $request->sms_message;
+        $coding="1";
 
 
         $postData = array(
@@ -60,10 +60,11 @@ class CommunicationController extends Controller
 
     public function voice_api(Request $request)
     {
+        // dd($request->all());
        $campaign_name = "test";
         $authKey = $request->authKey; //"caefb78922dc62e21fdb9bf87fe38b16";
         $receivers = $request->voice_numbers;
-        $sender = $request->voice_sender;// "912271897314";
+        $sender = $request->sender_voice;// "912271897314";
         $route = $request->route;
         $type = "text";
         $message = "Rajdhani : Order No 242388 for Train No 19055 / BL JODHPUR EXP at Ahmedabad Jn. Delivery 23:50:00 Amount 518 via Cash on Delivery ";
@@ -105,7 +106,7 @@ class CommunicationController extends Controller
         $sender_name = $request->sender_name; //Email sender name
         $subject = $request->subject; //Email Subject
         $message = $request->email_message; //Email Content
-      
+
         $postData = [
             "campaign_name" => "Email",
             "auth_key" => $authKey,
@@ -118,7 +119,7 @@ class CommunicationController extends Controller
             ]
         ];
 
-        
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'http://sms.bulksmsserviceproviders.com/api/send/email',
             CURLOPT_RETURNTRANSFER => true,

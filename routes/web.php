@@ -125,8 +125,10 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
     // testing route for edit data
  Route::get('/get_edit_data/{dataid}/{moduleid}',[CustomerController::class, 'get_edit_data']);
 
-    Route::get('/GetTemplate/{sender_id}', [CustomerController::class, 'GetTemplate']);
-
+ Route::get('/GetTemplate/{sender_id}', [CustomerController::class, 'GetTemplate']);
+ Route::get('/SetAuthkey/{sender}', [CustomerController::class, 'SetAuthkey']);
+ Route::get('/GetVoiceTemplate/{sender}', [CustomerController::class, 'GetVoiceTemplate']);
+ Route::get('/GetVoiceAuthkey/{sender}', [CustomerController::class, 'GetVoiceAuthkey']);
     //activity controller
     //task
     Route::get('/tasks',[ActivityController::class, 'tasks']);

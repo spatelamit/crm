@@ -21,7 +21,7 @@ class CustomerController extends Controller
 protected $notif_count;
     public function __construct() {
          // parent::__construct();
-     
+
         $this->Customer=new Customer();
           $this->Usersetting=new UserSetting();
         $this->Activity=new Activity();
@@ -38,7 +38,7 @@ protected $notif_count;
 
     }
 
-        
+
     public function leads(){
 
         $module_id='8';
@@ -53,25 +53,25 @@ protected $notif_count;
          $data['filter_name']='';
         if($view_filter){
            $data['leads_data']=$this->Customer->ViewData($view_filter->filter_name,$module_id);
-            
+
            $data['filter_name']=$view_filter->filter_name;
-          
+
         }else{
               if( $data['leads_datas']){
                 foreach ($data['leads_datas'] as $key => $value) {
                     $data['leads_data'][]=(json_decode(json_encode( $value),true));
 
                 }
-               
+
               }else{
                 $data['leads_data']=null;
-                 
+
 
              }
             // dd($data['leads_data']);
         }
 
-    
+
       //table view columns
           if($data['selected_col']!=false ){
                 foreach ($data['selected_col'] as $key => $selected_col) {
@@ -88,14 +88,14 @@ protected $notif_count;
            }
 
         //end table view columns
-     
+
 
         $chiled_parent= $this->Usersetting->ChildNameByparentId();
          $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
-        
+
 
       // dd($data['selected_col']);
-       
+
        return view('customers.leads',compact('data','selcol','selcolname','chiled_parent'));
     }
 
@@ -132,7 +132,7 @@ protected $notif_count;
                 return redirect('accounts')->with("error", "Not Added Accounts!") ;
 
               }
-            
+
 
         }
 
@@ -182,7 +182,7 @@ protected $notif_count;
             $data['field_option']=$this->Customer->GetOptionField();
 
 
-         
+
 
 
 
@@ -192,8 +192,8 @@ protected $notif_count;
                }
                $selfield=$field1;
                $selfield1=implode(",",  $selfield);
-               
-             
+
+
           // dd( $data['edit_lead_data']);
           return view('customers.edit-lead',compact('data','selfield1'));
 
@@ -223,7 +223,7 @@ protected $notif_count;
                 return redirect('accounts')->with("error", "Not Updated Accounts!") ;
 
               }
-            
+
 
         }
     }
@@ -267,13 +267,13 @@ protected $notif_count;
 
     public function single_profile($data_id,$module_id){
           $data['lead_data']=$this->Customer->GetEditData($data_id);
-         
+
           $data['tasks']=$this->Customer->GetTasks($data_id);
           $data['notes']= $this->Activity->GetNotes($module_id,$data_id);
           if($module_id=='10'){
                 // $data['deal_data']=$this->Customer->DealDataById($data_id);
                  $data['deal_datas']=$this->Customer->GetDealData('9');
-               
+
                   $Collection=collect($data['deal_datas'])->where('account_id',$data_id);
                   $data['deal_data']=$Collection->all();
                   $data['deal_sum']=$Collection->sum('amount');
@@ -281,7 +281,7 @@ protected $notif_count;
                    $data['lost_sum']=$Collection->where('won_lost_deal','lost')->sum('amount');
                     // dd( $data['deal_sum']);
           }
-          
+
          return view('customers.single_profile',compact('data','data_id','module_id'));
 
     }
@@ -343,14 +343,14 @@ protected $notif_count;
                     $data['deal_data'][]=(json_decode(json_encode( $value),true));
 
                       }
-                       
+
                   }else{
                       $data['deal_data']=null;
                       $data_keys=null;
 
                   }
                 }
-          
+
        if($data['selected_col']!=false ){
           foreach ($data['selected_col'] as $key => $selected_col) {
           $field1[]=$selected_col->column_id;
@@ -366,7 +366,7 @@ protected $notif_count;
         }
 
         $data['accounts_datas']=$this->Customer->GetDealData('10');
-             
+
             if( $data['accounts_datas']){
                foreach ($data['accounts_datas'] as $key => $value) {
                $data['accounts_data'][]=(json_decode(json_encode( $value),true));
@@ -383,8 +383,8 @@ protected $notif_count;
                 $data['accounts_data']=null;
                  $data['company_names']=[];
               }
-        
-         
+
+
         // dd($data['selected_col']);
         return view('customers.deals',compact('data','selcol','selcolname'));
     }
@@ -437,7 +437,7 @@ protected $notif_count;
        $data['pipeline']=$this->Customer->GetPipeline();
          $data['field_option']=$this->Customer->GetOptionField();
           $data['accounts_datas']=$this->Customer->GetDealData('10');
-             
+
             if( $data['accounts_datas']){
                foreach ($data['accounts_datas'] as $key => $value) {
                $data['accounts_data'][]=(json_decode(json_encode( $value),true));
@@ -463,16 +463,16 @@ protected $notif_count;
       $module_id='9';
        $data['PipelineGroup']=$this->Customer->PipelineStages($pid);
         $data['deal_datas']=$this->Customer->GetDealData($module_id);
-      
+
         $arraypipe = array_column($data['PipelineGroup'],'id');
-        
+
           $Collection=collect($data['deal_datas'])->whereIn('Pipepline',$arraypipe);
           $data['deal_data']=$Collection->all();
          // dd($data['deal_datas']);
           return view('customers.deals_pipe_ajax',compact('data'));
     }
     public function update_deal_stage($stageId,$dealId){
-   
+
       $result=DB::table('module_data')
             ->where('data_id',$dealId)
             ->where('column_id','20')
@@ -485,10 +485,10 @@ protected $notif_count;
         }
     }
     public function deal_won_lost($stageId,$dealId){
-   
+
       $result=DB::table('module_data')
             ->updateOrInsert(['data_id'=>$dealId,'column_id'=>'29'],['value'=>$stageId,'module_id'=>'9' ,'user_id'=>session()->get('id')]);
-           
+
 
         if($result){
           return true;
@@ -502,7 +502,10 @@ protected $notif_count;
           $user_id=session()->get('id');
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
           $data['selected_col']=$this->Customer->GetTableCol($module_id);
-        $data['sms_sender'] = $this->Customer->GetSender();
+          $data['sms_sender'] = $this->Customer->GetSender();
+
+          $data['email_sender'] = $this->Customer->GetEmailSender();
+          $data['voice_sender'] = $this->Customer->GetVoiceSender();
          $chiled_parent= $this->Usersetting->ChildNameByparentId();
           $data['field_option']=$this->Customer->GetOptionField();
         $view_filter=$this->Customer->GetViewfilterId($module_id);
@@ -545,8 +548,8 @@ protected $notif_count;
         }
 
         $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
-      
-        
+
+
         return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
     }
 
@@ -576,8 +579,8 @@ protected $notif_count;
 
 
 
-   
-   
+
+
     public function save_task(Request $req) {
       // dd($req->all());
       $result= $this->Customer->SaveTask($req);
@@ -590,9 +593,9 @@ protected $notif_count;
         }
     }
 
-   
+
     public function save_managecol(Request $req){
-    
+
         $result= $this->Customer->SaveManageCol($req);
         if($req->module_id=='8'){
           $red='leads';
@@ -611,11 +614,11 @@ protected $notif_count;
     }
 
     public function view_data($id,$module_id){
-     
+
       $data['leads_data']=$this->Customer->ViewData($id,$module_id);
         $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['selected_col']=$this->Customer->GetTableCol($module_id);
-       
+
       // dd($data['leads_data']);
       return view('customers.lead_filter',compact('data'));
 
@@ -637,12 +640,12 @@ protected $notif_count;
          $data['selected_fields']=$this->Customer->GetModuleFields($module_id);
          $data['selected_col']=$this->Customer->GetTableCol($module_id);
         return view('customers.lead_filter',compact('data'));
-     
+
       }
 
       public function col_row_convert($data){
-       
-        
+
+
         $result=[];
             foreach ($data as $key => $value) {
               $data1=[];
@@ -659,31 +662,107 @@ protected $notif_count;
 
                 $result[]= $data1;
             }
-    
-    
+
+
         return $result;
 
       }
 
-       public function GetTemplate($sender_id){
-         $user_id=session()->get('id');
-        $data = DB::table('user_massage_dlt_details')->select('template','template_id')->where('sender_id', $sender_id)->where('user_id',$user_id)->get();
+      public function GetTemplate($sender_id){
+        $company_id=session()->get('company_id');
+       $data = DB::table('user_massage_dlt_details')->select('template','template_id')->where('sender_id', $sender_id)->where('company_id',$company_id)->get();
 
 
-        $text = '<label for="template">Choose a Template</label>
-                        <select name="template_id" id="template_ids" required>
-                          <option value="" disabled selected>Select Sender</option>';
+       $text = '<label for="template">Choose a Template</label>
+                       <select name="template_id" id="template_ids" required>
+                         <option value="" disabled selected>Select Sender</option>';
 
-                  foreach ($data as $value) {
-                    $text.= '
-                    <option value="'.$value->template_id.'">'.$value->template.'</option>';
-                  }
-        $text = $text . '</select>';
+                 foreach ($data as $value) {
+                   $text.= '
+                   <option value="'.$value->template_id.'">'.$value->template.'</option>';
+                 }
+       $text = $text . '</select>';
 
-        return $text;
-                          
-                        
-      }
+       return $text;
+
+
+     }
+
+
+     public function SetAuthkey($sender){
+        $company_id=session()->get('company_id');
+
+        $result=DB::table('email_api_details')
+       ->select('api_key')
+       ->where('company_id',$company_id)
+       ->where('email_id', $sender)
+       ->first();
+
+
+
+
+
+       return $result->api_key;
+
+
+     }
+
+
+   // public function GetVoiceTemplate($sender){
+   //     $company_id=session()->get('company_id');
+
+   //     $result=DB::table('user_voice_details')
+   //     ->select('msg_content', 'auth_Key')
+   //     ->where('company_id',$company_id)
+   //     ->where('caller_id', $sender)
+   //     ->first();
+
+
+
+
+
+   //     return $result->msg_content;
+   // }
+
+   public function GetVoiceTemplate($sender){
+       $company_id=session()->get('company_id');
+       $data=DB::table('user_voice_details')
+       ->select('msg_content', 'auth_Key')
+       ->where('company_id',$company_id)
+       ->where('caller_id', $sender)
+       ->get();
+
+
+       $text = '<label for="voice_template">Choose a Template</label>
+                       <select id="voice_template" class="form-control"  required>
+                         <option value="" disabled selected>Select Sender</option>';
+
+       foreach ($data as $value) {
+           $text.= '<option value="'.$value->msg_content.'">'.$value->msg_content.'</option>';
+       }
+       $text = $text . '</select>';
+
+       return $text;
+
+
+     }
+
+     public function GetVoiceAuthkey($sender){
+        $company_id=session()->get('company_id');
+
+        $result=DB::table('user_voice_details')
+        ->select('auth_Key')
+        ->where('company_id',$company_id)
+        ->where('caller_id', $sender)
+        ->first();
+
+
+
+
+
+        return $result->auth_Key;
+    }
+
      public function get_edit_data($id,$module_id){
       // echo ($id.'-'.$module_id);
        $data['pipeline']=$this->Customer->GetPipeline();
@@ -704,12 +783,14 @@ protected $notif_count;
                }
                $selfield=$field1;
                $selfield1=implode(",",  $selfield);
-               
-             
+
+
           // print_r(  $data['selected_fields']);
    return view('customers.edit-data',compact('data','selfield1','sel_col_ids'));
 
 
 
     }
+
+
 }

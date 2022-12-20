@@ -8,34 +8,34 @@
 <div class="row mb-3">
         <div class="col-sm-8 mb-4 mb-xl-0">
             <h4 class="font-weight-bold text-dark"> Accounts </h4>
-           
+
         </div>
         <div class="col-sm-4 mb-4 mb-xl-0">
             <div class="widgetbar text-right">
-  
+
                 <!--  <a class="btn btn-info font-weight-bold mr-2" href="{{ url('add-account') }}"> <i class="fa fa-user-plus"></i>
                     Create Accounts </a>  -->
-                    
-                     <a class="btn btn-info font-weight-bold new_w mr-2" 
+
+                     <a class="btn btn-info font-weight-bold new_w mr-2"
                                onclick="modals('newaccount')" > <i class="fa fa-user-plus"></i>
                                 Add Account </a>
-                  
-                    
+
+
                     <a class="btn btn-info font-weight-bold new_w mr-2" id="Filter_box" ><i class="fa fa-filter" aria-hidden="true"></i>
  Filter </a>
-                    
-                    
+
+
                    <div class="btn-group-vertical " role="group" aria-label="Basic example">
                           <div class="btn-group">
                             <button type="button" class="btn btn-info font-weight-bold dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comments-o" aria-hidden="true"></i>
  Communications </button>
                             <div class="dropdown-menu">
 
-                              
+
                                <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
             data-target="#sendsms"> <i class="fa fa-user-plus"></i>
             SendSMS </a>
-            
+
              <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
             data-target="#sendemail"> <i class="fa fa-user-plus"></i>
             Email </a>
@@ -45,14 +45,14 @@
              <a class="dropdown-item" data-animation="slideInRight" data-toggle="modal"
             data-target="#leadtask"> <i class="fa fa-user-plus"></i>
             Task </a>
-            
-            
-             <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Deal</a>                              
-                            </div>                          
+
+
+             <a class="dropdown-item"  id="lead_id" onclick="createdeal(this.value)">Deal</a>
+                            </div>
                           </div>
-                        </div>  
-                      
-                    
+                        </div>
+
+
             </div>
         </div>
     </div>
@@ -73,23 +73,23 @@
                 </div>
                  <div class="m-b-10">
                      <a class=" btn btn-info" data-animation="slideInRight" data-toggle="modal"
-                                data-target="#managecol"> 
+                                data-target="#managecol">
                                 Manage columns </a>
                 </div>
                  <div class="m-b-10">
 
-                
-                       
+
+
                  <input type="hidden" id="mod_id" value="10">
                      <select name="view_data" id="view_data" >
                        <option value="select">Select </option>
                         <option value="all_leads" {{ $data['filter_name'] == 'all_leads'?'selected':''}} >All Accounts</option>
                         <option value="my_leads"  {{ $data['filter_name'] == 'my_leads'?'selected':''}}>My Accounts</option>
                          <option value="today"  {{ $data['filter_name'] == 'today'?'selected':''}}>Today Accounts</option>
-                     </select> 
-                        
-            
-                    
+                     </select>
+
+
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive lead_search">
@@ -98,12 +98,12 @@
 
 
                                 <tr><div>
-                                    
+
                                     <th><input id="selectAll" type="checkbox" name="selectAll"></th>
                                 </div>
                                 <th>Id</th>
                                 <th>Sale Person</th>
-                         
+
                                       @if ($data['selected_col'] != null)
                                         @forelse ($data['selected_col'] as $key => $value)
 
@@ -113,11 +113,11 @@
                                         @endforelse
 
 
-                                       
 
 
-                                   @endif   
-                                    <th>Created date</th> 
+
+                                   @endif
+                                    <th>Created date</th>
                                 <th>Actions </th>
 
                                 </tr>
@@ -125,34 +125,34 @@
                             </thead>
                             <tbody>
 
-                        
+
                              @forelse( $data['accounts_data'] as $key1=>$field)
-                                 
+
                                         <tr>
-                                           
+
                                             <td> <div>
                                                 <input class="data_id" type="checkbox" name="data_id" value="
                                                 {{$data['accounts_data'][$key1]['data_id']}}">
                                                 <input id="email{{$loop->iteration}}" class="email" type="checkbox" name="email" value="{{$data['accounts_data'][$key1]['email_address']}}" style="display: none;">
-                                                <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['accounts_data'][$key1]['contact_number']}}" style="display: none;"> 
+                                                <input id="mobile_num{{$loop->iteration}}" class="mobile_num" type="checkbox" name="mobile_num" value="{{$data['accounts_data'][$key1]['contact_number']}}" style="display: none;">
                                                  </div>
                                             </td>
 
                                          <td  class="details-control"> <a href="{{url('single-profile',[$data['accounts_data'][$key1]['data_id'],10])}}">{{$data['accounts_data'][$key1]['data_id'] }}</a> </td>
                                          <td>{{$data['accounts_data'][$key1]['user']}}</td>
-                                      
+
                                         @forelse ($data['selected_col'] as $key => $selvalue)
                                               @if(isset($data['accounts_data'][$key1][$selvalue->col_name]))
                                           <td class="details-control"> {{ $data['accounts_data'][$key1][$selvalue->col_name] }}</td>
                                           @else
                                           <td>Null</td>
                                           @endif
-                                         @empty 
+                                         @empty
                                          @endforelse
-                                      
-                                        
 
-                                      
+
+
+
 
                                         <td>
 
@@ -163,7 +163,7 @@
                                                     href="{{ url('edit-lead', [$data['accounts_data'][$key1]['data_id'],10]) }}"><span
                                                         class="fa fa-pencil" style="float: none; margin: 5px;"></span>
                                                 </a> -->
-                                                 <a class=" btn btn-info mr-2" onclick="editdata('{{$data['accounts_data'][$key1]['data_id']}}','10')"> 
+                                                 <a class=" btn btn-info mr-2" onclick="editdata('{{$data['accounts_data'][$key1]['data_id']}}','10')">
                                <span
                                                             class="fa fa-pencil"
                                                             style="float: none; margin: 5px;"></span></a>
@@ -181,12 +181,12 @@
                                             </td>
                                         </tr>
                                         <!-- edit -->
-                         
+
                                         <!-- edit -->
                                         @empty
                                         <tr></tr>
                                        @endforelse
-                                     
+
 
                             </tbody>
                         </table>
@@ -195,16 +195,16 @@
             </div>
         </div>
          <div class="col-md-3 b-left fadeIn p-0 d-none" id="small_d">
-            
+
  <div class="block block-condensed">
-            
-            
-            
-            
-            
+
+
+
+
+
               <div class="block-heading mb-0"><!-- HEADING -->
-              
-              <div class="app-heading app-heading-bordered app-heading-page row"> 
+
+              <div class="app-heading app-heading-bordered app-heading-page row">
 
             <div id="listOfSavedFilter" class="form-control filters_box_row1 mt-5">
                             <select class="form-control saveFilter" id="saveFilter1" name="saveFilter" style="width: 100%;" tabindex="-1" >
@@ -217,81 +217,81 @@
 
                             </select>
                         </div>
-         
+
          </div>
          </div>
          </div>
-         
-         
-         
-         
-         
+
+
+
+
+
           <form action="javascript:void(0)" id="leads_filter">
             @csrf
           <input type="hidden" id='coun_filter' name="coun_filter" value="0">
           <input type="hidden" name="module_id" value="10">
-      
+
             <div class="block block-condensed">
-         
+
               <div class="block-heading mb-0"><!-- HEADING -->
 
 
-                <div class="app-heading app-heading-bordered app-heading-page row"> 
+                <div class="app-heading app-heading-bordered app-heading-page row">
                   <select name="ftaticfilter" class="form-control col-md-6" style="border: 1px solid #d5d5d5 !important;" id="StaticFilter">
                     <option value="">Select filter</option>
                      <!--  <option value="untouched">Untouched records</option>
                     <option value="touched">touched records</option> -->
                     <option value="activites">Activites</option>
-                 
-                     
+
+
                     <option value="pin_code">Pin code</option>
                                 <option value="city">City</option>
                                 <option value="state">State</option>
                                 <option value="country">Country</option>
                                 <option value="sectors">Sectors</option>
                                  <option value="date_range">Date range</option>
-                  
-                    
+
+
                   </select>
                 </div>
 
 
-                
+
                 <!-- END HEADING --></div>
     <div class="block-content " id="idsc">
 
-     
-               
+
+
               </div>
-              
+
               <div class="block-footer pas-0">
-              
+
               <div class="row">
-              
+
               <div class="col-md-8">
               <div id="savebutton">
                 <input class="form-control" type="text" placeholder="Enter filter name for save" name="filtersave">
               </div>
               </div>
-              
+
               <div class="col-md-4">
                 <button type="submit" class="btn btn-default pull-right" id="apply">Apply</button>
               </div>
-              
-              
-              </div>
-              
-              
-              
-              
+
+
               </div>
 
-              
+
+
+
+              </div>
+
+
             </div>
-            
-            
-            
-         
+
+
+
+
           </form>
          </div>
     </div>
@@ -309,6 +309,7 @@
             </div>
             <form method="post" action="{{ url('email-api') }}" autocomplete="nope">
                 @csrf
+
                 <div class="modal-body">
                     <div class="form-group mb-10">
                         <label>Email Ids:</label>
@@ -316,11 +317,9 @@
                             placeholder="Enter Email Ids" required>
                     </div>
 
-                    <div class="form-group mb-10">
-                        <label>Authentication Key:</label>
-                        <input type="text" name="authKey" class="form-control bg_input"
-                            placeholder="Enter your Authentication Key" required>
-                    </div>
+
+                    <input type="hidden" name="authKey" id="authKey" class="form-control bg_input">
+
 
                     <div class="form-group mb-10">
                         <label>sender:</label>
@@ -328,16 +327,23 @@
                             placeholder="Enter Sender" required>
                     </div>
 
+
+
                     <div class="form-group mb-10">
-                        <label>sender Email:</label>
-                        <input type="text" name="sender_email" class="form-control bg_input"
-                            placeholder="Enter Sender Email" required>
+                        <label for="sender_email">Choose a Sender Id</label>
+                        <select name="sender_email" id="sender_email" class="form-control" required>
+                            <option value="" disabled selected>Select Sender</option>
+                            @forelse ($data['email_sender'] as $post)
+                                <option value="{{ $post->email_id}}" >{{ $post->email_id}}</option>
+                            @empty
+                                <option value="">No Sender</option>
+                            @endforelse
+                        </select>
                     </div>
 
                     <div class="form-group mb-10">
                         <label>Subject:</label>
-                        <input type="text" name="subject" class="form-control bg_input"
-                            placeholder="Enter Subject" required>
+                        <input type="text" name="subject" class="form-control bg_input" placeholder="Enter Subject" required>
                     </div>
 
                     <div class="form-group mb-10">
@@ -383,10 +389,16 @@
                             @empty
                                 <option value="">No Sender</option>
                             @endforelse
-                        </select> 
+                        </select>
                     </div>
 
                     <div class="form-group mb-10" id="template_id"></div>
+                    <div class="form-group mb-10">
+                        <label>Message</label>
+                        <textarea id="sms_message_temp" name="sms_message" class="form-control bg_input" rows="4" cols="50" placeholder="Enter Message" required></textarea>
+
+                        <input type="hidden" name="voice_numbers">
+                    </div>
 
 
                 </div>
@@ -414,7 +426,7 @@
                 <div class="modal-body">
                    <div class="row">
                     <input type="hidden" name="related_to" id="related_to" value="">
-                   
+
              <!--  <div class="col-md-4">
                 <div class="form-group">
                   <label for="usr">Task Owner <font style="color:red;">*</font></label>
@@ -428,7 +440,7 @@
                   <input class="form-control" name="subject" required="" >
                 </div>
               </div>
-           
+
               <div class=" col-md-4" id="container">
                 <div class="form-group">
                   <label for="stage_name">Due Date: </label>
@@ -449,7 +461,7 @@
                 <div class="form-group">
                   <label >Priority: </label>
                   <select class="form-control"  name="priority">
-                   
+
                     <option value="1">Low</option>
                     <option value="0">High</option>
                     <option value="2">Medium</option>
@@ -462,7 +474,7 @@
                   <textarea name="description" placeholder="Description" class="form-control "></textarea>
                 </div>
               </div>
-              
+
               <div class=" col-md-4" id="container">
                 <label for="stage_name"> Add Reminder </label>
                 <div class="Reminder_btn"> <a href="#" class="show_hide btn "> <i class="fa fa-bell" aria-hidden="true"></i> Reminder </a> </div>
@@ -493,18 +505,18 @@
                   </div>
                 </div>
               </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-            
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
 
                 </div>
@@ -533,7 +545,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <ul id="casortable">
-                           
+
                       @foreach($data['selected_fields'] as $selfield)
                         <input type="hidden" name="module_id" value="{{$data['selected_fields'][0]->module_id}}">
                           @if(in_array($selfield->column_id,explode(",", $selcol)))
@@ -543,7 +555,7 @@
                             <li><input type="checkbox" name="column_id[]" value="{{$selfield->column_id}}" >
                            {{$selfield->col_name}} </li>
                            @endif
-                     
+
                       @endforeach
                        </ul>
                     </div>
@@ -568,26 +580,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span> </button>
             </div>
-            <form method="post" action="{{ url('voice-api') }}" autocomplete="nope">
+            <form method="post" action="{{ url('voice-api') }}" autocomplete="nope" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group mb-10">
-                        <label>Number</label>
-                        <input type="text" name="voice_numbers" class="form-control bg_input sms_numbers"
-                            placeholder="Enter your Authentication Key" required>
-                    </div>
 
-                    <div class="form-group mb-10">
-                        <label>Authentication Key:</label>
-                        <input type="text" name="authKey" class="form-control bg_input"
-                            placeholder="Enter your Authentication Key" required>
-                    </div>
-
-                    <div class="form-group mb-10">
-                        <label>Sender</label>
-                        <input type="text" name="voice_sender" class="form-control bg_input"
-                            placeholder="Enter Sender" required>
-                    </div>
 
                     <div class="form-group mb-10">
                         <input type="radio" id="tr" name="route"required  value="TR">
@@ -595,10 +591,34 @@
                         <input type="radio" id="pr" name="route" required value="PR">
                         <label for="pr">Promotional</label>
                     </div>
+                    <input type="hidden" name="authKey" id="voice_auth_key" class="form-control bg_input">
+
+                    <div class="form-group mb-10">
+                        <label for="sender_voice">Choose a Sender Id</label>
+                        <select name="sender_voice" id="sender_voice" class="form-control" required>
+                            <option value="" disabled selected>Select Sender</option>
+                            @forelse ($data['voice_sender'] as $post)
+                                <option value="{{ $post->caller_id}}" >{{ $post->caller_id}}</option>
+                            @empty
+                                <option value="">No Sender</option>
+                            @endforelse
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-10" id="voice_message_select"></div>
+
+                    <div class="form-group mb-10">
+                        <label>Number</label>
+                        <input type="number" name="voice_numbers" class="form-control bg_input sms_numbers"
+                            placeholder="Enter your number" required>
+                    </div>
+
 
                     <div class="form-group mb-10">
                         <label>Message</label>
-                        <textarea id="voice_message" name="voice_message" class="form-control bg_input" rows="4" cols="50" placeholder="Enter Message" required></textarea>
+                        <textarea id="voice_message_temp" name="voice_message" class="form-control bg_input" rows="4" cols="50" placeholder="Enter Message" required></textarea>
+
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -726,7 +746,7 @@
                 $(".ids12").prop("checked", true);
                 $(".email").prop("checked", true);
 
-               
+
                     data_id= $(this).val();
                    alert(data_id);
                $("#lead_id").val(data_id);
@@ -754,7 +774,7 @@
 
     $("#saveFilter1").select2({
                 placeholder: "Select an Option",
-              
+
                 allowClear: true,
                 // data:stagename,
             });
@@ -841,7 +861,7 @@
             var users_input =
                 '<div class="form-group deal_search"> <select class="sle"  id="usersid" name="usersid[]" style="width:300px;"> <?php
                 if(is_array($chiled_parent) || is_object($chiled_parent)){
-                 foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php 
+                 foreach ($chiled_parent as $value) {?><option value="<?php echo $value->id ?>"> <?php echo $value->full_name ?></option> <?php
                 }}?></select></div>';
 
             $("#idsc").append(text);
@@ -1081,14 +1101,14 @@
 </script>
 
     <script type="text/javascript">
-   
+
       $('#apply').click(function(){
        var button= '<button class="btn pull-left" >Save Filter</button>';
         //$( "#savebutton" ).append(button);
 
 
       });
-       
+
 
 </script>
 <script type="text/javascript">
