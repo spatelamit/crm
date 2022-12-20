@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
+use App\Http\Controllers\ActivityController;
 use App\Models\User;
 class UserController extends Controller
 {
@@ -16,6 +17,7 @@ class UserController extends Controller
         $this->middleware('UserAuthentication', ['except' => ['login','login_action'] ]);
     }
     public function home(){
+         
         return view('homepage');
     }
 
@@ -63,6 +65,11 @@ class UserController extends Controller
             // }
 
             // return view('index');
+            $ActivityController=new ActivityController();
+//       
+      
+          
+          Session::put('notif_count', $ActivityController->notification_count());
             $noti_data = array(
 				'type' => 'Login',
 	    		'message' => 'login'.session()->get('full_name').'',

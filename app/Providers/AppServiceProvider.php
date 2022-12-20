@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use DB;
+use App\Http\Controllers\ActivityController;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
