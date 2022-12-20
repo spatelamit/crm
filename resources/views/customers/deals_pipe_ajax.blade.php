@@ -101,6 +101,21 @@
 
 
 
+<div class="modal fade come-from-modal right in" id="edit_data" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Edit data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body editdata" id="">
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 

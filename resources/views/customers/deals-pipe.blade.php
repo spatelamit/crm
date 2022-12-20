@@ -1,6 +1,6 @@
 @include('header')
    
- @include('customers.add-deal');
+ <!-- @include('customers.add-deal'); -->
  
  
    
@@ -466,6 +466,8 @@ $(".stages").html(response);
 });
 });
 });
+
+
 </script>
 <script >
     $(document).ready(function() {
@@ -489,3 +491,4 @@ $(".stages").html(response);
     });
 });
 </script>
+
