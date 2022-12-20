@@ -132,7 +132,7 @@ function editdata(data_id,module_id){
         // console.log(response);
           $(".editdata").html(response);
            $('#edit_data').modal('show');
-
+           
         },
 
       });

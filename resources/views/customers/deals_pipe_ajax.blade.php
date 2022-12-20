@@ -1,8 +1,8 @@
 
         
                
-<!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- -->
+  <!-- <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet"> -->
+
   <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12">
   <div class="text-center mb-5 sortable Won_box" id="won"> Won </div></div>
   
@@ -101,21 +101,7 @@
 
 
 
-<div class="modal fade come-from-modal right in" id="edit_data" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  slideInRight  animated" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle-1">Edit data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
-                        aria-hidden="true">&times;</span> </button>
-            </div>
-            <div class="modal-body editdata" id="">
 
-            </div>
-
-        </div>
-    </div>
-</div>
 
 
 

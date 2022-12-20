@@ -1,8 +1,7 @@
 @include('header')
    
  <!-- @include('customers.add-deal'); -->
- 
- 
+
    
 <style>
 
@@ -416,9 +415,26 @@
 </div>
 </div>
 
+ <div class="modal fade come-from-modal right in" id="edit_data" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog  slideInRight  animated" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle-1">Edit data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body editdata" id="">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+ 
 
 
  @include('footer')
+ 
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
