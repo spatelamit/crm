@@ -350,7 +350,7 @@ class ActivityController extends Controller
     {
         $user_id = session()->get('id');
 
-        $notify = DB::table('tasks')->select('start_date', 'subject')
+        $notify = DB::table('tasks')->select('start_date', 'subject', 'reminder')
             ->where('tasks.reciever_id', $user_id)
             ->Orwhere('tasks.sender_id', $user_id)
             ->whereDate('start_date', now())
@@ -418,7 +418,7 @@ class ActivityController extends Controller
 
                  ->get()->count();
 
-                
+
 
 
         //  $query =  DB::select( DB::raw("SELECT 'type', count(*) as counts FROM notifications  group by 'type' "));

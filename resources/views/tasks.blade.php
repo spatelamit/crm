@@ -209,7 +209,11 @@
                                     <label for="">RecieverId:</label>
                                     <select class="form-control" name="reciever_id">
                                         @foreach ($data['meeting_user'] as $reciever)
+                                        @if ( $reciever->id != session()->get('id') )
+
+
                                             <option value="{{ $reciever->id }}">{{ $reciever->full_name }}</option>
+                                            @endif
                                         @endforeach
 
                                     </select>
