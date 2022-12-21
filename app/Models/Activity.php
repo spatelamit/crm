@@ -27,9 +27,11 @@ class Activity extends Model
             'status' => $req->status,
             'sender_id' => session()->get('id'),
             'priority' => $req->priority,
-            'due_date' => $req->due_date,
+            'end_date' => $req->end_date,
+            'start_date' => $req->start_date,
             'reciever_id' => $req->reciever_id,
-            'related_to' => $req->account
+            'related_to' => $req->account,
+            'reminder' => $req->reminder
         );
 
         // dd($data);

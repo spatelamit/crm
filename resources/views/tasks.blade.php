@@ -68,9 +68,16 @@
                             </div>
                             <div class=" col-md-4" id="container">
                                 <div class="form-group">
-                                    <label for="stage_name">DueDate: </label>
+                                    <label for="stage_name">EndDate: </label>
                                     {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
-                                    <input class="form-control" type="text" id="duedate" name="due_date">
+                                    <input class="form-control" type="text" id="duedate" name="end_date">
+                                </div>
+                            </div>
+                            <div class=" col-md-4" id="container">
+                                <div class="form-group">
+                                    <label for="stage_name">startDate: </label>
+                                    {{-- <input class="form-control" type="text" id="duedate" name="duedate"> --}}
+                                    <input class="form-control" type="text" id="startdate" name="start_date">
                                 </div>
                             </div>
                             <div class=" col-md-4" id="container">
@@ -94,7 +101,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class=" col-md-12">
+                            <div class=" col-md-8">
                                 <div class="form-group">
                                     <label for="usr"> Description <font style="color:red;">*</font></label>
                                     <textarea name="description" placeholder="Description" class="form-control "></textarea>
@@ -113,7 +120,7 @@
                                                     <div class="form-group">
                                                         <label for=""> Select Date & Time </label>
                                                         <input class="form-control" type="date"
-                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name">
+                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name" id="reminder">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -248,9 +255,12 @@
     $(document).ready(function() {
         $('#duedate').daterangepicker({
             singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            autoApply: true,
             autoApply: true,
             locale: {
-                format: 'YYYY-MM-DD'
+                format: 'YYYY-MM-DD hh:mm'
             }
         });
 
@@ -282,3 +292,33 @@
 
     });
 </script>
+
+
+<script>
+     $( document ).ready(function() {
+     $('#reminder').daterangepicker({
+        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
+        autoApply: true,
+        locale: {
+            format: 'YYYY-MM-DD hh:mm'
+        }
+    });
+});
+    </script>
+
+
+    <script>
+     $( document ).ready(function() {
+     $('#startdate').daterangepicker({
+        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
+        autoApply: true,
+        locale: {
+            format: 'YYYY-MM-DD hh:mm'
+        }
+    });
+});
+    </script>
