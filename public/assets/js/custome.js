@@ -158,7 +158,7 @@ $(document).ready(function () {
 
     function editdata(data_id, module_id) {
 
-        alert(data_id + '-' + module_id);
+        // alert(data_id + '-' + module_id);
         $.ajax({
             type: "get",
             url: "get_edit_data/" + data_id + '/' + module_id,
@@ -173,7 +173,7 @@ $(document).ready(function () {
 
         });
 
-    }
+    };
 
     function getnotification() {
 
@@ -188,5 +188,7 @@ $(document).ready(function () {
             },
 
         });
-    }
+    };
+
+
 

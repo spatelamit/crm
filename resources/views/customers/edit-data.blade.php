@@ -2,7 +2,7 @@
 
       
 
-        <form method="post" action="{{url('update-lead')}}" autocomplete="nope">
+        <form action="javascript:void(0)" id="updates_Lead" >
             @csrf
             <div class="row">
               <input type="hidden" name="created_at" value="{{$data['edit_lead_data'][0]->created_at}}">
@@ -105,11 +105,11 @@
                 <div class="form-group mb-10">
                                          <label>{{ str_replace('_', ' ', strtoupper($val->col_name)) }}</label>
                                            <input type="hidden" name="column_id[]" value="{{ $val->column_id }}">
-                                                <select name="value[]" class="form-control dealstage" >
+                                                <select name="value[]" class="form-control " >
                                                     
                                                     @foreach($data['field_option'] as $option)
                                                     @if($option->column_id == $val->column_id)
-                                                    <option value="{{$option->option_name}}">{{$option->option_name  }}</option>
+                                                    <option  value="{{$option->option_name}}" {{$val->value==$option->option_name ? 'selected':''}}>{{$option->option_name  }}</option>
                                                     @endif
                                                     @endforeach
                                                 </select>
@@ -181,7 +181,7 @@
             
               <div class="col-md-12 text-right">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" id="editSub" class="btn btn-primary">Update</button>
               </div>
             </div>
             </div>
@@ -191,6 +191,50 @@
     
 <script>
 $(document).ready(function() {
+  $("#updates_Lead").submit(function () {
+    
+    var formdata = $(this).serializeArray();
+  
+    $.ajax({
+        type: "POST",
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        url: 'update-lead',
+
+        data: formdata,
+        success: function (response) {
+           toastr.success(" Successfully Updated.", "Success", {
+                        positionClass: "toast-bottom-left",
+                        tapToDismiss: 1  
+                    });
+       pipe_stage=$('#pipeline').val();
+       alert(pipe_stage);
+       if(pipe_stage!==undefined){
+                            $.ajax({
+                                type: "get",
+                              
+                                url: 'deal-pipe-ajax/'+pipe_stage,
+
+                                success: function (response) {
+
+                                  $("#deal_ajax").html(response);
+                                 
+                                 
+                                }
+                            });
+                          }
+      $('#edit_data').modal('hide');
+            
+        },
+        error:function(response) {
+                    toastr.error(" Not Updated", "Oops", {
+                        positionClass: "toast-bottom-left",
+                        tapToDismiss: 1  
+                    });
+                  }
+    });
+
+});
+
 $('.dealstage').on('change', function() {
 var category_id = this.value;
 // alert(category_id);

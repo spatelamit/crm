@@ -205,24 +205,26 @@ protected $notif_count;
       // dd($req->all());
           $result=$this->Customer->UpdateLead($req);
         if($result){
-              if($req->module_id=='8'){
-                return redirect('leads')->with("success", "Successfully Updated Leads!") ;
-              }elseif($req->module_id=='9'){
-                return redirect('deals')->with("success", "Successfully Updated Deals!") ;
-              }elseif($req->module_id=='10'){
-                return redirect('accounts')->with("success", "Successfully Updated Accounts!") ;
+          return "success";
+              // if($req->module_id=='8'){
+              //   return redirect('leads')->with("success", "Successfully Updated Leads!") ;
+              // }elseif($req->module_id=='9'){
+              //   return redirect('deals')->with("success", "Successfully Updated Deals!") ;
+              // }elseif($req->module_id=='10'){
+              //   return redirect('accounts')->with("success", "Successfully Updated Accounts!") ;
 
-              }
+              // }
 
         }else{
-          if($req->module_id=='8'){
-                return redirect('leads')->with("error", "Not Updated Leads!") ;
-              }elseif($req->module_id=='9'){
-                return redirect('deals')->with("error", "Not Updated Deals!") ;
-              }elseif($req->module_id=='10'){
-                return redirect('accounts')->with("error", "Not Updated Accounts!") ;
+          return "error";
+        //   if($req->module_id=='8'){
+        //         return redirect('leads')->with("error", "Not Updated Leads!") ;
+        //       }elseif($req->module_id=='9'){
+        //         return redirect('deals')->with("error", "Not Updated Deals!") ;
+        //       }elseif($req->module_id=='10'){
+        //         return redirect('accounts')->with("error", "Not Updated Accounts!") ;
 
-              }
+        //       }
 
 
         }
