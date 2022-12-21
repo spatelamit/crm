@@ -30,7 +30,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sr No</th>
-                                            <th >sales Group</th>
+                                            <th >Pipeline Group</th>
                                             <th >Action</th>
                                         </tr>
                                     </thead>
@@ -40,111 +40,17 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td > {{$val->pipeline_name}} </td>
                                             <td>
-                                                <!--  <a class="btn btn-info mr-2"
-                                                        data-toggle="modal" data-target="#editpipe{{$val->id}}" ><span
+                                                 <a class="btn btn-info mr-2"
+                                                       onclick="editpipe('{{$val->id}}')" ><span
                                                             class="fa fa-pencil"
-                                                            style="float: none; margin: 5px;"></span> </a> -->
+                                                            style="float: none; margin: 5px;"></span> </a>
+
                                                <!--  <a onclick="deletepipeline('{{$val->id}}')" class="text-danger"><i
                                                 class="feather icon-trash"></i></a> -->
                                             </td>
                                         </tr>
                                         <!--  -->
-                                   <!--  <div class="modal fade come-from-modal right" id="editpipe{{$val->id}}" tabindex="-1" role="dialog"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog  slideInRight  animated" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle-1">Edit Pipeline Pipelines </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
-                                                            aria-hidden="true">&times;</span> </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="form-group mb-10">
-                                                                <label for="pipeline_stage_name">Pipeline name: </label>
-                                                                <input type="text" class="form-control bg_input" placeholder="Like... Initial Contact"
-                                                                name="pipeline_stage_name">
-                                                            </div>
-                                                            <hr>
-                                                            <h5>Stage no.1</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-8">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_name"> Stage name: </label>
-                                                                        <input type="text" class="form-control bg_input"
-                                                                        placeholder="Like... Initial Contact" name="stage_name[]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_colour"> Stage color: </label>
-                                                                        <input type="color" class="form-control bg_input" placeholder="Like... Blue"
-                                                                        name="stage_colour[]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <h5>Stage no.2</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-8">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_name"> Stage name: </label>
-                                                                        <input type="text" class="form-control bg_input"
-                                                                        placeholder="Like... Initial Contact" name="stage_name[]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_colour"> Stage color: </label>
-                                                                        <input type="color" class="form-control bg_input" placeholder="Like... Blue"
-                                                                        name="stage_colour[]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <h5>Stage no.3</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-8">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_name"> Stage name: </label>
-                                                                        <input type="text" class="form-control bg_input"
-                                                                        placeholder="Like... Initial Contact" name="stage_name[]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_colour"> Stage color: </label>
-                                                                        <input type="color" class="form-control bg_input" placeholder="Like... Blue"
-                                                                        name="stage_colour[]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <h5>Stage no.4</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-8">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_name"> Stage name: </label>
-                                                                        <input type="text" class="form-control bg_input"
-                                                                        placeholder="Like... Initial Contact" name="stage_name[]">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group mb-10">
-                                                                        <label for="stage_colour"> Stage color: </label>
-                                                                        <input type="color" class="form-control bg_input" placeholder="Like... Blue"
-                                                                        name="stage_colour[]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Ok</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        <!--  -->
+                                   
                                         @endforeach
                                         </tbody>
                                     </table>
@@ -262,13 +168,46 @@
     </div>
 
 <!-- End add -->
-
+<!-- edit -->
+                                    <div class="modal fade come-from-modal right" id="editpipe" tabindex="-1" role="dialog"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog  slideInRight  animated" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle-1">Edit Pipeline Pipelines </h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                                                            aria-hidden="true">&times;</span> </button>
+                                                        </div>
+                                                 <div class="modal-body" id="editstages">
+                                                         
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <!--  -->
 
 
     </div>
 
     @include('footer')
 <script type="text/javascript">
+    function editpipe(id){
+        // alert(id);
+        $.ajax({
+            type: "get",
+            url: "get_edit_pipestages/" + id,
+
+
+            success: function (response) {
+                console.log(response);
+                $("#editstages").html(response);
+                $('#editpipe').modal('show');
+
+            },
+
+        });
+    }
+
         function deletesms(id) {
        
             

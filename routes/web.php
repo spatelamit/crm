@@ -68,7 +68,9 @@ Route::group(['middleware' => 'UserAuthentication'], function(){
 	Route::get('/email_settings',[UserSettingController::class, 'email_settings']);
 
 	Route::get('/roles_settings',[UserSettingController::class, 'roles_settings']);
-	Route::get('/pipelines_stages',[UserSettingController::class, 'pipelines_stages']);
+    Route::get('/pipelines_stages',[UserSettingController::class, 'pipelines_stages']);
+	Route::get('/get_edit_pipestages/{id}',[UserSettingController::class, 'get_edit_pipestages']);
+    Route::post('/update_stages',[UserSettingController::class, 'update_stages']);
 	Route::get('/modules',[UserSettingController::class, 'modules']);
 	Route::get('/forms',[UserSettingController::class, 'forms']);
 	Route::get('/user_account_setting',[UserSettingController::class, 'user_account_setting']);

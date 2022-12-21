@@ -103,7 +103,7 @@
                                              <div class="col-md-2">
                                                  <div class="Permission_box_li">
                                                      <ul class="nav nav-tabs">
-                                                     <li class="nav-item">
+                                                     <li class="nav-item " >
                                                         <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
                                                              
                                                         <span class="menu-title">  CRM Setting </span>
@@ -111,7 +111,7 @@
                                                          </a>
                                                          <div class="collapse" id="ui-basic1">
                                                             <ul class="nav flex-column sub-menu">
-                                                                <li><a data-toggle="tab" href="#users">Users</a></li>
+                                                                <li class="" ><a data-toggle="tab" href="#users">Users</a></li>
                                                                 <li><a data-toggle="tab" href="#RoleSettings">Roles Settings</a></li>
                                                                 <li ><a data-toggle="tab"
                                                                          href="#Pipe_stage">Pipeline and Stage</a>
@@ -131,7 +131,7 @@
                                                          
                                                          
                                                         
-                                                         <li ><a data-toggle="tab"
+                                                         <li class="active"><a data-toggle="tab"
                                                                  href="#Leads">Leads</a>
                                                              </li>
                                                              <li ><a data-toggle="tab"
@@ -155,7 +155,7 @@
                                              <input type="hidden" id="add_permission" name="features_permission">
                                              <div class="col-md-10">
                                                  <div class="tab-content Permission_box_tab">
-                                                     <div id="Leads" class="tab-pane fade in ">
+                                                     <div id="Leads" class="tab-pane fade in active ">
                                                          <h2> Leads </h2>
                                                          <hr />
                                                          <div class="hierarchy-node row ">
@@ -449,7 +449,7 @@
                                                              @endforeach
                                                          </div>
                                                      </div>
-                                                     <div id="RoleSettings" class="tab-pane fade">
+                                                     <div id="RoleSettings" class="tab-pane fade active">
                                                          <div class="hierarchy-node row">
                                                              <div class="col-md-12">
                                                                  <h2> Role Settings </h2>

@@ -251,9 +251,24 @@ class UserSettingController extends Controller
 
         $data['pipelines_group']=$this->Usersetting->GetPipelines();
 
-        // dd($data);
+        // dd($data);  
      
         return view('roles_setting.pipelines_stages',compact('data'));
+    }
+    public function get_edit_pipestages($id){
+
+        $data['stages']=$this->Usersetting->GetEditStages($id);
+        // print_r($data);
+        return view('roles_setting.edit_stages',compact('data'));
+    }
+    public function update_stages(Request $req){
+        // dd($req->all());
+         $result=$this->Usersetting->UpdateStages($req);
+          if($result){
+            return redirect('pipelines_stages')->with("success", "Successfully Updated Pipeline!")   ;
+        }else{
+            return redirect('pipelines_stages')->with("error", 'Pipeline Not Updated!');
+        }
     }
     public function add_pipeline(Request $req){
 

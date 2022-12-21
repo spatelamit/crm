@@ -342,18 +342,27 @@ public function UpdateEmailDetails($req){
 //pipelines//
     public function GetPipelines(){
         
-        DB::statement("SET SQL_MODE=''");
+       
         $result=DB::table('pipeline_group')
-            ->select('pipeline_group.id','pipeline_group.pipeline_name','users_pipeline_stages.id as upid','users_pipeline_stages.stage_name','users_pipeline_stages.stage_colour','users_pipeline_stages.stage_slug','users_pipeline_stages.pipeline_group_id')
+            ->select('pipeline_group.id','pipeline_group.pipeline_name')
             ->where('pipeline_group.company_id',session()->get('company_id'))
-            ->join('users_pipeline_stages','users_pipeline_stages.pipeline_group_id','=','pipeline_group.id')
-            ->groupBy('users_pipeline_stages.pipeline_group_id')
+        
             ->get();
                 if($result){
                          return $result;
                  }else{
                         return false;
                   }
+    }
+    public function GetEditStages($id){
+        $result=DB::table('users_pipeline_stages')
+                ->select('users_pipeline_stages.stage_name','users_pipeline_stages.id','users_pipeline_stages.stage_colour','users_pipeline_stages.pipeline_group_id','pipeline_group.pipeline_name')
+                ->join('pipeline_group','pipeline_group.id','=','users_pipeline_stages.pipeline_group_id')
+                ->where('pipeline_group_id',$id)
+                ->where('status','1')
+
+                ->get();
+        return $result;
     }
     
     public function SavePipeline($req){
@@ -385,6 +394,34 @@ public function UpdateEmailDetails($req){
          }
 
 
+
+    }
+    public function UpdateStages($req){
+        $pipeline_name=$req->pipeline_stage_name;
+        $stage_name=$req->stage_name;
+        $stage_colour=$req->stage_colour;
+
+        $pipeline_group=array(
+            'pipeline_name'=>$pipeline_name,
+            
+        );
+        $pipeline_group_id=DB::table('pipeline_group')->where('id',$req->pipeline_id)->update($pipeline_group);
+        for ($i=0; $i <count($req->stage_name) ; $i++) { 
+
+            $data=array(
+              
+                'stage_name'=>$stage_name[$i],
+                'stage_colour'=>$stage_colour[$i],
+                'stage_slug'=> str_replace(" ","_",strtolower($stage_name[$i])),
+            );
+             $result=DB::table('users_pipeline_stages')->where('id',$req->stage_id[$i])->update($data);
+        }
+        // $result=DB::table('users_pipeline_stages')->update($data);
+        if($result || $pipeline_group_id){
+              return true;
+         }else{
+           return false;
+         }
 
     }
     public function SaveFields($req){
