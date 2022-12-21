@@ -363,20 +363,34 @@ class ActivityController extends Controller
             $hours = strtotime($date . '-1 hours');
             // dd($hours);
             $cur_date = date('Y-m-d H:i:s');
-            $from = strtotime($cur_date . '- 1 hours -2 minutes');
-            $to = strtotime($cur_date . '- 1 hours +15 minutes');
+            // $from = strtotime($cur_date . '- 1 hours -2 minutes');
+            // $to = strtotime($cur_date . '- 1 hours +15 minutes');
+
+
 
             // echo "</BR>";
             // echo (date('Y-m-d H:i:s',$from));
 
-            // echo "</BR>";
-            // echo (date('Y-m-d H:i:s',$to));
-            // echo "</BR>";
-            // echo($hours.'-'.$from.'-'. $to);
+            if(isset($meeting->reminder) || $meeting->reminder != null){
+                $reminder = strtotime($meeting->reminder);
+                $from = strtotime($cur_date . ' -2 minutes');
+                $to = strtotime($cur_date . ' +15 minutes');
+                    if (($reminder < $to) &&  ($reminder > $from)) {
+                        echo ($hours . '-' . $from . '-' . $to);
+                        return back()->with("success", "Task Title-" . $meeting->subject . "  DateTime-" . $date);
+                    }
+          }
+          else{
+
+            $from = strtotime($cur_date . '-1 hours -2 minutes');
+            $to = strtotime($cur_date . '-1 hours +15 minutes');
             if (($hours < $to) &&  ($hours > $from)) {
+
                 echo ($hours . '-' . $from . '-' . $to);
                 return back()->with("success", "Task Title-" . $meeting->subject . "  DateTime-" . $date);
             }
+
+          }
         }
     }
 

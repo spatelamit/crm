@@ -113,7 +113,7 @@
                                                     <div class="form-group">
                                                         <label for=""> Select Date & Time </label>
                                                         <input class="form-control" type="date"
-                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name">
+                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name" id="reminder">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -248,6 +248,9 @@
     $(document).ready(function() {
         $('#duedate').daterangepicker({
             singleDatePicker: true,
+            timePicker: true,
+            timePicker24Hour: true,
+            autoApply: true,
             autoApply: true,
             locale: {
                 format: 'YYYY-MM-DD'
@@ -282,3 +285,18 @@
 
     });
 </script>
+
+
+<script>
+     $( document ).ready(function() {
+     $('#reminder').daterangepicker({
+        singleDatePicker: true,
+        timePicker: true,
+        timePicker24Hour: true,
+        autoApply: true,
+        locale: {
+            format: 'YYYY-MM-DD hh:mm'
+        }
+    });
+});
+    </script>
