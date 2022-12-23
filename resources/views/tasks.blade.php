@@ -119,8 +119,8 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for=""> Select Date & Time </label>
-                                                        <input class="form-control" type="date"
-                                                            value="yyyy/mm/dd hh/mm" name="reminder" placeholder="Name" id="reminder">
+                                                        <input class="form-control" type="text"
+                                                            value="" name="reminder" placeholder="Name" id="reminder">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

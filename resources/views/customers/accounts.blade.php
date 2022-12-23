@@ -152,7 +152,7 @@
 
 
 
-
+                  <td>{{$data['accounts_data'][$key1]['created_at']}}</td>
 
                                         <td>
 
@@ -672,19 +672,7 @@
 
     }
 </script>
-<script>
-    $(document).ready(function() {
-        $('#leads').DataTable({
-            dom: 'Bfrtip',
-            scrollX: true,
 
-            buttons: [
-                'colvis'
-            ]
-
-        });
-    });
-</script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -706,6 +694,10 @@
                     val3[i] = $(this).val();
                     // alert(val3[i]);
                 });
+                  var email_value=<?php echo json_encode(array_column($data['accounts_data'],'email_address'));  ?>;
+
+            var contact_value=<?php echo json_encode(array_column($data['accounts_data'],'contact_number'));  ?>;
+                
             } else {
                 $(".name").prop("checked", false);
                 $(".data_id").prop("checked", false);
@@ -715,6 +707,8 @@
                 // $('.email').each(function(i){
                 //        val2[i] = $(this).val();
                 //      });
+                 var email_value=[];
+                 var contact_value=[];
             }
 
             var val1 = [];
@@ -724,31 +718,38 @@
             });
 
             // $("#selectedemails").val(val1);
-
-            val2 = val2.filter(Boolean);
-            val3 = val3.filter(Boolean);
-            $(".email_ids").val(val2);
+ email_value = email_value.filter(Boolean);
+            contact_value = contact_value.filter(Boolean);
+            $(".email_ids").val(email_value);
             $(".email_ids").attr("readonly", "readonly");
 
-            $(".sms_numbers").val(val3);
+            $(".sms_numbers").val(contact_value);
             $(".sms_numbers").attr("readonly", "readonly");
-            $("#selectedemails").val(val2);
-            $("#selectedcontacts").val(val3);
-            // console.log(val2);
-            // console.log(val3);
+           
+            console.log(email_value);
+            console.log(contact_value);
         });
 
 
+ 
         $(':checkbox[class="data_id"]').click(function() {
             var data_id = [];
+var email_ids=[];
             if ($(this).is(':checked')) {
                 $(".mobile_num").prop("checked", true);
                 $(".ids12").prop("checked", true);
                 $(".email").prop("checked", true);
 
-
+               
                     data_id= $(this).val();
-                   alert(data_id);
+                   // data_id=data_id.filter(Boolean);
+                    var contact_value1=<?php echo json_encode($data['accounts_data']) ?>;
+                  data_id= $.trim(data_id);
+                     var result=contact_value1.filter(obj=> obj.data_id == data_id);
+
+                    email_id=result[0]['email_address'];
+                 
+                    // $(".email_ids").val(email_value);
                $("#lead_id").val(data_id);
                $('#related_to').val(data_id);
             } else {
@@ -757,12 +758,11 @@
                 $(".email").prop("checked", false);
             }
 
-
-
-            // $(".email_ids").val(val2);
-            // console.log(val2);
-
+  alert(email_id);
+ email_ids.push(email_id);
+ console.log( email_ids);
         });
+   
 
 
 

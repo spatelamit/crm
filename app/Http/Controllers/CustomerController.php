@@ -550,7 +550,7 @@ protected $notif_count;
         }
 
         $data['user_filters']=$this->Customer->get_user_filter($user_id,$module_id);
-
+        // dd($data['accounts_data']  );
 
         return view('customers.accounts',compact('data','selcol','selcolname','chiled_parent'));
     }

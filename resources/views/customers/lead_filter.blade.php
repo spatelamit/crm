@@ -19,7 +19,7 @@
 
 
 
-                        <table id="leads12" class="display table  leads">
+                        <table  class="display table  leads">
                             <thead>
 
                                 <tr>
@@ -123,19 +123,23 @@
                         </table>
                  
 <script>
-    $(document).ready(function() {
+     $(document).ready(function() {
         $('.leads').DataTable({
-            dom: 'Bfrtip',
+           columnDefs: [
+                        { orderable: false, targets: 0 }
+                        ],
             scrollX: true,
-
             
+            // buttons: [
+            //     'colvis'
+            // ]
 
         });
     });
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $(':checkbox[id="selectAll"]').click(function() {
+ $(':checkbox[id="selectAll"]').click(function() {
             var val1 = [];
             var val2 = [];
             var val3 = [];
@@ -151,8 +155,13 @@
                 });
                 $('.mobile_num').each(function(i) {
                     val3[i] = $(this).val();
-                 
+                    // alert(val3[i]);
                 });
+            var email_value=<?php echo json_encode(array_column($data['leads_data'],'email_address'));  ?>;
+
+            var contact_value=<?php echo json_encode(array_column($data['leads_data'],'contact_number'));  ?>;
+                // console.log( email_value);
+                // console.log( contact_value);
             } else {
                 $(".name").prop("checked", false);
                 $(".data_id").prop("checked", false);
@@ -162,22 +171,24 @@
                 // $('.email').each(function(i){
                 //        val2[i] = $(this).val();
                 //      });
+                 var email_value=[];
+                 var contact_value=[];
             }
 
             var val1 = [];
             $('.data_id').each(function(i) {
                 val1[i] = $(this).val();
-
+                // alert(i);
             });
 
             // $("#selectedemails").val(val1);
 
-            val2 = val2.filter(Boolean);
-            val3 = val3.filter(Boolean);
-            $(".email_ids").val(val2);
+            email_value = email_value.filter(Boolean);
+            contact_value = contact_value.filter(Boolean);
+            $(".email_ids").val(email_value);
             $(".email_ids").attr("readonly", "readonly");
 
-            $(".sms_numbers").val(val3);
+            $(".sms_numbers").val(contact_value);
             $(".sms_numbers").attr("readonly", "readonly");
             $("#selectedemails").val(val2);
             $("#selectedcontacts").val(val3);

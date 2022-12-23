@@ -712,6 +712,11 @@
                     val3[i] = $(this).val();
                     // alert(val3[i]);
                 });
+            var email_value=<?php echo json_encode(array_column($data['leads_data'],'email_address'));  ?>;
+
+            var contact_value=<?php echo json_encode(array_column($data['leads_data'],'contact_number'));  ?>;
+                // console.log( email_value);
+                // console.log( contact_value);
             } else {
                 $(".name").prop("checked", false);
                 $(".data_id").prop("checked", false);
@@ -721,6 +726,8 @@
                 // $('.email').each(function(i){
                 //        val2[i] = $(this).val();
                 //      });
+                 var email_value=[];
+                 var contact_value=[];
             }
 
             var val1 = [];
@@ -731,12 +738,12 @@
 
             // $("#selectedemails").val(val1);
 
-            val2 = val2.filter(Boolean);
-            val3 = val3.filter(Boolean);
-            $(".email_ids").val(val2);
+            email_value = email_value.filter(Boolean);
+            contact_value = contact_value.filter(Boolean);
+            $(".email_ids").val(email_value);
             $(".email_ids").attr("readonly", "readonly");
 
-            $(".sms_numbers").val(val3);
+            $(".sms_numbers").val(contact_value);
             $(".sms_numbers").attr("readonly", "readonly");
             $("#selectedemails").val(val2);
             $("#selectedcontacts").val(val3);
